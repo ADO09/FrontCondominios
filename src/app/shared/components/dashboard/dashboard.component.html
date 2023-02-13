@@ -1,1 +1,66 @@
-<p>dashboard works!</p>
+<section class="app-dashboard">
+    <nav>
+        <div class="contenedor-btn-menu">
+            <button class="btn-menu" (click)="abrirMenu()">
+                <img class="img-menu" src="https://raw.githubusercontent.com/adrian-parra/PuntoDeVenta/1f831d4bc864cee7f2b9580a1eef4bba631bcced/src/assets/menu.svg" alt="">
+               </button>
+        </div>
+        
+        <h1>{{tituloComponente}}</h1>
+    </nav>
+
+    <aside (click)="espandirItemMenu($event)" [ngClass]="{'espandible-menu': menuDesplegado}">
+        <div class="item-profile">
+            <div class="contenedor-img">
+                <img src="https://r.loyverse.com/dashboard/images/ic_account_circle_black1b1c7b5e68cdc7130c56.svg" alt="">
+            </div>
+            <div *ngIf="menuDesplegado" class="contenedor-perfil">
+                <p> Anonimo Usuario </p>
+                <p> anonimousuario@gmail.com </p>
+            </div>
+
+            <div class="cardview-float-perfil">
+                <a >Cuenta</a>
+                <a (click)="cerrarSesion()">Cerrar sesión</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="contenedor-enlases" routerLinkActive="menu-item-active" [routerLinkActiveOptions]="{exact:true}" >
+               <!-- <a routerLinkActive="active-link" routerLink="/dashboard/report/sales">Resumen de ventas</a>
+                
+                <a routerLink="">Ventas por articulo</a>
+                <a routerLink="">Ventas por categoria</a>
+                <a routerLink="">Ventas por empleado</a>-->
+                <label for="">Egresos</label>
+                <a routerLinkActive="active-link" routerLink="/dashboard/report/average" (click)="irRecibos('all','all')" >Proveedores</a>
+                <label for="">Base de datos</label>
+                <a routerLinkActive="active-link" routerLink="/dashboard/report/average" (click)="irRecibos('all','all')" >Propietarios</a>
+                <a routerLinkActive="active-link" routerLink="/dashboard/report/average" (click)="irRecibos('all','all')" >Vehículos</a>
+            </div>
+            <div id="eventClick" title="Administración">
+                <img src="../../../../assets/administraccion.svg" style="filter: invert(40%) sepia(56%) saturate(560%) hue-rotate(194deg) brightness(94%) contrast(89%);" alt="">
+                <h1 *ngIf="menuDesplegado">Administración</h1>
+            </div>
+            
+        </div>
+        <div class="menu-item" >
+            <div class="contenedor-enlases" routerLinkActive="menu-item-active" [routerLinkActiveOptions]="{exact:true}">
+                <label for="">Propiedades</label>
+                <a routerLinkActive="active-link" routerLink="/dashboard/goods/price">Calles</a>
+                <a routerLinkActive="active-link" routerLink="/dashboard/goods/categories">Tipos de propiedades</a>
+                <label for="">Cuenta</label>
+                <a routerLinkActive="active-link" routerLink="/dashboard/goods/price">Usuarios</a>
+            </div>
+            <div id="eventClick" title="Configuración">
+                <img src="../../../../assets/configuracion.svg" style="filter: invert(37%) sepia(93%) saturate(990%) hue-rotate(142deg) brightness(90%) contrast(101%);" alt="">
+                <h1 *ngIf="menuDesplegado">Configuración</h1>
+            </div>
+            
+        </div>
+        
+        
+        
+    </aside>
+    <router-outlet></router-outlet>
+        
+</section>
