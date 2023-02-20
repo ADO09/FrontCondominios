@@ -22,14 +22,14 @@
       "es2020",
       "dom"
     ],
-    "paths": {
-      "@app/*":["app/core/*"],
+   "paths": {
+      "@core/*":["app/core/*"],
       "@shared/*":["app/shared/*"],
-      "@components/*":["app/shared/*"],
-      "@env/*":["environment/*"],
-      "@modules/*":["app/data/*"],
+      "@components/*":["app/shared/components*"],
+      "@env/*":["enviroments/*"],
+      "@modules/*":["app/modules/*"],
       "@data/*":["app/data/*"],
-      "@layout/*":["app/layout/*"]
+      "@layout/*":["app/layout/*"],
     }
   },
   "angularCompilerOptions": {

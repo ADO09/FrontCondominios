@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedTitleComponentService } from '../../../data/services/shared-title-component.service';
+import { SharedTitleComponentService } from '../../services/shared-title-component.service';
 
 @Component({
   selector: 'app-dashboard',

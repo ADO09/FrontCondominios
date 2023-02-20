@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedTitleComponentService } from './data/services/shared-title-component.service';
 import { SharedModule } from './shared/shared.module';
-
+import { DashboardComponent } from './data/layout/dashboard/dashboard.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
-
 
     //core
     CoreModule,

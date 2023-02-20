@@ -1,10 +1,49 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './shared/components/dashboard/dashboard.component';
+import { LoginComponent } from './data/modules/auth/login/login.component';
+import { DashboardComponent } from './data/layout/dashboard/dashboard.component';
 
 const routes: Routes = [
-  {path:'' ,redirectTo:'/dashboard' ,pathMatch:'full'},
-  {path:'dashboard' ,component:DashboardComponent}
+  {
+    path: '',
+    redirectTo: '/auth/login',
+    pathMatch: 'full'
+  },
+  // {
+  //   path: 'auth',
+  //   loadChildren: () =>
+  //     import('src/app/data/modules/auth/auth.module').then((m)=>m.AuthModule)
+  // },
+
+  {
+    path:"auth",
+    loadChildren:()=>
+    import('src/app/data/modules/auth/auth.module').then((m) =>m.AuthModule)
+  },
+
+
+  //---------------------------------------------------------------
+  //{path:'' ,redirectTo:'/dashboard' ,pathMatch:'full'},
+ // {path:'dashboard' ,component:DashboardComponent},
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      // {
+      //   // path: 'userauth',
+      //   // loadChildren: () =>
+      //   //   import('@modules/user/user.module').then((m) => m.UserModule)
+      // },
+      // {
+      //   path: 'dashboard',
+      //   // redirectTo: 'dashboard',
+      //   pathMatch: 'full'
+      // },
+    
+
+    ]
+  },
+
 ];
 
 @NgModule({
