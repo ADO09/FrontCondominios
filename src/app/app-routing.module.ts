@@ -21,6 +21,11 @@ const routes: Routes = [
     import('src/app/data/modules/auth/auth.module').then((m) =>m.AuthModule)
   },
 
+  {
+    path:"registros",
+    loadChildren:()=>
+    import('src/app/data/modules/registros/registros.module').then((m) =>m.RegistrosModule)
+  },
 
   //---------------------------------------------------------------
   //{path:'' ,redirectTo:'/dashboard' ,pathMatch:'full'},
