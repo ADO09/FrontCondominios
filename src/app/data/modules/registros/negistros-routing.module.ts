@@ -4,12 +4,18 @@ import {RouterModule, Routes} from '@angular/router';
 import { INTERNAL_PATHS } from 'src/app/data/constants/routes/internal.routes';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { LoginComponent } from '../auth/login/login.component';
+import { AcptContrRegUsrAdmnFraccComponent } from './acpt-contr-reg-usr-admn-fracc/acpt-contr-reg-usr-admn-fracc.component';
 import { RegAdminFraccionamientoComponent } from './reg-admin-fraccionamiento/reg-admin-fraccionamiento.component';
 
 const routes:Routes = [
     {
         path:INTERNAL_ROUTES.MODULO_REGADMINFRACC,
         component:RegAdminFraccionamientoComponent,
+      //  canActivate: [NoAuthGuard]
+    },
+    {
+        path:INTERNAL_ROUTES.MODULO_ACPTCONTRSREGADMINFRACC,
+        component:AcptContrRegUsrAdmnFraccComponent,
       //  canActivate: [NoAuthGuard]
     }
 ]
