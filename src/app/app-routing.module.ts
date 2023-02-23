@@ -27,6 +27,7 @@ const routes: Routes = [
     import('src/app/data/modules/registros/registros.module').then((m) =>m.RegistrosModule)
   },
 
+
   //---------------------------------------------------------------
   //{path:'' ,redirectTo:'/dashboard' ,pathMatch:'full'},
  // {path:'dashboard' ,component:DashboardComponent},
@@ -34,6 +35,11 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/usuarios/usuarios.module').then((m) =>m.UsuariosModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>
