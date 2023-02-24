@@ -12,13 +12,15 @@ export class CrudUsuariosComponent implements OnInit {
     {
       id: 1,
       nombre: 'Sebastian',
-      contacto: '6871203122',
+      apellido: 'Vega',
+      correo: 'sebas@gmail.com',
       propiedad: 'Casa N°6'
     },
     {
       id: 2,
       nombre: 'Roberto',
-      contacto: '668956325',
+      apellido: 'Hijar',
+      correo: 'boberto@gmail.com',
       propiedad: 'Casa N°7'
     }
 ];
@@ -28,7 +30,8 @@ export class CrudUsuariosComponent implements OnInit {
   usuarioModal = {
     id: '',
     nombre: '',
-    contacto: '',
+    apellido:'',
+    correo: '',
     propiedad: ''
   }
 
@@ -42,22 +45,24 @@ export class CrudUsuariosComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: '',
       nombre: '',
-      contacto: '',
+      apellido:'',
+      correo: '',
       propiedad: ''
     });
   }
 
-  abrirModal(id: any, nombre: any, contacto: any, propiedad: any): void{
+  abrirModal(id: any, nombre: any, apellido:any, correo: any, propiedad: any): void{
     this.form = this.formBuilder.group({
       id: id,
       nombre: nombre,
-      contacto: contacto,
+      apellido: apellido,
+      correo: correo,
       propiedad: propiedad
     });
   }
 
   enviarModal(): void{
-    
+
   }
 
 }
