@@ -40,6 +40,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/usuarios/usuarios.module').then((m) =>m.UsuariosModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/properties/properties.module').then((m) =>m.PropertiesModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>

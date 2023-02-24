@@ -4,8 +4,11 @@ import { CrudUsuariosComponent } from './modules/usuarios/crud-usuarios/crud-usu
 
 
 
+
 @NgModule({
   declarations: [
+  
+   
   ],
   imports: [
     CommonModule
