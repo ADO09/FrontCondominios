@@ -1,22 +1,93 @@
 
-<div class="table-principal">
-  <table>
+<div class="div-tabla">
+  <table id="principal">
     <tr>
       <th>Nombre</th>
       <th>Contacto</th>
       <th>Propiedad</th>
-      <th>Propiedad</th>
-      <th>Propiedad</th>
     </tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
+      <tr *ngFor="let usuario of usuarios"  
+        (click)="abrirModal(usuario.id, usuario.nombre, usuario.contacto, usuario.propiedad)"  
+        onclick="document.getElementById('id01').style.display='block'">
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.contacto}}</td>
+          <td>{{usuario.propiedad}}</td>
+        </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>6685961236</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Berglunds snabbköp</td>
+        <td>6685961236</td>
+        <td>Sweden</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>6685961236</td>
+        <td>Mexico</td>
+      </tr>
+      <tr>
+        <td>Ernst Handel</td>
+        <td>6685961236</td>
+        <td>Austria</td>
+      </tr>
+      <tr>
+        <td>Island Trading</td>
+        <td>6685961236</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Königlich Essen</td>
+        <td>6685961236</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Laughing Bacchus Winecellars</td>
+        <td>6685961236</td>
+        <td>Canada</td>
+      </tr>
+      <tr>
+        <td>Magazzini Alimentari Riuniti</td>
+        <td>6685961236</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <td>North/South</td>
+        <td>6685961236</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Paris spécialités</td>
+        <td>6685961236</td>
+        <td>France</td>
+      </tr>
   </table>
 </div>
+
+
+<body>
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+  
+        <div class="w3-center"><br>
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+        </div>
+  
+        <form class="w3-container" [formGroup]="form" (submit)="enviarModal()">
+          <div class="w3-section">
+            <label><b>Nombre</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="nombre" type="text" placeholder="Enter Username" name="usrname" required>
+            <label><b>Contacto</b></label>
+            <input class="w3-input w3-border" type="number"  formControlName="contacto" placeholder="Enter Password" name="psw" required>
+            <label><b>Propiedad</b></label>
+            <input class="w3-input w3-border" type="text"  formControlName="propiedad" placeholder="Enter Password" name="psw" required>
+            <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id01').style.display='none'" (click)="enviarModal()">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>        
+</body>
+
