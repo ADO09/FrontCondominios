@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import * as fromComponents from './components';
 import { RouterModule } from '@angular/router';
 import { ModalListPropiedadesComponent } from './components/modals/modal-list-propiedades/modal-list-propiedades.component';
-import { MatDialog } from '@angular/material/dialog';
+
 
 
 
@@ -19,7 +19,7 @@ import { MatDialog } from '@angular/material/dialog';
     HttpClientModule,
     RouterModule,
     CommonModule,
-    MatDialog
+    
   ],
   exports:[
     FormsModule,
@@ -28,7 +28,7 @@ import { MatDialog } from '@angular/material/dialog';
     HttpClientModule,
     RouterModule,
     CommonModule ,
-    MatDialog,
+   
     ...fromComponents.components
   ]
 })
