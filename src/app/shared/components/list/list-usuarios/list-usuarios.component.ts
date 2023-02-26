@@ -1,30 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UsuariosService } from 'src/app/data/services/usuarios/usuarios.service';
 
 @Component({
-  selector: 'app-crud-usuarios',
-  templateUrl: './crud-usuarios.component.html',
-  styleUrls: ['./crud-usuarios.component.css']
+  selector: 'app-list-usuarios',
+  templateUrl: './list-usuarios.component.html',
+  styleUrls: ['./list-usuarios.component.css']
 })
-export class CrudUsuariosComponent implements OnInit {
-  usuarios = [
-    {
-      id: 1,
-      nombre: 'Sebastian',
-      apellido: 'Vega',
-      correo: 'sebas@gmail.com',
-      propiedad: 'Casa N°3'
-    },
-    {
-      id: 2,
-      nombre: 'Roberto',
-      apellido: 'Hijar',
-      correo: 'boberto@gmail.com',
-      propiedad: 'Casa N°7'
-    }
-];
-  
+export class ListUsuariosComponent {
+
+  @Input() usuarios!:any[];
+
   showModal:boolean = false;
 
   usuarioModal = {
@@ -34,9 +20,7 @@ export class CrudUsuariosComponent implements OnInit {
     correo: '',
     propiedad: ''
   }
-
-
-
+  
   form: any;
   constructor( private usuariosService: UsuariosService,  private formBuilder: FormBuilder) { }
 

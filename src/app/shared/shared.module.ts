@@ -4,14 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import * as fromComponents from './components';
 import { RouterModule } from '@angular/router';
-import { ModalListPropiedadesComponent } from './components/modals/modal-list-propiedades/modal-list-propiedades.component';
+
+
 
 
 
 
 
 @NgModule({
-  declarations: [...fromComponents.components, ModalListPropiedadesComponent],
+  declarations: [...fromComponents.components],
   imports: [
     FormsModule,
     CommonModule,
