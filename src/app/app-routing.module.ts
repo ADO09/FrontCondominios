@@ -45,6 +45,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/properties/properties.module').then((m) =>m.PropertiesModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/ingresos/ingresos.module').then((m) =>m.IngresosModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>

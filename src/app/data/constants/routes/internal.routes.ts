@@ -23,7 +23,7 @@ export const ROUTES_PATHS = {
         USUARIOSDEFAULT: 'usuarios',
         CRUD_USUARIOS: 'crudUsuarios',
         
-        //------------------------
+        //---------------------------------------------
 
 
 
@@ -33,8 +33,15 @@ export const ROUTES_PATHS = {
         PROPPRINCP:'propPrincl',
 
         //----------------------------------------------
-        USERAUTH:'userauth',
-        PRINCIPALP:'pagPrincipalp',
+
+
+        //-----------INGRESOS---------------------------
+        INGRESOSDEFAULT:'ingresos',
+        CUOTASCONFINGRS:'cuotasConfIngrs',
+
+
+
+        
         PRINCIPALF:'pagPrincipalf',
         USERCLIENTESLIST:'',
         BALANCE:'',
@@ -90,8 +97,10 @@ export const INTERNAL_PATHS = {
 
 
 
-    PANELUSERAUTH:`${ROUTES_PATHS.PANEL.USERAUTH}`,
-    PANELPAGPRINCP: `${ROUTES_PATHS.PANEL.PRINCIPALP}`,
+    PANELDEFAULTINGRESOS:`${ROUTES_PATHS.PANEL.INGRESOSDEFAULT}`,
+    PANELCUOTAS: `${ROUTES_PATHS.PANEL.CUOTASCONFINGRS}`,
+
+
     PANELPAGPRINCF: `${ROUTES_PATHS.PANEL.PRINCIPALF}`,
     PANELPERFILF: `${ROUTES_PATHS.PANEL.PERFILF}`,
     PANELPERFILP: `${ROUTES_PATHS.PANEL.PERFILP}`,
@@ -168,7 +177,9 @@ export const INTERNAL_ROUTES = {
 
 
 
+    //INGRESOS
 
+     MODULO_CUOTAS:`${INTERNAL_PATHS.PANELDEFAULTINGRESOS}/${INTERNAL_PATHS.PANELCUOTAS}`,
 
 
 
