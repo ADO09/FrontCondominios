@@ -38,7 +38,7 @@ export const ROUTES_PATHS = {
         //-----------INGRESOS---------------------------
         INGRESOSDEFAULT:'ingresos',
         CUOTASCONFINGRS:'cuotasConfIngrs',
-
+        //----------------------------------------------
 
 
         
@@ -96,10 +96,12 @@ export const INTERNAL_PATHS = {
 
 
 
-
+    //INGRESOS---------------------------------------------
     PANELDEFAULTINGRESOS:`${ROUTES_PATHS.PANEL.INGRESOSDEFAULT}`,
     PANELCUOTAS: `${ROUTES_PATHS.PANEL.CUOTASCONFINGRS}`,
+    //----------------------------------------------------
 
+    
 
     PANELPAGPRINCF: `${ROUTES_PATHS.PANEL.PRINCIPALF}`,
     PANELPERFILF: `${ROUTES_PATHS.PANEL.PERFILF}`,
