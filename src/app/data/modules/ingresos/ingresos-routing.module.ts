@@ -5,6 +5,7 @@ import { INTERNAL_PATHS } from 'src/app/data/constants/routes/internal.routes';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { LoginComponent } from '../auth/login/login.component';
 import { CuotasIngresosConfComponent } from './cuotas-ingresos-conf/cuotas-ingresos-conf.component';
+import { RecibosGeneralesComponent } from './recibos-generales/recibos-generales.component';
 
 
 
@@ -15,6 +16,11 @@ const routes:Routes = [
     {
         path:INTERNAL_ROUTES.MODULO_CUOTAS,
         component:CuotasIngresosConfComponent,
+      //  canActivate: [NoAuthGuard]
+    },
+    {
+        path:INTERNAL_ROUTES.MODULO_RECIBOS,
+        component:RecibosGeneralesComponent,
       //  canActivate: [NoAuthGuard]
     },
     // {

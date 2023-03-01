@@ -38,6 +38,7 @@ export const ROUTES_PATHS = {
         //-----------INGRESOS---------------------------
         INGRESOSDEFAULT:'ingresos',
         CUOTASCONFINGRS:'cuotasConfIngrs',
+        INGRESOSRECIBOS:'recibosGenerales',
         //----------------------------------------------
 
 
@@ -99,6 +100,7 @@ export const INTERNAL_PATHS = {
     //INGRESOS---------------------------------------------
     PANELDEFAULTINGRESOS:`${ROUTES_PATHS.PANEL.INGRESOSDEFAULT}`,
     PANELCUOTAS: `${ROUTES_PATHS.PANEL.CUOTASCONFINGRS}`,
+    PANELRECIBOSGRLS: `${ROUTES_PATHS.PANEL.INGRESOSRECIBOS}`,
     //----------------------------------------------------
 
     
@@ -182,6 +184,7 @@ export const INTERNAL_ROUTES = {
     //INGRESOS
 
      MODULO_CUOTAS:`${INTERNAL_PATHS.PANELDEFAULTINGRESOS}/${INTERNAL_PATHS.PANELCUOTAS}`,
+     MODULO_RECIBOS:`${INTERNAL_PATHS.PANELDEFAULTINGRESOS}/${INTERNAL_PATHS.PANELRECIBOSGRLS}`,
 
 
 
