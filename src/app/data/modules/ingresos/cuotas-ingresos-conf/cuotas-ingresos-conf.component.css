@@ -67,7 +67,7 @@ input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width
   line-height: 20px;
   margin: 0;
   outline: none;
-  padding: 13px 23px;
+  padding: 9px 16px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -187,7 +187,12 @@ body {
 
 .col-3 {
   flex: 2;
- 
+ width: 29%;
+}
+
+.col-3 input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .add {
