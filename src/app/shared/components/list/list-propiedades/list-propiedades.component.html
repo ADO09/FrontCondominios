@@ -2,32 +2,40 @@
    
     <table id="principal">
       <tr>
-        <th>Nombre(s)</th>
-        <th>Contacto</th>
-        <th>Propiedad</th>
+        <th>Tipo de propiedad</th>
+        <th>Clave catastral</th>
+        <th>Descripción</th>
+        <th>Superficie</th>
+        <th>Balance</th>
+        <th>Estatus</th>
+        <th>Razón de rechazo</th>
+        <th>Propietario</th>
+        <th>Fraccionamiento</th>
       </tr>
     <tr>
      
     </tr>
   
     
-  <!--       
-    <tr  *ngFor="let usuario of usuarios"  
-    (click)="abrirModal(usuario.id, usuario.nombre, usuario.apellido, usuario.correo, usuario.propiedad)"  
-    onclick="document.getElementById('id01').style.display='block'">
-    
-      <td>{{usuario.nombre}} {{usuario.apellido}}</td>
-      <td>{{usuario.correo}}</td>
-      <td>{{usuario.propiedad}}</td>
-    
-    </tr> -->
-    
+     <tbody>
+    <tr *ngFor="let propiedad of propiedades" (click)="abrirModal(propiedad)">
+      <td>{{ propiedad.tipoPropiedadId }}</td>
+      <td>{{ propiedad.claveCatastral }}</td>
+      <td>{{ propiedad.descripcion }}</td>
+      <td>{{ propiedad.superficie }}</td>
+      <td>{{ propiedad.balance }}</td>
+      <td>{{ propiedad.estatusId }}</td>
+      <td>{{ propiedad.razonDeRechazo }}</td>
+      <td>{{ propiedad.propietarioId }}</td>
+      <td>{{ propiedad.fraccionamientoId }}</td>
+    </tr>
+  </tbody>
   
-        <tr (click)="abrirModal()">
+        <!-- <tr (click)="abrirModal()">
           <td>Paris spécialités</td>
           <td>alfred@gmail.com</td>
           <td>France</td>
-        </tr>
+        </tr> -->
   
   
         

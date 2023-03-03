@@ -8,25 +8,66 @@
           <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
         </div>
   
-        <form class="w3-container" [formGroup]="form" (submit)="enviarModal()">
+        <form class="w3-container" [formGroup]="formPropiedades" (submit)="enviarModal()">
           <div class="w3-section">
-            <label><b>Nombre</b></label>
-            <input class="w3-input w3-border w3-margin-bottom"  formControlName="nombre" type="text" placeholder="Enter Username" name="usrname" required>
-            <label><b>Contacto</b></label>
-            <input class="w3-input w3-border" type="number"  formControlName="contacto" placeholder="Enter Password" name="psw" required>
-            <label><b>Propiedad</b></label>
-            <input class="w3-input w3-border" type="text"  formControlName="propiedad" placeholder="Enter Password" name="psw" required>
-            <label><b>Propiedad</b></label>
-            <input class="w3-input w3-border" type="text"  formControlName="propiedad" placeholder="Enter Password" name="psw" required>
-            <label><b>Propiedad</b></label>
-            <input class="w3-input w3-border" type="text"  formControlName="propiedad" placeholder="Enter Password" name="psw" required>
-            <label><b>Propiedad</b></label>
-            <input class="w3-input w3-border" type="text"  formControlName="propiedad" placeholder="Enter Password" name="psw" required>
-            <label><b>Propiedad</b></label>
-            <input class="w3-input w3-border" type="text"  formControlName="propiedad" placeholder="Enter Password" name="psw" required>
+            <label><b>Tipo Propiedad</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="tipoPropiedadId" type="text" placeholder="Ingresa Tipo de Propiedad" required>
+            
+        
+            <label><b>Clave Catastral</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="claveCatastral" type="text" placeholder="Ingresa la Clave catastral" required>
+            
+
+            <label><b>Descripcion</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="descripcion" type="text" placeholder="Ingresa descripcion" required>
+            
+
+            <label><b>Tipo Propiedad</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="tipoPropiedadId" type="text" placeholder="Ingresa Tipo de Propiedad" required>
+            
+
+            <label><b>Superficie</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="superficie" type="text" placeholder="Ingresa superficie" required>
+            
+
+            <label><b>Balance</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="balance" type="text" placeholder="Ingresa balance" required>
+            
+
+            <label><b>Estatus</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="estatusId" type="text" placeholder="Ingresa Estatus" required>
+            
+
+            <label><b>Razon de rechazo</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="razonDeRechazo" type="text" placeholder="Ingresa Razon de rechazo" required>
+            
+
+            <label><b>Propietario</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="propietarioId" type="text" placeholder="Ingresa propietario" required>
+            
+
+            <label><b>Inquilino</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="inquilinoId" type="text" placeholder="Ingresa Inquilino" required>
+            
+
+            <label><b>Fraccionamiento</b></label>
+            <input class="w3-input w3-border w3-margin-bottom"  formControlName="fraccionamientoId" type="text" placeholder="Ingresa Fraccionamiento" required>
+            
             <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id01').style.display='none'" (click)="enviarModal()">Enviar</button>
           </div>
         </form>
+
+<!-- 
+        tipoPropiedadId:1
+claveCatastral: JUIBWIQUIEBQWENQKNASKJNDAJDS23
+descripcion: ajsdabshjdbaskhdJDAKJSDSKASDKABSNDABDKHAS
+superficie: 30.5
+balance: -1500
+estatusId: 0
+razonDeRechazo: NAKJSDBNAKJSBDHJASBHDBASDBKHASKHDBASDJDBASJDHAS
+propietarioId: 221
+//inquilinoId:null
+fraccionamientoId: 1 -->
       </div>
           
 

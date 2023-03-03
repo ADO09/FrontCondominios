@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
 
 @Component({
   selector: 'app-propiedade',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropiedadeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private propiedadesService:PropiedadesServiceService) { }
 
   ngOnInit(): void {
+
+    this.propiedadesService.propiedadesGetAll();
   }
 
 }

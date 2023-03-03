@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-modal-list-propiedades',
@@ -26,37 +26,47 @@ export class ModalListPropiedadesComponent implements OnInit {
     }
 ];
   
-  showModal:boolean = false;
+  // showModal:boolean = false;
 
-  usuarioModal = {
-    id: '',
-    nombre: '',
-    contacto: '',
-    propiedad: ''
+  // usuarioModal = {
+  //   id: '',
+  //   nombre: '',
+  //   contacto: '',
+  //   propiedad: ''
+  // }
+
+
+
+  public formPropiedades!: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit() {
+    this.formPropiedades = this.fb.group({
+      tipoPropiedadId: ['', Validators.required],
+      claveCatastral: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      superficie: ['', Validators.required],
+      balance: ['', Validators.required],
+      estatusId: ['', Validators.required],
+      razonDeRechazo: [''],
+      inquilinoId:['',Validators.required],
+      propietarioId: ['', Validators.required],
+      fraccionamientoId: ['', Validators.required]
+    });
   }
 
-
-
-  form: any;
-  constructor(   private formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {
-  
-    this.form = this.formBuilder.group({
-      id: '',
-      nombre: '',
-      contacto: '',
-      propiedad: ''
-    });
+  onSubmit() {
+    console.log(this.formPropiedades.value);
   }
 
   abrirModal(id: any, nombre: any, contacto: any, propiedad: any): void{
-    this.form = this.formBuilder.group({
-      id: id,
-      nombre: nombre,
-      contacto: contacto,
-      propiedad: propiedad
-    });
+    // this.form = this.formBuilder.group({
+    //   id: id,
+    //   nombre: nombre,
+    //   contacto: contacto,
+    //   propiedad: propiedad
+    // });
   }
   
  
