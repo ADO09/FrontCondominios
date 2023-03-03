@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,9 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./modal-list-propiedades.component.css']
 })
 export class ModalListPropiedadesComponent implements OnInit {
+
+
+  @Input() cerrarModal:any;
 
   usuarios = [
     {
@@ -55,14 +58,16 @@ export class ModalListPropiedadesComponent implements OnInit {
       propiedad: propiedad
     });
   }
+  
  
 
-  closeModal() {
-    const modal = document.getElementById('id01');
-  if (modal) {
-    modal.style.display = 'none';
-  }
-  }
+  // closeModal() {
+  //   const modal = document.getElementById('id01');
+  // if (modal) {
+  //   modal.style.display = 'none';
+  // }
+
+  // }
   enviarModal(){
 
   }

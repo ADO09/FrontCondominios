@@ -1,30 +1,44 @@
-<div class="container">
-    <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
-    <ul class="responsive-table">
-      <li class="table-header">
-        <div class="col col-1">Job Id</div>
-        <div class="col col-2">Customer Name</div>
-        <div class="col col-3">Amount Due</div>
-        <div class="col col-4">Payment Status</div>
-        <div class="col col-5">Amount Due</div>
-        <div class="col col-6">Payment Status</div>
-      </li>
-      <li class="table-row">
-        <div class="col col-1" data-label="Job Id">42235</div>
-        <div class="col col-2" data-label="Job Id">42235</div>
-        <div class="col col-3" data-label="Job Id">42235</div>
-        <div class="col col-4" data-label="Customer Name">John Doe</div>
-        <div class="col col-5" data-label="Amount">$350</div>
-        <div class="col col-6" data-label="Payment Status">   <input class="button-9" type="button" role="button" value="EDIT"  onclick="document.getElementById('id01').style.display='block'"> <input class="button-elm" type="button" role="button" value="DELETE"></div>
-      </li>
 
-    </ul>
-  </div>
+   
+    <table id="principal">
+      <tr>
+        <th>Nombre(s)</th>
+        <th>Contacto</th>
+        <th>Propiedad</th>
+      </tr>
+    <tr>
+     
+    </tr>
+  
+    
+  <!--       
+    <tr  *ngFor="let usuario of usuarios"  
+    (click)="abrirModal(usuario.id, usuario.nombre, usuario.apellido, usuario.correo, usuario.propiedad)"  
+    onclick="document.getElementById('id01').style.display='block'">
+    
+      <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+      <td>{{usuario.correo}}</td>
+      <td>{{usuario.propiedad}}</td>
+    
+    </tr> -->
+    
+  
+        <tr (click)="abrirModal()">
+          <td>Paris spécialités</td>
+          <td>alfred@gmail.com</td>
+          <td>France</td>
+        </tr>
+  
+  
+        
+    </table>
+  
+  
 
 
 
 
  
-  <!-- <body  class="modal fade show" tabindex="-1" role="dialog" style="display: block;" (click)="closeModal()"></body> -->
-<app-modal-list-propiedades id="id01" class="w3-modal"></app-modal-list-propiedades>
+  <!-- <body  class="modal fade show" tabindex="-1" role="dialog" style="display: block;" (click)="closeModal()"></body>   -->
+<app-modal-list-propiedades id="id01" class="w3-modal" [cerrarModal]="envModal"></app-modal-list-propiedades>
 

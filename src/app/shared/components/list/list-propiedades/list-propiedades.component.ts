@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-list-propiedades',
   templateUrl: './list-propiedades.component.html',
-  styleUrls: ['./list-propiedades.component.scss']
+  styleUrls: ['./list-propiedades.component.css']
 })
 export class ListPropiedadesComponent implements OnInit {
  
@@ -47,13 +47,16 @@ export class ListPropiedadesComponent implements OnInit {
     });
   }
 
-  abrirModal(id: any, nombre: any, contacto: any, propiedad: any): void{
-    this.form = this.formBuilder.group({
-      id: id,
-      nombre: nombre,
-      contacto: contacto,
-      propiedad: propiedad
-    });
+  abrirModal(id?: any, nombre?: any, contacto?: any, propiedad?: any): void{
+    // this.form = this.formBuilder.group({
+    //   id: id,
+    //   nombre: nombre,
+    //   contacto: contacto,
+    //   propiedad: propiedad
+    // });
+   
+    var divModl =  document.getElementById('id01') as HTMLDivElement;
+    divModl.style.display = 'block';
   }
  
 
@@ -64,6 +67,13 @@ export class ListPropiedadesComponent implements OnInit {
   }
   }
   enviarModal(){
+
+  }
+
+  envModal(){
+    
+   var divModl =  document.getElementById('id01') as HTMLDivElement;
+   divModl.style.display = 'none';
 
   }
 
