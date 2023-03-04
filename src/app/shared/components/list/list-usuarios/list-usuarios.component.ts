@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UsuariosService } from 'src/app/data/services/usuarios/usuarios.service';
+import { UsuariosService } from 'src/app/data/services/api/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-list-usuarios',
