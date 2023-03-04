@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Mensaje } from 'src/app/data/interfaces/Mensaje';
 import { UsuariosService } from 'src/app/data/services/api/usuarios/usuarios.service';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class AcptContrRegUsrAdmnFraccComponent implements OnInit {
   token!: string;
-  constructor(private apiService:UsuariosService ,private route:ActivatedRoute) {
+  constructor(private apiService:UsuariosService ,private route:ActivatedRoute ,private router:Router) {
     this.route.queryParams.subscribe((param:Params) => {
       if(param['token'] != null){
        
@@ -19,6 +19,7 @@ export class AcptContrRegUsrAdmnFraccComponent implements OnInit {
 
           //ENVIAR PETICION PARA CONFIRMAR VALIDES DE TOKEN
           apiService.verificarToken({token:this.token}).subscribe((mensaje:Mensaje) => {
+            /*
             if(mensaje.icon == "error"){
               Swal.fire({
                 icon:"error",
@@ -31,7 +32,7 @@ export class AcptContrRegUsrAdmnFraccComponent implements OnInit {
                 title:"",
                 text:mensaje.title
               })
-            }
+            }*/
           })
           /*
           loginService.confirmarCorreo({token:param['codigo_de_confirmacion']}).subscribe(mensaje => {
@@ -51,12 +52,13 @@ export class AcptContrRegUsrAdmnFraccComponent implements OnInit {
           //location.href = "#/login"
       }else {
         //location.href = "#/inicio"
-        alert("no hay parametro")
+        this.router.navigate(['/auth/login'])
       }
     })
    }
 
   ngOnInit(): void {
+
   }
 
   registro(password:string,confirmPassword:string){
@@ -72,38 +74,7 @@ export class AcptContrRegUsrAdmnFraccComponent implements OnInit {
     }else{
       //TODO BIEN POR EL MOMEMNTO
       this.apiService.registro({password:password ,token:this.token}).subscribe((mensaje:any) =>{
-        console.log(mensaje)
-        console.log(mensaje)
-        console.log(mensaje.error)
-
-
-      if(mensaje.icon == "error" && mensaje.title != "error"){
-        Swal.fire({
-          icon: 'error',
-          title: 'Error de validación',
-          text: mensaje.title
-        });
-      }else if(mensaje.icon == "error" && mensaje.title == "error"){
-        let errorMessage = '';
-        for (const [key, value] of Object.entries(mensaje.body)) {
-          errorMessage += `
-         <span style='color:red;font-size:25px;'>*</span> ${value} <br>
-          `;
-        }
-        Swal.fire({
-          icon: 'error',
-          title: 'Error de validación',
-          html: errorMessage
-        });
-
-      }else{
-        
-        Swal.fire({
-          icon: "success",
-          title: mensaje.icon,
-          text: mensaje.title
-        });
-      }
+          this.router.navigate(['/auth/login'])
       })
     }
   }

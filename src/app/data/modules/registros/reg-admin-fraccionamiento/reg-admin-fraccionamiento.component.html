@@ -57,7 +57,14 @@
               </div>
             </div>
             -->
-            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <div class="container-inputs">
+              <label for="">Usuario</label>
+              <hr>
+              <br>
+            </div>
+            <div class="input_field"> 
+              
+              <span><i aria-hidden="true" class="fa fa-lock"></i></span>
               <input type="text" formControlName="nombre" placeholder="Nombre(s)" required />
             </div>
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
@@ -65,6 +72,11 @@
             </div>
             <div class="input_field"> <span><i class="fa fa-envelope"></i></span>
               <input type="email" formControlName="correo" placeholder="Correo" required />
+            </div>
+            <div class="container-inputs">
+              <label for="">Fraccionamiento</label>
+              <hr>
+              <br>
             </div>
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
               <input type="text" formControlName="nombre_fraccionamiento" placeholder="Nombre de Fraccionamiento" required />
@@ -84,10 +96,12 @@
                   <label for="cb2">I want to receive the newsletter</label>
               </div>-->
             <input class="button" type="submit" value="Registrar fraccionamiento" />
+            <div class="container-link-inicio-sesion">
+              <a routerLink="/auth/login">Ya tengo una cuenta</a>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p>
-</div>
+  </div>
