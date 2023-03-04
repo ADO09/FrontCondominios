@@ -45,10 +45,10 @@
                 <div class="">
                     <form>
                         <div class="input_field"> <span><i class="fa fa-envelope"></i></span>
-                            <input type="password" name="password" placeholder="Password" required />
+                            <input type="password" name="password" #password placeholder="Password" required />
                         </div>
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input type="password" name="password1" placeholder="Confirm Password" required />
+                            <input type="password" name="password1" #confirmPassword placeholder="Confirm Password" required />
                         </div>
                         <!-- <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                             <input type="number" name="CP" placeholder="Codigo Postal" required />
@@ -87,7 +87,7 @@
                             <input type="checkbox" id="cb2">
                             <label for="cb2">I want to receive the newsletter</label>
                         </div> -->
-                        <input class="button" type="submit" value="CONFIRM" />
+                        <input class="button" type="submit" (click)="registro(password.value,confirmPassword.value)" value="CONFIRM" />
                     </form>
                 </div>
             </div>

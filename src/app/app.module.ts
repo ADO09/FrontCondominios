@@ -8,6 +8,9 @@ import { CoreModule } from './core/core.module';
 import { SharedTitleComponentService } from './data/services/shared-title-component.service';
 import { SharedModule } from './shared/shared.module';
 import { DashboardComponent } from './data/layout/dashboard/dashboard.component';
+import { UsuariosService } from './data/services/api/usuarios/usuarios.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './data/services/middleware/auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,11 @@ import { DashboardComponent } from './data/layout/dashboard/dashboard.component'
     AppRoutingModule
   ],
   providers: [
-    {provide:LocationStrategy,useClass:PathLocationStrategy} ,SharedTitleComponentService
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },{provide:LocationStrategy,useClass:PathLocationStrategy} ,SharedTitleComponentService ,UsuariosService
   ],
   bootstrap: [AppComponent]
 })
