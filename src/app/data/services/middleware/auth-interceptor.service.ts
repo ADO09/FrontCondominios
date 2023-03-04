@@ -1,5 +1,6 @@
-import { HttpErrorResponse, HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { catchError, Observable, tap, throwError } from "rxjs";
 import Swal from "sweetalert2";
 
@@ -7,13 +8,36 @@ import Swal from "sweetalert2";
     providedIn: 'root'
   })
   export class AuthInterceptorService implements HttpInterceptor {
-    constructor() { }
+    constructor(private route:Router) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
             return next.handle(req).pipe(
                 tap(event => {
                     if (event.type === HttpEventType.Response) {
                         //SE EJECUTA CUANDO LA API RESPONDE CON LOS DATOS CORRESPONDIENTES
+                        //O SIMPLEMENTE CUANDO NO OCURRIO ALGUN ERRROR
+
+                        /**
+                         * ! SI SE OBTIENE UN ESTATUS 201 QUIERE DECIR QUE SE CREO ALGO EN EL SERVIDOR
+                         * ! PERO NO RETORNA NADA PARA EL FRONT END SOLO 
+                         * ! EL MESSAGE DE LO QUE SE PROCESO EN EL SERVER
+                         */
+
+                        /**
+                         * ! SI SE OBTIENE UN ESTATUS 200 QUIERE DECIR QUE SE CRE ALGO EN EL SERVER Y RESPONDE CON
+                         * ! INFORMACION PARA EL FRONT END.
+                         * ? PERO LA INFORMACION QUE DEVUELVE SE MENAJA DE MANERA INDEPENDIENTE
+                         * ? DONDE SE REALIZO LA PETICION
+                         */
+                        
+                        if(event.status == 201 || event.status == 200){
+                            Swal.fire({
+                                title: event.body.icon,
+                                icon: event.body.icon,
+                                text: event.body.title
+                              });
+                        }
+
                         //this.loadingService.hide();
                     }
                 }),
@@ -31,6 +55,8 @@ import Swal from "sweetalert2";
                             icon:error.error.icon
                             ,text:error.error.title
                         })
+
+                        this.route.navigate(['/auth/login'])
                     }  
                     
                     /**
@@ -52,6 +78,8 @@ import Swal from "sweetalert2";
                             html: errorMessage
                         });
 
+
+
                     }
 
                     /**
@@ -60,6 +88,18 @@ import Swal from "sweetalert2";
                      */
 
                     if(error.status == 500){
+
+                        //VERIFICAR SI EL MENSAJE DE ERROR
+                        //NO FUE RETORNADO POR LA API
+                        if(error.error.message){
+                            Swal.fire({
+                                icon: "info",
+                                title: "info",
+                                text:error.error.message,
+                            });
+                        }
+
+                        //MENSAJE DE ERROR FUE RETORNADO POR LA API
                         let errorMessage = '';
                         for (const [key, value] of Object.entries(error.error.body)) {
                             errorMessage += `

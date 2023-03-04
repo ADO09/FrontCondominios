@@ -24,42 +24,10 @@ export class RegAdminFraccionamientoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addUsuario(){
-    
-    this.apiService.confirmarRegistro(this.usuarioForm.value).subscribe((mensaje:any) => {
-      
-
-      if(mensaje.icon == "error" && mensaje.title != "error"){
-        Swal.fire({
-          icon: 'error',
-          title: 'Error de validación',
-          text: mensaje.title
-        });
-      }else if(mensaje.icon == "error" && mensaje.title == "error"){
-        let errorMessage = '';
-        for (const [key, value] of Object.entries(mensaje.body)) {
-          errorMessage += `
-         <span style='color:red;font-size:25px;'>*</span> ${value} <br>
-          `;
-        }
-        Swal.fire({
-          icon: 'error',
-          title: 'Error de validación',
-          html: errorMessage
-        });
-
-      }else{
-        Swal.fire({
-          icon: mensaje.icon,
-          title: mensaje.icon,
-          text: mensaje.title
-        });
-      }
-
+  addUsuario(){    
+    this.apiService.confirmarRegistro(this.usuarioForm.value).subscribe(() => {
+      this.usuarioForm.reset();
     })
-    
-  
-
   }
 
 

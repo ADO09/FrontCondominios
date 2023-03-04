@@ -655,4 +655,23 @@ a.ssolink {
   }
 } 
 
+.title_container h2{
+  font-size: var(--SizeTitulo);
+  font-weight: 600;
+}
+
+.container-inputs label {
+  font-size: var(--SizeTitulo);
+  font-weight: 400;
+}
+
+.button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0;
+}
+
+
+
 
