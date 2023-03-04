@@ -12,7 +12,11 @@ export class PropiedadeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.propiedadesService.propiedadesGetAll();
+    this.propiedadesService.propiedadesGetAll().subscribe( r => {
+
+      console.log(r);
+      
+    });
   }
 
 }

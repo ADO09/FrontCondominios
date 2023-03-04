@@ -28,12 +28,12 @@ export class PropiedadesServiceService {
   // }
 
   
-  propiedadesGetAll(): Observable<ApiResponsePropietis> {
+    propiedadesGetAll(): Observable<ApiResponsePropietis> {
     console.log('chingasasyagsdiauhds');
     
     const response = { links: {}, meta: {}, data: [] as any[] | null };
     return this.http.get<ApiResponsePropietis>
-      (API_ROUTES.PROPIEDADES.GETALLPROPIEDADES,{headers:this.headers,})
+      (API_ROUTES.PROPIEDADES.GETALLPROPIEDADES)
       .pipe(
         delay(100),
         map(r => {
