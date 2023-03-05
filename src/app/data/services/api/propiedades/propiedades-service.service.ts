@@ -30,7 +30,7 @@ export class PropiedadesServiceService {
 
   
     propiedadesGetAll(): Observable<Mensaje> {
-    console.log('chingasasyagsdiauhds');
+
     
     const response = { icon: '', title: '', body: [] as any[] | null };
     return this.http.get<Mensaje>
@@ -41,6 +41,28 @@ export class PropiedadesServiceService {
           console.log(r);
           
           response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
+
+
+
+  propiedadesUpdate( id:any): Observable<Mensaje> {
+    
+    
+    const response = { icon: '', title: '' };
+    return this.http.delete<Mensaje>
+      (API_ROUTES.PROPIEDADES.GETALLPROPIEDADES + id) //aqui 
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          // response.body = r.body;
           response.title = r.title;
           response.icon = r.icon;
           return response;
