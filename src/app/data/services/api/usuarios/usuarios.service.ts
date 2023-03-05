@@ -34,6 +34,13 @@ export class UsuariosService {
    */
   registro(data:{password:string,token:string}): Observable<Mensaje>{
     return this.http.post<Mensaje>(this.baseUrl + 'usuario/registro',data);
-  }  
+  }
+  
+  /**
+   * ! INICIO DE SESION DE USUARIO
+   */
+  inicioSesion(data:{password:string,correo:string}): Observable<Mensaje>{
+    return this.http.post<Mensaje>(this.baseUrl + 'usuario/iniciar-sesion',data);
+  }
 
 }
