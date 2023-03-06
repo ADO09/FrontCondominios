@@ -23,16 +23,18 @@ export class AuthInterceptorService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     
     var token = localStorage.getItem('token');
-
+    var auth;
     if (token !== null) {
-         req.clone({
+        auth= req.clone({
             setHeaders: {
               authorization: `Bearer ${token}`
             }
           });
+    }else{
+      auth = req;
     }
 
-    return next.handle(req).pipe(
+    return next.handle(auth).pipe(
       tap((event) => {
         if (event.type === HttpEventType.Response) {
           //SE EJECUTA CUANDO LA API RESPONDE CON LOS DATOS CORRESPONDIENTES

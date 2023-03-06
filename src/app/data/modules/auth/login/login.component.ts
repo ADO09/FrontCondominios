@@ -6,30 +6,26 @@ import { UsuariosService } from 'src/app/data/services/api/usuarios/usuarios.ser
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor(private apiService: UsuariosService, private route: Router) {}
 
-  constructor(private apiService:UsuariosService ,private route:Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  iniciarSesion(password: string, correo: string) {
+    this.apiService
+      .inicioSesion({ password: password, correo: correo })
+      .subscribe((mensaje: Mensaje) => {
+        //ALMACENO INFORMACION IMPORTANTE PARA EL FRONT END
+        localStorage.setItem('token', mensaje.body.token);
+        localStorage.setItem('rol', mensaje.body.rol);
+        localStorage.setItem(
+          'id_fraccionamiento',
+          mensaje.body.id_fraccionamiento
+        );
+        //REDIRECCIONAR AL DACHBOARD
+        this.route.navigate(['/dashboard']);
+      });
   }
-
-  iniciarSesion(password:string,correo:string){
-    this.apiService.inicioSesion({password:password,correo:correo}).subscribe((mensaje:Mensaje)=>{
-      //ALMACENO TOKEN DE AUTENTICACION DE USUARIO Y SU ROL O ROLES QUE TIENE
-      //PARA EL SISTEMA
-      localStorage.setItem('token', mensaje.body.token);
-      localStorage.setItem('rol', mensaje.body.rol);
-
-      //REDIRECCIONAR AL DACHBOARD
-      this.route.navigate(['/dashboard'])
-      
-
-      
-    })
-  }
-
- 
-
 }
