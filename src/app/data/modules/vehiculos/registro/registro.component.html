@@ -1,0 +1,80 @@
+<section class="contenedor-componente">
+    <div class="cardview">
+        
+            <form  class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="vehiculoFormRegistro" (ngSubmit)="addVehiculo()">
+
+                <label for="">Propiedad</label>
+                <div class="contenedor-input" style="margin-bottom: 0;">
+                    <input type="text" placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(claveCatastral.value)">
+                    <label for="">por clave catastral</label>
+                    <label for="">Buscar </label>      
+                </div>
+                <span *ngIf="idPropietario" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span>
+
+                <div class="contenedor-grid-2">
+                    <div class="contenedor-input">
+                        <select formControlName="id_tipo_vehiculo">
+                            <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option>
+                         </select>
+                        <label for="">Tipo</label>
+                        <p class="smsError"
+                        *ngIf="vehiculoFormRegistro.get('id_tipo_vehiculo')?.touched && vehiculoFormRegistro.get('id_tipo_vehiculo')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="color">
+                        <label for="">color</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="vehiculoFormRegistro.get('color')?.touched && vehiculoFormRegistro.get('color')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    <div class="contenedor-input">
+                        <select formControlName="id_estado">
+                            <option value="{{estado.id}}" *ngFor="let estado of estados">{{estado.nombre}}</option>
+                                             </select>
+                        <label for="">Estado</label>
+                        <p style="color: gray; font-size: 11px; margin-top: 10px;" for="">Selecciona el estado al que pertenecen las placas</p>
+                        <p class="smsError"
+                        *ngIf="vehiculoFormRegistro.get('id_estado')?.touched && vehiculoFormRegistro.get('id_estado')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="button" placeholder=" " formControlName="tarjeta_circulacion">
+                        <label for="">Tarjeta de circulación</label>
+                        <label for="">Ingrese</label>
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="marca">
+                        <label for="">marca</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="vehiculoFormRegistro.get('marca')?.touched && vehiculoFormRegistro.get('marca')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="placas">
+                        <label for="">placas</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="vehiculoFormRegistro.get('placas')?.touched && vehiculoFormRegistro.get('placas')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                </div>
+
+
+
+                <div class="contenedor-botones">
+                    <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
+                    <button type="submit" [disabled]="vehiculoFormRegistro.invalid">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+  
+</section>

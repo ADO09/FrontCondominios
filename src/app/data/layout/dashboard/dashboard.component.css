@@ -320,3 +320,9 @@
 
 
 /*FIN ESTILOS PARA ASIDE FLOTANE TOP|LEFT */
+
+.ref-hide{
+    opacity: 0;
+    pointer-events: 0;
+    position: absolute;
+}

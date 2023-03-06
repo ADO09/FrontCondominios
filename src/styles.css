@@ -5,11 +5,12 @@
   /*COLOR PRINCIPAL rgb(75, 175, 79)*/
   --ColorPrincipal: rgb(255, 255, 255);
 
-  --ColorSecundario: rgb(23, 101, 190);
+  --ColorSecundario: #5469D4;/*rgb(23, 101, 190)*/
   --ColorFondo: rgb(242, 242, 242);
 
   --ColorExtra: rgb(29, 29, 29);
 
+  --ColorSuccess:#00C951;
   --ColorDanger: #ff4a56;
   --ColorWarning: #f57c00;
 
@@ -79,7 +80,7 @@ body {
   /*PROpiedad agregada para cale*/
   width: 100%;
 }
-
+/*
 @keyframes opacity {
   0% {
     animation-timing-function: ease-in;
@@ -129,9 +130,9 @@ body {
     opacity: 1;
     transform: translateX(0px);
   }
-}
+}*/
 
-@keyframes opacity1 {
+@keyframes opacity {
   from {
     opacity: 0;
     /*width: 0%;*/
