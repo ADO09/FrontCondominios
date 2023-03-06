@@ -1,52 +1,74 @@
+<div class="searchInpt">
 
-   
-    <table id="principal">
-      <tr>
-        <th>Tipo de propiedad</th>
-        <th>Clave catastral</th>
-        <th>Descripción</th>
-        <th>Superficie</th>
-        <th>Balance</th>
-        <th>Estatus</th>
-        <th>Razón de rechazo</th>
-        <th>Propietario</th>
-        <th>Fraccionamiento</th>
-      </tr>
-    <tr>
-     
-    </tr>
+  <div class="col-3 input-effect">
+      <input class="effect-21" type="text" placeholder="">
+        <label>Search</label>
+        <span class="focus-border">
+          <i></i>
+        </span>
+    </div>
+    <div class="btnAdd">
+      <input type="button" value="Agregar" class="boton-agregar" (click)="addPropiedadModal()" />
+    </div>
   
-    
-     <tbody>
-    <tr *ngFor="let propiedad of propiedades" (click)="abrirModal(propiedad)">
-      <td>{{ propiedad.tipoPropiedadId }}</td>
+</div>
+
+<table id="principal">
+  <tr>
+    <th>#</th>
+    <th>Tipo de propiedad</th>
+    <th>Clave catastral</th>
+    <th>Descripción</th>
+    <th>Superficie</th>
+    <th>Balance</th>
+    <th>Estatus</th>
+    <!-- <th>Razón de rechazo</th> -->
+    <th>Propietario</th>
+    <th>Archivo Prdl.</th>
+    <th>Fraccionamiento</th>
+  </tr>
+  <tr></tr>
+
+  <tbody>
+    <tr
+      *ngFor="let propiedad of propiedadesData"
+      (click)="abrirModal(propiedad)"
+    >
+      <td>{{ propiedad.id }}</td>
+      <td>{{ propiedad.tipoPropiedad.descripcion }}</td>
       <td>{{ propiedad.claveCatastral }}</td>
       <td>{{ propiedad.descripcion }}</td>
       <td>{{ propiedad.superficie }}</td>
       <td>{{ propiedad.balance }}</td>
-      <td>{{ propiedad.estatusId }}</td>
-      <td>{{ propiedad.razonDeRechazo }}</td>
-      <td>{{ propiedad.propietarioId }}</td>
+      <td>{{ propiedad.estatus.descripcion }}</td>
+
+      <td>{{ propiedad.propietario.nombre }}</td>
+      <td>{{ propiedad.predialUrl }}</td>
       <td>{{ propiedad.fraccionamientoId }}</td>
     </tr>
   </tbody>
-  
-        <!-- <tr (click)="abrirModal()">
-          <td>Paris spécialités</td>
-          <td>alfred@gmail.com</td>
-          <td>France</td>
-        </tr> -->
-  
-  
-        
-    </table>
-  
-  
+</table>
+
+<div *ngIf="this.currentPropiedad" >
+  <app-modal-list-propiedades
+    id="id01"
+    class="w3-modal"
+    [cerrarModal]="envModal"
+    [propiedadDatos]="this.currentPropiedad"
+  ></app-modal-list-propiedades>
+</div>
 
 
+<app-modal-registro-propiedad
+id="id02"
+class="w3-modal"
+[cerrarModal]="envModal2"
+></app-modal-registro-propiedad>
 
-
- 
-  <!-- <body  class="modal fade show" tabindex="-1" role="dialog" style="display: block;" (click)="closeModal()"></body>   -->
-<app-modal-list-propiedades id="id01" class="w3-modal" [cerrarModal]="envModal"></app-modal-list-propiedades>
-
+<div *ngIf="!this.currentPropiedad">
+  <app-modal-list-propiedades
+    id="id01"
+    class="w3-modal"
+    [cerrarModal]="envModal"
+  ></app-modal-list-propiedades>
+</div>

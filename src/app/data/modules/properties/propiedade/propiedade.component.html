@@ -1,5 +1,5 @@
 
-<div class="searchInpt">
+<!-- <div class="searchInpt">
 
     <div class="col-3 input-effect">
         <input class="effect-21" type="text" placeholder="">
@@ -8,15 +8,16 @@
             <i></i>
           </span>
       </div>
-   
+      <div class="btnAdd">
+        <input type="button" value="Agregar" class="boton-agregar" />
+      </div>
+    
+</div> -->
+    
     <!-- <div class="form__group field">
         <input type="input" class="form__field" placeholder="busqueda" name="name" id='name' required />
         <label for="name" class="form__label">Search</label>
       </div> -->
- 
-   
-</div>
-
 <div class="div-tabla">
-<app-list-propiedades></app-list-propiedades>
+<app-list-propiedades [propiedadesData]="propiedadesData" ></app-list-propiedades>
 </div>

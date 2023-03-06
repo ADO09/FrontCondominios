@@ -10,12 +10,14 @@ export class PropiedadeComponent implements OnInit {
 
   constructor(private propiedadesService:PropiedadesServiceService) { }
 
-  public propiedades!:any[];
+  public propiedadesData!:any[];
   ngOnInit(): void {
 
-    this.propiedadesService.propiedadesGetAll().subscribe( r => {
+    this.propiedadesService.propiedadesGetAll().subscribe( (r) => {
 
+      this.propiedadesData = r.body;
       console.log(r);
+      console.log(this.propiedadesData);
       
     });
   }

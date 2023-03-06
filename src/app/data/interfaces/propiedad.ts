@@ -1,12 +1,14 @@
 export interface propiedad {
-    tipoPropiedadId: number,
+    id:number,
+    tipoPropiedad: any,
     claveCatastral: string,
     descripcion: string,
     superficie: string,
     balance: number,
-    estatusId: number,
-    razonDeRechazo: string,
-    propietarioId: number,
-    inquilinoId: number, 
-    fraccionamientoId: number
+    estatus: any,
+    // razonDeRechazo: string,
+    propietario: any,
+    inquilino: number, 
+    fraccionamientoId: number,
+    predialUrl:string
 }

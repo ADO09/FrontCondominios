@@ -1,99 +1,67 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { propiedad } from 'src/app/data/interfaces/propiedad';
 
 @Component({
   selector: 'app-list-propiedades',
   templateUrl: './list-propiedades.component.html',
-  styleUrls: ['./list-propiedades.component.css']
+  styleUrls: ['./list-propiedades.component.css'],
 })
 export class ListPropiedadesComponent implements OnInit {
- 
-//   usuarios = [
-//     {
-//       id: 1,
-//       nombre: 'Sebastian',
-//       contacto: '6871203122',
-//       propiedad: 'Casa N°6'
-//     },
-//     {
-//       id: 2,
-//       nombre: 'Roberto',
-//       contacto: '668956325',
-//       propiedad: 'Casa N°7'
-//     }
-// ];
-  
-  // showModal:boolean = false;
-
-  // usuarioModal = {
-  //   id: '',
-  //   nombre: '',
-  //   contacto: '',
-  //   propiedad: ''
-  // }
-
-
-  @Input()propiedades:any;
+  @Input() propiedadesData!: propiedad[];
   form: any;
-  constructor(   private formBuilder: FormBuilder) { }
+  currentPropiedad!: any;
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-  
-    // this.form = this.formBuilder.group({
-    //   id: '',
-    //   nombre: '',
-    //   contacto: '',
-    //   propiedad: ''
-    // });
-  }
+  ngOnInit(): void {}
 
-   abrirModal(datos: any): any {
-    const objeto = {
-      tipoPropiedadId: datos.tipoPropiedadId,
+  abrirModal(datos: any): any {
+    console.log('antes de');
+    console.log(datos);
+
+    this.currentPropiedad = {
+      id: datos.id,
+      tipoPropiedad: datos.tipoPropiedad,
       claveCatastral: datos.claveCatastral,
       descripcion: datos.descripcion,
       superficie: datos.superficie,
       balance: datos.balance,
-      estatusId: datos.estatusId,
-      razonDeRechazo: datos.razonDeRechazo,
-      propietarioId: datos.propietarioId,
-      inquilinoId: datos.inquilinoId, 
-      fraccionamientoId: datos.fraccionamientoId
+      predialUrl: datos.predialUrl,
+      estatus: datos.estatus,
+      propietario: datos.propietario,
+      inquilino: datos.inquilino,
+      fraccionamientoId: datos.fraccionamientoId,
     };
-  
-    console.log(objeto);
-    
-    var divModl =  document.getElementById('id01') as HTMLDivElement;
-    divModl.style.display = 'block';
+
+    // console.log(this.currentPropiedad.inquilino );
+    setTimeout(() => {
+      var divModl = document.getElementById('id01') as HTMLDivElement;
+      divModl.style.display = 'block';
+    }, 100);
   }
-
-  // abrirModal(id?: any, nombre?: any, contacto?: any, propiedad?: any): void{
-  //   // this.form = this.formBuilder.group({
-  //   //   id: id,
-  //   //   nombre: nombre,
-  //   //   contacto: contacto,
-  //   //   propiedad: propiedad
-  //   // });
-   
-
-  // }
- 
 
   closeModal() {
     const modal = document.getElementById('id01');
-  if (modal) {
-    modal.style.display = 'none';
-  }
-  }
-  enviarModal(){
-
+    if (modal) {
+      modal.style.display = 'none';
+    }
+    this.currentPropiedad = null;
   }
 
-  envModal(){
-    
-   var divModl =  document.getElementById('id01') as HTMLDivElement;
-   divModl.style.display = 'none';
-
+  addPropiedadModal(){
+    setTimeout(() => {
+      var divModl2 = document.getElementById('id02') as HTMLDivElement;
+      divModl2.style.display = 'block';
+    }, 100);
   }
 
+  envModal2() {
+    var divModl2 = document.getElementById('id02') as HTMLDivElement;
+    divModl2.style.display = 'none';
+  }
+
+  envModal() {
+    var divModl = document.getElementById('id01') as HTMLDivElement;
+    divModl.style.display = 'none';
+  }
 }
