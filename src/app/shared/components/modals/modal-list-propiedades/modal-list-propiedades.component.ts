@@ -103,8 +103,13 @@ export class ModalListPropiedadesComponent implements OnInit {
     formData.append('estatusId',  this.propiedadDatos.estatus.id);
     formData.append('fraccionamientoId', this.propiedadDatos.fraccionamientoId);
 
-    
-    formData.append('inquilinoId',  this.propiedadDatos.inquilino.id);
+    var inquilino:any;
+    if (!this.propiedadDatos.inquilino) {
+      inquilino =this.propiedadDatos.inquilino;
+    } else {
+      inquilino = this.propiedadDatos.inquilino.nombre;
+    }
+    formData.append('inquilinoId',  inquilino);
     formData.append('propietarioId',  this.propiedadDatos.propietario.id);
     formData.append('superficie',  this.propiedadDatos.superficie);
     formData.append('tipoPropiedadId',  this.propiedadDatos.tipoPropiedad.id);
