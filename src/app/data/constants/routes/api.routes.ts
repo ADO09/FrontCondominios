@@ -22,5 +22,9 @@ export const API_ROUTES = {
         // ONECLIENT:`${ENV.urlAPI}clientesP/`,
         // PUNTUACIONFISIO:`${ENV.urlAPI}clientesF/puntuacion/`
     },
+    PROPIETARIOS:{
+        GETALLPROPIETARIOS:`${ENV.urlAPI}propietarios`,
+
+    }
 
 }

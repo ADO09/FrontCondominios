@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, delay, map, Observable, of } from 'rxjs';
+import { API_ROUTES } from 'src/app/data/constants/routes/api.routes';
 import { Mensaje } from 'src/app/data/interfaces/Mensaje';
 import { environment } from 'src/environments/environment';
 
@@ -42,5 +43,10 @@ export class UsuariosService {
   inicioSesion(data:{password:string,correo:string}): Observable<Mensaje>{
     return this.http.post<Mensaje>(this.baseUrl + 'usuario/iniciar-sesion',data);
   }
+
+
+
+ 
+
 
 }

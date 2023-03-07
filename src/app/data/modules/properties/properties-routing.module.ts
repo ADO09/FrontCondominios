@@ -5,6 +5,7 @@ import { INTERNAL_PATHS } from 'src/app/data/constants/routes/internal.routes';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { LoginComponent } from '../auth/login/login.component';
 import { PropiedadeComponent } from './propiedade/propiedade.component';
+import { RegPropiedadComponent } from './reg-propiedad/reg-propiedad.component';
 
 
 const routes:Routes = [
@@ -13,11 +14,11 @@ const routes:Routes = [
         component:PropiedadeComponent,
       //  canActivate: [NoAuthGuard]
     },
-    // {
-    //     path:INTERNAL_ROUTES.MODULO_ACPTCONTRSREGADMINFRACC,
-    //     component:AcptContrRegUsrAdmnFraccComponent,
-    //   //  canActivate: [NoAuthGuard]
-    // }
+    {
+        path:INTERNAL_ROUTES.MODULO_REGPROPIEDAD,
+        component:RegPropiedadComponent,
+      //  canActivate: [NoAuthGuard]
+    }
 ]
 
 

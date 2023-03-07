@@ -1,0 +1,195 @@
+/* #principal {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+ 
+}
+
+#principal td, #principal th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#principal tr:nth-child(even){background-color: #f2f2f2;}
+
+#principal tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+#principal th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:  rgb(8, 67, 134);
+  color: white;
+} */
+
+.searchInpt{
+    margin-left: 70px;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    padding: 15px;
+   
+  }
+  
+  .searchInpt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+  }
+  
+  .col-3 {
+    margin-top: 20px;
+    width: 40%;
+  }
+  
+  
+  .btnAdd {
+   width: 10%;
+   margin-right: 50px;
+  }
+  
+  .btnAdd input {
+    width: 100%;
+  
+   }
+  
+  
+  .div-tabla {
+    margin-left: 70px;
+   
+    padding: 10px;
+  }
+  
+  .boton-agregar {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .boton-agregar:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  .boton-agregar:active {
+    background-color: #4CAF50;
+    box-shadow: none;
+    transform: translateY(0);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  
+  
+  
+  @import url('https://fonts.googleapis.com/css?family=Damion|Muli:400,600');
+  body{
+  font-family: 'Muli', sans-serif;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/geometry2.png");
+  }
+  h2 {
+    font-family: 'Damion', cursive;
+    font-weight: 400;
+    color: #4caf50;
+    font-size: 35px;
+    text-align: center;
+    position: relative;
+  }
+  h2:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 22px;
+    background: #4caf50;
+    height: 1px;
+  }
+  h2 i {
+    font-style: normal;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+  }
+  :focus{outline: none;}
+  
+  /* necessary to give position: relative to parent. */
+  input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+  
+  :focus{outline: none;}
+  
+  .col-3{float: left; width: 27.33%;  position: relative;} /* necessary to give position: relative to parent. */
+  input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+  
+  
+  
+  
+  
+  .effect-21{border: 1px solid #ccc; padding: 7px 14px; transition: 0.4s; background: transparent;}
+  
+  
+  .effect-21 ~ .focus-border:before,
+  .effect-21 ~ .focus-border:after{content: ""; position: absolute; top: 0; right: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.2s; transition-delay: 0.2s;}
+  .effect-21 ~ .focus-border:after{top: auto; bottom: 0; right: auto; left: 0; transition-delay: 0.6s;}
+  .effect-21 ~ .focus-border i:before,
+  .effect-21 ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #4caf50; transition: 0.2s;}
+  .effect-21 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0; transition-delay: 0.4s;}
+  .effect-21:focus ~ .focus-border:before,
+  .effect-21:focus ~ .focus-border:after,
+  .has-content.effect-21 ~ .focus-border:before,
+  .has-content.effect-21 ~ .focus-border:after{width: 100%; transition: 0.2s; transition-delay: 0.6s;}
+  .effect-21:focus ~ .focus-border:after,
+  .has-content.effect-21 ~ .focus-border:after{transition-delay: 0.2s;}
+  .effect-21:focus ~ .focus-border i:before,
+  .effect-21:focus ~ .focus-border i:after,
+  .has-content.effect-21 ~ .focus-border i:before,
+  .has-content.effect-21 ~ .focus-border i:after{height: 100%; transition: 0.2s;}
+  .effect-21:focus ~ .focus-border i:after,
+  .has-conten.effect-21 ~ .focus-border i:after{transition-delay: 0.4s;}
+  .effect-21 ~ label{position: absolute; left: 14px; width: 100%; top: 10px; color: #aaa; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;}
+  .effect-21:focus ~ label, .has-content.effect-21 ~ label{top: -18px; left: 0; font-size: 12px; color: #4caf50; transition: 0.3s;}
+  
+  
+  
+  
+  
+  .contenedor-componente 
+  .cardview {
+      max-width: none;
+  }
+  
+  .body-table .contenedor-element-table {
+    width: 100%;
+    
+  }
+  
+  /* .header-table div{
+    align-items: center;
+    justify-content: center;
+  } */
+  .header-table {
+      grid-template-columns:  .4fr 1fr  1.5fr 1fr 1fr ;
+  }
+  
+  .body-table .contenedor-element-table {
+      grid-template-columns:  .4fr 1fr  1.5fr 1fr 1fr ; 
+      gap: 0;
+      height: 0%;
+  }
+  .body-table .contenedor-element-table div {
+    max-width: none;
+    padding: 7px;
+  }
+  

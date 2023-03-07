@@ -31,6 +31,7 @@ export const ROUTES_PATHS = {
 
         PROPDEFAULT:'propiedades',
         PROPPRINCP:'propPrincl',
+        REGPROPIEDAD:'regPropiedad',
 
         //----------------------------------------------
 
@@ -97,6 +98,7 @@ export const INTERNAL_PATHS = {
      //PROPIEDADES-----------------------------------------
      PANELPROPDEFAULT: `${ROUTES_PATHS.PANEL.PROPDEFAULT}`,
      PANLEPROPPRINCL: `${ROUTES_PATHS.PANEL.PROPPRINCP}`,
+     PANLEREGPROPIEDAD: `${ROUTES_PATHS.PANEL.REGPROPIEDAD}`,
  
      //-------------------------------------------------
 
@@ -186,6 +188,7 @@ export const INTERNAL_ROUTES = {
 
     //PROPIEDADES------------------------------------
     MODULO_PROPPRINC: `${INTERNAL_PATHS.PANELPROPDEFAULT}/${INTERNAL_PATHS.PANLEPROPPRINCL}`,
+    MODULO_REGPROPIEDAD: `${INTERNAL_PATHS.PANELPROPDEFAULT}/${INTERNAL_PATHS.PANLEREGPROPIEDAD}`,
 
 
 

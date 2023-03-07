@@ -1,4 +1,4 @@
-<div class="searchInpt">
+<!-- <div class="searchInpt">
 
   <div class="col-3 input-effect">
       <input class="effect-21" type="text" placeholder="">
@@ -22,7 +22,7 @@
     <th>Superficie</th>
     <th>Balance</th>
     <th>Estatus</th>
-    <!-- <th>Razón de rechazo</th> -->
+    
     <th>Propietario</th>
     <th>Archivo Prdl.</th>
     <th>Fraccionamiento</th>
@@ -48,27 +48,70 @@
     </tr>
   </tbody>
 </table>
+ -->
 
-<div *ngIf="this.currentPropiedad" >
-  <app-modal-list-propiedades
-    id="id01"
-    class="w3-modal"
-    [cerrarModal]="envModal"
-    [propiedadDatos]="this.currentPropiedad"
-  ></app-modal-list-propiedades>
+
+<section class="contenedor-componente">
+  <div class="cardview">
+
+
+    <div class="searchInpt">
+      <div class="cardview-header">
+        <button class="l-btn-d" routerLink="/dashboard/vehiculos/registro">+ REGISTRAR PROPIEDAD</button>
+      </div>
+
+      <div class="col-3 input-effect">
+        <input class="effect-21" type="text" placeholder="">
+        <label>Search</label>
+        <span class="focus-border">
+          <i></i>
+        </span>
+      </div>
+    </div>
+    <div class="cardview-body">
+      <div class="header-table">
+        <div>#</div>
+        <div>Tipo de propiedad</div>
+        <div>Clave catastral</div>
+        <div id="descrpIdn">Descripción</div>
+        <!-- <div>Superficie</div> -->
+        <!-- <div>Balance</div> -->
+        <div>Estatus</div>
+
+        <div>Propietario</div>
+        <!-- <div>Archivo Prdl.</div> -->
+        <div>Frcc.</div>
+        <div>Opcion</div>
+      </div>
+      <div class="body-table">
+        <div class="contenedor-element-table" *ngFor="let propiedad of propiedadesData" (click)="abrirModal(propiedad)">
+          <div>{{ propiedad.id }}</div>
+          <div>{{ propiedad.tipoPropiedad.descripcion }}</div>
+          <div >{{ propiedad.claveCatastral }}</div>
+          <div id="descrpIdn" > {{ propiedad.descripcion }}</div>
+          <!-- <div>{{ propiedad.superficie }}</div> -->
+          <!-- <div>{{ propiedad.balance }}</div> -->
+          <div id="descrpIdn2"  >{{ propiedad.estatus.descripcion }}</div>
+
+          <div>{{ propiedad.propietario.nombre }}</div>
+          <!-- <div>{{ propiedad.predialUrl }}</div> -->
+          <div>{{ propiedad.fraccionamientoId }}</div>
+          <div>delete</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div *ngIf="this.currentPropiedad">
+  <app-modal-list-propiedades id="id01" class="w3-modal" [cerrarModal]="envModal"
+    [propiedadDatos]="this.currentPropiedad"></app-modal-list-propiedades>
 </div>
 
 
-<app-modal-registro-propiedad
-id="id02"
-class="w3-modal"
-[cerrarModal]="envModal2"
-></app-modal-registro-propiedad>
+<app-modal-registro-propiedad id="id02" class="w3-modal" [cerrarModal]="envModal2"></app-modal-registro-propiedad>
 
 <div *ngIf="!this.currentPropiedad">
-  <app-modal-list-propiedades
-    id="id01"
-    class="w3-modal"
-    [cerrarModal]="envModal"
-  ></app-modal-list-propiedades>
+  <app-modal-list-propiedades id="id01" class="w3-modal" [cerrarModal]="envModal"></app-modal-list-propiedades>
 </div>

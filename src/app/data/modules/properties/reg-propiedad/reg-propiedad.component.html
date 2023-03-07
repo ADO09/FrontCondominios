@@ -1,0 +1,190 @@
+<section class="contenedor-componente">
+    <div class="cardview">
+        
+            <form  class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="formPropiedades" (ngSubmit)="addPropiedad()">
+
+                <!-- <label for="">Propiedad</label>
+                <div class="contenedor-input" style="margin-bottom: 0;">
+                    <input type="text" placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(claveCatastral.value)">
+                    <label for="">por clave catastral</label>
+                    <label for="">Buscar </label>      
+                </div>
+                <span *ngIf="idPropietario" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span> -->
+
+
+
+                <div class="contenedor-grid-2">
+                    <div class="contenedor-input">
+                        <select formControlName="tipoPropiedadId">
+                            <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+                            <option value="0">Casa</option>
+                            <option value="1">Departamento</option>
+                            <option value="2">Lote</option>
+                            <option value="3">Otro</option>
+                         </select>
+                        <label for="">Tipo</label>
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('tipoPropiedadId')?.touched && formPropiedades.get('tipoPropiedadId')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+
+                    <!-- <div class="contenedor-input">
+                        <input type="button" placeholder=" " formControlName="claveCatastral">
+                        <label for="">Tarjeta de circulación</label>
+                        <label for="">Ingrese</label>
+                    </div> -->
+
+                    
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="claveCatastral">
+                        <label for="">Clave Catastral</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('claveCatastral')?.touched && formPropiedades.get('claveCatastral')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                      
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="descripcion">
+                        <label for="">Descripcion</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('descripcion')?.touched && formPropiedades.get('descripcion')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="superficie">
+                        <label for="">Superficie</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('superficie')?.touched && formPropiedades.get('superficie')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="balance">
+                        <label for="">Balance</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('balance')?.touched && formPropiedades.get('balance')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                    <div class="contenedor-input">
+                        <select formControlName="estatusId">
+                            <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+                            <option value="0">Nueva</option>
+                            <option value="1">Balance Pendiente</option>
+                            <option value="2">Incompleta</option>
+                            <option value="3">Activa</option>
+                         </select>
+                        <label for="">Tipo</label>
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('estatusId')?.touched && formPropiedades.get('estatusId')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="propietarioId">
+                        <label for="">Propietario</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('propietarioId')?.touched && formPropiedades.get('propietarioId')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                    
+                    <div class="contenedor-input">
+                        <!-- <input type="text" placeholder=" " formControlName="inquilinoId">
+                        <label for="">Inquilino</label>
+                        <label for="">Ingrese</label> -->
+                        <button type="button" (click)="abrModalinquilinos()">AGREGAR INQUILINO</button>
+                    </div>
+
+                    <div class="contenedor-input" *ngIf="inquilinoSelect">
+                         <input  type="text" placeholder=" " [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId" readonly>
+                        <label for="">Inquilino</label>
+                        <label for="">Inquilino</label>
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="fraccionamientoId">
+                        <label for="">Fraccionamiento</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('fraccionamientoId')?.touched && formPropiedades.get('fraccionamientoId')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+
+                    <!-- <div class="contenedor-input">
+                        <select formControlName="id_estado">
+                            <option value="{{estado.id}}" *ngFor="let estado of estados">{{estado.nombre}}</option>
+                                             </select>
+                        <label for="">Estado</label>
+                        <p style="color: gray; font-size: 11px; margin-top: 10px;" for="">Selecciona el estado al que pertenecen las placas</p>
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('id_estado')?.touched && formPropiedades.get('id_estado')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div> -->
+
+
+                   
+
+
+                    <!-- <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="marca">
+                        <label for="">marca</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('marca')?.touched && formPropiedades.get('marca')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="placas">
+                        <label for="">placas</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('placas')?.touched && formPropiedades.get('placas')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div> -->
+
+                    
+                </div>
+
+
+
+                <div class="contenedor-botones">
+                    <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
+                    <button type="submit" [disabled]="formPropiedades.invalid">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+  
+</section>
+
+
+
+
+    <app-modal-list-inquilinos id="id01" class="w3-modal" (inquilinoSeleccionado)="manejarDato($event)" [propietariosData]="propietariosData" [cerrarModal]="envModal"></app-modal-list-inquilinos>
+  

@@ -70,9 +70,9 @@ export class PropiedadesServiceService {
 
   propiedadesUpdate( id:any, data:any): Observable<Mensaje> {
 
-    console.log('ID_____:' + id);
-    console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id +queryparams.QUERY.QUERYPUT,data);
-    console.log(data);
+    // console.log('ID_____:' + id);
+    // console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id +queryparams.QUERY.QUERYPUT,data);
+    // console.log(data);
     
     const response = { icon: '', title: '' };
     return this.http.post<Mensaje>

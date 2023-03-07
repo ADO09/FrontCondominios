@@ -1,4 +1,4 @@
-#principal {
+/* #principal {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -23,7 +23,7 @@
   text-align: left;
   background-color:  rgb(8, 67, 134);
   color: white;
-}
+} */
 
 .searchInpt{
   margin-left: 70px;
@@ -41,8 +41,10 @@
 }
 
 .col-3 {
+  margin-top: 20px;
   width: 40%;
 }
+
 
 .btnAdd {
  width: 10%;
@@ -53,6 +55,8 @@
   width: 100%;
 
  }
+
+
 .div-tabla {
   margin-left: 70px;
  
@@ -156,3 +160,37 @@ input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width
 .has-conten.effect-21 ~ .focus-border i:after{transition-delay: 0.4s;}
 .effect-21 ~ label{position: absolute; left: 14px; width: 100%; top: 10px; color: #aaa; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;}
 .effect-21:focus ~ label, .has-content.effect-21 ~ label{top: -18px; left: 0; font-size: 12px; color: #4caf50; transition: 0.3s;}
+
+
+
+
+
+.contenedor-componente 
+.cardview {
+    max-width: none;
+}
+
+.body-table .contenedor-element-table {
+  width: 100%;
+  
+}
+
+/* .header-table div{
+  align-items: center;
+  justify-content: center;
+} */
+.header-table {
+    grid-template-columns: .5fr 1fr 1fr 2.6fr 1fr 1fr 1fr 1fr;
+}
+
+.body-table .contenedor-element-table {
+    grid-template-columns: .5fr 1fr 1fr 2.6fr 1fr 1fr 1fr 1fr; 
+    gap: 0;
+    height: 0%;
+}
+.body-table .contenedor-element-table div {
+  max-width: none;
+  padding: 7px;
+}
+
+
