@@ -18,5 +18,6 @@ export class ModalListInquilinosComponent {
    // console.log(data);
     // const datoString = JSON.stringify(data);
  this.inquilinoSeleccionado.emit(data);
+    this.cerrarModal();
   }
 }

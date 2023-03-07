@@ -180,11 +180,11 @@
     justify-content: center;
   } */
   .header-table {
-      grid-template-columns:  .4fr 1fr  1.5fr 1fr 1fr ;
+      grid-template-columns:  .4fr .6fr  1.3fr .5fr  ;
   }
   
   .body-table .contenedor-element-table {
-      grid-template-columns:  .4fr 1fr  1.5fr 1fr 1fr ; 
+      grid-template-columns:  .4fr .6fr  1.3fr .5fr  ; 
       gap: 0;
       height: 0%;
   }

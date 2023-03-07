@@ -1,6 +1,7 @@
 <div
   class="w3-modal-content w3-card-4 w3-animate-zoom"
-  style="  max-width: 600px " 
+  style="  max-width: 800px; padding-left: 15px; " 
+  
 >
 <div class="w3-center">
     <br />
@@ -9,6 +10,7 @@
     (click)="cerrarModal()"
       class="w3-button w3-xlarge w3-hover-red w3-display-topright"
       title="Close Modal"
+      style="position: absolute;"
       >&times;</span
     >
     <!-- <img
@@ -21,7 +23,7 @@
 
 
   <section class="contenedor-componente " style="padding-left: 10px;" >
-    <div class="cardview">
+    <div class="cardview"  >
   
   
       <div class="searchInpt">
@@ -51,7 +53,7 @@
           <div>Opcion</div> -->
         </div>
         <div class="body-table">
-          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData" (click)="selectInquilino(propietarios)">
+          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData"  (click)="selectInquilino(propietarios)"  >
             <!-- <div>{{ propiedad.id }}</div> -->
             <div>{{ propietarios.id}}</div>
             <div >{{ propietarios.nombre }}</div>
@@ -60,7 +62,7 @@
             <!-- <div>{{ propiedad.balance }}</div> -->
             <!-- <div >{{ propietarios.fraccionamientoId }}</div> -->
   
-            <div>{{ propietarios.celular }}</div>
+            <div >{{ propietarios.celular }}</div>
             <!-- <div>{{ propiedad.predialUrl }}</div> -->
             <!-- <div>{{ propiedad.fraccionamientoId }}</div>
             <div>delete</div> -->

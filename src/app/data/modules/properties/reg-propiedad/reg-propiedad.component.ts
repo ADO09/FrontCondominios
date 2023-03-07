@@ -40,12 +40,7 @@ export class RegPropiedadComponent {
       //   // console.log(this.propiedadesData);
         
       // });
-      var inquilino:any;
-      if (!this.inquilinoSelect) {
-        inquilino = '';
-      } else {
-        inquilino = this.inquilinoSelect.nombre + this.inquilinoSelect.apellidos;
-      }
+ 
 
       this.formPropiedades = this.fb.group({
         tipoPropiedadId: ['', Validators.required],
@@ -55,17 +50,17 @@ export class RegPropiedadComponent {
         balance: ['', Validators.required],
         estatusId: ['', Validators.required],
         propietarioId: ['', Validators.required],
-        inquilinoId: [inquilino],
+        inquilinoId: [''],
         fraccionamientoId: ['', Validators.required],
        // archivoPredial: ['', Validators.required],
       });
     }
 
-    ngOnChanges(){
-      this.formPropiedades.setValue({
-        inquilinoId:[this.inquilinoSelect.nombre]
-      })
-    }
+    // ngOnChanges(){
+    //   this.formPropiedades.setValue({
+    //     inquilinoId:[this.inquilinoSelect.nombre]
+    //   })
+    // }
 
     addPropiedad(){
       
@@ -81,6 +76,9 @@ export class RegPropiedadComponent {
       
       this.inquilinoSelect = dato;
       console.log(this.inquilinoSelect.nombre);
+      this.formPropiedades.patchValue({
+        inquilinoId:[this.inquilinoSelect.nombre +' ' + this.inquilinoSelect.apellidos]
+      })
       this.cd.detectChanges();
       
     }
