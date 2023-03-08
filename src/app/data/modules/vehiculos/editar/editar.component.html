@@ -1,15 +1,7 @@
 <section class="contenedor-componente">
     <div class="cardview">
         
-            <form  class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="vehiculoFormRegistro" (ngSubmit)="addVehiculo()">
-
-                <label for="">Propiedad</label>
-                <div class="contenedor-input" style="margin-bottom: 0;">
-                    <input type="text" placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(claveCatastral.value)">
-                    <label for="">por clave catastral</label>
-                    <label for="">Buscar </label>      
-                </div>
-                <span *ngIf="idPropietario" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span>
+            <form  class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="vehiculoFormRegistro" (ngSubmit)="updateVehiculo()">
 
                 <div class="contenedor-grid-2">
                     <div class="contenedor-input">
@@ -41,11 +33,18 @@
                         *ngIf="vehiculoFormRegistro.get('id_estado')?.touched && vehiculoFormRegistro.get('id_estado')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
                     </div>
+                    
                     <div class="contenedor-input">
-                        <button type="button" (click)="clickInputFile()"  placeholder=" ">Tarjeta de circulación</button>
-                        <input id="inputFile" type="file" accept="application/pdf" (change)="onFileSelected($event)" style="display: none;">
-                        <a *ngIf="selectedFile" style="color: var(--ColorWa); font-size: 11px; margin-top: 10px; text-decoration: underline; cursor: pointer;" (click)="previewFile()">Tarjeta de circulacion seleccionada</a>
-                    </div>
+                        <button type="button" class="btn-tarjeta-circulacion" (click)="selectFileTarjetaCirculacion()">Tarjeta de circulación</button>
+                        <input id="inputFile" type="file" accept="application/pdf" (change)="onFileSelected($event)"  style="display: none;">
+                        <!--
+                        <label for="">Tarjeta de circulación</label>
+                        <label for="">Ingrese</label> -->
+                        <a *ngIf="tarjetaCirculacion" style="color: var(--ColorSuccess); font-size: 11px; margin-top: 10px; text-decoration: underline; cursor: pointer;" (click)="downloadTarjetaCirculacion()">Tarjeta de circulacion almacenada</a>
+                        <a *ngIf="selectedFile" style="color: var(--ColorWarning); font-size: 11px; text-decoration: underline;margin-top: 10px; cursor: pointer;" (click)="previewFile()">Tarjeta de circulacion seleccionada</a>    
+                        
+                       
+                    </div> 
                     <div class="contenedor-input">
                         <input type="text" placeholder=" " formControlName="marca">
                         <label for="">marca</label>
@@ -73,8 +72,10 @@
                 <div class="contenedor-botones">
                     <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
                     <button type="submit" [disabled]="vehiculoFormRegistro.invalid">GUARDAR</button>
+                    <button type="button" (click)="eliminarVehiculo()">ELIMINAR</button>
                 </div>
             </form>
         </div>
   
 </section>
+

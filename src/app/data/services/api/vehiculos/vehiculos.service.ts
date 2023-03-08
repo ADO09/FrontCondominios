@@ -47,13 +47,43 @@ export class VehiculosService {
   }
 
   /**
-   * ! BUS
+   * ! REGISTRAR NUEVO VEHICULO
    */
 
   addVehiculo(data:any): Observable<any>{
     return this.http.post<any>(this.baseUrl + 'vehiculos' ,data);
   }
 
+  /**
+   * ! OBTENER DATA VEHICULO POR SU ID
+   */
 
+  getVehiculo(id:string):Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}vehiculos/${id}`)
+  }
+
+  /**
+   * ! EDITAR VEHICULO POR ID
+   */
+
+  updateVehiculo(id:string ,data:any): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}vehiculos/${id}?_method=PUT` ,data)    
+  }
+
+  /**
+   * ! OBTENER ARCHIVOS PRIVADOS DE LARAVEL
+   */
+  getFilePrivate(path:string):Observable<any>{
+    return this.http.get(`${this.baseUrl}private-files/${path}`,{ responseType: 'blob' })
+  }
+
+  /**
+   * ! DAR DE BAJA VEHICULO
+   */
+
+  bajaVehiculo(id:string):Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}vehiculos/${id}`)
+
+  }
 
 }

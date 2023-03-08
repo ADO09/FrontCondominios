@@ -15,7 +15,7 @@
             </div>
             <div class="body-table">
              
-                <div class="contenedor-element-table" *ngFor="let vehiculo of vehiculos">
+                <div class="contenedor-element-table" *ngFor="let vehiculo of vehiculos" routerLink='/dashboard/vehiculos/editar/{{vehiculo.id}}'>
                     <div>{{vehiculo.marca}}</div>
                     <div>{{vehiculo.placas}}</div>
                     <div>{{vehiculo.color}}</div>
