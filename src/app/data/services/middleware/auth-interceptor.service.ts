@@ -54,9 +54,10 @@ export class AuthInterceptorService implements HttpInterceptor {
            */
 
           if (event.status == 201 || event.status == 200) {
-            //VERIFICAR SI ATRIBUTO TITLE VIENE VACIO NO MUESTRO LA ALERT
-            //PARA AVISAR AL USAURIO DE LO QUE PASO
-            if (event.body.title != '') {
+            //VERIFICAR SI ATRIBUTO TITLE VIENE VACIO
+            //O SI EL BODY ES DE TIPO BLOB(CONTIENE ARCHIVOS QUE ENVIO EL SERVIDOR) ,
+            //NO MUESTRO LA ALERT AL USUARIO
+            if (event.body.title != '' && !(event.body instanceof Blob)) {
               Swal.fire({
                 title: event.body.icon,
                 icon: event.body.icon,
