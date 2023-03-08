@@ -1,0 +1,21 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { propietarios } from 'src/app/data/interfaces/propietariosI';
+
+@Component({
+  selector: 'app-modal-list-propietarios',
+  templateUrl: './modal-list-propietarios.component.html',
+  styleUrls: ['./modal-list-propietarios.component.css']
+})
+export class ModalListPropietariosComponent {
+  @Input() propietariosData!: propietarios[];
+  @Input() cerrarModal: any;
+  @Output() inquilinoSeleccionado = new EventEmitter<any>();
+
+
+  selectInquilino(data:any){
+   // console.log(data);
+    // const datoString = JSON.stringify(data);
+ this.inquilinoSeleccionado.emit(data);
+    this.cerrarModal();
+  }
+}

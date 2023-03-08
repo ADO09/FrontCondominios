@@ -6,6 +6,7 @@ import { ListCuotasConfIngrsPagosComponent } from "./list/list-cuotas-conf-ingrs
 import { ListRecibosGeneralesComponent } from './list/list-recibos-generales/list-recibos-generales.component';
 import { ModalRegistroPropiedadComponent } from './modals/modal-registro-propiedad/modal-registro-propiedad.component';
 import { ModalListInquilinosComponent } from './modals/modal-list-inquilinos/modal-list-inquilinos.component';
+import { ModalListPropietariosComponent } from './modals/modal-list-propietarios/modal-list-propietarios.component';
 
 export const components: any[] = [
 
@@ -15,7 +16,8 @@ export const components: any[] = [
     ListCuotasConfIngrsPagosComponent,
     ListRecibosGeneralesComponent,
     ModalRegistroPropiedadComponent,
-    ModalListInquilinosComponent
+    ModalListInquilinosComponent,
+    ModalListPropietariosComponent
 ]
 
 

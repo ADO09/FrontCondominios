@@ -94,7 +94,7 @@
                         El campo no puede estar en blanco</p>
                     </div>
 
-                    <div class="contenedor-input">
+                    <!-- <div class="contenedor-input">
                         <input type="text" placeholder=" " formControlName="propietarioId">
                         <label for="">Propietario</label>
                         <label for="">Ingrese</label>
@@ -103,20 +103,42 @@
                         *ngIf="formPropiedades.get('propietarioId')?.touched && formPropiedades.get('propietarioId')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
                     
+                    </div> -->
+
+                    <div class="contenedor-input" >
+                        <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()" formControlName="propietarioId" readonly>
+                         <input  *ngIf="propietarioSelect"  type="text" placeholder=" " [value]="propietarioSelect.nombre +' ' +  propietarioSelect.apellidos" formControlName="propietarioId" (click)="abrModalPropietarios()" readonly>
+                         <label for="">Propietario</label>
+                         <label for="">Ingrese</label>
+                         <span *ngIf="propietarioSelect" class="input-group-addon" (click)="handleClearInput2()">
+                            <i class="fa fa-times"></i>
+                          </span>
+                       
+                          <p class="smsError"
+                          *ngIf="formPropiedades.get('propietarioId')?.touched && formPropiedades.get('propietarioId')?.errors?.['required']">
+                          El campo no puede estar en blanco</p>
+                      
                     </div>
 
                     
-                    <div class="contenedor-input">
-                        <!-- <input type="text" placeholder=" " formControlName="inquilinoId">
-                        <label for="">Inquilino</label>
-                        <label for="">Ingrese</label> -->
-                        <button type="button" (click)="abrModalinquilinos()">AGREGAR INQUILINO</button>
-                    </div>
+                    <!-- <div class="contenedor-input">
+                     
+                        <div class="contenedor-grid-2">
+                            <button type="button" (click)="abrModalinquilinos()">AGREGAR INQUILINO</button>
+                            <button type="button" (click)="abrModalinquilinos()">AGREGAR INQUILINO</button>
+                        </div>
+                        
+                    </div> -->
 
-                    <div class="contenedor-input" *ngIf="inquilinoSelect">
-                         <input  type="text" placeholder=" " [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId" readonly>
-                        <label for="">Inquilino</label>
-                        <label for="">Inquilino</label>
+                    <div class="contenedor-input" >
+                        <input *ngIf="!inquilinoSelect" type="text" placeholder=" " (click)="abrModalinquilinos()" formControlName="inquilinoId" readonly>
+                         <input  *ngIf="inquilinoSelect"  type="text" placeholder=" " [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId" (click)="abrModalinquilinos()" readonly>
+                         <label for="">Inquilino</label>
+                         <label for="">Ingrese</label>
+                         <span *ngIf="inquilinoSelect" class="input-group-addon" (click)="handleClearInput()">
+                            <i class="fa fa-times"></i>
+                          </span>
+                       
                     </div>
 
                     <div class="contenedor-input">
@@ -131,6 +153,16 @@
                     </div>
 
 
+                    <div class="contenedor-input">
+                        <input type="file" (change)="selectedFilePredial($event)" placeholder=" " formControlName="archivoPredial">
+                        <label for="">Predial</label>
+                        <label for="">Ingrese </label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('archivoPredial')?.touched && formPropiedades.get('archivoPredial')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
                     <!-- <div class="contenedor-input">
                         <select formControlName="id_estado">
                             <option value="{{estado.id}}" *ngFor="let estado of estados">{{estado.nombre}}</option>
@@ -186,5 +218,8 @@
 
 
 
-    <app-modal-list-inquilinos id="id01" class="w3-modal" (inquilinoSeleccionado)="manejarDato($event)" [propietariosData]="propietariosData" [cerrarModal]="envModal"></app-modal-list-inquilinos>
+    <app-modal-list-inquilinos id="id01" class="w3-modal" (inquilinoSeleccionado)="manejarDato($event)" [propietariosData]="propietariosDataI" [cerrarModal]="envModalI"></app-modal-list-inquilinos>
+  
+
+    <app-modal-list-propietarios id="id02" class="w3-modal" (inquilinoSeleccionado)="manejarDatoP($event)" [propietariosData]="propietariosDataP" [cerrarModal]="envModalP"></app-modal-list-propietarios>
   

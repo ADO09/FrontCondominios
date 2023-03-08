@@ -4,8 +4,19 @@ export const queryparams = {
     QUERY:{
         QUERYPUT:'?_method=PUT',
         QUERYPATCH:'?_method=PATCH',
+    },
+    OPERATORSMAP:{
+        EQ:'[eq]',    //=
+        LT:'[lt]',    //<
+        LTE:'[lte]',  //<=
+        GT:'[gt]',    //>   
+        GTE:'[gte]',  //>=
+        NE:'[ne]',    //!=
+        LK:'[lk]',    //like
     }
 }
+
+
 
 export const API_ROUTES = {
     AUTH: { 
@@ -24,7 +35,7 @@ export const API_ROUTES = {
     },
     PROPIETARIOS:{
         GETALLPROPIETARIOS:`${ENV.urlAPI}propietarios`,
-
+        
     }
 
 }

@@ -37,7 +37,7 @@ export class PropiedadesServiceService {
       .pipe(
         delay(100),
         map(r => {
-          //console.log(r);
+          console.log(r);
           
           response.body = r.body;
           response.title = r.title;
@@ -50,7 +50,7 @@ export class PropiedadesServiceService {
 
 
   postPropiedad(data:any): Observable<Mensaje> {
-    const response = { icon: '', title: '', body: [] as any[] | null };
+    const response = { icon: '', title: ''};
     return this.http.post<Mensaje>
       (API_ROUTES.PROPIEDADES.POSTPROPIEDADES,data)
       .pipe(
@@ -58,7 +58,7 @@ export class PropiedadesServiceService {
         map(r => {
           console.log(r);
           
-          response.body = r.body;
+          // response.body = r.body;
           response.title = r.title;
           response.icon = r.icon;
           return response;
@@ -95,7 +95,6 @@ export class PropiedadesServiceService {
    
   PATCHPropiedad(id:any,data:any): Observable<Mensaje> {
 
-    
     const response = { icon: '', title: ''};
     return this.http.post<Mensaje>
       (API_ROUTES.PROPIEDADES.PATCHPROPIEDADID+id+queryparams.QUERY.QUERYPATCH,data)

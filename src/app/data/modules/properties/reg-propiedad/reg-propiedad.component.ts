@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { propietarios } from 'src/app/data/interfaces/propietariosI';
 import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
@@ -19,9 +19,13 @@ export class RegPropiedadComponent {
 
       sharedTitleService.emitChange("Registrar Propiedad")
   }
+
+  public formData = new FormData();
   public formPropiedades!: FormGroup;
-  public propietariosData!:propietarios[];
-  public inquilinoSelect!:propietarios;
+  public propietariosDataI!:propietarios[];
+  public propietariosDataP!:propietarios[];
+  public inquilinoSelect: propietarios | null = null;
+  public propietarioSelect: propietarios | null = null;
   ngOnInit(){
    
     this.propietarios.propietariosGetInquilinos().subscribe( (r) => {
@@ -29,8 +33,17 @@ export class RegPropiedadComponent {
      // this.propiedadesData = r.body;
       console.log(r);
      // console.log(this.propiedadesData);
-     this.propietariosData = r.body;
+     this.propietariosDataI = r.body;
     });
+
+
+    this.propietarios.propietariosGetPropietarios().subscribe( (r) => {
+  
+      // this.propiedadesData = r.body;
+       console.log(r);
+      // console.log(this.propiedadesData);
+      this.propietariosDataP = r.body;
+     });
     
   
       // this.propiedadesService.propiedadesGetAll().subscribe( (r) => {
@@ -41,7 +54,7 @@ export class RegPropiedadComponent {
         
       // });
  
-
+    
       this.formPropiedades = this.fb.group({
         tipoPropiedadId: ['', Validators.required],
         claveCatastral: ['', Validators.required],
@@ -52,7 +65,7 @@ export class RegPropiedadComponent {
         propietarioId: ['', Validators.required],
         inquilinoId: [''],
         fraccionamientoId: ['', Validators.required],
-       // archivoPredial: ['', Validators.required],
+        archivoPredial: ['', Validators.required],
       });
     }
 
@@ -62,25 +75,100 @@ export class RegPropiedadComponent {
     //   })
     // }
 
+    selectedFilePredial(event:any){
+        if (event.target.files) {
+         
+
+          this.formData.set('archivoPredial',  event.target.files[0]);
+
+        }
+    }
+
     addPropiedad(){
+      console.log(  this.propietarioSelect?.id);
+      console.log(this.inquilinoSelect?.id);
+      var idPropietario:any = this.propietarioSelect?.id;
+      var idInquilino:any = this.inquilinoSelect?.id;
       
+
+
+      
+      this.formData.set('tipoPropiedadId', this.formPropiedades.get('tipoPropiedadId')?.value);
+      this.formData.set('claveCatastral', this.formPropiedades.get('claveCatastral')?.value);
+      this.formData.set('descripcion', this.formPropiedades.get('descripcion')?.value);
+      this.formData.set('superficie', this.formPropiedades.get('superficie')?.value);
+      this.formData.set('balance', this.formPropiedades.get('balance')?.value);
+      this.formData.set('estatusId', this.formPropiedades.get('estatusId')?.value);
+      this.formData.set('propietarioId', idPropietario);
+      this.formData.set('inquilinoId',idInquilino);
+      this.formData.set('fraccionamientoId', this.formPropiedades.get('fraccionamientoId')?.value);
+      
+
+console.log(this.formData.get('tipoPropiedadId'));
+console.log(this.formData.get('claveCatastral'));
+console.log(this.formData.get('descripcion'));
+console.log(this.formData.get('superficie'));
+console.log(this.formData.get('balance'));
+console.log(this.formData.get('estatusId'));
+console.log(this.formData.get('propietarioId'));
+console.log(this.formData.get('inquilinoId'));
+console.log(this.formData.get('fraccionamientoId'));
+console.log(this.formData.get('archivoPredial'));
+
+
+this.propiedadesService.postPropiedad(this.formData).subscribe((r)=>{
+  console.log(r);
+  
+})
     }
     
     manejarDato(dato: any) {
-      // const datoProp = JSON.parse(dato);
-      // console.log(dato);
-
-     
-      //   this.inquilinoSelect = dato;
-      // console.log(this.inquilinoSelect.nombre);
-      
       this.inquilinoSelect = dato;
-      console.log(this.inquilinoSelect.nombre);
+      console.log(this.inquilinoSelect?.nombre);
       this.formPropiedades.patchValue({
-        inquilinoId:[this.inquilinoSelect.nombre +' ' + this.inquilinoSelect.apellidos]
+        inquilinoId:[this.inquilinoSelect?.nombre +' ' + this.inquilinoSelect?.apellidos]
       })
+
       this.cd.detectChanges();
       
+    }
+
+    manejarDatoP(dato: any) {
+      this.propietarioSelect = dato;
+      console.log(this.propietarioSelect?.nombre);
+      this.formPropiedades.patchValue({
+        propietarioId:[this.propietarioSelect?.nombre +' ' + this.propietarioSelect?.apellidos]
+      })
+      //     this.formPropiedades.get('propietarioId')?.clearValidators(); // Eliminar validadores
+      // this.formPropiedades.get('propietarioId')?.updateValueAndValidity();
+
+      // if (this.propietarioSelect) {
+      //   this.formPropiedades.get('propietarioId')?.setValidators(Validators.required);
+      // } else {
+      //   this.formPropiedades.get('propietarioId')?.clearValidators();
+      // }
+      
+      // this.formPropiedades.get('propietarioId')?.updateValueAndValidity();
+      this.cd.detectChanges();
+      
+    }
+
+    handleClearInput() {
+      this.inquilinoSelect = null;
+      this.formPropiedades.patchValue({
+        inquilinoId:null
+      })
+      
+    }
+  
+    handleClearInput2() {
+      this.propietarioSelect = null;
+      this.formPropiedades.patchValue({
+        propietarioId:null
+      })
+      // this.formPropiedades.get('propietarioId')?.setValidators([Validators.required]);
+      // this.formPropiedades.get('propietarioId')?.updateValueAndValidity();
+      console.log(this.formPropiedades.valid);
     }
 
     abrModalinquilinos(){
@@ -90,10 +178,22 @@ export class RegPropiedadComponent {
       }, 100);
     }
 
+
+    abrModalPropietarios(){
+      setTimeout(() => {
+        var divModl2 = document.getElementById('id02') as HTMLDivElement;
+        divModl2.style.display = 'block';
+      }, 100);
+    }
     
 
-    envModal() {
+    envModalI() {
       var divModl = document.getElementById('id01') as HTMLDivElement;
       divModl.style.display = 'none';
+    }
+
+    envModalP() {
+      var divModl2 = document.getElementById('id02') as HTMLDivElement;
+      divModl2.style.display = 'none';
     }
 }
