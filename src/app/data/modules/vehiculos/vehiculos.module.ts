@@ -5,6 +5,7 @@ import { ListarVehiculosComponent } from './listado/listar-vehiculos/listar-vehi
 import { SharedModule } from 'src/app/shared/shared.module';
 import { VehiculosRoutingModule } from './vehiculos-routing.module';
 import { RegistroComponent } from './registro/registro.component';
+import { EditarComponent } from './editar/editar.component';
 
 
 
@@ -13,7 +14,8 @@ import { RegistroComponent } from './registro/registro.component';
 @NgModule({
   declarations: [  
     ListarVehiculosComponent,
-    RegistroComponent
+    RegistroComponent,
+    EditarComponent
   ],
   imports: [
     CommonModule,
