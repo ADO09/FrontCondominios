@@ -26,8 +26,14 @@ export class RegPropiedadComponent {
   public propietariosDataP!:propietarios[];
   public inquilinoSelect: propietarios | null = null;
   public propietarioSelect: propietarios | null = null;
+  public idFraccionamientoUsuer:any;
   ngOnInit(){
    
+
+    this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
+
+    console.log(this.idFraccionamientoUsuer);
+    
     this.propietarios.propietariosGetInquilinos().subscribe( (r) => {
   
      // this.propiedadesData = r.body;
@@ -64,7 +70,7 @@ export class RegPropiedadComponent {
         estatusId: ['', Validators.required],
         propietarioId: ['', Validators.required],
         inquilinoId: [''],
-        fraccionamientoId: ['', Validators.required],
+        fraccionamientoId: [this.idFraccionamientoUsuer, Validators.required],
         archivoPredial: ['', Validators.required],
       });
     }
@@ -84,10 +90,15 @@ export class RegPropiedadComponent {
         }
     }
 
+    archivo(){
+      (document.querySelector("#inputfile") as HTMLInputElement).click();
+    }
     addPropiedad(){
       console.log(  this.propietarioSelect?.id);
       console.log(this.inquilinoSelect?.id);
       var idPropietario:any = this.propietarioSelect?.id;
+
+      
       var idInquilino:any = this.inquilinoSelect?.id;
       
 
@@ -100,7 +111,9 @@ export class RegPropiedadComponent {
       this.formData.set('balance', this.formPropiedades.get('balance')?.value);
       this.formData.set('estatusId', this.formPropiedades.get('estatusId')?.value);
       this.formData.set('propietarioId', idPropietario);
-      this.formData.set('inquilinoId',idInquilino);
+      if (idInquilino) {
+        this.formData.set('inquilinoId',idInquilino);
+      }
       this.formData.set('fraccionamientoId', this.formPropiedades.get('fraccionamientoId')?.value);
       
 

@@ -142,64 +142,28 @@
                     </div>
 
                     <div class="contenedor-input">
-                        <input type="text" placeholder=" " formControlName="fraccionamientoId">
+                        <input type="text" placeholder=" " formControlName="fraccionamientoId" readonly>
                         <label for="">Fraccionamiento</label>
                         <label for="">Ingrese</label>
     
                         <p class="smsError"
-                        *ngIf="formPropiedades.get('fraccionamientoId')?.touched && formPropiedades.get('fraccionamientoId')?.errors?.['required']">
+                        *ngIf="formPropiedades.get('fraccionamientoId')?.touched && formPropiedades.get('fraccionamientoId')?.errors?.['required']" >
                         El campo no puede estar en blanco</p>
                     
                     </div>
 
 
                     <div class="contenedor-input">
-                        <input type="file" (change)="selectedFilePredial($event)" placeholder=" " formControlName="archivoPredial">
-                        <label for="">Predial</label>
-                        <label for="">Ingrese </label>
+                        <button type="button" (click)="archivo()" >Seleccionar archivo predial</button>
+                        <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)" placeholder=" " formControlName="archivoPredial">
+                     
     
                         <p class="smsError"
                         *ngIf="formPropiedades.get('archivoPredial')?.touched && formPropiedades.get('archivoPredial')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
                     
                     </div>
-                    <!-- <div class="contenedor-input">
-                        <select formControlName="id_estado">
-                            <option value="{{estado.id}}" *ngFor="let estado of estados">{{estado.nombre}}</option>
-                                             </select>
-                        <label for="">Estado</label>
-                        <p style="color: gray; font-size: 11px; margin-top: 10px;" for="">Selecciona el estado al que pertenecen las placas</p>
-                        <p class="smsError"
-                        *ngIf="formPropiedades.get('id_estado')?.touched && formPropiedades.get('id_estado')?.errors?.['required']">
-                        El campo no puede estar en blanco</p>
-                    </div> -->
-
-
-                   
-
-
-                    <!-- <div class="contenedor-input">
-                        <input type="text" placeholder=" " formControlName="marca">
-                        <label for="">marca</label>
-                        <label for="">Ingrese</label>
-    
-                        <p class="smsError"
-                        *ngIf="formPropiedades.get('marca')?.touched && formPropiedades.get('marca')?.errors?.['required']">
-                        El campo no puede estar en blanco</p>
-                    
-                    </div>
-
-
-                    <div class="contenedor-input">
-                        <input type="text" placeholder=" " formControlName="placas">
-                        <label for="">placas</label>
-                        <label for="">Ingrese</label>
-    
-                        <p class="smsError"
-                        *ngIf="formPropiedades.get('placas')?.touched && formPropiedades.get('placas')?.errors?.['required']">
-                        El campo no puede estar en blanco</p>
-                    
-                    </div> -->
+            
 
                     
                 </div>
