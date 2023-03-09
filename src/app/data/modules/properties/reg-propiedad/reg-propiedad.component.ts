@@ -29,8 +29,8 @@ export class RegPropiedadComponent {
   public idFraccionamientoUsuer:any;
   ngOnInit(){
    
-
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
+
 
     console.log(this.idFraccionamientoUsuer);
     
@@ -114,7 +114,7 @@ export class RegPropiedadComponent {
       if (idInquilino) {
         this.formData.set('inquilinoId',idInquilino);
       }
-      this.formData.set('fraccionamientoId', this.formPropiedades.get('fraccionamientoId')?.value);
+      this.formData.set('fraccionamientoId', this.idFraccionamientoUsuer);
       
 
 console.log(this.formData.get('tipoPropiedadId'));

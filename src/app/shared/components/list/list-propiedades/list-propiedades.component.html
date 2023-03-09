@@ -79,9 +79,9 @@
         <div>Estatus</div>
 
         <div>Propietario</div>
-        <!-- <div>Archivo Prdl.</div> -->
-        <div>Frcc.</div>
-        <div>Opcion</div>
+        <div>Archivo Prdl.</div>
+        <!-- <div>Frcc.</div> -->
+        <!-- <div>Opcion</div> -->
       </div>
       <div class="body-table">
         <div class="contenedor-element-table" *ngFor="let propiedad of propiedadesData" (click)="abrirModal(propiedad)">
@@ -94,9 +94,9 @@
           <div id="descrpIdn2"  >{{ propiedad.estatus.descripcion }}</div>
 
           <div>{{ propiedad.propietario.nombre }}</div>
-          <!-- <div>{{ propiedad.predialUrl }}</div> -->
-          <div>{{ propiedad.fraccionamientoId }}</div>
-          <div>delete</div>
+          <div>{{ propiedad.predialUrl }}</div>
+          <!-- <div>{{ propiedad.fraccionamientoId }}</div> -->
+          <!-- <div>delete</div> -->
         </div>
       </div>
     </div>

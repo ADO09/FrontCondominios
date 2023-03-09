@@ -48,6 +48,26 @@ export class PropiedadesServiceService {
       );
   }
 
+//?isInquilino[eq]=1
+
+  propiedadesGetFiltroFraccionamiento(id:any): Observable<Mensaje> {
+
+    const response = { icon: '', title: '', body: [] as any[] | null };
+    return this.http.get<Mensaje>
+      (API_ROUTES.PROPIEDADES.GETALLPROPIEDADES + '?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
 
   postPropiedad(data:any): Observable<Mensaje> {
     const response = { icon: '', title: ''};

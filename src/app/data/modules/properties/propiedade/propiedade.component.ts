@@ -7,13 +7,14 @@ import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades
   styleUrls: ['./propiedade.component.css']
 })
 export class PropiedadeComponent implements OnInit {
-
+  public idFraccionamientoUsuer:any;
+ 
   constructor(private propiedadesService:PropiedadesServiceService) { }
 
   public propiedadesData!:any[];
   ngOnInit(): void {
-
-    this.propiedadesService.propiedadesGetAll().subscribe( (r) => {
+    this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
+    this.propiedadesService.propiedadesGetFiltroFraccionamiento(this.idFraccionamientoUsuer).subscribe( (r) => {
 
       this.propiedadesData = r.body;
       console.log(r);
