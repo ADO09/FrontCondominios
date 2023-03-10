@@ -1,0 +1,67 @@
+
+
+    
+      <div  class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+  
+        <div class="w3-center"><br>
+          <span (click)="cerrarModal()"  class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+        </div>
+  
+        <form [formGroup]="formRecibo">
+          <div class="form-row">
+            <div class="form-group">
+              <label><b>Fraccionamiento</b></label>
+              <input class="" formControlName="Id_Fraccionamiento" type="number" placeholder="Fraccionamiento del recibo" required>
+            </div>
+            <div class="form-group">
+              <label><b>Propietario</b></label>
+              <input class="" formControlName="Id_Propietario" type="number" placeholder="Propietario de la propiedad" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label><b>Inquilino</b></label>
+              <input class="" formControlName="Id_Inquilino" type="number" placeholder="Inquilino/huesped de la propiedad" required>
+            </div>
+            <div class="form-group">
+              <label><b>Fecha de pago</b></label>
+              <input class="" formControlName="Fecha_Pago" type="date" placeholder="Fecha en que se realizo el pago" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label><b>Monto a pagar</b></label>
+              <input class="" formControlName="Monto" type="number" placeholder="Cantidad que se pago" required>
+            </div>
+            <div class="form-group">
+              <label><b>Fecha de vencimiento</b></label>
+              <input class="" formControlName="Fecha_Vencimiento" type="date" placeholder="Fecha en la que venció el recibo" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label><b>Penalización</b></label>
+              <input class="" formControlName="Monto_Penalizacion" type="number" placeholder="Cantidad a penalizar" required>
+            </div>
+            <div class="form-group">
+              <label><b>Descuento *Opcional*</b></label>
+              <input class="" formControlName="Monto_Descuento" type="text" placeholder="Cantidad a descontar del total">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label><b>Estado del recibo</b></label>
+              <input class="" formControlName="Estatus" type="text" placeholder="Estado en el que llego el recibo" required> 
+            </div>
+          </div>
+          
+          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id01').style.display='none'" (click)="enviarInfo()">Enviar</button>
+        </form>
+
+      </div>
+          

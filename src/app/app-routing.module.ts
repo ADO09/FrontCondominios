@@ -55,6 +55,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/vehiculos/vehiculos.module').then((m) =>m.VehiculosModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/inicio/inquilino/properties.module').then((m) =>m.InquilinoModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>

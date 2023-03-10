@@ -1,0 +1,17 @@
+
+<div class="div-tabla" >
+    <div class="content-select" *ngIf="this.tipoUsuario !== '1'">
+        <label for="select"><b>Seleccione un Inquilino a filtrar</b></label> 
+        <select [(ngModel)]="selectedOption" (click)="cambiarLista()"> 
+            <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+        </select>
+    </div>
+
+    <div class="btnAdd">
+        <input type="button" value="Agregar" class="boton-agregar" (click)="abrirModal()"/>
+    </div>
+    <app-list-recibos-inquilino></app-list-recibos-inquilino>
+</div>
+
+
+<app-modal-list-recibos id="id02" class="w3-modal" [cerrarModal]="envModal"></app-modal-list-recibos>

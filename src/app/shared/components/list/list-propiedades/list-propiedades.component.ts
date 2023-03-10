@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { propiedad } from 'src/app/data/interfaces/propiedad';
 
+
 @Component({
   selector: 'app-list-propiedades',
   templateUrl: './list-propiedades.component.html',
