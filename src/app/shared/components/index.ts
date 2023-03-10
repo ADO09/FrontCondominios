@@ -8,6 +8,8 @@ import { ModalRegistroPropiedadComponent } from './modals/modal-registro-propied
 import { ModalListInquilinosComponent } from './modals/modal-list-inquilinos/modal-list-inquilinos.component';
 import { ModalListPropietariosComponent } from './modals/modal-list-propietarios/modal-list-propietarios.component';
 
+import { ListRecibosInquilinoComponent } from "./list/list-recibos-inquilino/list-recibos-inquilino.component";
+import { ModalListRecibosComponent } from "./modals/modal-list-recibos/modal-list-recibos.component";
 export const components: any[] = [
 
     ListPropiedadesComponent,
@@ -16,6 +18,8 @@ export const components: any[] = [
     ListCuotasConfIngrsPagosComponent,
     ListRecibosGeneralesComponent,
     ModalRegistroPropiedadComponent,
+    ListRecibosInquilinoComponent,
+    ModalListRecibosComponent,
     ModalListInquilinosComponent,
     ModalListPropietariosComponent
 ]
@@ -27,5 +31,4 @@ export * from './list/list-cuotas-conf-ingrs-pagos/list-cuotas-conf-ingrs-pagos.
 export * from './list/list-recibos-generales/list-recibos-generales.component';
 export * from './modals/modal-list-propiedades/modal-list-propiedades.component';
 export * from './modals/modal-registro-propiedad/modal-registro-propiedad.component';
-export * from './modals/modal-list-inquilinos/modal-list-inquilinos.component';
 //export  * from '../../data/layout/dashboard/dashboard.component'; 
