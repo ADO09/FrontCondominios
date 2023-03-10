@@ -93,6 +93,7 @@ export class PropiedadesServiceService {
     // console.log('ID_____:' + id);
     // console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id +queryparams.QUERY.QUERYPUT,data);
     // console.log(data);
+    console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id + queryparams.QUERY.QUERYPUT);
     
     const response = { icon: '', title: '' };
     return this.http.post<Mensaje>

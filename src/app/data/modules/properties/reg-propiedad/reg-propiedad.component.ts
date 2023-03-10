@@ -14,7 +14,7 @@ import { SharedTitleComponentService } from 'src/app/data/services/shared-title-
 })
 export class RegPropiedadComponent {
 
-  constructor(private router:Router ,private propietarios:PropietariosService,private cd: ChangeDetectorRef,
+  constructor(private router:Router ,private propietariosService:PropietariosService,private cd: ChangeDetectorRef,
     private sharedTitleService:SharedTitleComponentService,private fb: FormBuilder,private propiedadesService:PropiedadesServiceService){
 
       sharedTitleService.emitChange("Registrar Propiedad")
@@ -34,7 +34,7 @@ export class RegPropiedadComponent {
 
     console.log(this.idFraccionamientoUsuer);
     
-    this.propietarios.propietariosGetInquilinos().subscribe( (r) => {
+    this.propietariosService.propietariosGetInquilinos().subscribe( (r) => {
   
      // this.propiedadesData = r.body;
       console.log(r);
@@ -43,7 +43,7 @@ export class RegPropiedadComponent {
     });
 
 
-    this.propietarios.propietariosGetPropietarios().subscribe( (r) => {
+    this.propietariosService.propietariosGetPropietarios().subscribe( (r) => {
   
       // this.propiedadesData = r.body;
        console.log(r);
@@ -152,16 +152,7 @@ this.propiedadesService.postPropiedad(this.formData).subscribe((r)=>{
       this.formPropiedades.patchValue({
         propietarioId:[this.propietarioSelect?.nombre +' ' + this.propietarioSelect?.apellidos]
       })
-      //     this.formPropiedades.get('propietarioId')?.clearValidators(); // Eliminar validadores
-      // this.formPropiedades.get('propietarioId')?.updateValueAndValidity();
 
-      // if (this.propietarioSelect) {
-      //   this.formPropiedades.get('propietarioId')?.setValidators(Validators.required);
-      // } else {
-      //   this.formPropiedades.get('propietarioId')?.clearValidators();
-      // }
-      
-      // this.formPropiedades.get('propietarioId')?.updateValueAndValidity();
       this.cd.detectChanges();
       
     }

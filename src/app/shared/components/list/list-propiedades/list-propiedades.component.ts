@@ -16,8 +16,8 @@ export class ListPropiedadesComponent implements OnInit {
   ngOnInit(): void {}
 
   abrirModal(datos: any): any {
-    console.log('antes de');
-    console.log(datos);
+    //console.log('antes de');
+    //console.log(datos);
 
     this.currentPropiedad = {
       id: datos.id,
@@ -33,6 +33,8 @@ export class ListPropiedadesComponent implements OnInit {
       fraccionamientoId: datos.fraccionamientoId,
     };
 
+    console.log(this.currentPropiedad);
+    
     // console.log(this.currentPropiedad.inquilino );
     setTimeout(() => {
       var divModl = document.getElementById('id01') as HTMLDivElement;
