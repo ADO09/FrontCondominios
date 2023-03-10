@@ -13,8 +13,6 @@ import { ListarVehiculosComponent } from './modules/vehiculos/listado/listar-veh
    
   
   
-  
-    //ListarVehiculosComponent
   ],
   imports: [
     CommonModule

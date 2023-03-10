@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import * as fromComponents from './components';
 import { RouterModule } from '@angular/router';
+import { ListRecibosInquilinoComponent } from './components/list/list-recibos-inquilino/list-recibos-inquilino.component';
+import { ModalListRecibosComponent } from './components/modals/modal-list-recibos/modal-list-recibos.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -12,7 +15,7 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [...fromComponents.components],
+  declarations: [...fromComponents.components, ListRecibosInquilinoComponent, ModalListRecibosComponent],
   imports: [
     FormsModule,
     CommonModule,
@@ -20,6 +23,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule,
     CommonModule,
+    NgxPaginationModule
     
   ],
   exports:[
