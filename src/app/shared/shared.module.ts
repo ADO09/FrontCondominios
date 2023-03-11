@@ -6,7 +6,7 @@ import * as fromComponents from './components';
 import { RouterModule } from '@angular/router';
 import { ListRecibosInquilinoComponent } from './components/list/list-recibos-inquilino/list-recibos-inquilino.component';
 import { ModalListRecibosComponent } from './components/modals/modal-list-recibos/modal-list-recibos.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -23,7 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     RouterModule,
     CommonModule,
-    NgxPaginationModule
+    // NgxPaginationModule
     
   ],
   exports:[
