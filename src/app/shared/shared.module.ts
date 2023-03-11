@@ -15,7 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
-  declarations: [...fromComponents.components, ListRecibosInquilinoComponent, ModalListRecibosComponent],
+  declarations: [...fromComponents.components],
   imports: [
     FormsModule,
     CommonModule,
