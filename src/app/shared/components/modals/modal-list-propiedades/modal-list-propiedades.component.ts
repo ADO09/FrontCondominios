@@ -53,17 +53,17 @@ export class ModalListPropiedadesComponent implements OnInit {
         archivoPredial: ['', Validators.required],
       });
     } else {
-      let propiedad =
-        this.propiedadDatos?.tipoPropiedad.id +
-        '.-' +
-        this.propiedadDatos?.tipoPropiedad.descripcion;
+      // let propiedad =
+      //   this.propiedadDatos?.tipoPropiedad.id +
+      //   '.-' +
+      //   this.propiedadDatos?.tipoPropiedad.descripcion;
 
-        console.log(this.propiedadDatos.estatus.id);
+      //   console.log(this.propiedadDatos.estatus.id);
         
-        let estatus =
-        this.propiedadDatos?.estatus.id +
-        '.-' +
-        this.propiedadDatos?.estatus.descripcion;
+      //   let estatus =
+      //   this.propiedadDatos?.estatus.id +
+      //   '.-' +
+      //   this.propiedadDatos?.estatus.descripcion;
 
 
       // this.formPropiedades = this.fb.group({

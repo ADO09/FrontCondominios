@@ -10,6 +10,8 @@ export class ModalListPropietariosComponent {
   @Input() propietariosData!: propietarios[];
   @Input() cerrarModal: any;
   @Output() inquilinoSeleccionado = new EventEmitter<any>();
+  p: number = 1;
+  items = Array(150).fill(0).map((x, i) => `Item ${i + 1}`);
 
 
   selectInquilino(data:any){

@@ -36,6 +36,9 @@ export const API_ROUTES = {
     PROPIETARIOS:{
         GETALLPROPIETARIOS:`${ENV.urlAPI}propietarios`,
         
+    },
+    INGRESOS:{
+        GETALLPAGOSCONF:`${ENV.urlAPI}configurar-pagos`,
     }
 
 }

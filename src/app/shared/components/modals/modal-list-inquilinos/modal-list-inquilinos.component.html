@@ -53,7 +53,7 @@
           <div>Opcion</div> -->
         </div>
         <div class="body-table">
-          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData"  (click)="selectInquilino(propietarios)"  >
+          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData | paginate: { itemsPerPage: 10, currentPage: p }"  (click)="selectInquilino(propietarios)"  >
             <!-- <div>{{ propiedad.id }}</div> -->
             <div>{{ propietarios.id}}</div>
             <div >{{ propietarios.nombre }}</div>
@@ -68,7 +68,10 @@
             <div>delete</div> -->
           </div>
         </div>
+        
       </div>
+      <div style="align-items: center; justify-content: center;" > <pagination-controls  (pageChange)="p = $event"></pagination-controls> </div>
+        
     </div>
   </section>
   

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { confPagos } from 'src/app/data/interfaces/confPagos';
+import { propiedad } from 'src/app/data/interfaces/propiedad';
 
 @Component({
   selector: 'app-list-cuotas-conf-ingrs-pagos',
@@ -7,4 +9,42 @@ import { Component } from '@angular/core';
 })
 export class ListCuotasConfIngrsPagosComponent {
 
+
+  @Input() ingresosConfPagos!: confPagos[];
+  currentConfPago!: confPagos;
+
+  abrirModal(datos: any): any {
+    //console.log('antes de');
+    //console.log(datos);
+
+    // this.currentPropiedad = {
+    //   id: datos.id,
+    //   tipoPropiedad: datos.tipoPropiedad,
+    //   claveCatastral: datos.claveCatastral,
+    //   descripcion: datos.descripcion,
+    //   superficie: datos.superficie,
+    //   balance: datos.balance,
+    //   predialUrl: datos.predialUrl,
+    //   estatus: datos.estatus,
+    //   propietario: datos.propietario,
+    //   inquilino: datos.inquilino,
+    //   fraccionamientoId: datos.fraccionamientoId,
+    // };
+this.currentConfPago = datos;
+    console.log(this.currentConfPago);
+    
+    // console.log(this.currentPropiedad.inquilino );
+    setTimeout(() => {
+      var divModl = document.getElementById('id01') as HTMLDivElement;
+      divModl.style.display = 'block';
+    }, 100);
+  }
+
+
+  envModal(){
+    
+    var divModl =  document.getElementById('id01') as HTMLDivElement;
+    divModl.style.display = 'none';
+ 
+   }
 }

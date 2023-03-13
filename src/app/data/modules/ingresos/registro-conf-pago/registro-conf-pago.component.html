@@ -1,0 +1,191 @@
+<section class="contenedor-componente">
+    <div class="cardview"  >
+  
+        <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="FormConfPagos"
+          (ngSubmit)="enviarModal()">
+    
+          <div class="contenedor-grid-2">
+  
+        
+                    
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="id_fraccionamiento">
+                      <label for="">Fraccionamiento</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('id_fraccionamiento')?.touched && FormConfPagos.get('id_fraccionamiento')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                    
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="descripcion">
+                      <label for="">Descripción</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('descripcion')?.touched && FormConfPagos.get('descripcion')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                    
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="monto">
+                      <label for="">Monto</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('monto')?.touched && FormConfPagos.get('monto')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                    
+  
+                    <div class="contenedor-input">
+                      <select formControlName="periodo">
+                        <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+                        <option value="UNICO">UNICO</option>
+                        <option value="SEMANAL">SEMANAL</option>
+                        <option value="MENSUAL">MENSUAL</option>
+                        <option value="ANUAL">ANUAL</option>
+                      </select>
+                      <label for="">Tipo</label>
+                      <p class="smsError"
+                        *ngIf="FormConfPagos.get('periodo')?.touched && FormConfPagos.get('periodo')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+  
+                    <div class="contenedor-input">
+                      <select formControlName="tipo_pago">
+                        <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+                        <option value="ORDINARIO">ORDINARIO</option>
+                        <option value="EXTRAORDINARIO">EXTRAORDINARIO</option>
+                      </select>
+                      <label for="">Tipo</label>
+                      <p class="smsError"
+                        *ngIf="FormConfPagos.get('tipo_pago')?.touched && FormConfPagos.get('tipo_pago')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+            
+                    
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="porcentaje_descuento">
+                      <label for="">Porcentaje de Descuento</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('porcentaje_descuento')?.touched && FormConfPagos.get('porcentaje_descuento')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+  
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="porcentaje_penalizacion">
+                      <label for="">Porcentaje de penalización</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('porcentaje_penalizacion')?.touched && FormConfPagos.get('porcentaje_penalizacion')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                  
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="dias_max_descuento">
+                      <label for="">Días máximos de descuento</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('dias_max_descuento')?.touched && FormConfPagos.get('dias_max_descuento')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                  
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="dias_max_pago">
+                      <label for="">Días máximos de pago</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('dias_max_pago')?.touched && FormConfPagos.get('dias_max_pago')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                  
+                    <div class="contenedor-input">
+                      <input type="date" placeholder=" " formControlName="fecha_inicial">
+                      <label for="">Fecha inicial</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('fecha_inicial')?.touched && FormConfPagos.get('fecha_inicial')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                  
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="estatus">
+                      <label for="">Estatus</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('estatus')?.touched && FormConfPagos.get('estatus')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                  
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="created_at">
+                      <label for="">Fecha de creación</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('created_at')?.touched && FormConfPagos.get('created_at')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+  
+                    <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="updated_at">
+                      <label for="">Fecha de actualización</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="FormConfPagos.get('updated_at')?.touched && FormConfPagos.get('updated_at')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+    
+  
+         
+            <!-- <div class="contenedor-input">
+              <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()"
+                formControlName="propietarioId" readonly>
+              <input *ngIf="propietarioSelect" type="text" placeholder=" "
+                [value]="propietarioSelect.nombre +' ' +  propietarioSelect.apellidos" formControlName="propietarioId"
+                (click)="abrModalPropietarios()" readonly>
+              <label for="">Propietario</label>
+              <label for="">Ingrese</label>
+              <span *ngIf="propietarioSelect" class="input-group-addon" (click)="handleClearInput2()">
+                <i class="fa fa-times"></i>
+              </span>
+    
+              <p class="smsError"
+                *ngIf="FormConfPagos.get('propietarioId')?.touched && FormConfPagos.get('propietarioId')?.errors?.['required']">
+                El campo no puede estar en blanco</p>
+    
+            </div>
+     -->
+    
+       
+  <!--   
+            <div class="contenedor-input">
+              <input *ngIf="!inquilinoSelect" type="text" placeholder=" " (click)="abrModalinquilinos()"
+                formControlName="inquilinoId" readonly>
+              <input *ngIf="inquilinoSelect" type="text" placeholder=" "
+                [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId"
+                (click)="abrModalinquilinos()" readonly>
+              <label for="">Inquilino</label>
+              <label for="">Ingrese</label>
+              <span *ngIf="inquilinoSelect" class="input-group-addon" (click)="handleClearInput()">
+                <i class="fa fa-times"></i>
+              </span>
+    
+            </div> -->
+    
+         
+    
+    
+            <!-- <div class="contenedor-input">
+              <button type="button" (click)="archivo()">Seleccionar archivo predial</button>
+              <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)"
+                placeholder=" " formControlName="archivoPredial">
+    
+    
+              <p class="smsError"
+                *ngIf="FormConfPagos.get('archivoPredial')?.touched && FormConfPagos.get('archivoPredial')?.errors?.['required']">
+                El campo no puede estar en blanco</p>
+    
+            </div> -->
+    
+    
+    
+          </div>
+    
+    
+    
+          <div class="contenedor-botones">
+            <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
+            <button type="submit" [disabled]="FormConfPagos.invalid">GUARDAR</button>
+          </div>
+        </form>
+      </div>
+</section>
