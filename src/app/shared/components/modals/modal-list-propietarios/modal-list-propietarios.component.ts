@@ -20,4 +20,8 @@ export class ModalListPropietariosComponent {
  this.inquilinoSeleccionado.emit(data);
     this.cerrarModal();
   }
+
+
+
+ 
 }

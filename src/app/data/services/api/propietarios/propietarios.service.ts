@@ -58,4 +58,28 @@ export class PropietariosService {
           catchError(() => of(response))
         );
     }
+
+
+
+
+    GetPropietariosQPFraccionamientoQPIsinquilino(idFraccionamiento:any): Observable<Mensaje> {
+
+      console.log((API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS+'?isInquilino'+queryparams.OPERATORSMAP.EQ+'=0&id_fraccionamiento'+queryparams.OPERATORSMAP.EQ+'='+idFraccionamiento));
+      
+      const response = { icon: '', title: '', body: [] as any[] | null };
+      return this.http.get<Mensaje>
+        (API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS+'?isInquilino'+queryparams.OPERATORSMAP.EQ+'=1&fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+idFraccionamiento)
+        .pipe(
+          delay(100),
+          map(r => {
+            console.log(r);
+            
+            response.body = r.body;
+            response.title = r.title;
+            response.icon = r.icon;
+            return response;
+          }),
+          catchError(() => of(response))
+        );
+    }
 }

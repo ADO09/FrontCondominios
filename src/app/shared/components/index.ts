@@ -11,6 +11,8 @@ import { ModalListPropietariosComponent } from './modals/modal-list-propietarios
 import { ListRecibosInquilinoComponent } from "./list/list-recibos-inquilino/list-recibos-inquilino.component";
 import { ModalListRecibosComponent } from "./modals/modal-list-recibos/modal-list-recibos.component";
 import { ModalGestionConfPagoComponent } from './modals/modal-gestion-conf-pago/modal-gestion-conf-pago.component';
+import { ListGestionPropietarioComponent } from './list/list-gestion-propietario/list-gestion-propietario.component';
+import { ModalGestionPropietarioComponent } from './modals/modal-gestion-propietario/modal-gestion-propietario.component';
 
 export const components: any[] = [
 
@@ -24,7 +26,9 @@ export const components: any[] = [
     ModalListRecibosComponent,
     ModalListInquilinosComponent,
     ModalListPropietariosComponent,
-    ModalGestionConfPagoComponent
+    ModalGestionConfPagoComponent,
+    ListGestionPropietarioComponent,
+    ModalGestionPropietarioComponent
 ]
 
 
