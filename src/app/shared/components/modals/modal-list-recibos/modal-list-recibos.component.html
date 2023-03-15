@@ -10,36 +10,18 @@
   
         <form [formGroup]="formRecibo">
           <div class="form-row">
-            <div class="form-group">
-              <label><b>Fraccionamiento</b></label>
-              <input class="" formControlName="Id_Fraccionamiento" type="number" placeholder="Fraccionamiento del recibo" required>
-            </div>
-            <div class="form-group">
-              <label><b>Propietario</b></label>
-              <input class="" formControlName="Id_Propietario" type="number" placeholder="Propietario de la propiedad" required>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Inquilino</b></label>
-              <input class="" formControlName="Id_Inquilino" type="number" placeholder="Inquilino/huesped de la propiedad" required>
-            </div>
-            <div class="form-group">
-              <label><b>Fecha de pago</b></label>
-              <input class="" formControlName="Fecha_Pago" type="date" placeholder="Fecha en que se realizo el pago" required>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Monto a pagar</b></label>
-              <input class="" formControlName="Monto" type="number" placeholder="Cantidad que se pago" required>
-            </div>
-            <div class="form-group">
-              <label><b>Fecha de vencimiento</b></label>
-              <input class="" formControlName="Fecha_Vencimiento" type="date" placeholder="Fecha en la que venció el recibo" required>
-            </div>
+            <div class="form-group" >
+                <label><b>Configuraciones</b></label>
+                <select [(ngModel)]="selectedOption"> 
+                  <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >{{configuraciones.descripcion}} {{configuraciones.tipo_pago}}</option>
+                </select>
+              </div>
+              <div class="form-group" >
+                <label><b>Plazo a generar</b></label>
+                <select [(ngModel)]="plazoOption"> 
+                  <option *ngFor="let option of options" [value]="option.value" >{{option.label}}</option>
+                </select>
+              </div>
           </div>
           
           <div class="form-row">
@@ -59,6 +41,8 @@
               <input class="" formControlName="Estatus" type="text" placeholder="Estado en el que llego el recibo" required> 
             </div>
           </div>
+
+          
           
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id01').style.display='none'" (click)="enviarInfo()">Enviar</button>
         </form>

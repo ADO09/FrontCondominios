@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { recibo } from 'src/app/data/interfaces/recibo';
+import { Recibos } from 'src/app/data/models/recibos.model';
 import { InquilinosService } from 'src/app/data/services/api/inquilinos/inquilinos.service';
+import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
+import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
+import { ListRecibosInquilinoComponent } from 'src/app/shared/components/list/list-recibos-inquilino/list-recibos-inquilino.component';
 
 @Component({
   selector: 'app-inicio-inquilino',
@@ -10,36 +14,56 @@ import { InquilinosService } from 'src/app/data/services/api/inquilinos/inquilin
 export class InicioInquilinoComponent implements OnInit{
   selectedOption!: string;
   tipoUsuario:any;
-  options = [
-    {label: 'Opción 1', value: 'opcion1'},
-    {label: 'Opción 2', value: 'opcion2'},
-    {label: 'Opción 3', value: 'opcion3'}
-  ];
+  fraccionamientoId:any;
+  listaConfiguraciones: any;
+  listaPropietarios: any;
+  listaInquilinos: any;
+  listaPropiedades: any;
+  tipoLista:number = 0;
+  RecibosFiltrados:any[] = [];
   
 
-  constructor(private apiService:InquilinosService) {
+  constructor(private apiService:InquilinosService, private apiServicePropietario:PropietariosService,private sharedTitleService:SharedTitleComponentService) {
+    this.fraccionamientoId = localStorage.getItem('id_fraccionamiento');
+    sharedTitleService.emitChange("Lista de Recibos")
+  }
+  
+  @ViewChild(ListRecibosInquilinoComponent)
+  ListRecibosInquilinoComponent!: ListRecibosInquilinoComponent;
+  actualizarLista(){//ID DEL INQUILINO O PROPIETARIO A FILTRAR LOS RECIBOS
 
-  }  
-  lista = [
-{
-  id: '01',
-  monto: 5500,
-  Fecha_Pago: '06-03-2023',
-  Fecha_Vencimiento: '06-07-2023',
-  Estado: 'Pagado',
-  Comprobante: 'img.png',
-  Inquilino_Id: '01'
-}
-  ];
+    for (let i = 0; i < this.listaPropiedades.length; i++) {
+      if (this.listaPropiedades[i].propietario.id === 218 ||  216){
+        this.RecibosFiltrados[i] = this.listaPropiedades[i].propietario.id;
+      }
+    }
+    console.log(this.RecibosFiltrados);
+    const nuevosRecibos: Recibos[] = this.RecibosFiltrados;
+    this.ListRecibosInquilinoComponent.actualizarListaMostrada(nuevosRecibos);
+  }
+
 
   ngOnInit(){
+    this.apiService.GetPropietariosQPFraccionamientoQPIsinquilino(this.fraccionamientoId,1).subscribe((propietarios:any)=>{
+      this.listaPropietarios = propietarios.body;
+      //console.log(this.listaPropietarios);
+    })
 
+    this.apiService.GetPropietariosQPFraccionamientoQPIsinquilino(this.fraccionamientoId,0).subscribe((inquilinos:any)=>{
+      this.listaInquilinos = inquilinos.body;
+      //console.log(this.listaInquilinos);
+    })
+
+    this.apiService.propiedadesGetFiltroFraccionamiento(this.fraccionamientoId).subscribe((propiedades:any)=>{
+      this.listaPropiedades = propiedades.body;
+      //console.log(this.listaPropiedades);
+    })
 
 
   } 
 
-  cambiarLista(): any{
-    //AQUI VA EL SERVICIO QUE TRAE LA LISTA DE RECIBOS SEGUN EL INQULINO SELECCIONADO EN EL SELECT
+  cambiarLista(id:any): any{
+    console.log(id);
   }
 
 

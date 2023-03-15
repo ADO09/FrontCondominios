@@ -31,34 +31,23 @@
         <form [formGroup]="formRecibo">
           <div class="form-row">
             <div class="form-group">
-              <label><b>Fraccionamiento</b></label>
-              <input class="" formControlName="Id_Fraccionamiento" type="number" placeholder="Fraccionamiento del recibo" required readonly>
-            </div>
-            <div class="form-group">
               <label><b>Propietario</b></label>
-              <input class="" formControlName="Id_Propietario" type="number" placeholder="Propietario de la propiedad" required readonly>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Inquilino</b></label>
-              <input class="" formControlName="Id_Inquilino" type="number" placeholder="Inquilino/huesped de la propiedad" required readonly>
+              <input class="" formControlName="Id_Propietario" type="text" placeholder="Propietario de la propiedad" required readonly>
             </div>
             <div class="form-group">
               <label><b>Fecha de pago</b></label>
-              <input class="" formControlName="Fecha_Pago" type="date" placeholder="Fecha en que se realizo el pago" required>
+              <input class="" formControlName="Fecha_Pago" type="date" placeholder="Fecha en que se realizo el pago" required readonly>
             </div>
           </div>
           
           <div class="form-row">
             <div class="form-group">
               <label><b>Monto a pagar</b></label>
-              <input class="" formControlName="Monto" type="number" placeholder="Cantidad que se pago" required>
+              <input class="" formControlName="Monto" type="number" placeholder="Cantidad que se pago" required readonly>
             </div>
             <div class="form-group">
               <label><b>Fecha de vencimiento</b></label>
-              <input class="" formControlName="Fecha_Vencimiento" type="date" placeholder="Fecha en la que venció el recibo" required >
+              <input class="" formControlName="Fecha_Vencimiento" type="date" placeholder="Fecha en la que venció el recibo" required readonly>
             </div>
           </div>
           
@@ -76,12 +65,10 @@
           <div class="form-row">
             <div class="form-group">
               <label><b>Estado del recibo</b></label>
-              <input class="" formControlName="Estatus" type="text" placeholder="Estado en el que llego el recibo" required> 
+              <input class="" formControlName="Estatus" type="text" placeholder="Estado en el que llego el recibo" required readonly> 
             </div>
           </div>
-          
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" (click)="actualizar()"onclick="document.getElementById('id01').style.display='none'" >Enviar</button>
-        </form>
+     </form>
 
       </div>
     </div>   
