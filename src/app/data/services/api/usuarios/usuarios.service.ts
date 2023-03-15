@@ -44,6 +44,20 @@ export class UsuariosService {
     return this.http.post<Mensaje>(this.baseUrl + 'usuario/iniciar-sesion',data);
   }
 
+  /**
+   * ! OBTENER TODOS LOS USUARIOS POR ID FRACCIONAMIENTO
+   */
+  getAll(idFraccionamiento:string):Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}usuarios?id_fraccionamiento[eq]=${idFraccionamiento}`)
+  }
+
+  /**
+   * ! OBTENER TODOS LOS ROLES QUE SE LE PUEDE ASOCIAR A UN USUARIO
+   */
+  getRoles():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}usuario/roles?descripcion[ne]=ADMIN GENERAL`)
+  }
+
 
 
  

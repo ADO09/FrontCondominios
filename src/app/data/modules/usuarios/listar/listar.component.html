@@ -1,0 +1,38 @@
+<section class="contenedor-componente">
+    <div class="cardview" >
+
+
+        <div class="cardview-header" >
+            <button class="l-btn-d" routerLink="/dashboard/usuarios/registro">+ REGISTRAR USUARIO</button>
+        </div>
+
+        <div class="cardview-body" >
+            <div class="header-table" >
+                <div>Nombre</div>
+                <div>Email</div>
+                <div>Rol</div>
+                <div>opc</div>
+            </div>
+            <div class="body-table">
+             
+                <div class="contenedor-element-table" *ngFor="let usuario of usuarios" >
+                    <div>{{usuario.nombre}} {{usuario.apellido}}</div>
+                    <div>{{usuario.correo}}</div>
+                   <div>
+                       <p *ngFor="let roles of usuario.roles"> {{roles.descripcion}}</p>
+                   </div>
+                    <div>delete</div>
+                </div>
+                <!--LISTADO PARA REGISTROS DE USUARIOS PENDIENTES-->
+                <div class="contenedor-element-table" *ngFor="let usuario of usuarios" >
+                    <div>{{usuario.nombre}} {{usuario.apellido}}</div>
+                    <div>{{usuario.correo}}</div>
+                   <div>
+                       <p *ngFor="let roles of usuario.roles"> {{roles.descripcion}}</p>
+                   </div>
+                    <div>delete</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
