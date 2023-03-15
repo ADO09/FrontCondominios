@@ -46,7 +46,26 @@ export class UsuariosService {
 
 
 
- 
+  AddUser(data:any): Observable<Mensaje> {
+
+    console.log(API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS);
+
+    const response = { icon: '', title: ''};
+    return this.http.post<Mensaje>
+      (API_ROUTES.USUARIOS.ADDUSERCONFIRMUSER,data)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          // response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
 
 
 }

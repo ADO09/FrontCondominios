@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IngresosService } from 'src/app/data/services/api/ingresos/ingresos.service';
 import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
+import { UsuariosService } from 'src/app/data/services/api/usuarios/usuarios.service';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 
 @Component({
@@ -12,13 +13,19 @@ import { SharedTitleComponentService } from 'src/app/data/services/shared-title-
 export class RegPropietariosComponent {
   public FormPropietarios!: FormGroup;
   public formData = new FormData();
+  public formDataU = new FormData();
   public selectedFile!: any;
   public idFraccionamientoUsuer: any;
-  constructor(private fb: FormBuilder, private sharedTitleService: SharedTitleComponentService, private propietarioService: PropietariosService) {
+  public nombreFraccUser:any;
+  public CP:any;
+  constructor(private fb: FormBuilder, private sharedTitleService: SharedTitleComponentService, private propietarioService: PropietariosService,
+    private usuariosService:UsuariosService) {
     sharedTitleService.emitChange("Registrar Residente")
   }
   ngOnInit() {
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
+this.nombreFraccUser = localStorage.getItem('nombre_fraccionamiento');
+this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
     this.FormPropietarios = this.fb.group({
       // id: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -90,9 +97,17 @@ export class RegPropietariosComponent {
     this.propietarioService.AddPropietario(this.formData).subscribe((r) => {
       console.log(r);
 
+      if (r.icon='success') {
+        
+        this.formDataU.append('correo',this.FormPropietarios.value.correo);
+        this.formDataU.append('nombre',this.FormPropietarios.value.nombre);
+        this.formDataU.append('apellidos',this.FormPropietarios.value.apellidos);
+        this.formDataU.append('correo',this.FormPropietarios.value.correo);
+        this.formDataU.append('correo',this.FormPropietarios.value.correo);
+        this.formDataU.append('correo',this.FormPropietarios.value.correo);
+      }
     })
 
-
-
+   
   }
 }
