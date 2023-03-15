@@ -1,0 +1,59 @@
+<section class="contenedor-componente">
+    <div class="cardview">
+        
+            <form  class="form" [formGroup]="usuarioFormRegistro" (ngSubmit)="addUsuario()">
+
+                <div class="contenedor-grid-2">
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="nombre">
+                        <label for="">nombre</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="usuarioFormRegistro.get('nombre')?.touched && usuarioFormRegistro.get('nombre')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="apellidos">
+                        <label for="">apellidos</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="usuarioFormRegistro.get('apellidos')?.touched && usuarioFormRegistro.get('apellidos')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="correo">
+                        <label for="">correo</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="usuarioFormRegistro.get('correo')?.touched && usuarioFormRegistro.get('correo')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    <div class="contenedor-input">
+                        <select formControlName="rol">
+                            <option *ngFor="let rol of roles" value="{{rol.descripcion}}">{{rol.descripcion}}</option>
+                         </select>
+                        <label for="">Rol</label>
+                        <p class="smsError"
+                        *ngIf="usuarioFormRegistro.get('rol')?.touched && usuarioFormRegistro.get('rol')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+                </div>
+
+
+
+                <div class="contenedor-botones">
+                    <button type="button" routerLink="/dashboard/usuarios/listado">CANCELAR</button>
+                    <button type="submit" [disabled]="usuarioFormRegistro.invalid">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+  
+</section>
