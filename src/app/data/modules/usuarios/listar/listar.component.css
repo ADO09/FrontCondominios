@@ -1,0 +1,17 @@
+.contenedor-componente 
+.cardview {
+    max-width: none;
+}
+
+
+
+.header-table {
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+}
+.body-table .contenedor-element-table {
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+}
+
+.body-table .contenedor-element-table div {
+    max-width: none;
+}

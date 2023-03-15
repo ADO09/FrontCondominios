@@ -15,6 +15,7 @@ export class RegAdminFraccionamientoComponent implements OnInit {
     nombre: new FormControl('') ,
     apellidos: new FormControl('' ) ,
     correo: new FormControl('') ,
+    rol:new FormControl('ADMIN FRACCIONAMIENTO'),
     
     nombre_fraccionamiento: new FormControl('') ,
     codigo_postal: new FormControl('')
@@ -24,7 +25,7 @@ export class RegAdminFraccionamientoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addUsuario(){    
+  addUsuario(){     
     this.apiService.confirmarRegistro(this.usuarioForm.value).subscribe(() => {
       this.usuarioForm.reset();
     })

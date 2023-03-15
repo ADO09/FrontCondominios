@@ -22,6 +22,10 @@ export const ROUTES_PATHS = {
         //-------------USUARIOS------------------------
         USUARIOSDEFAULT: 'usuarios',
         CRUD_USUARIOS: 'crudUsuarios',
+        USUARIOS_LISTADO: 'listado',
+        USUARIOS_REGISTRO: 'registro',
+
+
         
         //INQUILINO------------------------------------
         INICIO_INQUILINO: 'Inquilino',
@@ -98,6 +102,9 @@ export const INTERNAL_PATHS = {
     //USUARIOS-----------------------------------------
     PANELUSUARIOSDEFAULT: `${ROUTES_PATHS.PANEL.USUARIOSDEFAULT}`,
     PANELCRUD_USUARIOS: `${ROUTES_PATHS.PANEL.CRUD_USUARIOS}`,
+    PANELUSUARIOSLISTADO: `${ROUTES_PATHS.PANEL.USUARIOS_LISTADO}`,
+    PANELUSUARIOSREGISTRO: `${ROUTES_PATHS.PANEL.USUARIOS_REGISTRO}`,
+
 
     //INQUILINO-------------------------------------------------
     PANEL_INQUILINO: `${ROUTES_PATHS.PANEL.INICIO_INQUILINO}`,
@@ -198,6 +205,8 @@ export const INTERNAL_ROUTES = {
 
     //USUARIOS-------------------------------------
     MODULO_USUARIOS: `${INTERNAL_PATHS.PANELUSUARIOSDEFAULT}/${INTERNAL_PATHS.PANELCRUD_USUARIOS}`,
+    MODULO_USUARIOS_LISTADO: `${INTERNAL_PATHS.PANELUSUARIOSDEFAULT}/${INTERNAL_PATHS.PANELUSUARIOSLISTADO}`,
+    MODULO_USUARIOS_REGISTRO: `${INTERNAL_PATHS.PANELUSUARIOSDEFAULT}/${INTERNAL_PATHS.PANELUSUARIOSREGISTRO}`,
 
     
     //INQUILINO-------------------------------------
