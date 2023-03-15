@@ -39,6 +39,9 @@ export const API_ROUTES = {
     },
     INGRESOS:{
         GETALLPAGOSCONF:`${ENV.urlAPI}configurar-pagos`,
+    },
+    USUARIOS:{
+        ADDUSERCONFIRMUSER:`${ENV.urlAPI}usuario/confirmar-registro`,
     }
 
 }
