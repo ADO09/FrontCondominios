@@ -11,19 +11,24 @@ import { SharedTitleComponentService } from 'src/app/data/services/shared-title-
 export class RegistroConfPagoComponent {
 
   public FormConfPagos!: FormGroup;
+   public formData = new FormData();
+   public idFraccionamientoUsuer: any;
+   public today = new Date();
+  public fechaActual = this.today.toLocaleDateString();
 
   constructor(private fb: FormBuilder,private sharedTitleService:SharedTitleComponentService,ingresosService:IngresosService) {
     sharedTitleService.emitChange("Registrar Pagos")
    }
 
   ngOnInit() {
-
+    this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
     
+    console.log(this.fechaActual);
     
     
       this.FormConfPagos = this.fb.group({
         // id: ['', Validators.required],
-        id_fraccionamiento: ['', Validators.required],
+       // id_fraccionamiento: ['', Validators.required],
         descripcion: ['', Validators.required],
         monto: ['', Validators.required],
         periodo: ['', Validators.required],
@@ -34,8 +39,8 @@ export class RegistroConfPagoComponent {
         dias_max_pago: ['', Validators.required],
         fecha_inicial: ['', Validators.required],
         estatus: ['', Validators.required],
-        created_at: ['', Validators.required],
-        updated_at: ['', Validators.required],
+       // created_at: ['', Validators.required],
+       // updated_at: ['', Validators.required],
       });
     
  
@@ -43,7 +48,22 @@ export class RegistroConfPagoComponent {
 
   enviarModal(){
 
+    this.formData.append('fraccionamientoId', this.idFraccionamientoUsuer)
+    const controls = this.FormConfPagos.controls;
+    for (const name in controls) {
+
+      if (controls[name].value !== null && controls[name].value !== '') {
+        if (name != 'identificacionUrl') {
+          this.formData.append(name, controls[name].value);
+        }
+      }
+    }
+
+    this.formData.append('created_at',this.fechaActual)
+    this.formData.append('updated_at',this.fechaActual)
     console.log(this.FormConfPagos.value);
+    
+
     
   }
 }

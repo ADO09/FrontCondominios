@@ -102,9 +102,20 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
         this.formDataU.append('correo',this.FormPropietarios.value.correo);
         this.formDataU.append('nombre',this.FormPropietarios.value.nombre);
         this.formDataU.append('apellidos',this.FormPropietarios.value.apellidos);
-        this.formDataU.append('correo',this.FormPropietarios.value.correo);
-        this.formDataU.append('correo',this.FormPropietarios.value.correo);
-        this.formDataU.append('correo',this.FormPropietarios.value.correo);
+        this.formDataU.append('nombre_fraccionamiento',this.nombreFraccUser);
+        this.formDataU.append('codigo_postal',this.CP);
+
+        const inquilinoIS:any = this.formData.get('isInquilino');
+        if (inquilinoIS=='0') {
+          this.formDataU.append('rol','PROPIETARIO PROPIEDAD');
+        } else {
+          this.formDataU.append('rol','INQUILINO PROPIEDAD');
+        }
+       
+        this.usuariosService.AddUser(this.formDataU).subscribe( (r)=>{
+          console.log(r);
+          
+        })
       }
     })
 

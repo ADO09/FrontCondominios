@@ -7,14 +7,14 @@
           <div class="contenedor-grid-2">
   
         
-                    
+<!--                     
                     <div class="contenedor-input">
                       <input type="text" placeholder=" " formControlName="id_fraccionamiento">
                       <label for="">Fraccionamiento</label>
                       <label for="">Ingrese</label>
                       <p class="smsError" *ngIf="FormConfPagos.get('id_fraccionamiento')?.touched && FormConfPagos.get('id_fraccionamiento')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
-                    </div>
+                    </div> -->
                     
                     <div class="contenedor-input">
                       <input type="text" placeholder=" " formControlName="descripcion">
@@ -41,7 +41,7 @@
                         <option value="MENSUAL">MENSUAL</option>
                         <option value="ANUAL">ANUAL</option>
                       </select>
-                      <label for="">Tipo</label>
+                      <label for="">Frecuencia</label>
                       <p class="smsError"
                         *ngIf="FormConfPagos.get('periodo')?.touched && FormConfPagos.get('periodo')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
@@ -107,7 +107,7 @@
                       <p class="smsError" *ngIf="FormConfPagos.get('estatus')?.touched && FormConfPagos.get('estatus')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
                     </div>
-                  
+<!--                   
                     <div class="contenedor-input">
                       <input type="text" placeholder=" " formControlName="created_at">
                       <label for="">Fecha de creación</label>
@@ -124,7 +124,7 @@
                         El campo no puede estar en blanco</p>
                     </div>
     
-  
+   -->
          
             <!-- <div class="contenedor-input">
               <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()"
