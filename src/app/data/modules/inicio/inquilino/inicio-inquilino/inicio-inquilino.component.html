@@ -1,9 +1,13 @@
 
 <div class="div-tabla" >
     <div class="content-select" *ngIf="this.tipoUsuario !== '1'">
-        <label for="select"><b>Seleccione un Inquilino a filtrar</b></label> 
-        <select [(ngModel)]="selectedOption" (click)="cambiarLista()"> 
-            <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+        <label for="select"><b>Propietario a filtrar</b></label> 
+        <select [(ngModel)]="selectedOption"> 
+            <option *ngFor="let propietarios of listaPropietarios" [value]="propietarios.id" (click)="cambiarLista(propietarios.id)">{{propietarios.nombre}} {{propietarios.apellidos}}</option>
+        </select>
+        <label for="select"><b>Inquilino a filtrar</b></label> 
+        <select [(ngModel)]="selectedOption"> 
+            <option *ngFor="let inquilinos of listaInquilinos" [value]="inquilinos.id" (click)="cambiarLista(inquilinos.id)">{{inquilinos.nombre}} {{inquilinos.apellidos}}</option>
         </select>
     </div>
 
