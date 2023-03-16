@@ -45,7 +45,8 @@ export const ROUTES_PATHS = {
         CUOTASCONFINGRS:'cuotasConfPagos',
         INGRESOSRECIBOS:'recibosGenerales',
         REGCONFPAGOS:'regConfPagos',
-        //----------------------------------------------
+        //EGRESOS---------------------------------------
+        EGRESOSDEFAULT:'egresos',
 
         //VEHICULOS
         VEHICULOSDEFAULT:'vehiculos',
@@ -115,8 +116,8 @@ export const INTERNAL_PATHS = {
      PANLEPROPPRINCL: `${ROUTES_PATHS.PANEL.PROPPRINCP}`,
      PANLEREGPROPIEDAD: `${ROUTES_PATHS.PANEL.REGPROPIEDAD}`,
  
-     //-------------------------------------------------
-
+     //EGRESOS-------------------------------------------------
+     PANELDEFAULEGRESOS:`${ROUTES_PATHS.PANEL.EGRESOSDEFAULT}`,
 
 
     //INGRESOS---------------------------------------------
@@ -228,6 +229,8 @@ export const INTERNAL_ROUTES = {
      MODULO_CUOTAS:`${INTERNAL_PATHS.PANELDEFAULTINGRESOS}/${INTERNAL_PATHS.PANELCUOTAS}`,
      MODULO_RECIBOS:`${INTERNAL_PATHS.PANELDEFAULTINGRESOS}/${INTERNAL_PATHS.PANELRECIBOSGRLS}`,
      MODULO_REGCONFPAGO:`${INTERNAL_PATHS.PANELDEFAULTINGRESOS}/${INTERNAL_PATHS.PANELREGCONFPAGOS}`,
+    //EGRESOS
+    MODULO_EGRESOS:`${INTERNAL_PATHS.PANELDEFAULEGRESOS}`,
 
     //VEHICULOS
     MODULO_LISTADO_VEHICULOS:`${INTERNAL_PATHS.PANELDEFAULTVEHICULO}/${INTERNAL_PATHS.PANELLISTADOVEHICULO}`,

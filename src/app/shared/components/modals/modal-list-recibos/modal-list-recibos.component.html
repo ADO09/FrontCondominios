@@ -10,42 +10,27 @@
   
         <form [formGroup]="formRecibo">
           <div class="form-row">
-            <div class="form-group" >
-                <label><b>Configuraciones</b></label>
-                <select [(ngModel)]="selectedOption"> 
-                  <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >{{configuraciones.descripcion}} {{configuraciones.tipo_pago}}</option>
+            <div class="form-group">
+              <div class="content-select">
+                <label for="select"><b>Configuraciones</b></label>
+                <select formControlName="configuracionId"> 
+                  <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >{{configuraciones.id}} {{configuraciones.descripcion}} {{configuraciones.tipo_pago}}</option>
                 </select>
               </div>
+            </div>
               <div class="form-group" >
-                <label><b>Plazo a generar</b></label>
-                <select [(ngModel)]="plazoOption"> 
-                  <option *ngFor="let option of options" [value]="option.value" >{{option.label}}</option>
-                </select>
+                <div class="content-select">
+                  <label for="select"><b>Plazo a generar</b></label>
+                  <select formControlName="plazoPorGenerar"> 
+                    <option value="1">1 mes</option>
+                    <option value="2">2 meses</option>
+                    <option value="3">3 mese</option>
+                    <option value="4">6 meses</option>
+                    <option value="5">12 meses</option>
+                  </select>
+                </div>
               </div>
           </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Penalización</b></label>
-              <input class="" formControlName="Monto_Penalizacion" type="number" placeholder="Cantidad a penalizar" required>
-            </div>
-            <div class="form-group">
-              <label><b>Descuento *Opcional*</b></label>
-              <input class="" formControlName="Monto_Descuento" type="text" placeholder="Cantidad a descontar del total">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Estado del recibo</b></label>
-              <input class="" formControlName="Estatus" type="text" placeholder="Estado en el que llego el recibo" required> 
-            </div>
-          </div>
-
-          
-          
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id01').style.display='none'" (click)="enviarInfo()">Enviar</button>
         </form>
-
       </div>
-          

@@ -1,6 +1,6 @@
 
 <div class="div-tabla" >
-    <div class="content-select" *ngIf="this.tipoUsuario !== '1'">
+   <!--<div class="content-select" *ngIf="this.tipoUsuario !== '1'">
         <label for="select"><b>Propietario a filtrar</b></label> 
         <select [(ngModel)]="selectedOption"> 
             <option *ngFor="let propietarios of listaPropietarios" [value]="propietarios.id" (click)="cambiarLista(propietarios.id)">{{propietarios.nombre}} {{propietarios.apellidos}}</option>
@@ -9,7 +9,7 @@
         <select [(ngModel)]="selectedOption"> 
             <option *ngFor="let inquilinos of listaInquilinos" [value]="inquilinos.id" (click)="cambiarLista(inquilinos.id)">{{inquilinos.nombre}} {{inquilinos.apellidos}}</option>
         </select>
-    </div>
+    </div>-->
 
     <div class="btnAdd">
         <input type="button" value="Agregar" class="boton-agregar" (click)="abrirModal()"/>
