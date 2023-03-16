@@ -59,6 +59,14 @@ export class UsuariosService {
   }
 
 
+  /**
+   * ! OBTENER TODOS LOS REGISTROS PENDIENTES
+   */
+  getRegistrosPendientes(fraccionamiento:string):Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}usuario/registros-pendientes?fraccionamiento=${fraccionamiento}`)
+  }
+
+
 
  
 
