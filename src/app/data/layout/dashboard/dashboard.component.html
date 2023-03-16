@@ -28,17 +28,16 @@
             <div class="contenedor-enlases" routerLinkActive="menu-item-active" [routerLinkActiveOptions]="{exact:true}" >
                 <!-- REF OCULTAS -->
                 <a routerLinkActive="active-link" routerLink="/dashboard/vehiculos/registro" class="ref-hide" >Proveedores</a>
-               
 
                 <!--REF VISIBLES-->
                 <label for="">Egresos</label>
                 <a routerLinkActive="active-link" routerLink="/dashboard/report/average" (click)="irRecibos('all','all')" >Proveedores</a>
                 <label for="">Base de datos</label>
-                <a routerLinkActive="active-link" routerLink="/dashboard/report/average" (click)="irRecibos('all','all')" >Propietarios</a>
+                <a routerLinkActive="active-link" [routerLink]="'/dashboard/' + propietariosRoute">Propietarios</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/vehiculos/listado" >Vehículos</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/Inquilino" >Recibos</a>
                 <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+ propiedadesRoute" >Propiedades</a>
-                <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+confCuotasRoute" >Configuracion de cuotas</a>
+                <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+ confCuotasRoute" >Configuracion de cuotas</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/egresos" >Egresos</a>
             </div>
             <div id="eventClick" title="Administración">

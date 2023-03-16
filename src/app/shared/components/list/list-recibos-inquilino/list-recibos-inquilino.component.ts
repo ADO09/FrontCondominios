@@ -54,7 +54,7 @@ export class ListRecibosInquilinoComponent implements OnInit {
         Id_Propietario: this.ReciboIndividual[0].propiedad.propietario.nombre + " " + this.ReciboIndividual[0].propiedad.propietario.apellidos,// aqui deberia ser la id del inquilino
         Fecha_Pago: this.ReciboIndividual[0].fechaPago === null ? '' : this.listaRecibos[0].fechaPago, // se pone una fecha en predeterminado
         Monto: this.ReciboIndividual[0].monto,
-        Fecha_Vencimiento: this.ReciboIndividual[0].fechaVencimiento === null ? '' : this.listaRecibos[0].fechaPago,
+        Fecha_Vencimiento: this.ReciboIndividual[0].fechaVencimiento === null ? '' : this.listaRecibos[0].fechaVencimiento,
         Monto_Penalizacion: this.ReciboIndividual[0].montoPenalizacion === null ? 0 : this.listaRecibos[0].montoPenalizacion ,
         Monto_Descuento:this.ReciboIndividual[0].montoDescuento === null ? 0 : this.listaRecibos[0].montoDescuento,
         Estatus: this.ReciboIndividual[0].estatus,

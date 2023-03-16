@@ -10,7 +10,7 @@
         <tr  *ngFor="let recibos of listaRecibos  | paginate: {itemsPerPage: 50, currentPage: page}" 
         (click)="editarRecibo(recibos.id)"  onclick="document.getElementById('id01').style.display='block'">
         
-          <td>{{recibos.id}}</td>
+          <td>{{recibos.id}}?:{{listaRecibos.length}}</td>
           <td>{{recibos.monto}}</td>
           <td>{{recibos.fechaVencimiento}}</td>
           <td>{{recibos.estatus}}</td>

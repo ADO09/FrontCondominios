@@ -18,7 +18,8 @@ export class DashboardComponent implements OnInit {
   idEmpleado:string = ''
   public propiedadesRoute:any = INTERNAL_ROUTES.MODULO_PROPPRINC;
   public confCuotasRoute:any = INTERNAL_ROUTES.MODULO_CUOTAS;
-  
+  public propietariosRoute:any = INTERNAL_ROUTES.MODULO_GESTION_PROPIETARIOS;
+
   constructor(private sharedTitleService: SharedTitleComponentService  ,private router:Router) {
     sharedTitleService.changeEmitted$.subscribe((tituloComponente) => {
       this.tituloComponente = tituloComponente;
