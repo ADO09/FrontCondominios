@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IngresosService } from 'src/app/data/services/api/ingresos/ingresos.service';
@@ -14,16 +15,20 @@ export class RegistroConfPagoComponent {
    public formData = new FormData();
    public idFraccionamientoUsuer: any;
    public today = new Date();
-  public fechaActual = this.today.toLocaleDateString();
-
-  constructor(private fb: FormBuilder,private sharedTitleService:SharedTitleComponentService,ingresosService:IngresosService) {
+  // public fechaActual = this.today.toLocaleDateString();
+  public currentDate!: any;
+  constructor(private fb: FormBuilder,private sharedTitleService:SharedTitleComponentService,private ingresosService:IngresosService,private datePipe: DatePipe) {
     sharedTitleService.emitChange("Registrar Pagos")
+
+    this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+    console.log(this.currentDate);
+    
    }
 
   ngOnInit() {
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
     
-    console.log(this.fechaActual);
+    
     
     
       this.FormConfPagos = this.fb.group({
@@ -48,7 +53,7 @@ export class RegistroConfPagoComponent {
 
   enviarModal(){
 
-    this.formData.append('fraccionamientoId', this.idFraccionamientoUsuer)
+    this.formData.append('id_fraccionamiento', this.idFraccionamientoUsuer)
     const controls = this.FormConfPagos.controls;
     for (const name in controls) {
 
@@ -59,11 +64,14 @@ export class RegistroConfPagoComponent {
       }
     }
 
-    this.formData.append('created_at',this.fechaActual)
-    this.formData.append('updated_at',this.fechaActual)
+    this.formData.append('created_at',this.currentDate)
+    this.formData.append('updated_at',this.currentDate)
     console.log(this.FormConfPagos.value);
     
 
-    
+    this.ingresosService.AddPostConfPago(this.formData).subscribe( (r) =>{
+      console.log(r);
+      
+    })
   }
 }

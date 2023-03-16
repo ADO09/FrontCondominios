@@ -100,11 +100,23 @@
                         El campo no puede estar en blanco</p>
                     </div>
                   
-                    <div class="contenedor-input">
+                    <!-- <div class="contenedor-input">
                       <input type="text" placeholder=" " formControlName="estatus">
                       <label for="">Estatus</label>
                       <label for="">Ingrese</label>
                       <p class="smsError" *ngIf="FormConfPagos.get('estatus')?.touched && FormConfPagos.get('estatus')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div> -->
+
+                    <div class="contenedor-input">
+                      <select formControlName="estatus">
+                        <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+                        <option value="0">INACTIVO</option>
+                        <option value="1">ACTIVO</option>
+                      </select>
+                      <label for="">Estatus</label>
+                      <p class="smsError"
+                        *ngIf="FormConfPagos.get('estatus')?.touched && FormConfPagos.get('estatus')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
                     </div>
 <!--                   

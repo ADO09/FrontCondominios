@@ -58,10 +58,10 @@ export class IngresosService {
       );
   }
 
-  postPropiedad(data:any): Observable<Mensaje> {
+  AddPostConfPago(data:any): Observable<Mensaje> {
     const response = { icon: '', title: ''};
     return this.http.post<Mensaje>
-      (API_ROUTES.PROPIEDADES.POSTPROPIEDADES,data)
+      (API_ROUTES.INGRESOS.ADDCONFPAGO,data)
       .pipe(
         delay(100),
         map(r => {
