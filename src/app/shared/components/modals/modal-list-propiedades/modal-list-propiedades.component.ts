@@ -54,7 +54,7 @@ export class ModalListPropiedadesComponent implements OnInit {
         claveCatastral: ['', Validators.required],
         descripcion: ['', Validators.required],
         superficie: ['', Validators.required],
-        balance: [''],
+        balance: [0],
         estatusId: ['', Validators.required],
         propietarioId: ['', Validators.required],
         inquilinoId: [''],
@@ -143,7 +143,7 @@ export class ModalListPropiedadesComponent implements OnInit {
           this.propiedadDatos?.superficie || '',
           Validators.required,
         ],
-        balance: [this.propiedadDatos?.balance || ''],
+        balance: [this.propiedadDatos?.balance || 0],
         estatusId: [
           String(this.propiedadDatos?.estatus.id) || '',
           Validators.required,
@@ -170,6 +170,8 @@ export class ModalListPropiedadesComponent implements OnInit {
     console.log(this.propiedadDatos.id);
 
     var idProp: any = this.propietarioSelect?.id;
+
+   
     this.formData.append('balance', this.formPropiedades.value.balance);
     this.formData.append(
       'claveCatastral',
@@ -196,6 +198,13 @@ export class ModalListPropiedadesComponent implements OnInit {
       'tipoPropiedadId',
       this.formPropiedades.value.tipoPropiedadId
     );
+
+    if (!this.formData.get('inquilinoId')) {
+      this.propiedadesService.ElmInquilinoNull(this.propiedadDatos.id).subscribe( (r)=>{
+        console.log(r);
+        
+      })
+    }
 
     console.log(this.formData.get('balance'));
     console.log(this.formData.get('claveCatastral'));
@@ -280,8 +289,8 @@ export class ModalListPropiedadesComponent implements OnInit {
       inquilinoId: null,
     });
 
-    var inqid: any = null;
-    this.formData.append('inquilinoId', inqid);
+    // var inqid: any = null;
+    // this.formData.append('inquilinoId', inqid);
 
     console.log();
   }

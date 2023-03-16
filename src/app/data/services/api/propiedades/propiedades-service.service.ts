@@ -154,6 +154,28 @@ export class PropiedadesServiceService {
       );
   }
 
+
+
+
+  ElmInquilinoNull(id:any): Observable<Mensaje> {
+
+    const response = { icon: '', title: ''};
+    return this.http.delete<Mensaje>
+      (API_ROUTES.INQUILINOS.ELMINQUILINOPROPIEDAD+id)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          //response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
+
   
 
 }

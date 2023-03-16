@@ -45,6 +45,9 @@ export const API_ROUTES = {
     },
     USUARIOS:{
         ADDUSERCONFIRMUSER:`${ENV.urlAPI}usuario/confirmar-registro`,
+    },
+    INQUILINOS:{
+        ELMINQUILINOPROPIEDAD:`${ENV.urlAPI}propiedades/borrarRelacionPropietario/`
     }
 
 }
