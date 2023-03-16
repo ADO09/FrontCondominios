@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { recibo } from 'src/app/data/interfaces/recibo';
 import { Recibos } from 'src/app/data/models/recibos.model';
 import { InquilinosService } from 'src/app/data/services/api/inquilinos/inquilinos.service';
 
@@ -53,9 +52,9 @@ export class ListRecibosInquilinoComponent implements OnInit {
       console.log(this.ReciboIndividual[0]);
       this.formRecibo = this.fb.group({
         Id_Propietario: this.ReciboIndividual[0].propiedad.propietario.nombre + " " + this.ReciboIndividual[0].propiedad.propietario.apellidos,// aqui deberia ser la id del inquilino
-        Fecha_Pago: this.ReciboIndividual[0].fechaPago === null ? this.listaRecibos[id].fechaVencimiento : this.listaRecibos[0].fechaPago, // se pone una fecha en predeterminado
+        Fecha_Pago: this.ReciboIndividual[0].fechaPago === null ? '' : this.listaRecibos[0].fechaPago, // se pone una fecha en predeterminado
         Monto: this.ReciboIndividual[0].monto,
-        Fecha_Vencimiento: this.ReciboIndividual[0].fechaVencimiento,
+        Fecha_Vencimiento: this.ReciboIndividual[0].fechaVencimiento === null ? '' : this.listaRecibos[0].fechaPago,
         Monto_Penalizacion: this.ReciboIndividual[0].montoPenalizacion === null ? 0 : this.listaRecibos[0].montoPenalizacion ,
         Monto_Descuento:this.ReciboIndividual[0].montoDescuento === null ? 0 : this.listaRecibos[0].montoDescuento,
         Estatus: this.ReciboIndividual[0].estatus,

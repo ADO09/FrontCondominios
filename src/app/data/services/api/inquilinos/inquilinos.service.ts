@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { recibo } from 'src/app/data/interfaces/recibo';
 import { catchError, delay, map, Observable, of } from 'rxjs';
 import { Mensaje } from 'src/app/data/interfaces/Mensaje';
 

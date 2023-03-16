@@ -58,12 +58,17 @@ const routes: Routes = [
       {
         path:"",
         loadChildren:()=>
-        import('src/app/data/modules/inicio/inquilino/properties.module').then((m) =>m.InquilinoModule)
+        import('src/app/data/modules/inicio/inquilino/inquilino.module').then((m) =>m.InquilinoModule)
       },
       {
         path:"",
         loadChildren:()=>
         import('src/app/data/modules/propietarios/propietarios.module').then((m) =>m.PropietariosModule)
+      },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/egresos/egresos.module').then((m) =>m.EgresosModule)
       },
       // {
       //   // path: 'userauth',
