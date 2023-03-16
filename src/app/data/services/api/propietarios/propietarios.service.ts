@@ -101,4 +101,33 @@ export class PropietariosService {
           catchError(() => of(response))
         );
     }
+
+
+
+    PropietariosPATCHUptdate( id:any, data:any): Observable<Mensaje> {
+
+      // console.log('ID_____:' + id);
+      // console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id +queryparams.QUERY.QUERYPUT,data);
+      // console.log(data);
+      console.log(API_ROUTES.PROPIETARIOS.UPDATEPROPIETARIO + id + queryparams.QUERY.QUERYPATCH);
+      
+      const response = { icon: '', title: '' };
+      return this.http.post<Mensaje>
+        (API_ROUTES.PROPIETARIOS.UPDATEPROPIETARIO + id + queryparams.QUERY.QUERYPATCH,data) //aqui 
+        .pipe(
+          delay(100),
+          map(r => {
+            console.log(r);
+            
+            // response.body = r.body;
+            response.title = r.title;
+            response.icon = r.icon;
+            return response;
+          }),
+          catchError(() => of(response))
+        );
+    }
+
+
+
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { IngresosService } from 'src/app/data/services/api/ingresos/ingresos.service';
 import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
 import { UsuariosService } from 'src/app/data/services/api/usuarios/usuarios.service';
@@ -19,7 +21,7 @@ export class RegPropietariosComponent {
   public nombreFraccUser:any;
   public CP:any;
   constructor(private fb: FormBuilder, private sharedTitleService: SharedTitleComponentService, private propietarioService: PropietariosService,
-    private usuariosService:UsuariosService) {
+    private usuariosService:UsuariosService,private router:Router) {
     sharedTitleService.emitChange("Registrar Residente")
   }
   ngOnInit() {
@@ -74,19 +76,7 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
         }
       }
     }
-    // if (!this.selectedFile) {
-    //   this.formData.append('identificacionUrl', this.selectedFile);
-    // }else{
-    //   this.formData.delete('identificacionUrl');
-    // }
-    // console.log(formData.get('nombre'));
-    // console.log(formData.get('apellidos'));
-    // console.log(formData.get('correo'));
-    // console.log(formData.get('telefonoFijo'));
-    // console.log(formData.get('celular'));
-    // console.log(formData.get('celularAlt'));
-    // console.log(formData.get('identificacionUrl'));
-
+ 
     for (const name in controls) {
       if (controls[name].value !== null && controls[name].value !== '') {
         console.log(this.formData.get(name));
@@ -95,25 +85,48 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
 
     console.log(this.formData.get('archivoIdentificacion'));
     this.propietarioService.AddPropietario(this.formData).subscribe((r) => {
+
+      
       console.log(r);
 
       if (r.icon='success') {
         
-        this.formDataU.append('correo',this.FormPropietarios.value.correo);
-        this.formDataU.append('nombre',this.FormPropietarios.value.nombre);
-        this.formDataU.append('apellidos',this.FormPropietarios.value.apellidos);
-        this.formDataU.append('nombre_fraccionamiento',this.nombreFraccUser);
-        this.formDataU.append('codigo_postal',this.CP);
+        let datos ={};
 
         const inquilinoIS:any = this.formData.get('isInquilino');
+        let inqJ:any = "";
         if (inquilinoIS=='0') {
-          this.formDataU.append('rol','PROPIETARIO PROPIEDAD');
+          this.formDataU.append('rol','PROPIETARIO PROPIEDAD');{
+            inqJ = 'PROPIETARIO PROPIEDAD';
+          }
         } else {
           this.formDataU.append('rol','INQUILINO PROPIEDAD');
+          inqJ = 'INQUILINO PROPIEDAD';
         }
+        datos = {
+          correo:this.FormPropietarios.value.correo,
+          nombre:this.FormPropietarios.value.nombre,
+          apellidos:this.FormPropietarios.value.apellidos,
+          nombre_fraccionamiento:this.nombreFraccUser,
+          codigo_postal:this.CP,
+          rol:inqJ,
+        }
+        // this.formDataU.append('correo',this.FormPropietarios.value.correo);
+        // this.formDataU.append('nombre',this.FormPropietarios.value.nombre);
+        // this.formDataU.append('apellidos',this.FormPropietarios.value.apellidos);
+        // this.formDataU.append('nombre_fraccionamiento',this.nombreFraccUser);
+        // this.formDataU.append('codigo_postal',this.CP);
+
+      
        
-        this.usuariosService.AddUser(this.formDataU).subscribe( (r)=>{
+        this.usuariosService.AddUser(datos).subscribe( (r)=>{
           console.log(r);
+          
+          if (r.icon == 'success') {
+            setTimeout(() => {
+            this.router.navigateByUrl('/dashboard/'+INTERNAL_ROUTES.MODULO_REG_PROPIETARIO)
+            }, 200);
+          }
           
         })
       }

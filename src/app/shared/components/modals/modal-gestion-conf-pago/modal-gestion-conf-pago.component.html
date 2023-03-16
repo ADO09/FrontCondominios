@@ -31,13 +31,13 @@
                       El campo no puede estar en blanco</p>
                   </div> -->
                   
-                  <div class="contenedor-input">
+                  <!-- <div class="contenedor-input">
                     <input type="text" placeholder=" " formControlName="id_fraccionamiento">
                     <label for="">Fraccionamiento</label>
                     <label for="">Ingrese</label>
                     <p class="smsError" *ngIf="FormConfPagos.get('id_fraccionamiento')?.touched && FormConfPagos.get('id_fraccionamiento')?.errors?.['required']">
                       El campo no puede estar en blanco</p>
-                  </div>
+                  </div> -->
                   
                   <div class="contenedor-input">
                     <input type="text" placeholder=" " formControlName="descripcion">
@@ -132,7 +132,7 @@
                   </div>
                 
                   <div class="contenedor-input">
-                    <input type="text" placeholder=" " formControlName="created_at">
+                    <input type="text" placeholder=" " formControlName="created_at" readonly>
                     <label for="">Fecha de creación</label>
                     <label for="">Ingrese</label>
                     <p class="smsError" *ngIf="FormConfPagos.get('created_at')?.touched && FormConfPagos.get('created_at')?.errors?.['required']">
@@ -140,7 +140,7 @@
                   </div>
 
                   <div class="contenedor-input">
-                    <input type="text" placeholder=" " formControlName="updated_at">
+                    <input type="text" placeholder=" " formControlName="updated_at" readonly>
                     <label for="">Fecha de actualización</label>
                     <label for="">Ingrese</label>
                     <p class="smsError" *ngIf="FormConfPagos.get('updated_at')?.touched && FormConfPagos.get('updated_at')?.errors?.['required']">

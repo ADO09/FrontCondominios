@@ -107,17 +107,29 @@ export class ModalListPropiedadesComponent implements OnInit {
         // console.log( "AQUI ESTA-->"+ this.propiedadDatos.inquilino.id);
         // console.log( "AQUI ESTA-->"+ this.propiedadDatos.propietario.id);
         
+      // this.formPropiedades = this.fb.group({
+      //   tipoPropiedadId:  String(this.propiedadDatos?.tipoPropiedad.id) || '',
+      //   claveCatastral: this.propiedadDatos?.claveCatastral || '',
+      //   descripcion: this.propiedadDatos?.descripcion || '',
+      //   superficie: this.propiedadDatos?.superficie || '',
+      //   balance: this.propiedadDatos?.balance || '',
+      //   estatusId:  String(this.propiedadDatos?.estatus.id)|| '',
+      //   propietarioId: [this.propiedadDatos?.propietario.nombre + ' ' + this.propiedadDatos.propietario.apellidos || '',Validators.required],
+      //   inquilinoId: inquilino || null,
+      //   fraccionamientoId: this.propiedadDatos?.fraccionamientoId || '',
+      //   archivoPredial: this.propiedadDatos?.predialUrl || '',
+      // });
       this.formPropiedades = this.fb.group({
-        tipoPropiedadId:  String(this.propiedadDatos?.tipoPropiedad.id) || '',
-        claveCatastral: this.propiedadDatos?.claveCatastral || '',
-        descripcion: this.propiedadDatos?.descripcion || '',
-        superficie: this.propiedadDatos?.superficie || '',
-        balance: this.propiedadDatos?.balance || '',
-        estatusId:  String(this.propiedadDatos?.estatus.id)|| '',
-        propietarioId: this.propiedadDatos?.propietario.nombre + ' ' + this.propiedadDatos.propietario.apellidos || '',
+        tipoPropiedadId: [String(this.propiedadDatos?.tipoPropiedad.id) || '', Validators.required],
+        claveCatastral: [this.propiedadDatos?.claveCatastral || '', Validators.required],
+        descripcion: [this.propiedadDatos?.descripcion || '', Validators.required],
+        superficie: [this.propiedadDatos?.superficie || '', Validators.required],
+        balance: [this.propiedadDatos?.balance || '', Validators.required],
+        estatusId: [String(this.propiedadDatos?.estatus.id)|| '', Validators.required],
+        propietarioId: [this.propiedadDatos?.propietario.nombre + ' ' + this.propiedadDatos.propietario.apellidos || '', Validators.required],
         inquilinoId: inquilino || null,
-        fraccionamientoId: this.propiedadDatos?.fraccionamientoId || '',
-        archivoPredial: this.propiedadDatos?.predialUrl || '',
+        fraccionamientoId: [this.propiedadDatos?.fraccionamientoId || '', Validators.required],
+        archivoPredial: [this.propiedadDatos?.predialUrl || ''],
       });
     }
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IngresosService } from 'src/app/data/services/api/ingresos/ingresos.service';
+import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 
 @Component({
   selector: 'app-cuotas-ingresos-conf',
@@ -11,7 +12,10 @@ export class CuotasIngresosConfComponent {
 
   public idFraccionamientoUsuer:any;
  
-  constructor(private ingresosService:IngresosService) { }
+  constructor(private ingresosService:IngresosService,private sharedTitleService:SharedTitleComponentService) { 
+
+      sharedTitleService.emitChange("Gestion de Configuracion de Pagos")
+  }
 
   public ingresosData!:any[];
   ngOnInit(): void {

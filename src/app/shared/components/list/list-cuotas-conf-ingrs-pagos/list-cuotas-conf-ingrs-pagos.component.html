@@ -41,7 +41,7 @@
 
     <div class="searchInpt">
       <div class="cardview-header">
-        <button class="l-btn-d" routerLink="/dashboard/vehiculos/registro">+ REGISTRAR PROPIEDAD</button>
+        <button class="l-btn-d" [routerLink]="'/dashboard/'+this.regConfPagoRoute">+ REGISTRAR CONFIGURACION DE PAGO</button>
       </div>
 
       <div class="col-3 input-effect">
@@ -54,8 +54,8 @@
     </div>
     <div class="cardview-body">
       <div class="header-table">
-        <div>ID</div>
-        <div>ID Fraccionamiento</div>
+        <!-- <div>ID</div>
+        <div>ID Fraccionamiento</div> -->
         <div>Descripción</div>
         <div>Monto</div>
         <div>Periodo</div>
@@ -66,14 +66,14 @@
         <div>Días Máximos de Pago</div>
         <div>Fecha Inicial</div>
         <div>Estatus</div>
-        <div>Fecha de Creación</div>
-        <div>Fecha de Actualización</div>
+        <!-- <div>Fecha de Creación</div>
+        <div>Fecha de Actualización</div> -->
       </div>
       <div class="body-table">
         <div class="contenedor-element-table" *ngFor="let confPagos of ingresosConfPagos"
           (click)="abrirModal(confPagos)">
-          <div>{{ confPagos.id }}</div>
-          <div>{{ confPagos.id_fraccionamiento }}</div>
+          <!-- <div>{{ confPagos.id }}</div>
+          <div>{{ confPagos.id_fraccionamiento }}</div> -->
           <div>{{ confPagos.descripcion }}</div>
           <div>{{ confPagos.monto }}</div>
           <div>{{ confPagos.periodo }}</div>
@@ -84,8 +84,8 @@
           <div>{{ confPagos.dias_max_pago }}</div>
           <div>{{ confPagos.fecha_inicial }}</div>
           <div>{{ confPagos.estatus }}</div>
-          <div>{{ confPagos.created_at }}</div>
-          <div>{{ confPagos.updated_at }}</div>
+          <!-- <div>{{ confPagos.created_at }}</div>
+          <div>{{ confPagos.updated_at }}</div> -->
         </div>
       </div>
     </div>

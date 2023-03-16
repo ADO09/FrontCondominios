@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { confPagos } from 'src/app/data/interfaces/confPagos';
 import { propiedad } from 'src/app/data/interfaces/propiedad';
 
@@ -12,7 +13,10 @@ export class ListCuotasConfIngrsPagosComponent {
 
   @Input() ingresosConfPagos!: confPagos[];
   currentConfPago!: confPagos;
-
+public regConfPagoRoute:any;
+  constructor(){
+    this.regConfPagoRoute =  INTERNAL_ROUTES.MODULO_REGCONFPAGO;
+  }
   abrirModal(datos: any): any {
     //console.log('antes de');
     //console.log(datos);

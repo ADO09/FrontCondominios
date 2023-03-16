@@ -96,13 +96,28 @@
                   El campo no puede estar en blanco</p>
               </div>
 
-              <div class="contenedor-input">
+              <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="identificacionUrl">
                 <label for="">Identificacion</label>
                 <label for="">Ingrese</label>
                 <p class="smsError" *ngIf="FormPropietarios.get('identificacionUrl')?.touched && FormPropietarios.get('identificacionUrl')?.errors?.['required']">
                   El campo no puede estar en blanco</p>
-              </div>
+              </div> -->
+
+              <div class="contenedor-input">
+                <a  [href]="api + propietarioDatos.identificacionUrl" target="_blank" (click)="archivo()">
+                  <i class="fas fa-file fa-2x"></i> 
+                </a>
+                <br>
+                <button type="button" (click)="archivo()" >Seleccionar archivo predial</button>
+                <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)" placeholder=" " formControlName="identificacionUrl">
+                
+
+                <p class="smsError"
+                *ngIf="FormPropietarios.get('identificacionUrl')?.touched && FormPropietarios.get('identificacionUrl')?.errors?.['required']">
+                El campo no puede estar en blanco</p>
+            
+            </div>
               <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="isInquilino">
                 <label for="">Inquilino</label>
@@ -114,8 +129,8 @@
               <div class="contenedor-input">
                 <select formControlName="isInquilino">
                   <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
-                  <option value="0">SI</option>
-                  <option value="1">NO</option>
+                  <option value="0">PROPIETARIO</option>
+                  <option value="1">INQUILINO</option>
                 </select>
                 <label for="">Tipo Propietario</label>
                 <p class="smsError"

@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { propietarios } from 'src/app/data/interfaces/propietariosI';
 import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
 import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
@@ -131,7 +132,13 @@ console.log(this.formData.get('archivoPredial'));
 
 this.propiedadesService.postPropiedad(this.formData).subscribe((r)=>{
   console.log(r);
-  
+
+
+  if (r.icon == 'success') {
+    setTimeout(() => {
+      this.router.navigateByUrl('/dashboard/'+INTERNAL_ROUTES.MODULO_PROPPRINC)
+      }, 200);
+  }
 })
     }
     

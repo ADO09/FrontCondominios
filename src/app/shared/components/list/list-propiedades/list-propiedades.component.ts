@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { propiedad } from 'src/app/data/interfaces/propiedad';
 
 
@@ -12,7 +13,12 @@ export class ListPropiedadesComponent implements OnInit {
   @Input() propiedadesData!: propiedad[];
   form: any;
   currentPropiedad!: any;
-  constructor(private formBuilder: FormBuilder) {}
+  public regPropiedadRoute:any;
+  constructor(private formBuilder: FormBuilder) {
+
+
+    this.regPropiedadRoute =  INTERNAL_ROUTES.MODULO_REGPROPIEDAD;
+  }
 
   ngOnInit(): void {}
 

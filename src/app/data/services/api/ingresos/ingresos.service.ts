@@ -60,6 +60,8 @@ export class IngresosService {
 
   AddPostConfPago(data:any): Observable<Mensaje> {
     const response = { icon: '', title: ''};
+    console.log(API_ROUTES.INGRESOS.ADDCONFPAGO);
+    
     return this.http.post<Mensaje>
       (API_ROUTES.INGRESOS.ADDCONFPAGO,data)
       .pipe(
@@ -77,16 +79,11 @@ export class IngresosService {
   }
 
 
-  propiedadesUpdate( id:any, data:any): Observable<Mensaje> {
+  ConfPagoPutUpdate( id:any, data:any): Observable<Mensaje> {
 
-    // console.log('ID_____:' + id);
-    // console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id +queryparams.QUERY.QUERYPUT,data);
-    // console.log(data);
-    console.log(API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id + queryparams.QUERY.QUERYPUT);
-    
     const response = { icon: '', title: '' };
-    return this.http.post<Mensaje>
-      (API_ROUTES.PROPIEDADES.UPDATEPROPIEDADID + id + queryparams.QUERY.QUERYPUT,data) //aqui 
+    return this.http.put<Mensaje>
+      (API_ROUTES.INGRESOS.UPDATEPAGOCONF + id ,data) //aqui 
       .pipe(
         delay(100),
         map(r => {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import * as fromComponents from './components';
@@ -35,6 +35,7 @@ import { ModalListRecibosComponent } from './components/modals/modal-list-recibo
     CommonModule ,
    
     ...fromComponents.components
-  ]
+  ],
+  providers: [DatePipe],
 })
 export class SharedModule { }

@@ -37,6 +37,8 @@
                 <a routerLinkActive="active-link" routerLink="/dashboard/report/average" (click)="irRecibos('all','all')" >Propietarios</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/vehiculos/listado" >Vehículos</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/Inquilino" >Recibos</a>
+                <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+ propiedadesRoute" >Propiedades</a>
+                <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+confCuotasRoute" >Configuracion de cuotas</a>
             </div>
             <div id="eventClick" title="Administración">
                 <img src="../../../../assets/administraccion.svg" style="filter: invert(40%) sepia(56%) saturate(560%) hue-rotate(194deg) brightness(94%) contrast(89%);" alt="">

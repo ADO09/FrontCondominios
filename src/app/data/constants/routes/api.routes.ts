@@ -35,11 +35,13 @@ export const API_ROUTES = {
     },
     PROPIETARIOS:{
         GETALLPROPIETARIOS:`${ENV.urlAPI}propietarios`,
-        ADDPROPIETARIO:`${ENV.urlAPI}propietarios`
+        ADDPROPIETARIO:`${ENV.urlAPI}propietarios`,
+        UPDATEPROPIETARIO:`${ENV.urlAPI}propietarios/`
     },
     INGRESOS:{
         GETALLPAGOSCONF:`${ENV.urlAPI}configurar-pagos`,
         ADDCONFPAGO:`${ENV.urlAPI}configurar-pagos`,
+        UPDATEPAGOCONF:`${ENV.urlAPI}configurar-pagos/`,
     },
     USUARIOS:{
         ADDUSERCONFIRMUSER:`${ENV.urlAPI}usuario/confirmar-registro`,

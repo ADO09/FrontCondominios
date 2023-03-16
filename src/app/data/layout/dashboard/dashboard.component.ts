@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedTitleComponentService } from '../../services/shared-title-component.service';
-
+import { INTERNAL_ROUTES } from '../../constants/routes/internal.routes';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,15 +9,15 @@ import { SharedTitleComponentService } from '../../services/shared-title-compone
 })
 export class DashboardComponent implements OnInit {
   tituloComponente!: string;
-
+  
   menuDesplegado: Boolean = false;
 
   correo?:string
   rol?:string
 
   idEmpleado:string = ''
-  
-  
+  public propiedadesRoute:any = INTERNAL_ROUTES.MODULO_PROPPRINC;
+  public confCuotasRoute:any = INTERNAL_ROUTES.MODULO_CUOTAS;
   
   constructor(private sharedTitleService: SharedTitleComponentService  ,private router:Router) {
     sharedTitleService.changeEmitted$.subscribe((tituloComponente) => {
