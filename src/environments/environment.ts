@@ -6,7 +6,8 @@ export const environment = {
   production: false ,
   //api:'http://26.142.80.113:8000/api/v1/'
   api:'http://127.0.0.1:8000/api/v1/',
-  apiRadmin: 'http://26.142.80.113:8000/api/v1/'
+  apiRadmin: 'http://26.142.80.113:8000/api/v1/',
+  urlDomain:'http://localhost:4200/'
 };
 
 
