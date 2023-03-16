@@ -1,0 +1,36 @@
+<div class="div-tabla" >
+
+    <table id="principal">
+        <tr>
+          <th>Folio del egreso</th>
+          <th>Monto</th>
+          <th>Verificado</th>
+          <th>Estado del egreso</th>
+        </tr>
+      <tr>
+       
+        <tr  *ngFor="let egresos of listaEgresos" 
+        onclick="document.getElementById('id01').style.display='block'">
+        
+          <td>{{egresos.id}}</td>
+          <td>${{egresos.montoTotal}}</td>
+          <td>{{egresos.isVerified === 0 ? 'NO' : 'SI'}}</td>
+          <td>{{egresos.estatusEgreso.descripcion}}</td>
+        </tr>
+          
+    </table>
+    
+      
+    <body>
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-card-4 w3-animate-bottom" style="max-width:600px">
+            <div class="w3-center"><br>
+              <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+           
+            </div>
+            </div>
+          </div>   
+      </body>
+      
+</div>
