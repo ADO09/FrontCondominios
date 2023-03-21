@@ -23,5 +23,21 @@ export class EgresosComponent implements OnInit {
       this.listaEgresos = recibos.body;
       console.log(this.listaEgresos);
     });
+
+    
+  }
+
+
+
+  cambiarEstatus(idEgreso:any){
+    const payload: any[] = [
+
+    ]
+
+    this.apiService.cambiarEstatus(this.fraccionamientoId, idEgreso, payload).subscribe((recibos:any)=>{
+      this.listaEgresos = recibos.body;
+      console.log(this.listaEgresos);
+    });
+
   }
 }

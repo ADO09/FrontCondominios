@@ -14,4 +14,8 @@ export class EgresosService {
   getEgresos(id:any): Observable<any>{
     return this.http.get<any>(this.baseUrl + 'egresos/?fraccionamientoId[eq]='+id);
   }
+
+  cambiarEstatus(idFraccionamiento:any, idEgreso:any, payload:any[]){
+    return this.http.put<any>(this.baseUrl + 'egresos/?fraccionamientoId[eq]='+idFraccionamiento+'&id[eq]='+idEgreso,payload);
+  }
 }
