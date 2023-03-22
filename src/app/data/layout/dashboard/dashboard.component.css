@@ -323,6 +323,6 @@
 
 .ref-hide{
     opacity: 0;
-    pointer-events: 0;
+    pointer-events: none;
     position: absolute;
 }

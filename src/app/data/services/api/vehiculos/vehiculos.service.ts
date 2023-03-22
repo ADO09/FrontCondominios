@@ -86,4 +86,12 @@ export class VehiculosService {
 
   }
 
+  /**
+   * ! OBTENER TODAS LAS PROPIEDADES
+   */
+
+  getAllPropiedades():Observable<any>{
+    return this.http.get(`${this.baseUrl}propiedades?fraccionamientoId[eq]=${localStorage.getItem('id_fraccionamiento')}`)
+  }
+
 }

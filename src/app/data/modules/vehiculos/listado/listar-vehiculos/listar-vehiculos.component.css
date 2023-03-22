@@ -6,10 +6,10 @@
 
 
 .header-table {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
 }
 .body-table .contenedor-element-table {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
 }
 
 .body-table .contenedor-element-table div {
