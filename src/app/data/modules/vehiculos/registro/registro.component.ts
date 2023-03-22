@@ -20,6 +20,10 @@ export class RegistroComponent {
   idPropiedad: string | undefined;
   pdfUrl: any;
 
+  propiedades:any[]=[]
+  propiedadesTemp:any[]=[]
+  showModal = false
+
   constructor(
     private apiService: VehiculosService,
     private router: Router,
@@ -37,7 +41,13 @@ export class RegistroComponent {
       .getTiposVehiculos()
       .toPromise()) as any);
     this.tiposvehiculo = data.body;
+
+    var data  = (await this.apiService.getAllPropiedades().toPromise()) as any;
+    this.propiedades = data.body
+    this.propiedadesTemp =data.body
   }
+
+ 
 
   vehiculoFormRegistro = new FormGroup({
     id_tipo_vehiculo: new FormControl('', [Validators.required]),
@@ -80,6 +90,7 @@ export class RegistroComponent {
    * ? POR SU CLAVE CATASTRAL
    * ! FALTARIA PODER BUSCAR POR MAS ATRIBUTOS
    */
+  /*
   searchPropiedad(clave: string) {
     this.apiService.searchClaveCatastral(clave).subscribe((data: any) => {
       if (data.body == '') {
@@ -108,6 +119,27 @@ export class RegistroComponent {
         });
       }
     });
+  }*/
+  // ? BUSCAR PROPIEDAD POR SU NOMBRE DE PROPIETARIO ,DESCRIPCION O CLAVE CATSTRAL
+  searchPropiedad(search:any ,event:any){
+
+    event.stopPropagation();
+    //event.stopPropagation();
+    //console.log(search)
+    const matchingPropiedades = this.propiedadesTemp.filter(u => 
+      u.claveCatastral.toLowerCase().includes(search.toLowerCase()) || 
+      u.propietario.nombre.toLowerCase().includes(search.toLowerCase()) || 
+      u.descripcion.toLowerCase().includes(search.toLowerCase())
+    );
+    //console.log(matchingUsers);
+
+    this.propiedades = matchingPropiedades
+  }
+  // ? SELECCIONAR PRIPIEDAD DE MODAL 
+  selectPropiedad(propiedad:any){
+    this.idPropiedad = String(propiedad.id);
+    this.idPropietario = String(propiedad.propietario.id);
+    this.showModal = false
   }
 
   addVehiculo() {

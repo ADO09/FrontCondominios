@@ -5,9 +5,9 @@
 
                 <label for="">Propiedad</label>
                 <div class="contenedor-input" style="margin-bottom: 0;">
-                    <input type="text" placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(claveCatastral.value)">
-                    <label for="">por clave catastral</label>
-                    <label for="">Buscar </label>      
+                    <input type="text" style="cursor: default;" (click)="showModal = true" readonly placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(null ,null)">
+                    <label for=""></label>
+                    <label for="">Seleccionar </label>      
                 </div>
                 <span *ngIf="idPropietario" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span>
 
@@ -42,7 +42,7 @@
                         El campo no puede estar en blanco</p>
                     </div>
                     <div class="contenedor-input">
-                        <button type="button" (click)="clickInputFile()"  placeholder=" ">Tarjeta de circulación</button>
+                        <button type="button" (click)="clickInputFile()" style="display: flex;flex-direction: row; justify-content: space-between; align-items: center;"  placeholder=" ">Tarjeta de circulación <i class="fa fa-file-pdf"></i></button>
                         <input id="inputFile" type="file" accept="application/pdf" (change)="onFileSelected($event)" style="display: none;">
                         <a *ngIf="selectedFile" style="color: var(--ColorWa); font-size: 11px; margin-top: 10px; text-decoration: underline; cursor: pointer;" (click)="previewFile()">Tarjeta de circulacion seleccionada</a>
                     </div>
@@ -78,3 +78,32 @@
         </div>
   
 </section>
+
+<!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
+<div class="container-modal" *ngIf="showModal" (click)="showModal = false">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <div class="header">
+            <button (click)="showModal = false"><i class="fa-solid fa-xmark"></i></button>
+            <input type="search" #search placeholder="Buscar" (keyup)="searchPropiedad(search.value ,$event)">
+        </div>
+        <div class="body">
+            <div class="header-table" >
+                <div>Tipo</div>
+                <div>Clave catastral</div>
+                <div>Descripcion</div>
+                <div>Propietario</div>
+            </div>
+            <div class="body-table">             
+                <div class="contenedor-element-table" *ngFor="let propiedad of propiedades" (click)="selectPropiedad(propiedad)">
+                    <div> <p title="{{propiedad.tipoPropiedad.descripcion}}">{{propiedad.tipoPropiedad.descripcion}}</p></div>
+                    <div><p title="{{propiedad.claveCatastral}}">{{propiedad.claveCatastral}}</p></div>
+                    <div><p title="{{propiedad.descripcion}}">{{propiedad.descripcion}}</p></div>
+                    <div><p title="{{propiedad.propietario.nombre}}">{{propiedad.propietario.nombre}}</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</div>
