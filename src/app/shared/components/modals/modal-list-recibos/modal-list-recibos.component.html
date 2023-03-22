@@ -14,7 +14,9 @@
               <div class="content-select">
                 <label for="select"><b>Configuraciones</b></label>
                 <select formControlName="configuracionId"> 
-                  <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >{{configuraciones.id}} {{configuraciones.descripcion}} {{configuraciones.tipo_pago}}</option>
+                  <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >
+                    {{configuraciones.id}} {{configuraciones.descripcion}} {{configuraciones.tipo_pago}}
+                  </option>
                 </select>
               </div>
             </div>
@@ -24,7 +26,7 @@
                   <select formControlName="plazoPorGenerar"> 
                     <option value="1">1 mes</option>
                     <option value="2">2 meses</option>
-                    <option value="3">3 mese</option>
+                    <option value="3">3 meses</option>
                     <option value="4">6 meses</option>
                     <option value="5">12 meses</option>
                   </select>

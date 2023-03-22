@@ -1,23 +1,26 @@
-    <table id="principal">
-        <tr>
-          <th>Folio del recibo</th>
-          <th>Monto</th>
-          <th>Fecha de vencimiento</th>
-          <th>Estado del recibo</th>
-        </tr>
-      <tr>
-       
-        <tr  *ngFor="let recibos of listaRecibos  | paginate: {itemsPerPage: 50, currentPage: page}" 
-        (click)="editarRecibo(recibos.id)"  onclick="document.getElementById('id01').style.display='block'">
-        
-          <td>{{recibos.id}}?:{{listaRecibos.length}}</td>
-          <td>{{recibos.monto}}</td>
-          <td>{{recibos.fechaVencimiento}}</td>
-          <td>{{recibos.estatus}}</td>
-        </tr>
-          
-</table>
-    
+<section class="contenedor-componente">
+  <div class="cardview" >
+    <div class="cardview-body" >
+      <div class="header-table" >
+        <div>Folio del recibo</div>
+        <div>Monto</div>
+        <div>Fecha de vencimiento</div>
+        <div>Estado del recibo</div>
+      </div>
+    </div>
+
+    <div class="body-table">
+      <div  class="contenedor-element-table" *ngFor="let recibos of listaRecibos  | paginate: {itemsPerPage: 50, currentPage: page}"  
+      onclick="document.getElementById('id01').style.display='block'">
+        <div>{{recibos.id}}</div>
+        <div>${{recibos.monto}}</div>
+        <div>{{recibos.fechaVencimiento}}</div>
+        <div>{{recibos.estatus}}</div>
+    </div>
+    </div>
+  </div>
+
+</section>
 <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
   
    
