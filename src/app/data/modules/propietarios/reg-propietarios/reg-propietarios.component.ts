@@ -124,7 +124,7 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
           
           if (r.icon == 'success') {
             setTimeout(() => {
-            this.router.navigateByUrl('/dashboard/'+INTERNAL_ROUTES.MODULO_REG_PROPIETARIO)
+            this.router.navigateByUrl('/dashboard/'+INTERNAL_ROUTES.MODULO_GESTION_PROPIETARIOS)
             }, 200);
           }
           
