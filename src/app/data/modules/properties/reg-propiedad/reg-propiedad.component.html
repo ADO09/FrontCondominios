@@ -70,6 +70,8 @@
                     </div>
 
                     <div class="contenedor-input">
+
+                        <p>(PENDIENDTE)</p>
                         <input type="text" placeholder=" " formControlName="balance">
                         <label for="">Balance</label>
                         <label for="">Ingrese</label>
@@ -80,15 +82,29 @@
                     
                     </div>
 
+
+                    
+                    <div class="contenedor-input">
+
+                        <p>(PENDIENDTE)</p>
+                        <input type="text" placeholder=" " formControlName="lote">
+                        <label for="">Lote</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="formPropiedades.get('lote')?.touched && formPropiedades.get('lote')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
                     <div class="contenedor-input">
                         <select formControlName="estatusId">
                             <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
-                            <option value="0">Nueva</option>
-                            <option value="1">Balance Pendiente</option>
-                            <option value="2">Incompleta</option>
-                            <option value="3">Activa</option>
+                            <option value="0">Activo</option>
+                            <option value="1">Inactivo</option>
+
                          </select>
-                        <label for="">Tipo</label>
+                        <label for="">Estatus</label>
                         <p class="smsError"
                         *ngIf="formPropiedades.get('estatusId')?.touched && formPropiedades.get('estatusId')?.errors?.['required']">
                         El campo no puede estar en blanco</p>
