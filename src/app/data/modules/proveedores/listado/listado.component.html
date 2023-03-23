@@ -1,0 +1,25 @@
+<section class="contenedor-componente">
+    <div class="cardview" >
+
+
+        <div class="cardview-header" >
+            <button class="l-btn-d" routerLink="/dashboard/proveedores/registro">+ REGISTRAR PROVEEDOR</button>
+        </div>
+
+        <div class="cardview-body" >
+            <div class="header-table" >
+                <div>Correo</div>
+                <div>Proveedor</div>
+                <div>RFC</div>
+            </div>
+            <div class="body-table">
+             
+                <div class="contenedor-element-table" *ngFor="let proveedor of proveedores">
+                    <div> <p title="{{proveedor.correoContacto}}">{{proveedor.correoContacto}}</p></div>
+                    <div><p title="{{proveedor.nombreContacto}}">{{proveedor.nombreContacto}}</p></div>
+                    <div><p title="{{proveedor.rfc}}">{{proveedor.rfc}}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
