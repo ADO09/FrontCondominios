@@ -47,6 +47,8 @@ export const ROUTES_PATHS = {
         REGCONFPAGOS:'regConfPagos',
         //EGRESOS---------------------------------------
         EGRESOSDEFAULT:'egresos',
+        //TARJETAS RFDI---------------------------------
+        TARJETAS_RFDI_DEFAULT:'tarjetas_rfdi',
 
         //VEHICULOS
         VEHICULOSDEFAULT:'vehiculos',
@@ -125,6 +127,8 @@ export const INTERNAL_PATHS = {
  
      //EGRESOS-------------------------------------------------
      PANELDEFAULEGRESOS:`${ROUTES_PATHS.PANEL.EGRESOSDEFAULT}`,
+    //TARJETAS RFDI--------------------------------------------
+    PANELDEFAULTTARJETAS:`${ROUTES_PATHS.PANEL.TARJETAS_RFDI_DEFAULT}`,
 
 
     //INGRESOS---------------------------------------------
@@ -225,8 +229,8 @@ export const INTERNAL_ROUTES = {
     //INQUILINO-------------------------------------
     MODULO_INICIO_INQUILINO: `${INTERNAL_PATHS.PANEL_INQUILINO}`,
 
-    // MODULO_REGCLIENT:`/${INTERNAL_PATHS.PANELREGDEFAULT}/${INTERNAL_PATHS.PANELREGCLIENT}`,
-    // MODULO_TIPOREG:`/${INTERNAL_PATHS.PANELREGDEFAULT}/${INTERNAL_PATHS.PANELTIPOREGS}`,
+    //TARJETAS RFDI---------------------------------
+    MODULO_TARJETAS_RFDI: `${INTERNAL_PATHS.PANELDEFAULTTARJETAS}`,
 
 
 

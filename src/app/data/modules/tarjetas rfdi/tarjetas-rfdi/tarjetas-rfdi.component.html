@@ -1,0 +1,24 @@
+<section class="contenedor-componente">
+    <div class="cardview" >
+      <div class="cardview-body" >
+        <div class="header-table" >
+          <div>RFDI</div>
+          <div>Propiedad registrada</div>
+          <div>Tipo de circulación</div>
+          <div>Estado de la tarjeta</div>
+        </div>
+      </div>
+  
+      <div class="body-table">
+        <div  class="contenedor-element-table" *ngFor="let rfdi of listaTarjetas" 
+        onclick="document.getElementById('id01').style.display='block'">
+          <div>{{rfdi.id}}</div>
+          <div>{{rfdi.id}}</div>
+          <div *ngIf="1 === 1" style="color: blue;">Carro</div>
+          <div *ngIf="this.fraccionamientoId === 1" style="color: red;">Peatonal</div>
+          <div>{{rfdi.estatusEgreso.descripcion}}</div>
+      </div>
+      </div>
+    </div>
+  
+  </section>
