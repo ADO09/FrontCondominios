@@ -70,6 +70,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/egresos/egresos.module').then((m) =>m.EgresosModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/proveedores/proveedores.module').then((m) =>m.ProveedoresModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>
