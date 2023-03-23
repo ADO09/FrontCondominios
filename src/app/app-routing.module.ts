@@ -75,6 +75,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/proveedores/proveedores.module').then((m) =>m.ProveedoresModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/tarjetas rfdi/tarjetas.module').then((m) =>m.TarjetasModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>

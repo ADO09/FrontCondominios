@@ -100,8 +100,6 @@
     max-width: none;
 }
 
-
-
 .header-table {
     grid-template-columns: 2fr 1fr 1fr 1fr;
 }
