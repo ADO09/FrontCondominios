@@ -63,4 +63,24 @@ export class ListRecibosInquilinoComponent implements OnInit {
 
   }
 
+  abrirModal(): any {
+
+    
+    var divModl =  document.getElementById('id02') as HTMLDivElement;
+    divModl.style.display = 'block';
+  }
+  closeModal() {
+    const modal = document.getElementById('id02');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+  }
+
+  envModal(){
+    
+   var divModl =  document.getElementById('id02') as HTMLDivElement;
+   divModl.style.display = 'none';
+
+  }
+
 }

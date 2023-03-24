@@ -1,38 +1,40 @@
 
 
     
-      <div  class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-  
+<div  class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
         <div class="w3-center"><br>
-          <span (click)="cerrarModal()"  class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
           <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
         </div>
-  
-        <form [formGroup]="formRecibo">
-          <div class="form-row">
-            <div class="form-group">
-              <div class="content-select">
-                <label for="select"><b>Configuraciones</b></label>
-                <select formControlName="configuracionId"> 
-                  <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >
-                    {{configuraciones.id}} {{configuraciones.descripcion}} {{configuraciones.tipo_pago}}
-                  </option>
-                </select>
-              </div>
+        <div class="cardview" style="margin: 0; padding: 0; padding-right: 15px; padding-bottom: 15px;"  >
+
+
+        <form  class="form" [formGroup]="formRecibo">
+          <div class="contenedor-grid-2">
+            <div class="contenedor-input">
+              <select formControlName="configuracionId"> 
+                <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >
+                  {{configuraciones.id}} {{configuraciones.descripcion}} {{configuraciones.tipo_pago}}
+                </option>
+              </select>
+              <label for=""><b>Configuraciones</b></label>
             </div>
-              <div class="form-group" >
-                <div class="content-select">
-                  <label for="select"><b>Plazo a generar</b></label>
-                  <select formControlName="plazoPorGenerar"> 
-                    <option value="1">1 mes</option>
-                    <option value="2">2 meses</option>
-                    <option value="3">3 meses</option>
-                    <option value="6">6 meses</option>
-                    <option value="12">12 meses</option>
-                  </select>
-                </div>
-              </div>
+
+            <div class="contenedor-input">
+              <select formControlName="plazoPorGenerar"> 
+                <option value="1">1 mes</option>
+                <option value="2">2 meses</option>
+                <option value="3">3 meses</option>
+                <option value="6">6 meses</option>
+                <option value="12">12 meses</option>
+              </select>
+              <label for="select"><b>Plazo a generar</b></label>
+            </div>
           </div>
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id01').style.display='none'" (click)="enviarInfo()">Enviar</button>
+          <div class="contenedor-botones">
+            <button type="button"(click)="cerrarModal()">CANCELAR</button>
+            <button type="submit" (click)="enviarInfo()" onclick="document.getElementById('id01').style.display='none'">GUARDAR</button>
+          </div>
+          
         </form>
       </div>
+</div>

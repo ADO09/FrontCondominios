@@ -1,5 +1,8 @@
 <section class="contenedor-componente">
   <div class="cardview" >
+    <div class="cardview-header" >
+      <button class="l-btn-d" (click)="abrirModal()">+ REGISTRAR NUEVOS RECIBOS</button>
+  </div>
     <div class="cardview-body" >
       <div class="header-table" >
         <div>Folio del recibo</div>
@@ -21,7 +24,6 @@
   </div>
 
 </section>
-<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
   
    
 <body>
@@ -77,4 +79,4 @@
     </div>   
 </body>
 
-
+<app-modal-list-recibos id="id02" class="w3-modal" [cerrarModal]="envModal"></app-modal-list-recibos>
