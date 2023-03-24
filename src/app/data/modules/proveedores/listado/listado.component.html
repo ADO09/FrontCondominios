@@ -14,7 +14,7 @@
             </div>
             <div class="body-table">
              
-                <div class="contenedor-element-table" *ngFor="let proveedor of proveedores">
+                <div class="contenedor-element-table" *ngFor="let proveedor of proveedores" routerLink='/dashboard/proveedores/editar/{{proveedor.id}}'>
                     <div> <p title="{{proveedor.correoContacto}}">{{proveedor.correoContacto}}</p></div>
                     <div><p title="{{proveedor.nombreContacto}}">{{proveedor.nombreContacto}}</p></div>
                     <div><p title="{{proveedor.rfc}}">{{proveedor.rfc}}</p></div>
