@@ -1,134 +1,40 @@
-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f0dada;
-  }
-  
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  
-  
-  label {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  input[type="number"],
-  input[type="date"],
-  input[type="text"] {
-    width: 95%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 4px;
-    background-color: #fff;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  input[type="number"]:focus,
-  input[type="date"]:focus,
-  input[type="text"]:focus {
-    outline: none;
-    box-shadow: 0 0 5px #ccc;
-  }
-  
-  input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  input:invalid {
-    border-color: red;
-  }
-  
+  .contenedor-componente 
+.cardview {
+    max-width: none;
+}
+
+.header-table {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+.body-table .contenedor-element-table {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.body-table .contenedor-element-table div {
+    max-width: none;
+}
+
+.form .contenedor-botones {
+    padding: 2px;
+}
 
 
-  .content-select select{
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-  
-  /* Eliminamos la fecha que por defecto aparece en el desplegable */
-  .content-select select::-ms-expand {
-      display: none;
-  }
-  .content-select{
-    max-width: 250px;
+.input-group {
     position: relative;
   }
-   
-  .content-select select{
-    display: inline-block;
-    width: 100%;
-    cursor: pointer;
-      padding: 7px 10px;
-      height: 42px;
-      outline: 0; 
-      border: 0;
-    border-radius: 0;
-    background: #f0f0f0;
-    color: #7b7b7b;
-    font-size: 1em;
-    color: #999;
-    font-family: 
-    'Quicksand', sans-serif;
-    border:2px solid rgba(0,0,0,0.2);
-      border-radius: 12px;
-      position: relative;
-      transition: all 0.25s ease;
   
-  }
-   
-  .content-select select:hover{
-    background: #B1E8CD;
-  }
-   
-  /* 
-  Creamos la fecha que aparece a la izquierda del select.
-  Realmente este elemento es un cuadrado que sólo tienen
-  dos bordes con color y que giramos con transform: rotate(-45deg);
-  */
-  .content-select i{
+  .input-group-addon {
     position: absolute;
-    right: 20px;
-    top: calc(50% - 13px);
-    width: 16px;
-    height: 16px;
-    display: block;
-    border-left:4px solid #2AC176;
-    border-bottom:4px solid #2AC176;
-    transform: rotate(-45deg); /* Giramos el cuadrado */
-    transition: all 0.25s ease;
-  }
-   
-  .content-select:hover i{
-    margin-top: 3px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #ccc;
+    cursor: pointer;
   }
   
-  .content-select label{
-      padding-left: 14px;
-      font-family: 
-    'Quicksand', sans-serif;
+  .input-group-addon:hover {
+    color: #333;
   }
