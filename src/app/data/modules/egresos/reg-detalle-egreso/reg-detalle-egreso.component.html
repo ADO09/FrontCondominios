@@ -1,1 +1,153 @@
-<p>reg-detalle-egreso works!</p>
+
+
+<section class="contenedor-componente" style="height: auto; width: auto;">
+    <div
+      class="cardview"
+      
+    >
+      <form
+        class="form"
+        (keydown.enter)="$event.preventDefault()"
+        [formGroup]="FormDetalleEgresos"
+        (ngSubmit)="enviarModal()"
+      >
+        <!-- <label for="">Propiedad</label>
+                  <div class="contenedor-input" style="margin-bottom: 0;">
+                      <input type="text" placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(claveCatastral.value)">
+                      <label for="">por clave catastral</label>
+                      <label for="">Buscar </label>      
+                  </div>
+                  <span *ngIf="idPropietario" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span> -->
+
+        <div class="contenedor-grid-1">
+          <div class="contenedor-input">
+            <input type="text" placeholder=" " formControlName="cantidad" />
+            <label for="">Cantidad</label>
+            <label for="">Ingrese</label>
+
+            <p
+              class="smsError"
+              *ngIf="FormDetalleEgresos.get('cantidad')?.touched && FormDetalleEgresos.get('cantidad')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
+
+          <div class="contenedor-input">
+            <input type="text" placeholder=" " formControlName="descripcion" />
+            <label for="">Descripcion</label>
+            <label for="">Ingrese</label>
+
+            <p
+              class="smsError"
+              *ngIf="FormDetalleEgresos.get('descripcion')?.touched && FormDetalleEgresos.get('descripcion')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
+
+          <div class="contenedor-input">
+            <input
+              type="text"
+              placeholder=" "
+              formControlName="precio_unitario"
+            />
+            <label for="">Precio Unitario</label>
+            <label for="">Ingrese</label>
+
+            <p
+              class="smsError"
+              *ngIf="FormDetalleEgresos.get('precio_unitario')?.touched && FormDetalleEgresos.get('precio_unitario')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
+
+          <div class="contenedor-input">
+            <input
+              type="text"
+              placeholder=" "
+              formControlName="producto"
+              style="cursor: default"
+              (click)="showModal = true"
+              readonly
+              placeholder=" "
+              #claveCatastral
+              (keydown.enter)="searchPropiedad(null, null)"
+            />
+
+            <!-- <span *ngIf="idProducto" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span> -->
+            <label for="">Producto</label>
+            <label for="">ingrese</label>
+
+            <p
+              class="smsError"
+              *ngIf="FormDetalleEgresos.get('producto')?.touched && FormDetalleEgresos.get('producto')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
+
+ 
+        </div>
+
+        <div class="contenedor-botones">
+          <button type="button" routerLink="/dashboard/vehiculos/listado">
+            CANCELAR
+          </button>
+          <button type="submit" [disabled]="FormDetalleEgresos.invalid">
+            GUARDAR
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
+<div class="container-modal" *ngIf="showModal" (click)="showModal = false">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="header">
+        <button (click)="showModal = false">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <input
+          type="search"
+          #search
+          placeholder="Buscar"
+          (keyup)="searchPropiedad(search.value, $event)"
+        />
+      </div>
+      <div class="body">
+        <div class="header-table">
+          <div>descripcion</div>
+          <div>Identificador Interno</div>
+          <div>Proveedor</div>
+          <!-- <div>Cantidad</div> -->
+        </div>
+        <div class="body-table">
+          <div
+            class="contenedor-element-table"
+            *ngFor="let producto of productos"
+            (click)="selectProducto(producto)"
+          >
+            <div>
+              <p title="{{ producto.descripcion }}">{{ producto.descripcion }}</p>
+            </div>
+            <div>
+              <p title="{{ producto.identificadorInterno }}">
+                {{ producto.identificadorInterno }}
+              </p>
+            </div>
+            <div>
+              <p title="{{ producto.proveedor.nombre }}">
+                {{ producto.proveedor.nombre }}
+              </p>
+            </div>
+            <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </div>

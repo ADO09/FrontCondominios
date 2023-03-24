@@ -55,6 +55,25 @@ export class EgresosService {
       );
   }
 
+  postDetalleEgreso(data:any): Observable<Mensaje> {
+    const response = { icon: '', title: ''};
+    return this.http.post<Mensaje>
+      (API_ROUTES.EGRESOS.ADDDETALLEEGRESOPOST,data)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          // response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
+
+
   getTipoEgresoQPFraccionamiento(id:any){
     const response = { icon: '', title: '', body: [] as any[] | null };
     return this.http.get<Mensaje>
