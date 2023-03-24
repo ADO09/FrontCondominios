@@ -1,26 +1,34 @@
-<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="  max-width: 800px; padding-left: 15px; ">
+<div
+  class="w3-modal-content w3-card-4 w3-animate-zoom"
+  style="max-width: 800px; padding-left: 15px"
+>
   <div class="w3-center">
     <br />
     <!--  -->
     <span
-    (click)="cerrarModal()"
+      (click)="cerrarModal()"
       class="w3-button w3-xlarge w3-hover-red w3-display-topright"
       title="Close Modal"
-      style="position: absolute; "
+      style="position: absolute"
       >&times;</span
     >
     <img
       src="../../../../../assets/administraccion.svg"
       alt="Avatar"
-      style="width: 15%; margin-bottom: 15px;"
+      style="width: 15%; margin-bottom: 15px"
       class="w3-circle w3-margin-top"
     />
   </div>
-  <div class="cardview" style="margin: 0; padding: 0; padding-right: 15px; padding-bottom: 15px;"  >
-
-    <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="formPropiedades"
-      (ngSubmit)="enviarModal()">
-
+  <div
+    class="cardview"
+    style="margin: 0; padding: 0; padding-right: 15px; padding-bottom: 15px"
+  >
+    <form
+      class="form"
+      (keydown.enter)="$event.preventDefault()"
+      [formGroup]="formPropiedades"
+      (ngSubmit)="enviarModal()"
+    >
       <!-- <label for="">Propiedad</label>
                 <div class="contenedor-input" style="margin-bottom: 0;">
                     <input type="text" placeholder=" " #claveCatastral (keydown.enter)="searchPropiedad(claveCatastral.value)">
@@ -28,9 +36,6 @@
                     <label for="">Buscar </label>      
                 </div>
                 <span *ngIf="idPropietario" style="color: var(--ColorSuccess); font-size: 11px;" for="">Propiedad seleccionada</span> -->
-
-
-
       <div class="contenedor-grid-2">
         <div class="contenedor-input">
           <select formControlName="tipoPropiedadId">
@@ -41,9 +46,12 @@
             <option value="3">Otro</option>
           </select>
           <label for="">Tipo</label>
-          <p class="smsError"
-            *ngIf="formPropiedades.get('tipoPropiedadId')?.touched && formPropiedades.get('tipoPropiedadId')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('tipoPropiedadId')?.touched && formPropiedades.get('tipoPropiedadId')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
 
         <!-- <div class="contenedor-input">
@@ -52,66 +60,57 @@
                         <label for="">Ingrese</label>
                     </div> -->
 
-
         <div class="contenedor-input">
-          <input type="text" placeholder=" " formControlName="claveCatastral">
+          <input type="text" placeholder=" " formControlName="claveCatastral" />
           <label for="">Clave Catastral</label>
           <label for="">Ingrese</label>
 
-          <p class="smsError"
-            *ngIf="formPropiedades.get('claveCatastral')?.touched && formPropiedades.get('claveCatastral')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('claveCatastral')?.touched && formPropiedades.get('claveCatastral')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
 
-
         <div class="contenedor-input">
-          <input type="text" placeholder=" " formControlName="descripcion">
+          <input type="text" placeholder=" " formControlName="descripcion" />
           <label for="">Descripcion</label>
           <label for="">Ingrese</label>
 
-          <p class="smsError"
-            *ngIf="formPropiedades.get('descripcion')?.touched && formPropiedades.get('descripcion')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('descripcion')?.touched && formPropiedades.get('descripcion')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
 
         <div class="contenedor-input">
-          <input type="text" placeholder=" " formControlName="superficie">
+          <input type="text" placeholder=" " formControlName="superficie" />
           <label for="">Superficie</label>
           <label for="">Ingrese</label>
 
-          <p class="smsError"
-            *ngIf="formPropiedades.get('superficie')?.touched && formPropiedades.get('superficie')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('superficie')?.touched && formPropiedades.get('superficie')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
 
         <div class="contenedor-input">
-          <input type="text" placeholder=" " formControlName="balance">
+          <input type="text" placeholder=" " formControlName="balance" />
           <label for="">Balance</label>
           <label for="">Ingrese</label>
 
-          <p class="smsError"
-            *ngIf="formPropiedades.get('balance')?.touched && formPropiedades.get('balance')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('balance')?.touched && formPropiedades.get('balance')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
-
-        <div class="contenedor-input">
-          <select formControlName="estatusId">
-            <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
-            <option value="0">Nueva</option>
-            <option value="1">Balance Pendiente</option>
-            <option value="2">Incompleta</option>
-            <option value="3">Activa</option>
-          </select>
-          <label for="">Tipo</label>
-          <p class="smsError"
-            *ngIf="formPropiedades.get('estatusId')?.touched && formPropiedades.get('estatusId')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-        </div>
-
         <!-- <div class="contenedor-input">
                         <input type="text" placeholder=" " formControlName="propietarioId">
                         <label for="">Propietario</label>
@@ -122,25 +121,56 @@
                         El campo no puede estar en blanco</p>
                     
                     </div> -->
+        <div class="contenedor-input">
+          <input type="text" placeholder=" " formControlName="lote" />
+          <label for="">Lote</label>
+          <label for="">Ingrese</label>
+
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('lote')?.touched && formPropiedades.get('lote')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
 
         <div class="contenedor-input">
-          <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()"
-            formControlName="propietarioId" readonly>
-          <input *ngIf="propietarioSelect" type="text" placeholder=" "
-            [value]="propietarioSelect.nombre +' ' +  propietarioSelect.apellidos" formControlName="propietarioId"
-            (click)="abrModalPropietarios()" readonly>
+          <input
+            *ngIf="!propietarioSelect"
+            type="text"
+            placeholder=" "
+            (click)="abrModalPropietarios()"
+            formControlName="propietarioId"
+            readonly
+          />
+          <input
+            *ngIf="propietarioSelect"
+            type="text"
+            placeholder=" "
+            [value]="
+              propietarioSelect.nombre + ' ' + propietarioSelect.apellidos
+            "
+            formControlName="propietarioId"
+            (click)="abrModalPropietarios()"
+            readonly
+          />
           <label for="">Propietario</label>
           <label for="">Ingrese</label>
-          <span *ngIf="propietarioSelect" class="input-group-addon" (click)="handleClearInput2()">
+          <span
+            *ngIf="propietarioSelect"
+            class="input-group-addon"
+            (click)="handleClearInput2()"
+          >
             <i class="fa fa-times"></i>
           </span>
 
-          <p class="smsError"
-            *ngIf="formPropiedades.get('propietarioId')?.touched && formPropiedades.get('propietarioId')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('propietarioId')?.touched && formPropiedades.get('propietarioId')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
-
 
         <!-- <div class="contenedor-input">
                      
@@ -152,17 +182,32 @@
                     </div> -->
 
         <div class="contenedor-input">
-          <input *ngIf="!inquilinoSelect" type="text" placeholder=" " (click)="abrModalinquilinos()"
-            formControlName="inquilinoId" readonly>
-          <input *ngIf="inquilinoSelect" type="text" placeholder=" "
-            [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId"
-            (click)="abrModalinquilinos()" readonly>
+          <input
+            *ngIf="!inquilinoSelect"
+            type="text"
+            placeholder=" "
+            (click)="abrModalinquilinos()"
+            formControlName="inquilinoId"
+            readonly
+          />
+          <input
+            *ngIf="inquilinoSelect"
+            type="text"
+            placeholder=" "
+            [value]="inquilinoSelect.nombre + ' ' + inquilinoSelect.apellidos"
+            formControlName="inquilinoId"
+            (click)="abrModalinquilinos()"
+            readonly
+          />
           <label for="">Inquilino</label>
           <label for="">Ingrese</label>
-          <span *ngIf="inquilinoSelect" class="input-group-addon" (click)="handleClearInput()">
+          <span
+            *ngIf="inquilinoSelect"
+            class="input-group-addon"
+            (click)="handleClearInput()"
+          >
             <i class="fa fa-times"></i>
           </span>
-
         </div>
 
         <!-- <div class="contenedor-input">
@@ -175,40 +220,67 @@
                         El campo no puede estar en blanco</p>
                     
                     </div> -->
-
-
         <div class="contenedor-input">
-          <button type="button" (click)="archivo()">Seleccionar archivo predial</button>
-          <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)"
-            placeholder=" " formControlName="archivoPredial">
-
-
-          <p class="smsError"
-            *ngIf="formPropiedades.get('archivoPredial')?.touched && formPropiedades.get('archivoPredial')?.errors?.['required']">
-            El campo no puede estar en blanco</p>
-
+          <select formControlName="estatusId">
+            <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+            <option value="0">Inactiva</option>
+            <option value="1">Activa</option>
+          </select>
+          <label for="">Estatus</label>
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('estatusId')?.touched && formPropiedades.get('estatusId')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
         </div>
 
+        <div class="contenedor-input">
+          <button type="button" (click)="archivo()">
+            Seleccionar archivo predial
+          </button>
+          <input
+            id="inputfile"
+            style="display: none"
+            type="file"
+            (change)="selectedFilePredial($event)"
+            placeholder=" "
+            formControlName="archivoPredial"
+          />
 
-
+          <p
+            class="smsError"
+            *ngIf="formPropiedades.get('archivoPredial')?.touched && formPropiedades.get('archivoPredial')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
       </div>
 
-
-
       <div class="contenedor-botones">
-        <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
-        <button type="submit" [disabled]="formPropiedades.invalid">GUARDAR</button>
+        <button type="button" routerLink="/dashboard/vehiculos/listado">
+          CANCELAR
+        </button>
+        <button type="submit" [disabled]="formPropiedades.invalid">
+          GUARDAR
+        </button>
       </div>
     </form>
   </div>
-
-
 </div>
 
+<app-modal-list-inquilinos
+  id="id0I"
+  class="w3-modal"
+  (inquilinoSeleccionado)="manejarDato($event)"
+  [propietariosData]="propietariosDataI"
+  [cerrarModal]="envModalI"
+></app-modal-list-inquilinos>
 
-
-<app-modal-list-inquilinos id="id0I" class="w3-modal" (inquilinoSeleccionado)="manejarDato($event)"
-  [propietariosData]="propietariosDataI" [cerrarModal]="envModalI"></app-modal-list-inquilinos>
-
-<app-modal-list-propietarios id="id0P" class="w3-modal" (inquilinoSeleccionado)="manejarDatoP($event)"
-  [propietariosData]="propietariosDataP" [cerrarModal]="envModalP"></app-modal-list-propietarios>
+<app-modal-list-propietarios
+  id="id0P"
+  class="w3-modal"
+  (inquilinoSeleccionado)="manejarDatoP($event)"
+  [propietariosData]="propietariosDataP"
+  [cerrarModal]="envModalP"
+></app-modal-list-propietarios>

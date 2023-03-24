@@ -36,6 +36,7 @@ export class ListPropiedadesComponent implements OnInit {
       predialUrl: datos.predialUrl,
       estatus: datos.estatus,
       propietario: datos.propietario,
+      lote: datos.lote,
       inquilino: datos.inquilino,
       fraccionamientoId: datos.fraccionamientoId,
     };

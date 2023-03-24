@@ -55,6 +55,7 @@ export class ModalListPropiedadesComponent implements OnInit {
         descripcion: ['', Validators.required],
         superficie: ['', Validators.required],
         balance: [0],
+        lote: ['', Validators.required],
         estatusId: [''],
         propietarioId: ['', Validators.required],
         inquilinoId: [''],
@@ -126,6 +127,7 @@ export class ModalListPropiedadesComponent implements OnInit {
       //   fraccionamientoId: this.propiedadDatos?.fraccionamientoId || '',
       //   archivoPredial: this.propiedadDatos?.predialUrl || '',
       // });
+      console.log('lote ' + this.propiedadDatos?.lote );
       this.formPropiedades = this.fb.group({
         tipoPropiedadId: [
           String(this.propiedadDatos?.tipoPropiedad.id) || '',
@@ -144,9 +146,8 @@ export class ModalListPropiedadesComponent implements OnInit {
           Validators.required,
         ],
         balance: [this.propiedadDatos?.balance || 0],
-        estatusId: [
-          String(this.propiedadDatos?.estatus.id) || ''
-        ],
+        estatusId: [String(this.propiedadDatos?.estatus) || ''],
+        lote: [this.propiedadDatos?.lote || ''],
         propietarioId: [
           this.propiedadDatos?.propietario.nombre +
             ' ' +
@@ -170,7 +171,6 @@ export class ModalListPropiedadesComponent implements OnInit {
 
     var idProp: any = this.propietarioSelect?.id;
 
-   
     this.formData.append('balance', this.formPropiedades.value.balance);
     this.formData.append(
       'claveCatastral',
@@ -199,21 +199,22 @@ export class ModalListPropiedadesComponent implements OnInit {
     );
 
     if (!this.formData.get('inquilinoId')) {
-      this.propiedadesService.ElmInquilinoNull(this.propiedadDatos.id).subscribe( (r)=>{
-        console.log(r);
-        
-      })
+      this.propiedadesService
+        .ElmInquilinoNull(this.propiedadDatos.id)
+        .subscribe((r) => {
+          console.log(r);
+        });
     }
 
-    console.log(this.formData.get('balance'));
-    console.log(this.formData.get('claveCatastral'));
-    console.log(this.formData.get('descripcion'));
-    console.log(this.formData.get('estatusId'));
-    console.log(this.formData.get('fraccionamientoId'));
-    console.log(this.formData.get('inquilinoId'));
-    console.log(this.formData.get('propietarioId'));
-    console.log(this.formData.get('superficie'));
-    console.log(this.formData.get('tipoPropiedadId'));
+    // console.log(this.formData.get('balance'));
+    // console.log(this.formData.get('claveCatastral'));
+    // console.log(this.formData.get('descripcion'));
+    // console.log(this.formData.get('estatusId'));
+    // console.log(this.formData.get('fraccionamientoId'));
+    // console.log(this.formData.get('inquilinoId'));
+    // console.log(this.formData.get('propietarioId'));
+    // console.log(this.formData.get('superficie'));
+    // console.log(this.formData.get('tipoPropiedadId'));
 
     this.propiedadesService
       .propiedadesUpdate(this.propiedadDatos.id, this.formData)

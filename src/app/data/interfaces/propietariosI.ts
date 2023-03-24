@@ -8,6 +8,7 @@ export interface propietarios {
     celularAlt?: any;
     claveInterfon?: any;
     claveInterfonAlt?: any;
+    lote?: any;
     isInquilino?: any;
     identificacionUrl?: any;
     fraccionamientoId?: any;

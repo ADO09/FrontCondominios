@@ -1,73 +1,105 @@
 <section class="contenedor-componente">
-    <div class="cardview" >
-      <div class="cardview-header" >
-        <button class="l-btn-d" onclick="document.getElementById('id01').style.display='block'" (click)="nuevoRFDI()">+ REGISTRAR NUEVO RFDI</button>
+  <div class="cardview">
+    <div class="cardview-header">
+      <button
+        class="l-btn-d"
+        onclick="document.getElementById('id01').style.display='block'"
+        (click)="nuevoRFDI()"
+      >
+        + REGISTRAR NUEVO RFDI
+      </button>
     </div>
-      <div class="cardview-body" >
-        <div class="header-table" >
-          <div>RFDI</div>
-          <div>Propiedad registrada</div>
-          <div>Tipo de circulación</div>
-        </div>
-      </div>
-  
-      <div class="body-table">
-        <div  class="contenedor-element-table" *ngFor="let rfdi of listaTarjetas" 
-        onclick="document.getElementById('id01').style.display='block'" (click)="enviarDatosAlModal(rfdi.rfdi)">
-          <div>{{rfdi.rfdi}}</div>
-          <div>{{rfdi.propiedadId.id}}</div>
-          <div *ngIf="rfdi.tipo === 'AUTOMOVIL'" style="color: blue;">Automovil</div>
-          <div *ngIf="rfdi.tipo === 'PEATONAL'" style="color: red;">Peatonal</div>
-          <div *ngIf="rfdi.tipo === 'AUTOMOVIL'"><i class="fa fa-car fa-2x" aria-hidden="true"></i></div>
-          <div *ngIf="rfdi.tipo === 'PEATONAL'"><i class="fa fa-blind fa-2x" aria-hidden="true"></i></div>
-      </div>
+    <div class="cardview-body">
+      <div class="header-table">
+        <div>RFDI</div>
+        <div>Propiedad registrada</div>
+        <div>Tipo de circulación</div>
       </div>
     </div>
-  
-  </section>
 
-        
-  <body>
-    <div id="id01" class="w3-modal">
-      <div class="w3-modal-content w3-card-4 w3-animate-bottom" style="max-width:600px">
-        <div class="w3-center"><br>
-          <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+    <div class="body-table">
+      <div
+        class="contenedor-element-table"
+        *ngFor="let rfdi of listaTarjetas"
+        onclick="document.getElementById('id01').style.display='block'"
+        (click)="enviarDatosAlModal(rfdi.rfdi)"
+      >
+        <div>{{ rfdi.rfdi }}</div>
+        <div>{{ rfdi.propiedadId.id }}</div>
+        <div *ngIf="rfdi.tipo === 'AUTOMOVIL'" style="color: blue">
+          Automovil
         </div>
-        <div class="cardview" style="margin: 0; padding: 0; padding-right: 15px; padding-bottom: 15px;"  >
+        <div *ngIf="rfdi.tipo === 'PEATONAL'" style="color: red">Peatonal</div>
+        <div *ngIf="rfdi.tipo === 'AUTOMOVIL'">
+          <i class="fa fa-car fa-2x" aria-hidden="true"></i>
+        </div>
+        <div *ngIf="rfdi.tipo === 'PEATONAL'">
+          <i class="fa fa-blind fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <form class="form" [formGroup]="formRFDI">
-      
-            <div class="contenedor-grid-2">
-              <div class="contenedor-input">
-                <select formControlName="tipo">
-                  <option value="PEATONAL">Peatonal <i class="fa fa-blind fa-fw" aria-hidden="true"></i></option>
-                  <option value="AUTOMOVIL">Automovil <i class="fa fa-car" aria-hidden="true"></i></option>
-                </select>
-                <label for="">Tipo</label>
-              </div>
-      
-              <div class="contenedor-input">
-                <input type="text" formControlName="rfdi" placeholder=" " >
-                <label for="">RFDI</label>
-              </div>
+<body>
+  <div id="id01" class="w3-modal ">
+    <div
+      class="w3-modal-content w3-card-4 w3-animate-bottom modal"
+      style="max-width: 400px"
+    >
+      <h2>REGISTRAR RFDI</h2>
+      <div
+        class="cardview"
+      >
+        <form class="form" [formGroup]="formRFDI">
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <select formControlName="tipo">
+                <option value="PEATONAL">
+                  Peatonal <i class="fa fa-blind fa-fw" aria-hidden="true"></i>
+                </option>
+                <option value="AUTOMOVIL">
+                  Automovil <i class="fa fa-car" aria-hidden="true"></i>
+                </option>
+              </select>
+              <label for="">Tipo</label>
+            </div>
 
-              <div class="contenedor-input">
+            <div class="contenedor-input">
+              <input type="text" formControlName="rfdi" placeholder=" " />
+              <label for="">RFDI</label>
+            </div>
+
+            <div class="contenedor-input">
               <select formControlName="propiedadId">
-                <option *ngFor="let propiedades of listaPropiedades" value="{{propiedades.id}}">Propiedad: {{propiedades.id}} Lote: {{propiedades.lote}}</option>
+                <option
+                  *ngFor="let propiedades of listaPropiedades"
+                  value="{{ propiedades.id }}"
+                >
+                  Propiedad: {{ propiedades.id }} Lote: {{ propiedades.lote }}
+                </option>
               </select>
               <label for="">Propiedad del RFDI</label>
-              </div>
+            </div>
+          </div>
 
-            </div>
-      
-      
-      
-            <div class="contenedor-botones">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'">CANCELAR</button>
-              <button type="submit" (click)="cambiarRFDI()" onclick="document.getElementById('id01').style.display='none'">GUARDAR</button>
-            </div>
-          </form>
-        </div>
-        </div>
-      </div>   
-  </body>
+          <div class="contenedor-botones">
+            <button
+              type="button"
+              onclick="document.getElementById('id01').style.display='none'"
+            >
+              CANCELAR
+            </button>
+            <button
+              type="submit"
+              (click)="cambiarRFDI()"
+              onclick="document.getElementById('id01').style.display='none'"
+            >
+              GUARDAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
