@@ -1,40 +1,48 @@
-.contenedor-componente .cardview {
-    max-width: 600px;
-    padding: 15px;
-    padding-top: 48px;
-}
+
 
 .form .contenedor-botones {
-    padding: 2px;
+  padding: 2px;
 }
 
-
 .input-group {
-    position: relative;
-  }
-  
-  .input-group-addon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    color: #ccc;
-    cursor: pointer;
-  }
-  
-  .input-group-addon:hover {
-    color: #333;
-  }
+  position: relative;
+}
 
+.input-group-addon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #ccc;
+  cursor: pointer;
+}
 
+.input-group-addon:hover {
+  color: #333;
+}
 
-  .TipoEgresoDescripcion{
-    width: 100px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
+.TipoEgresoDescripcion {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tipoEgreso{
+  width: 100%;
+  /* min-width: 260px; */
+}
+
+.contenedor-componente .cardview {
+  width: 100%;
+  padding: 15px;
+  padding-top: 48px;
+  margin: 0 auto;
+}
+
+.contenedor-componente{
+  width: 70%;
+}

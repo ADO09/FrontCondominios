@@ -1,99 +1,98 @@
-<div style="margin: 0 auto; display: flex; justify-content: center; align-items: center;">
-  <section class="contenedor-componente" style="height: auto;  ">
-
-
+<div
+  style="
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  "
+>
+  <section class="contenedor-componente">
     <div class="cardview">
-
-      <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="FormEgresos" (ngSubmit)="enviarModal()">
-
+      <form
+        class="form"
+        (keydown.enter)="$event.preventDefault()"
+        [formGroup]="FormEgresos"
+        (ngSubmit)="enviarModal()"
+      >
         <div class="contenedor-grid-2">
-
-
-
           <!-- descripcion -->
           <div class="contenedor-input">
-            <input type="text" placeholder=" " formControlName="descripcion">
+            <input type="text" placeholder=" " formControlName="descripcion" />
             <label for="">Descripción</label>
             <label for="">Ingrese</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('descripcion')?.touched && FormEgresos.get('descripcion')?.errors?.['required']">
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('descripcion')?.touched && FormEgresos.get('descripcion')?.errors?.['required']"
+            >
               El campo no puede estar en blanco
             </p>
           </div>
 
           <!-- comprobanteUrl -->
           <div class="contenedor-input">
-            <input type="text" placeholder=" " formControlName="comprobanteUrl">
+            <input
+              type="text"
+              placeholder=" "
+              formControlName="comprobanteUrl"
+            />
             <label for="">Comprobante URL</label>
             <label for="">Ingrese</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('comprobanteUrl')?.touched && FormEgresos.get('comprobanteUrl')?.errors?.['required']">
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('comprobanteUrl')?.touched && FormEgresos.get('comprobanteUrl')?.errors?.['required']"
+            >
               El campo no puede estar en blanco
             </p>
           </div>
 
           <!-- montoTotal -->
           <div class="contenedor-input">
-            <input type="text" placeholder=" " formControlName="montoTotal">
+            <input type="text" placeholder=" " formControlName="montoTotal" />
             <label for="">Monto Total</label>
             <label for="">Ingrese</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('montoTotal')?.touched && FormEgresos.get('montoTotal')?.errors?.['required']">
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('montoTotal')?.touched && FormEgresos.get('montoTotal')?.errors?.['required']"
+            >
               El campo no puede estar en blanco
             </p>
           </div>
-
-          <!-- isVerified -->
-          <!-- <div class="contenedor-input">
-                      <input type="text" placeholder=" " formControlName="isVerified">
-                      <label for="">Is Verified</label>
-                      <label for="">Ingrese</label>
-                      <p class="smsError"
-                          *ngIf="FormEgresos.get('isVerified')?.touched && FormEgresos.get('isVerified')?.errors?.['required']">
-                          El campo no puede estar en blanco
-                      </p>
-                  </div> -->
 
           <div class="contenedor-input">
             <select formControlName="isVerified">
-
               <option value="0">NO</option>
               <option value="1">SI</option>
-              
             </select>
             <label for="">Verificado</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('isVerified')?.touched && FormEgresos.get('isVerified')?.errors?.['required']">
-              El campo no puede estar en blanco</p>
-          </div>
-
-
-          <div class="contenedor-input">
-  
-            <select formControlName="tipoEgreso" style="width: 230px;" >
-              <option value="{{tiposEgreso.id}}" *ngFor="let tiposEgreso of tiposEgresos" > {{tiposEgreso.descripcion}} </option>
-            </select>
-            <label for="">Tipo de egreso</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('tipoEgreso')?.touched && FormEgresos.get('tipoEgreso')?.errors?.['required']">
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('isVerified')?.touched && FormEgresos.get('isVerified')?.errors?.['required']"
+            >
               El campo no puede estar en blanco
             </p>
           </div>
 
-
-          <!-- <div class="contenedor-input">
-            <input type="text" placeholder=" " formControlName="estatusEgreso">
-            <label for="">Estatus de egreso</label>
-            <label for="">Ingrese</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('estatusEgreso')?.touched && FormEgresos.get('estatusEgreso')?.errors?.['required']">
-              El campo no puede estar en blanco</p>
-          </div> -->
-
+          <div class="contenedor-input">
+            <select formControlName="tipoEgreso" class="tipoEgreso">
+              <option
+                value="{{ tiposEgreso.id }}"
+                *ngFor="let tiposEgreso of tiposEgresos"
+              >
+                {{ tiposEgreso.descripcion }}
+              </option>
+            </select>
+            <label for="">Tipo de egreso</label>
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('tipoEgreso')?.touched && FormEgresos.get('tipoEgreso')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
 
           <div class="contenedor-input">
             <select formControlName="estatusEgreso">
-
               <option value="0">APROBADO</option>
               <option value="1">PENDIENTE APROBACIÓN</option>
               <option value="2">ACTIVO</option>
@@ -102,120 +101,31 @@
               <option value="5">PAGADO</option>
               <option value="6">COBRADO</option>
               <option value="7">RECHAZADO</option>
-
-
             </select>
             <label for="">Verificado</label>
-            <p class="smsError"
-              *ngIf="FormEgresos.get('estatusEgreso')?.touched && FormEgresos.get('isVerified')?.errors?.['required']">
-              El campo no puede estar en blanco</p>
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('estatusEgreso')?.touched && FormEgresos.get('isVerified')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
           </div>
-
-          <!-- <div class="contenedor-input">
-                  <input type="text" placeholder=" " formControlName="detalleEgreso">
-                  <label for="">Detalle de egreso</label>
-                  <label for="">Ingrese</label>
-                  <p class="smsError"
-                    *ngIf="FormEgresos.get('detalleEgreso')?.touched && FormEgresos.get('detalleEgreso')?.errors?.['required']">
-                    El campo no puede estar en blanco</p>
-                </div> -->
-
-
-          <!-- <div class="contenedor-input">
-                                  <input type="text" placeholder=" " formControlName="id_fraccionamiento">
-                                  <label for="">Fraccionamiento</label>
-                                  <label for="">Ingrese</label>
-                                  <p class="smsError" *ngIf="FormEgresos.get('id_fraccionamiento')?.touched && FormEgresos.get('id_fraccionamiento')?.errors?.['required']">
-                                    El campo no puede estar en blanco</p>
-                                </div> -->
-
-          <!--           
-                      <div class="contenedor-input">
-                        <select formControlName="periodo">
-                          <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> 
-                          <option value="UNICO">UNICO</option>
-                          <option value="SEMANAL">SEMANAL</option>
-                          <option value="MENSUAL">MENSUAL</option>
-                          <option value="ANUAL">ANUAL</option>
-                        </select>
-                        <label for="">Tipo</label>
-                        <p class="smsError"
-                          *ngIf="FormEgresos.get('periodo')?.touched && FormEgresos.get('periodo')?.errors?.['required']">
-                          El campo no puede estar en blanco</p>
-                      </div> -->
-
-
-
-          <!-- <div class="contenedor-input">
-                          <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()"
-                            formControlName="propietarioId" readonly>
-                          <input *ngIf="propietarioSelect" type="text" placeholder=" "
-                            [value]="propietarioSelect.nombre +' ' +  propietarioSelect.apellidos" formControlName="propietarioId"
-                            (click)="abrModalPropietarios()" readonly>
-                          <label for="">Propietario</label>
-                          <label for="">Ingrese</label>
-                          <span *ngIf="propietarioSelect" class="input-group-addon" (click)="handleClearInput2()">
-                            <i class="fa fa-times"></i>
-                          </span>
-                
-                          <p class="smsError"
-                            *ngIf="FormEgresos.get('propietarioId')?.touched && FormEgresos.get('propietarioId')?.errors?.['required']">
-                            El campo no puede estar en blanco</p>
-                
-                        </div>
-                 -->
-
-
-          <!--   
-                        <div class="contenedor-input">
-                          <input *ngIf="!inquilinoSelect" type="text" placeholder=" " (click)="abrModalinquilinos()"
-                            formControlName="inquilinoId" readonly>
-                          <input *ngIf="inquilinoSelect" type="text" placeholder=" "
-                            [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId"
-                            (click)="abrModalinquilinos()" readonly>
-                          <label for="">Inquilino</label>
-                          <label for="">Ingrese</label>
-                          <span *ngIf="inquilinoSelect" class="input-group-addon" (click)="handleClearInput()">
-                            <i class="fa fa-times"></i>
-                          </span>
-                
-                        </div> -->
-
-
-
-
-          <!-- <div class="contenedor-input">
-                          <button type="button" (click)="archivo()">Seleccionar archivo predial</button>
-                          <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)"
-                            placeholder=" " formControlName="archivoPredial">
-                
-                
-                          <p class="smsError"
-                            *ngIf="FormEgresos.get('archivoPredial')?.touched && FormEgresos.get('archivoPredial')?.errors?.['required']">
-                            El campo no puede estar en blanco</p>
-                
-                        </div> -->
-
-
-
         </div>
-
-
 
         <div class="contenedor-botones">
-          <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
-          <button type="submit" [disabled]="FormEgresos.invalid">GUARDAR</button>
+          <button type="button" routerLink="/dashboard/egresos">
+            CANCELAR
+          </button>
+          <button type="submit" [disabled]="FormEgresos.invalid">
+            GUARDAR
+          </button>
         </div>
       </form>
-      
     </div>
-
-
-
   </section>
 
-
-
-  <div *ngIf="this.egresoData" >
-  <app-list-detalles-egresos  [dataDetallesEgreso]="this.egresoData.detalleEgreso"></app-list-detalles-egresos>
+  <app-list-detalles-egresos
+    *ngIf="this.egresoData"
+    [dataDetallesEgreso]="this.egresoData.detalleEgreso"
+  ></app-list-detalles-egresos>
 </div>

@@ -31,16 +31,18 @@
                 <a routerLinkActive="active-link" routerLink="/dashboard/proveedores/registro" class="ref-hide"  >Proveedores</a>
 
                 <!--REF VISIBLES-->
-                <label for="">Egresos</label>
-                <a routerLinkActive="active-link" routerLink="/dashboard/proveedores/listado" >Proveedores</a>
-                <label for="">Base de datos</label>
+                <label for="">Propiedades</label>
                 <a routerLinkActive="active-link" [routerLink]="'/dashboard/' + propietariosRoute">Propietarios</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/vehiculos/listado" >Vehículos</a>
-                <a routerLinkActive="active-link" routerLink="/dashboard/Inquilino" >Recibos</a>
                 <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+ propiedadesRoute" >Propiedades</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/tarjetas_rfdi" >Tarjetas RFDI</a>
-                <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+ confCuotasRoute" >Configuracion de cuotas</a>
+                <label for="">Egresos</label>
+                <a routerLinkActive="active-link" routerLink="/dashboard/proveedores/listado" >Proveedores</a>
                 <a routerLinkActive="active-link" routerLink="/dashboard/egresos" >Egresos</a>
+                <label for="">Ingresos</label>
+                <a routerLinkActive="active-link" routerLink="/dashboard/Inquilino" >Recibos</a>
+                <a routerLinkActive="active-link" [routerLink]="'/dashboard/'+ confCuotasRoute" >Configuracion de cuotas</a>
+
             </div>
             <div id="eventClick" title="Administración">
                 <img src="../../../../assets/administraccion.svg" style="filter: invert(40%) sepia(56%) saturate(560%) hue-rotate(194deg) brightness(94%) contrast(89%);" alt="">
@@ -53,9 +55,9 @@
                 <a routerLinkActive="active-link" routerLink="/dashboard/usuarios/registro" class="ref-hide">Usuarios</a>
                
             
-                <label for="">Propiedades</label>
+                <!-- <label for="">Propiedades</label>
                 <a routerLinkActive="active-link" routerLink="/dashboard/goods/price">Calles</a>
-                <a routerLinkActive="active-link" routerLink="/dashboard/goods/categories">Tipos de propiedades</a>
+                <a routerLinkActive="active-link" routerLink="/dashboard/goods/categories">Tipos de propiedades</a> -->
                 <label for="">Cuenta</label>
                 <a routerLinkActive="active-link" routerLink="/dashboard/usuarios/listado">Usuarios</a>
             </div>
