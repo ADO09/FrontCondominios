@@ -5,6 +5,7 @@ import { INTERNAL_PATHS } from 'src/app/data/constants/routes/internal.routes';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { LoginComponent } from '../auth/login/login.component';
 import { CuotasIngresosConfComponent } from './cuotas-ingresos-conf/cuotas-ingresos-conf.component';
+import { ListadoComponent } from './recibo-pago/listado/listado.component';
 import { RecibosGeneralesComponent } from './recibos-generales/recibos-generales.component';
 import { RegistroConfPagoComponent } from './registro-conf-pago/registro-conf-pago.component';
 
@@ -30,6 +31,10 @@ const routes:Routes = [
       component:RegistroConfPagoComponent,
     //  canActivate: [NoAuthGuard]
   },
+  {
+    path:INTERNAL_ROUTES.MODULO_RECIBOS_PAGO,
+    component:ListadoComponent
+  }
     // {
     //     path:INTERNAL_ROUTES.MODULO_ACPTCONTRSREGADMINFRACC,
     //     component:AcptContrRegUsrAdmnFraccComponent,
