@@ -1,69 +1,91 @@
 <section class="contenedor-componente">
-    <div class="cardview"  >
-  
-        <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="FormPropietarios"
-          (ngSubmit)="enviarModal()">
-    
-          <div class="contenedor-grid-2">
-  
-        
-             
-            <!-- <div class="contenedor-input">
+  <div class="cardview">
+    <form
+      class="form"
+      (keydown.enter)="$event.preventDefault()"
+      [formGroup]="FormPropietarios"
+      (ngSubmit)="enviarModal()"
+    >
+      <div class="contenedor-grid-2">
+        <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="id">
                 <label for="">ID</label>
                 <label for="">Ingrese</label>
                 <p class="smsError" *ngIf="FormPropietarios.get('id')?.touched && FormPropietarios.get('id')?.errors?.['required']">
                   El campo no puede estar en blanco</p>
               </div> -->
-              
-              <div class="contenedor-input">
-                <input type="text" placeholder=" " formControlName="nombre">
-                <label for="">Nombre</label>
-                <label for="">Ingrese</label>
-                <p class="smsError" *ngIf="FormPropietarios.get('nombre')?.touched && FormPropietarios.get('nombre')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
-              
-              <div class="contenedor-input">
-                <input type="text" placeholder=" " formControlName="apellidos">
-                <label for="">Apellidos</label>
-                <label for="">Ingrese</label>
-                <p class="smsError" *ngIf="FormPropietarios.get('apellidos')?.touched && FormPropietarios.get('apellidos')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
-              
-              <div class="contenedor-input">
-                <input type="email" placeholder=" " formControlName="correo">
-                <label for="">Correo electrónico</label>
-                <label for="">Ingrese</label>
-                <p class="smsError" *ngIf="FormPropietarios.get('correo')?.touched && FormPropietarios.get('correo')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
-              
-              <div class="contenedor-input">
-                <input type="text" placeholder=" " formControlName="telefonoFijo">
-                <label for="">Teléfono fijo</label>
-                <label for="">Ingrese</label>
-                <p class="smsError" *ngIf="FormPropietarios.get('telefonoFijo')?.touched && FormPropietarios.get('telefonoFijo')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
-              
-              <div class="contenedor-input">
-                <input type="text" placeholder=" " formControlName="celular">
-                <label for="">Celular</label>
-                <label for="">Ingrese</label>
-                <p class="smsError" *ngIf="FormPropietarios.get('celular')?.touched && FormPropietarios.get('celular')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
-              <div class="contenedor-input">
-                <input type="text" placeholder=" " formControlName="celularAlt">
-                <label for="">Celular alternativo</label>
-                <label for="">Ingrese</label>
-                <p class="smsError" *ngIf="FormPropietarios.get('celularAlt')?.touched && FormPropietarios.get('celularAlt')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
 
-              <!-- <div class="contenedor-input">
+        <div class="contenedor-input">
+          <input type="text" placeholder=" " formControlName="nombre" />
+          <label for="">Nombre</label>
+          <label for="">Ingrese</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('nombre')?.touched && FormPropietarios.get('nombre')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+
+        <div class="contenedor-input">
+          <input type="text" placeholder=" " formControlName="apellidos" />
+          <label for="">Apellidos</label>
+          <label for="">Ingrese</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('apellidos')?.touched && FormPropietarios.get('apellidos')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+
+        <div class="contenedor-input">
+          <input type="email" placeholder=" " formControlName="correo" />
+          <label for="">Correo electrónico</label>
+          <label for="">Ingrese</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('correo')?.touched && FormPropietarios.get('correo')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+
+        <div class="contenedor-input">
+          <input type="text" placeholder=" " formControlName="telefonoFijo" />
+          <label for="">Teléfono fijo</label>
+          <label for="">Ingrese</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('telefonoFijo')?.touched && FormPropietarios.get('telefonoFijo')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+
+        <div class="contenedor-input">
+          <input type="text" placeholder=" " formControlName="celular" />
+          <label for="">Celular</label>
+          <label for="">Ingrese</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('celular')?.touched && FormPropietarios.get('celular')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+        <div class="contenedor-input">
+          <input type="text" placeholder=" " formControlName="celularAlt" />
+          <label for="">Celular alternativo</label>
+          <label for="">Ingrese</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('celularAlt')?.touched && FormPropietarios.get('celularAlt')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+        <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="claveInterfon">
                 <label for="">Clave interfon</label>
                 <label for="">Ingrese</label>
@@ -77,9 +99,9 @@
                 <label for="">Ingrese</label>
                 <p class="smsError" *ngIf="FormPropietarios.get('claveInterfonAlt')?.touched && FormPropietarios.get('claveInterfonAlt')?.errors?.['required']">
                   El campo no puede estar en blanco</p>
-              </div>
+              </div> -->
 
-              <!-- <div class="contenedor-input">
+        <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="identificacionUrl">
                 <label for="">Identificacion</label>
                 <label for="">Ingrese</label>
@@ -87,40 +109,50 @@
                   El campo no puede estar en blanco</p>
               </div> -->
 
-              <div class="contenedor-input">
-                <button type="button" (click)="archivo()" >Seleccionar archivo predial</button>
-                <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)" placeholder=" " formControlName="identificacionUrl">
-             
+        <div class="contenedor-input">
+          <button type="button" (click)="archivo()">
+            Seleccionar archivo predial
+          </button>
+          <input
+            id="inputfile"
+            style="display: none"
+            type="file"
+            (change)="selectedFilePredial($event)"
+            placeholder=" "
+            formControlName="identificacionUrl"
+          />
 
-                <p class="smsError"
-                *ngIf="FormPropietarios.get('identificacionUrl')?.touched && FormPropietarios.get('identificacionUrl')?.errors?.['required']">
-                El campo no puede estar en blanco</p>
-            
-            </div>
-              <!-- <div class="contenedor-input">
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('identificacionUrl')?.touched && FormPropietarios.get('identificacionUrl')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+        <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="isInquilino">
                 <label for="">Inquilino</label>
                 <label for="">Seleccione</label>
                 <p class="smsError" *ngIf="FormPropietarios.get('isInquilino')?.touched && FormPropietarios.get('isInquilino')?.errors?.['required']">
                   El campo no puede estar en blanco</p>
               </div> -->
-                           
-              <div class="contenedor-input">
-                <select formControlName="isInquilino">
-                  <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
-                  <option value="0">PROPIETARIO</option>
-                  <option value="1">INQUILINO</option>
-                </select>
-                <label for="">Tipo</label>
-                <p class="smsError"
-                  *ngIf="FormPropietarios.get('isInquilino')?.touched && FormPropietarios.get('isInquilino')?.errors?.['required']">
-                  El campo no puede estar en blanco</p>
-              </div>
-      
-    
-  
-         
-            <!-- <div class="contenedor-input">
+
+        <div class="contenedor-input">
+          <select formControlName="isInquilino">
+            <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+            <option value="0">PROPIETARIO</option>
+            <option value="1">INQUILINO</option>
+          </select>
+          <label for="">Tipo</label>
+          <p
+            class="smsError"
+            *ngIf="FormPropietarios.get('isInquilino')?.touched && FormPropietarios.get('isInquilino')?.errors?.['required']"
+          >
+            El campo no puede estar en blanco
+          </p>
+        </div>
+
+        <!-- <div class="contenedor-input">
               <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()"
                 formControlName="propietarioId" readonly>
               <input *ngIf="propietarioSelect" type="text" placeholder=" "
@@ -138,9 +170,8 @@
     
             </div>
      -->
-    
-       
-  <!--   
+
+        <!--   
             <div class="contenedor-input">
               <input *ngIf="!inquilinoSelect" type="text" placeholder=" " (click)="abrModalinquilinos()"
                 formControlName="inquilinoId" readonly>
@@ -154,11 +185,8 @@
               </span>
     
             </div> -->
-    
-         
-    
-    
-            <!-- <div class="contenedor-input">
+
+        <!-- <div class="contenedor-input">
               <button type="button" (click)="archivo()">Seleccionar archivo predial</button>
               <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)"
                 placeholder=" " formControlName="archivoPredial">
@@ -169,18 +197,16 @@
                 El campo no puede estar en blanco</p>
     
             </div> -->
-    
-    
-    
-          </div>
-    
-    
-    
-          <div class="contenedor-botones">
-            <button type="button" routerLink="/dashboard/vehiculos/listado">CANCELAR</button>
-            <button type="submit" [disabled]="FormPropietarios.invalid">GUARDAR</button>
-          </div>
-        </form>
       </div>
-      
+
+      <div class="contenedor-botones">
+        <button type="button" routerLink="/dashboard/propietarios/gestionPropietarios">
+          CANCELAR
+        </button>
+        <button type="submit" [disabled]="FormPropietarios.invalid">
+          GUARDAR
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
