@@ -18,4 +18,9 @@ export class ProveedoresService {
         return this.http.get<any>(`${this.baseUrl}proveedores?fraccionamientoId[eq]=${localStorage.getItem('id_fraccionamiento')}`)
     }
 
+    // ? REGISTRAR PROVEEDOR
+    registro(data:any):Observable<any>{
+        return this.http.post<any>(`${this.baseUrl}proveedores` ,data)
+    }
+
 }

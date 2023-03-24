@@ -1,1 +1,82 @@
-<p>registro works!</p>
+<section class="contenedor-componente">
+    <div class="cardview">
+        
+            <form  class="form" [formGroup]="proveedorFormRegistro" (ngSubmit)="addProveedor()">
+
+                <div class="contenedor-grid-2">
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="nombre">
+                        <label for="">nombre o razon social</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="proveedorFormRegistro.get('nombre')?.touched && proveedorFormRegistro.get('nombre')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="rfc">
+                        <label for="">RFC</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="proveedorFormRegistro.get('rfc')?.touched && proveedorFormRegistro.get('rfc')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="correoContacto">
+                        <label for="">correo</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="proveedorFormRegistro.get('correoContacto')?.touched && proveedorFormRegistro.get('correoContacto')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="nombreContacto">
+                        <label for="">nombre del contacto del proveedor</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="proveedorFormRegistro.get('nombreContacto')?.touched && proveedorFormRegistro.get('nombreContacto')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+
+                    <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="notas">
+                        <label for="">nota</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="proveedorFormRegistro.get('notas')?.touched && proveedorFormRegistro.get('notas')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+
+                    <div class="contenedor-input">
+                        <select formControlName="metodoDePagoId">
+                            <option value="0">Transferencia</option>
+                            <option value="1">Cheque</option>
+                        </select>
+                        <label for="">Metodo de pago</label>
+                        <p class="smsError"
+                        *ngIf="proveedorFormRegistro.get('metodoDePagoId')?.touched && proveedorFormRegistro.get('metodoDePagoId')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="contenedor-botones">
+                    <button type="button" routerLink="/dashboard/proveedores/listado">CANCELAR</button>
+                    <button type="submit" [disabled]="proveedorFormRegistro.invalid">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+  
+</section>
