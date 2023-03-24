@@ -13,3 +13,28 @@
 .body-table .contenedor-element-table div {
     max-width: none;
 }
+
+.form .contenedor-botones {
+    padding: 2px;
+}
+
+
+.input-group {
+    position: relative;
+  }
+  
+  .input-group-addon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #ccc;
+    cursor: pointer;
+  }
+  
+  .input-group-addon:hover {
+    color: #333;
+  }
