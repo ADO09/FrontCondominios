@@ -33,4 +33,8 @@ export class ProveedoresService {
         return this.http.put<any>(`${this.baseUrl}proveedores/${id}`,data)
     }
 
+    getRecibosPagos():Observable<any>{
+        return this.http.get<any>(`${this.baseUrl}pagos`)
+      }
+
 }

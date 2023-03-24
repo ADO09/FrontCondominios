@@ -5,6 +5,7 @@ import { CuotasIngresosConfComponent } from './cuotas-ingresos-conf/cuotas-ingre
 import { IngresosRoutingModule } from './ingresos-routing.module';
 import { RecibosGeneralesComponent } from './recibos-generales/recibos-generales.component';
 import { RegistroConfPagoComponent } from './registro-conf-pago/registro-conf-pago.component';
+import { ListadoComponent } from './recibo-pago/listado/listado.component';
 
 
 
@@ -12,7 +13,8 @@ import { RegistroConfPagoComponent } from './registro-conf-pago/registro-conf-pa
   declarations: [
     CuotasIngresosConfComponent,
     RecibosGeneralesComponent,
-    RegistroConfPagoComponent
+    RegistroConfPagoComponent,
+    ListadoComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,57 @@
+<section class="contenedor-componente">
+    <div class="cardview" >
+
+
+        <div class="cardview-header" >
+         </div>
+
+        <div class="cardview-body" >
+            <div class="header-table" >
+                <div>Monto</div>
+                <div>Tipo pago</div>
+                <div></div>
+            </div>
+            <div class="body-table">
+             
+                <div class="contenedor-element-table" *ngFor="let recibo of recibospago"  (click)="masInformacion(recibo.propiedadId)">
+                    <div>{{recibo.monto}}</div>
+                    <div>{{recibo.tipoPago}}</div>
+                    <div class="container-opc">
+                        <i title="Aceptar pago" class="fa-solid fa-check success"></i>
+                        <i title="Rechazar pago" class="fa-solid fa-xmark danger"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
+<div class="container-modal" *ngIf="showModal" (click)="showModal = false">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <div class="header">
+            <button (click)="showModal = false"><i class="fa-solid fa-xmark"></i></button>
+            <h4 style="margin-left:calc(var(--Margin) * 2);">Propiedad</h4>
+          </div>
+        <div class="body">
+            <div class="header-table" >
+                <div>Tipo</div>
+                <div>Lote</div>
+                <div>Propietario</div>
+            </div>
+            <div class="body-table">             
+                <div class="contenedor-element-table">
+                    <div> <p title="{{propiedad.tipoPropiedad.descripcion}}">{{propiedad.tipoPropiedad.descripcion}}</p></div>
+                    <div> <p title="{{propiedad.lote}}">{{propiedad.lote}}</p></div>
+                    <div><p title="{{propiedad.propietario.nombre}}">{{propiedad.propietario.nombre}}</p></div>
+                   
+              </div>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</div>
+ 
