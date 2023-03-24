@@ -18,11 +18,11 @@ export class IngresosService {
 
 
    
-  IngresosPagosConfGetAll(): Observable<Mensaje> {
+  IngresosPagosConfGetAll(id:any): Observable<Mensaje> {
 
     const response = { icon: '', title: '', body: [] as any[] | null };
     return this.http.get<Mensaje>
-      (API_ROUTES.INGRESOS.GETALLPAGOSCONF)
+      (API_ROUTES.INGRESOS.GETALLPAGOSCONF+ '?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id)
       .pipe(
         delay(100),
         map(r => {

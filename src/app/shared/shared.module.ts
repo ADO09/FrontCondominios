@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { ListRecibosInquilinoComponent } from './components/list/list-recibos-inquilino/list-recibos-inquilino.component';
 import { ModalListRecibosComponent } from './components/modals/modal-list-recibos/modal-list-recibos.component';
  import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalGestionDetalleEgresosComponent } from './components/modals/modal-gestion-detalle-egresos/modal-gestion-detalle-egresos.component';
+import { ModalListProductosComponent } from './components/modals/modal-list-productos/modal-list-productos.component';
 
 
 
@@ -15,7 +17,7 @@ import { ModalListRecibosComponent } from './components/modals/modal-list-recibo
 
 
 @NgModule({
-  declarations: [...fromComponents.components],
+  declarations: [...fromComponents.components, ModalGestionDetalleEgresosComponent, ModalListProductosComponent],
   imports: [
     FormsModule,
     CommonModule,

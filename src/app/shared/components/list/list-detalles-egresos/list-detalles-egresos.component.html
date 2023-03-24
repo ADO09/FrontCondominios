@@ -1,0 +1,64 @@
+
+
+ <section class="contenedor-componente"  >
+    <div class="cardview">
+  
+  
+      <div class="searchInpt">
+        <div class="cardview-header">
+          <button class="l-btn-d" >+ REGISTRAR DETALLE</button>
+        </div>
+  
+        <!-- [routerLink]="'/dashboard/'+this.regPropiedadRoute" -->
+        <div class="col-3 input-effect">
+          <input class="effect-21" type="text" placeholder="">
+          <label>Search</label>
+          <span class="focus-border">
+            <i></i>
+          </span>
+        </div>
+      </div>
+  
+      
+      <div class="cardview-body">
+        <div class="header-table">
+          <div>Cantidad</div>
+          <div>Descripcion</div>
+          <div>Precio Unitario</div>
+          <div >Producto Descripcion</div>
+          <!-- <div>Superficie</div> -->
+          <!-- <div>Balance</div> -->
+          <div>Identificador Interno</div>
+  
+          <!-- <div>Propietario</div>
+          <div>Archivo Prdl.</div> -->
+          <!-- <div>Frcc.</div> -->
+          <!-- <div>Opcion</div> -->
+        </div>
+        <div class="body-table">
+          <div class="contenedor-element-table" *ngFor="let detalleegreso of dataDetallesEgreso" (click)="abrirModal(detalleegreso)">
+            <div>{{ detalleegreso.cantidad }}</div>
+            <div>{{ detalleegreso.descripcion }}</div>
+            <div >{{ detalleegreso.precio_unitario }}</div>
+            <div id="descrpIdn" > {{ detalleegreso.producto.descripcion }}</div>
+            <!-- <div>{{ propiedad.superficie }}</div> -->
+            <!-- <div>{{ propiedad.balance }}</div> -->
+            <div id="descrpIdn2"  >{{ detalleegreso.producto.identificador_interno }}</div>
+  
+            <!-- <div>{{ detalleegreso.propietario.nombre }}</div>
+   -->
+            <!-- <div>{{ propiedad.fraccionamientoId }}</div> -->
+            <!-- <div>delete</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <div *ngIf="this.currentDetalleEgreso">
+    <app-modal-gestion-detalle-egresos id="id01" class="w3-modal"  [cerrarModal]="envModal"
+      [detalleEgresoDatos]="this.currentDetalleEgreso"></app-modal-gestion-detalle-egresos>
+  </div>
+  
+  

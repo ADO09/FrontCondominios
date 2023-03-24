@@ -48,6 +48,14 @@ export const API_ROUTES = {
     },
     INQUILINOS:{
         ELMINQUILINOPROPIEDAD:`${ENV.urlAPI}propiedades/borrarRelacionPropietario/`
+    },
+    EGRESOS:{
+        GETEGRESOS:`${ENV.urlAPI}egresos`,
+        GETONEEGRESOS:`${ENV.urlAPI}egresos/`,
+        UPDATEEGRESO:`${ENV.urlAPI}egresos/`,
+        GETTIPOEGRESO:`${ENV.urlAPI}tipoEgresos`,
+        UPDATEDETALLEEGRS :`${ENV.urlAPI}detalleEgresos/`,
+        ADDEGRESOPOST:`${ENV.urlAPI}egresos/`
     }
 
 }

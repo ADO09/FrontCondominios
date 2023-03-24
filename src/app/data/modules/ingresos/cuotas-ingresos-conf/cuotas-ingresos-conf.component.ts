@@ -20,7 +20,7 @@ export class CuotasIngresosConfComponent {
   public ingresosData!:any[];
   ngOnInit(): void {
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
-    this.ingresosService.IngresosPagosConfGetAll().subscribe( (r) => {
+    this.ingresosService.IngresosPagosConfGetAll(this.idFraccionamientoUsuer).subscribe( (r) => {
 
       this.ingresosData = r.body;
       console.log(r);

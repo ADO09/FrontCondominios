@@ -1,7 +1,20 @@
 <section class="contenedor-componente">
-  <div class="cardview" >
-    <div class="cardview-body" >
-      <div class="header-table" >
+  <div class="cardview">
+    <div class="searchInpt">
+      <div class="cardview-header">
+        <button class="l-btn-d" [routerLink]="'/dashboard/'">+ REGISTRAR CONFIGURACION DE PAGO</button>
+      </div>
+
+      <div class="col-3 input-effect">
+        <input class="effect-21" type="text" placeholder="">
+        <label>Search</label>
+        <span class="focus-border">
+          <i></i>
+        </span>
+      </div>
+    </div>
+    <div class="cardview-body">
+      <div class="header-table">
         <div>Folio del egreso</div>
         <div>Monto</div>
         <div>Verificado</div>
@@ -10,28 +23,14 @@
     </div>
 
     <div class="body-table">
-      <div  class="contenedor-element-table" *ngFor="let egresos of listaEgresos" 
-      onclick="document.getElementById('id01').style.display='block'">
+      <div  class="contenedor-element-table" [routerLink]="'gestionEgreso/' + egresos.id" (click)="GestionEgreso(egresos)" *ngFor="let egresos of listaEgresos">
         <div>{{egresos.id}}</div>
         <div>${{egresos.montoTotal}}</div>
         <div>{{egresos.isVerified === 0 ? 'NO' : 'SI'}}</div>
         <div>{{egresos.estatusEgreso.descripcion}}</div>
-    </div>
+      </div>
     </div>
   </div>
 
 </section>
-    
-      
-    <body>
-        <div id="id01" class="w3-modal">
-          <div class="w3-modal-content w3-card-4 w3-animate-bottom" style="max-width:600px">
-            <div class="w3-center"><br>
-              <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
-              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-           
-            </div>
-            </div>
-          </div>   
-      </body>
-      
+

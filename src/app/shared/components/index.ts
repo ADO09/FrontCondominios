@@ -13,6 +13,7 @@ import { ModalListRecibosComponent } from "./modals/modal-list-recibos/modal-lis
 import { ModalGestionConfPagoComponent } from './modals/modal-gestion-conf-pago/modal-gestion-conf-pago.component';
 import { ListGestionPropietarioComponent } from './list/list-gestion-propietario/list-gestion-propietario.component';
 import { ModalGestionPropietarioComponent } from './modals/modal-gestion-propietario/modal-gestion-propietario.component';
+import { ListDetallesEgresosComponent } from './list/list-detalles-egresos/list-detalles-egresos.component';
 
 export const components: any[] = [
 
@@ -28,7 +29,8 @@ export const components: any[] = [
     ModalListPropietariosComponent,
     ModalGestionConfPagoComponent,
     ListGestionPropietarioComponent,
-    ModalGestionPropietarioComponent
+    ModalGestionPropietarioComponent,
+    ListDetallesEgresosComponent
 ]
 
 
@@ -39,5 +41,5 @@ export * from './list/list-recibos-generales/list-recibos-generales.component';
 export * from './modals/modal-list-propiedades/modal-list-propiedades.component';
 export * from './modals/modal-registro-propiedad/modal-registro-propiedad.component';
 export * from './modals/modal-gestion-conf-pago/modal-gestion-conf-pago.component';
-
+export * from './list/list-detalles-egresos/list-detalles-egresos.component'
 //export  * from '../../data/layout/dashboard/dashboard.component'; 

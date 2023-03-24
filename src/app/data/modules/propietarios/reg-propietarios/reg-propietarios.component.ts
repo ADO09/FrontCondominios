@@ -26,8 +26,8 @@ export class RegPropietariosComponent {
   }
   ngOnInit() {
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
-this.nombreFraccUser = localStorage.getItem('nombre_fraccionamiento');
-this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
+    this.nombreFraccUser = localStorage.getItem('nombre_fraccionamiento');
+    this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
     this.FormPropietarios = this.fb.group({
       // id: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -89,7 +89,7 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
       
       console.log(r);
 
-      if (r.icon='success') {
+      if (r.icon=='success') {
         
         let datos ={};
 
@@ -111,18 +111,12 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
           codigo_postal:this.CP,
           rol:inqJ,
         }
-        // this.formDataU.append('correo',this.FormPropietarios.value.correo);
-        // this.formDataU.append('nombre',this.FormPropietarios.value.nombre);
-        // this.formDataU.append('apellidos',this.FormPropietarios.value.apellidos);
-        // this.formDataU.append('nombre_fraccionamiento',this.nombreFraccUser);
-        // this.formDataU.append('codigo_postal',this.CP);
-
       
        
-        this.usuariosService.AddUser(datos).subscribe( (r)=>{
-          console.log(r);
+        this.usuariosService.AddUser(datos).subscribe( (res)=>{
+          console.log(res);
           
-          if (r.icon == 'success') {
+          if (res.icon == 'success') {
             setTimeout(() => {
             this.router.navigateByUrl('/dashboard/'+INTERNAL_ROUTES.MODULO_GESTION_PROPIETARIOS)
             }, 200);
