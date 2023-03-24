@@ -122,7 +122,7 @@
       </div>
 
       <div class="contenedor-botones">
-        <button type="button" routerLink="/dashboard/vehiculos/listado">
+        <button type="button"  (click)="cerrarModal()" >
           CANCELAR
         </button>
         <button type="submit" [disabled]="FormDetalleEgresos.invalid">
