@@ -55,7 +55,7 @@ export class ModalListPropiedadesComponent implements OnInit {
         descripcion: ['', Validators.required],
         superficie: ['', Validators.required],
         balance: [0],
-        estatusId: ['', Validators.required],
+        estatusId: [''],
         propietarioId: ['', Validators.required],
         inquilinoId: [''],
         fraccionamientoId: ['', Validators.required],
@@ -145,8 +145,7 @@ export class ModalListPropiedadesComponent implements OnInit {
         ],
         balance: [this.propiedadDatos?.balance || 0],
         estatusId: [
-          String(this.propiedadDatos?.estatus.id) || '',
-          Validators.required,
+          String(this.propiedadDatos?.estatus.id) || ''
         ],
         propietarioId: [
           this.propiedadDatos?.propietario.nombre +
@@ -178,7 +177,7 @@ export class ModalListPropiedadesComponent implements OnInit {
       this.formPropiedades.value.claveCatastral
     );
     this.formData.append('descripcion', this.formPropiedades.value.descripcion);
-    this.formData.append('estatusId', this.formPropiedades.value.estatusId);
+    this.formData.append('estatus', this.formPropiedades.value.estatusId);
     this.formData.append(
       'fraccionamientoId',
       this.formPropiedades.value.fraccionamientoId

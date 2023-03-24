@@ -71,12 +71,13 @@ export class RegPropiedadComponent {
       claveCatastral: ['', Validators.required],
       descripcion: ['', Validators.required],
       superficie: ['', Validators.required],
-      balance: ['', Validators.required],
-      estatusId: ['', Validators.required],
+      balance: [0],
+      estatusId: [''],
       propietarioId: ['', Validators.required],
       inquilinoId: [''],
       fraccionamientoId: [this.idFraccionamientoUsuer, Validators.required],
-      archivoPredial: ['', Validators.required],
+      archivoPredial: [''],
+      lote: ['', Validators.required],
     });
   }
 
@@ -115,12 +116,18 @@ export class RegPropiedadComponent {
       this.formPropiedades.get('descripcion')?.value
     );
     this.formData.set(
+      'lote',
+      this.formPropiedades.get('lote')?.value
+    );
+    this.formData.set(
       'superficie',
       this.formPropiedades.get('superficie')?.value
     );
+
+    
     this.formData.set('balance', this.formPropiedades.get('balance')?.value);
     this.formData.set(
-      'estatusId',
+      'estatus',
       this.formPropiedades.get('estatusId')?.value
     );
     this.formData.set('propietarioId', idPropietario);
@@ -135,6 +142,7 @@ export class RegPropiedadComponent {
     console.log(this.formData.get('superficie'));
     console.log(this.formData.get('balance'));
     console.log(this.formData.get('estatusId'));
+    console.log(this.formData.get('lote'));
     console.log(this.formData.get('propietarioId'));
     console.log(this.formData.get('inquilinoId'));
     console.log(this.formData.get('fraccionamientoId'));

@@ -13,35 +13,6 @@
     height: 50px;
   } */
 
-<<<<<<< Updated upstream
-.searchInpt {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.search {
-  margin-right: 24px;
-}
-
-.col-3 {
-  width: 40%;
-}
-
-.btnAdd {
-  width: 10%;
-  margin-right: 50px;
-}
-
-.btnAdd input {
-  width: 100%;
-}
-.div-tabla {
-  margin-left: 70px;
-
-  padding: 10px;
-}
-=======
   .btnAdd input {
     width: 100%;
   
@@ -51,7 +22,6 @@
    
     padding: 10px;
 } */
->>>>>>> Stashed changes
 
 .boton-agregar {
   background-color: #4caf50;
