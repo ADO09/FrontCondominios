@@ -1,16 +1,15 @@
 <div
   class="w3-modal-content w3-card-4 w3-animate-zoom"
-  style="  max-width: 800px; padding-left: 15px; " 
-  
+  style="max-width: 800px; padding-left: 15px"
 >
-<div class="w3-center">
+  <div class="w3-center">
     <br />
     <!--  -->
     <span
-    (click)="cerrarModal()"
+      (click)="cerrarModal()"
       class="w3-button w3-xlarge w3-hover-red w3-display-topright"
       title="Close Modal"
-      style="position: absolute;"
+      style="position: absolute"
       >&times;</span
     >
     <!-- <img
@@ -21,62 +20,59 @@
     /> -->
   </div>
 
-
-  <section class="contenedor-componente " style="padding-left: 10px;" >
-    <div class="cardview"  >
-  
-  
+  <section class="contenedor-componente">
+    <div class="cardview">
       <div class="searchInpt">
-        
-  
-        <div class="col-3 input-effect">
-          <input class="effect-21" type="text" placeholder="">
+        <div class="col-3 input-effect search">
+          <input class="effect-21" type="text" placeholder="" />
           <label>Search</label>
           <span class="focus-border">
             <i></i>
           </span>
         </div>
       </div>
-      <div class="cardview-body"  style=" overflow: scroll;">
+      <div class="cardview-body">
         <div class="header-table">
-           <div>#</div> 
+          <div>#</div>
           <div>Nombre</div>
           <div>Correo</div>
           <!-- <div >Fraccionamiento</div> -->
           <!-- <div>Superficie</div> -->
           <!-- <div>Balance</div> -->
           <div>Celular</div>
-  
+
           <!-- <div>Propietario</div>
            <div>Archivo Prdl.</div>
           <div>Frcc.</div>
           <div>Opcion</div> -->
         </div>
         <div class="body-table">
-          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData | paginate: { itemsPerPage: 10, currentPage: p }"  (click)="selectInquilino(propietarios)"  >
+          <div
+            class="contenedor-element-table"
+            *ngFor="
+              let propietarios of propietariosData
+                | paginate : { itemsPerPage: 10, currentPage: p }
+            "
+            (click)="selectInquilino(propietarios)"
+          >
             <!-- <div>{{ propiedad.id }}</div> -->
-            <div>{{ propietarios.id}}</div>
-            <div >{{ propietarios.nombre }}</div>
-            <div > {{ propietarios.correo }}</div>
+            <div>{{ propietarios.id }}</div>
+            <div>{{ propietarios.nombre }}</div>
+            <div>{{ propietarios.correo }}</div>
             <!-- <div>{{ propiedad.superficie }}</div> -->
             <!-- <div>{{ propiedad.balance }}</div> -->
             <!-- <div >{{ propietarios.fraccionamientoId }}</div> -->
-  
-            <div >{{ propietarios.celular }}</div>
+
+            <div>{{ propietarios.celular }}</div>
             <!-- <div>{{ propiedad.predialUrl }}</div> -->
             <!-- <div>{{ propiedad.fraccionamientoId }}</div>
             <div>delete</div> -->
           </div>
         </div>
       </div>
-      <div style="align-items: center; justify-content: center;" > <pagination-controls  (pageChange)="p = $event"></pagination-controls> </div>
-        
+      <div style="align-items: center; justify-content: center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
     </div>
   </section>
-  
-  
-
-  
-
-
 </div>

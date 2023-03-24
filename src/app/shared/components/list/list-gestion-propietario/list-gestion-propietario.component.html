@@ -1,7 +1,6 @@
-<section class="contenedor-componente " style="padding-left: 10px;" >
-    <div class="cardview"  >
-  
-<!--   
+<section class="contenedor-componente">
+  <div class="cardview">
+    <!--   
       <div class="searchInpt">
         
   
@@ -14,60 +13,74 @@
         </div>
       </div> -->
 
-      <div class="searchInpt">
-        <div class="cardview-header">
-          <button class="l-btn-d" [routerLink]="'/dashboard/'+this.regPropietarioRoute" >+ REGISTRAR PROPIETARIO</button>
-        </div>
-  
-        <div class="col-3 input-effect">
-          <input class="effect-21" type="text" placeholder="">
-          <label>Search</label>
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
+    <div class="searchInpt">
+      <div class="cardview-header">
+        <button
+          class="l-btn-d"
+          [routerLink]="'/dashboard/' + this.regPropietarioRoute"
+        >
+          + REGISTRAR PROPIETARIO
+        </button>
       </div>
-      <div class="cardview-body"  style=" overflow: scroll;">
-        <div class="header-table">
-           <div>#</div> 
-          <div>Nombre</div>
-          <div>Correo</div>
-          <!-- <div >Fraccionamiento</div> -->
-          <!-- <div>Superficie</div> -->
-          <!-- <div>Balance</div> -->
-          <div>Celular</div>
-  
-          <!-- <div>Propietario</div>
+
+      <div class="col-3 input-effect search">
+        <input class="effect-21" type="text" placeholder="" />
+        <label>Search</label>
+        <span class="focus-border">
+          <i></i>
+        </span>
+      </div>
+    </div>
+    <div class="cardview-body">
+      <div class="header-table">
+        <div>#</div>
+        <div>Nombre</div>
+        <div>Correo</div>
+        <!-- <div >Fraccionamiento</div> -->
+        <!-- <div>Superficie</div> -->
+        <!-- <div>Balance</div> -->
+        <div>Celular</div>
+
+        <!-- <div>Propietario</div>
            <div>Archivo Prdl.</div>
           <div>Frcc.</div>
           <div>Opcion</div> -->
-        </div>
-        <div class="body-table">
-          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData | paginate: { itemsPerPage: 10, currentPage: p }"  (click)="selectInquilino(propietarios)"  >
-            <!-- <div>{{ propiedad.id }}</div> -->
-            <div>{{ propietarios.id}}</div>
-            <div >{{ propietarios.nombre }}</div>
-            <div > {{ propietarios.correo }}</div>
-            <!-- <div>{{ propiedad.superficie }}</div> -->
-            <!-- <div>{{ propiedad.balance }}</div> -->
-            <!-- <div >{{ propietarios.fraccionamientoId }}</div> -->
-  
-            <div >{{ propietarios.celular }}</div>
-            <!-- <div>{{ propiedad.predialUrl }}</div> -->
-            <!-- <div>{{ propiedad.fraccionamientoId }}</div>
+      </div>
+      <div class="body-table">
+        <div
+          class="contenedor-element-table"
+          *ngFor="
+            let propietarios of propietariosData
+              | paginate : { itemsPerPage: 10, currentPage: p }
+          "
+          (click)="selectInquilino(propietarios)"
+        >
+          <!-- <div>{{ propiedad.id }}</div> -->
+          <div>{{ propietarios.id }}</div>
+          <div>{{ propietarios.nombre }}</div>
+          <div>{{ propietarios.correo }}</div>
+          <!-- <div>{{ propiedad.superficie }}</div> -->
+          <!-- <div>{{ propiedad.balance }}</div> -->
+          <!-- <div >{{ propietarios.fraccionamientoId }}</div> -->
+
+          <div>{{ propietarios.celular }}</div>
+          <!-- <div>{{ propiedad.predialUrl }}</div> -->
+          <!-- <div>{{ propiedad.fraccionamientoId }}</div>
             <div>delete</div> -->
-          </div>
         </div>
       </div>
-      <div style="align-items: center; justify-content: center;" > <pagination-controls  (pageChange)="p = $event"></pagination-controls> </div>
-        
     </div>
-  </section>
-  
-
-
-   <div *ngIf="this.currentPropietario">
-    <app-modal-gestion-propietario id="id01" class="w3-modal" [cerrarModal]="envModal"
-      [propietarioDatos]="this.currentPropietario"></app-modal-gestion-propietario>
+    <div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
-   
+</section>
+
+<div *ngIf="this.currentPropietario">
+  <app-modal-gestion-propietario
+    id="id01"
+    class="w3-modal"
+    [cerrarModal]="envModal"
+    [propietarioDatos]="this.currentPropietario"
+  ></app-modal-gestion-propietario>
+</div>
