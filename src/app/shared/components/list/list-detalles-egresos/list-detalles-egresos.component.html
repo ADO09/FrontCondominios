@@ -49,7 +49,11 @@
    -->
             <!-- <div>{{ propiedad.fraccionamientoId }}</div> -->
             <!-- <div>delete</div> -->
+            <div class="cerrar-icon" (click)="eliminarDetalleEgreso(detalleegreso); $event.stopPropagation()">
+              <i class="fas fa-times"></i>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

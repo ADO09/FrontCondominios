@@ -55,6 +55,25 @@ export class EgresosService {
       );
   }
 
+
+
+  DelDetalleEgreso(idEgrs:any,idDetll:any): Observable<Mensaje> {
+    const response = { icon: '', title: ''};
+    return this.http.delete<Mensaje>
+      (API_ROUTES.EGRESOS.DELDETALLEEGRESO+ idEgrs + '/' + idDetll)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          // response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
   postDetalleEgreso(data:any): Observable<Mensaje> {
     const response = { icon: '', title: ''};
     return this.http.post<Mensaje>
