@@ -68,7 +68,7 @@ export const ROUTES_PATHS = {
         PROVEEDORESDEFAULT:'proveedores',
         PROVEEDORESLISTADO:'listado',
         PROVEEDORESREGISTRO:'registro',
-        PROVEEDORESEDITAR:'editar',
+        PROVEEDORESEDITAR:'editar/:id',
 
         //-----------------------------------------------
         PRINCIPALF:'pagPrincipalf',

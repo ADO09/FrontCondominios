@@ -23,4 +23,14 @@ export class ProveedoresService {
         return this.http.post<any>(`${this.baseUrl}proveedores` ,data)
     }
 
+    // ? OBTENER DATOS DE PROVEEDOR POR SU ID
+    get(id:any):Observable<any>{
+        return this.http.get<any>(`${this.baseUrl}proveedores/${id}`)
+    }
+
+    // ? EDITAR PROVEEDOR
+    update(data:any ,id:any):Observable<any>{
+        return this.http.put<any>(`${this.baseUrl}proveedores/${id}`,data)
+    }
+
 }
