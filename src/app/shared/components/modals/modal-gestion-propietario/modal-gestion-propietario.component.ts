@@ -7,7 +7,7 @@ import { enviroment as ENV } from 'src/environments/enviroments.dev';
 @Component({
   selector: 'app-modal-gestion-propietario',
   templateUrl: './modal-gestion-propietario.component.html',
-  styleUrls: ['./modal-gestion-propietario.component.css']
+  styleUrls: ['./modal-gestion-propietario.component.css'],
 })
 export class ModalGestionPropietarioComponent {
   @Input() cerrarModal: any;
@@ -16,16 +16,16 @@ export class ModalGestionPropietarioComponent {
   public FormPropietarios!: FormGroup;
   public formData = new FormData();
   public api = ENV.urlAPI;
-  constructor(private fb: FormBuilder,private sharedTitleService:SharedTitleComponentService,private propietarioService: PropietariosService) {
-    sharedTitleService.emitChange("Registrar Propietario")
-   }
+  constructor(
+    private fb: FormBuilder,
+    private sharedTitleService: SharedTitleComponentService,
+    private propietarioService: PropietariosService
+  ) {
+    sharedTitleService.emitChange('Registrar Propietario');
+  }
   ngOnInit() {
-    
-    
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
     if (!this.propietarioDatos) {
-
-
       this.FormPropietarios = this.fb.group({
         // id: ['', Validators.required],
         nombre: ['', Validators.required],
@@ -33,9 +33,9 @@ export class ModalGestionPropietarioComponent {
         correo: ['', Validators.required],
         telefonoFijo: ['', Validators.required],
         celular: ['', Validators.required],
-        celularAlt: ['', Validators.required],
-        claveInterfon: ['', Validators.required],
-        claveInterfonAlt: ['', Validators.required],
+        celularAlt: [''],
+        // claveInterfon: ['', Validators.required],
+        // claveInterfonAlt: ['', Validators.required],
         isInquilino: ['', Validators.required],
         identificacionUrl: [''],
         // fraccionamientoId: ['', Validators.required]
@@ -43,26 +43,22 @@ export class ModalGestionPropietarioComponent {
     }
   }
 
-
-  enviarModal(){
-
-
+  enviarModal() {
     console.log(this.FormPropietarios.value);
 
-    this.formData.append('fraccionamientoId', this.idFraccionamientoUsuer)
+    this.formData.append('fraccionamientoId', this.idFraccionamientoUsuer);
     const controls = this.FormPropietarios.controls;
     for (const name in controls) {
-
       if (controls[name].value !== null && controls[name].value !== '') {
         if (name != 'identificacionUrl') {
           this.formData.append(name, controls[name].value);
         }
       }
     }
- 
+
     for (const name in controls) {
       if (controls[name].value !== null && controls[name].value !== '') {
-        console.log(name +' ' +this.formData.get(name));
+        console.log(name + ' ' + this.formData.get(name));
       }
     }
 
@@ -70,23 +66,19 @@ export class ModalGestionPropietarioComponent {
     //   this.formData.delete('archivoIdentificacion')
     // }
     // console.log(this.formData.get('archivoIdentificacion'));
-    this.propietarioService.PropietariosPATCHUptdate(this.propietarioDatos.id,this.formData).subscribe((r) => {
-
-      console.log(r);
-
-
-
-    })
+    this.propietarioService
+      .PropietariosPATCHUptdate(this.propietarioDatos.id, this.formData)
+      .subscribe((r) => {
+        console.log(r);
+      });
   }
 
-
   archivo() {
-    (document.querySelector("#inputfile") as HTMLInputElement).click();
+    (document.querySelector('#inputfile') as HTMLInputElement).click();
   }
 
   selectedFilePredial(event: any) {
     if (event.target.files) {
-
       // this.selectedFile = event.target.files[0];
       // console.log(this.selectedFile);
 
@@ -98,12 +90,9 @@ export class ModalGestionPropietarioComponent {
     }
   }
 
-
-  ngOnChanges(){
-
-
+  ngOnChanges() {
     if (this.propietarioDatos) {
-console.log(this.propietarioDatos.identificacionUrl);
+
       this.FormPropietarios = this.fb.group({
         // id: ['', Validators.required],
         nombre: [this.propietarioDatos.nombre, Validators.required],
@@ -111,16 +100,16 @@ console.log(this.propietarioDatos.identificacionUrl);
         correo: [this.propietarioDatos.correo, Validators.required],
         telefonoFijo: [this.propietarioDatos.telefonoFijo, Validators.required],
         celular: [this.propietarioDatos.celular, Validators.required],
-        celularAlt: [this.propietarioDatos.celularAlt, Validators.required],
-        claveInterfon: [this.propietarioDatos.claveInterfon, Validators.required],
-        claveInterfonAlt: [this.propietarioDatos.claveInterfonAlt, Validators.required],
-        isInquilino:  ([this.propietarioDatos.isInquilino, Validators.required]),
-        identificacionUrl: [this.propietarioDatos.identificacionUrl, Validators.required],
+        celularAlt: [this.propietarioDatos.celularAlt],
+        // // claveInterfon: [this.propietarioDatos.claveInterfon, Validators.required],
+        // claveInterfonAlt: [this.propietarioDatos.claveInterfonAlt, Validators.required],
+        isInquilino: [this.propietarioDatos.isInquilino, Validators.required],
+        identificacionUrl: [
+          this.propietarioDatos.identificacionUrl,
+
+        ],
         // fraccionamientoId: ['', Validators.required]
       });
     }
-    
   }
-
-
 }

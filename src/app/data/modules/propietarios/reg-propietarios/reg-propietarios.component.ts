@@ -35,11 +35,11 @@ this.CP = localStorage.getItem('codigo_postal_fraccionamiento');
       correo: ['', Validators.required],
       telefonoFijo: ['', Validators.required],
       celular: ['', Validators.required],
-      celularAlt: ['', Validators.required],
-      claveInterfon: ['', Validators.required],
-      claveInterfonAlt: ['', Validators.required],
+      celularAlt: [''],
+      // claveInterfon: ['', Validators.required],
+      // claveInterfonAlt: ['', Validators.required],
       isInquilino: ['', Validators.required],
-      identificacionUrl: [, Validators.required],
+      identificacionUrl: [''],
       // fraccionamientoId: ['', Validators.required]
     });
   }
