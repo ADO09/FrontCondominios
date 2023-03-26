@@ -6,6 +6,7 @@ import { EgresosRoutingModule } from './egresos-routing.module';
 import { GestionEgresosComponent } from './gestion-egresos/gestion-egresos.component';
 import { RegEgresoComponent } from './reg-egreso/reg-egreso.component';
 import { RegDetalleEgresoComponent } from './reg-detalle-egreso/reg-detalle-egreso.component';
+import { ProductosComponent } from './productos/productos.component';
 
 
 
@@ -15,7 +16,8 @@ import { RegDetalleEgresoComponent } from './reg-detalle-egreso/reg-detalle-egre
     EgresosComponent,
     GestionEgresosComponent,
     RegEgresoComponent,
-    RegDetalleEgresoComponent
+    RegDetalleEgresoComponent,
+    ProductosComponent
   ],
   imports: [
    

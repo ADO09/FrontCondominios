@@ -58,6 +58,10 @@ export const API_ROUTES = {
         ADDDETALLEEGRESOPOST :`${ENV.urlAPI}detalleEgresos`,
         ADDEGRESOPOST:`${ENV.urlAPI}egresos/`,
         DELDETALLEEGRESO:`${ENV.urlAPI}detalleEgresos/`
+    },
+    PRODUCTO:{
+        UPDATEPRODUCTO:`${ENV.urlAPI}productos/`,
+        ADDPRODUCTO:`${ENV.urlAPI}productos`,
     }
 
 }

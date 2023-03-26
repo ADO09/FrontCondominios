@@ -1,0 +1,233 @@
+<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="  max-width: 350px; padding-left: 15px; ">
+    <div class="w3-center">
+        <br />
+        <!--  -->
+        <span (click)="cerrarModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal"
+            style="position: absolute; ">&times;</span>
+        <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width: 15%; margin-bottom: 15px;"
+            class="w3-circle w3-margin-top" />
+    </div>
+    <div class="cardview" style="margin: 0; padding: 0; padding-right: 15px; padding-bottom: 15px;">
+
+        <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="formProducto"
+            (ngSubmit)="enviarModal()">
+
+            <div class="contenedor-grid-1">
+
+                <!-- <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="id">
+                      <label for="">ID</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="formProducto.get('id')?.touched && formProducto.get('id')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div> -->
+
+                <!-- <div class="contenedor-input">
+                      <input type="text" placeholder=" " formControlName="id_fraccionamiento">
+                      <label for="">Fraccionamiento</label>
+                      <label for="">Ingrese</label>
+                      <p class="smsError" *ngIf="formProducto.get('id_fraccionamiento')?.touched && formProducto.get('id_fraccionamiento')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div> -->
+
+                <div class="contenedor-input">
+                    <input type="text" placeholder=" " formControlName="descripcion">
+                    <label for="">Descripción</label>
+                    <label for="">Ingrese</label>
+                    <p class="smsError"
+                        *ngIf="formProducto.get('descripcion')?.touched && formProducto.get('descripcion')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                </div>
+
+                <div class="contenedor-input">
+                    <input type="text" placeholder=" " formControlName="identificador_interno">
+                    <label for="">Identificador Interno</label>
+                    <label for="">Ingrese</label>
+                    <p class="smsError"
+                        *ngIf="formProducto.get('identificador_interno')?.touched && formProducto.get('identificador_interno')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                </div>
+
+
+                <!-- <div class="contenedor-input">
+            <select formControlName="periodo">
+               <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> 
+              <option value="UNICO">UNICO</option>
+              <option value="SEMANAL">SEMANAL</option>
+              <option value="MENSUAL">MENSUAL</option>
+              <option value="ANUAL">ANUAL</option>
+            </select>
+            <label for="">Tipo</label>
+            <p class="smsError"
+              *ngIf="formProducto.get('periodo')?.touched && formProducto.get('periodo')?.errors?.['required']">
+              El campo no puede estar en blanco</p>
+          </div> -->
+
+                <!-- <div class="contenedor-input">
+            <select formControlName="tipo_pago">
+               <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> 
+              <option value="ORDINARIO">ORDINARIO</option>
+              <option value="EXTRAORDINARIO">EXTRAORDINARIO</option>
+            </select>
+            <label for="">Tipo</label>
+            <p class="smsError"
+              *ngIf="formProducto.get('tipo_pago')?.touched && formProducto.get('tipo_pago')?.errors?.['required']">
+              El campo no puede estar en blanco</p>
+          </div> -->
+
+
+                <div class="contenedor-input">
+                    <input type="text" placeholder=" " formControlName="proveedor_id"
+                    style="cursor: default"
+                    (click)="showModal = true"
+                    readonly
+                    placeholder=" "
+                    #claveCatastral
+                    (keydown.enter)="searchProveedor(null, null)"
+                    >
+                    <label for="">Proveedor</label>
+                    <label for="">Ingrese</label>
+                    <p class="smsError"
+                        *ngIf="formProducto.get('proveedor_id')?.touched && formProducto.get('proveedor_id')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                </div>
+
+                <!-- <div class="contenedor-input">
+            <input type="text" placeholder=" " formControlName="porcentaje_penalizacion">
+            <label for="">Porcentaje de penalización</label>
+            <label for="">Ingrese</label>
+            <p class="smsError"
+              *ngIf="formProducto.get('porcentaje_penalizacion')?.touched && formProducto.get('porcentaje_penalizacion')?.errors?.['required']">
+              El campo no puede estar en blanco</p>
+          </div> -->
+
+
+
+
+                <!-- <div class="contenedor-input">
+              <input *ngIf="!propietarioSelect" type="text" placeholder=" " (click)="abrModalPropietarios()"
+                formControlName="propietarioId" readonly>
+              <input *ngIf="propietarioSelect" type="text" placeholder=" "
+                [value]="propietarioSelect.nombre +' ' +  propietarioSelect.apellidos" formControlName="propietarioId"
+                (click)="abrModalPropietarios()" readonly>
+              <label for="">Propietario</label>
+              <label for="">Ingrese</label>
+              <span *ngIf="propietarioSelect" class="input-group-addon" (click)="handleClearInput2()">
+                <i class="fa fa-times"></i>
+              </span>
+    
+              <p class="smsError"
+                *ngIf="formProducto.get('propietarioId')?.touched && formProducto.get('propietarioId')?.errors?.['required']">
+                El campo no puede estar en blanco</p>
+    
+            </div>
+     -->
+
+
+                <!--   
+            <div class="contenedor-input">
+              <input *ngIf="!inquilinoSelect" type="text" placeholder=" " (click)="abrModalinquilinos()"
+                formControlName="inquilinoId" readonly>
+              <input *ngIf="inquilinoSelect" type="text" placeholder=" "
+                [value]="inquilinoSelect.nombre +' ' +  inquilinoSelect.apellidos" formControlName="inquilinoId"
+                (click)="abrModalinquilinos()" readonly>
+              <label for="">Inquilino</label>
+              <label for="">Ingrese</label>
+              <span *ngIf="inquilinoSelect" class="input-group-addon" (click)="handleClearInput()">
+                <i class="fa fa-times"></i>
+              </span>
+    
+            </div> -->
+
+
+
+
+                <!-- <div class="contenedor-input">
+              <button type="button" (click)="archivo()">Seleccionar archivo predial</button>
+              <input id="inputfile" style="display: none;" type="file" (change)="selectedFilePredial($event)"
+                placeholder=" " formControlName="archivoPredial">
+    
+    
+              <p class="smsError"
+                *ngIf="formProducto.get('archivoPredial')?.touched && formProducto.get('archivoPredial')?.errors?.['required']">
+                El campo no puede estar en blanco</p>
+    
+            </div> -->
+
+
+
+            </div>
+
+
+
+            <div class="contenedor-botones">
+                <button type="button" (click)="cerrarModal()">CANCELAR</button>
+                <button type="submit" [disabled]="formProducto.invalid">GUARDAR</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
+<div class="container-modal" *ngIf="showModal" (click)="showModal = false">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <div class="header">
+            <button (click)="showModal = false">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <input type="search" #search placeholder="Buscar" (keyup)="searchProveedor(search.value, $event)" />
+        </div>
+        <div class="body">
+            <div class="header-table">
+                <div>Correo</div>
+                <div>Nombre</div>
+                <div>Nombre de contacto</div>
+                <div>Notas</div>
+                <div>Rfc</div>
+
+                <!-- <div>Cantidad</div> -->
+            </div>
+            <div class="body-table">
+                <div class="contenedor-element-table" *ngFor="let proveedor of proveedores"
+                    (click)="selectProveedor(proveedor)">
+                    <div>
+                        <p title="{{ proveedor.correoContacto }}">{{ proveedor.correoContacto }}</p>
+                    </div>
+                    <div>
+                        <p title="{{ proveedor.nombre }}">
+                            {{ proveedor.nombre }}
+                        </p>
+                    </div>
+                    <div>
+                        <p title="{{ proveedor.nombreContacto }}">
+                            {{ proveedor.nombreContacto }}
+                        </p>
+                    </div>
+                    <div>
+                        <p title="{{ proveedor.notas }}">
+                            {{ proveedor.notas }}
+                        </p>
+                    </div>
+                    <div>
+                        <p title="{{ proveedor.rfc }}">
+                            {{ proveedor.rfc }}
+                        </p>
+                    </div>
+                    <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</div>

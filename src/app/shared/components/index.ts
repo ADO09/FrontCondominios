@@ -16,6 +16,9 @@ import { ModalGestionPropietarioComponent } from './modals/modal-gestion-propiet
 import { ListDetallesEgresosComponent } from './list/list-detalles-egresos/list-detalles-egresos.component';
 import { ModalGestionDetalleEgresosComponent } from './modals/modal-gestion-detalle-egresos/modal-gestion-detalle-egresos.component';
 import { ModalListProductosComponent } from './modals/modal-list-productos/modal-list-productos.component';
+import { ListProductosComponent } from './list/list-productos/list-productos.component';
+import { ModalGestionProductosComponent } from './modals/modal-gestion-productos/modal-gestion-productos.component';
+import { ModalRegProductoComponent } from './modals/modal-reg-producto/modal-reg-producto.component';
 
 export const components: any[] = [
 
@@ -34,7 +37,10 @@ export const components: any[] = [
     ModalGestionPropietarioComponent,
     ListDetallesEgresosComponent,
     ModalGestionDetalleEgresosComponent,
-    ModalListProductosComponent
+    ModalListProductosComponent,
+    ListProductosComponent,
+    ModalGestionProductosComponent,
+    ModalRegProductoComponent
 ]
 
 

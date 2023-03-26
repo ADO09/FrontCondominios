@@ -6,6 +6,7 @@ import { EgresosComponent } from './egresos/egresos.component';
 import { GestionEgresosComponent } from './gestion-egresos/gestion-egresos.component';
 import { RegEgresoComponent } from './reg-egreso/reg-egreso.component';
 import { RegDetalleEgresoComponent } from './reg-detalle-egreso/reg-detalle-egreso.component';
+import { ProductosComponent } from './productos/productos.component';
 const routes:Routes = [
   {
       path:INTERNAL_ROUTES.MODULO_EGRESOS,
@@ -26,6 +27,11 @@ const routes:Routes = [
 {
   path:INTERNAL_ROUTES.MODULO_REGEDETALLEEGRESO + ':id_egreso',
   component:RegDetalleEgresoComponent,
+//  canActivate: [NoAuthGuard]
+},
+{
+  path:INTERNAL_ROUTES.MODULO_PRODUCTOS ,
+  component:ProductosComponent,
 //  canActivate: [NoAuthGuard]
 },
 
