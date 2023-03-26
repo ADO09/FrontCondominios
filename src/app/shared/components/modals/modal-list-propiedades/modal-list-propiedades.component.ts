@@ -197,6 +197,10 @@ export class ModalListPropiedadesComponent implements OnInit {
       'tipoPropiedadId',
       this.formPropiedades.value.tipoPropiedadId
     );
+    this.formData.append(
+      'lote',
+      this.formPropiedades.value.lote
+    );
 
     if (!this.formData.get('inquilinoId')) {
       this.propiedadesService
