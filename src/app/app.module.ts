@@ -11,10 +11,12 @@ import { DashboardComponent } from './data/layout/dashboard/dashboard.component'
 import { UsuariosService } from './data/services/api/usuarios/usuarios.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './data/services/middleware/auth-interceptor.service';
+import { LoadingPeticionesComponent } from './shared/components/loading/loading-peticiones/loading-peticiones.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent ,
+    LoadingPeticionesComponent,
   ],
   imports: [
 
