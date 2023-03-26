@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit {
     sharedTitleService.changeEmitted$.subscribe((tituloComponente) => {
       this.tituloComponente = tituloComponente;
     });
+
+    this.rol = String(localStorage.getItem('rol'))
   }
 
   ngOnInit(): void {
@@ -45,7 +47,8 @@ export class DashboardComponent implements OnInit {
   }
 
   cerrarSesion(){
-    
+    localStorage.clear()
+    this.router.navigate(['/auth/login'])
   }
 
   abrirMenu() {
@@ -112,8 +115,6 @@ export class DashboardComponent implements OnInit {
       }
     }
   }
-  irRecibos(id:string,colaborador:string){
-      this.router.navigate(['/dashboard/report/average'] ,{queryParams:{id:id,colaborador:colaborador}})
-  }
+ 
   
 }
