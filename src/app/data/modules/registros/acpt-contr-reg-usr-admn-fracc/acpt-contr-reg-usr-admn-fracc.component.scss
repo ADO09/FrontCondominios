@@ -647,3 +647,24 @@ a.ssolink {
 } 
 
 
+.input_field span {
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input_field span i{
+  color: transparent;
+  width: 10px;
+  height: 10px;
+  background-color: var(--ColorSecundario);
+  border-radius: 50%;
+}
+.button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0;
+}
+
+
