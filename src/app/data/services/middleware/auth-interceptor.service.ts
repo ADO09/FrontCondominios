@@ -11,17 +11,20 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
+import { LoadingService } from '../api/loadingHttp.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private route: Router) {}
+  constructor(private route: Router ,private loadingService: LoadingService ) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    
+    // ? INICIAR LOADING DE CARGA
+    this.loadingService.show()
+
     var token = localStorage.getItem('token');
     var auth;
     if (token !== null) {
@@ -37,6 +40,9 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(auth).pipe(
       tap((event) => {
         if (event.type === HttpEventType.Response) {
+          // ? OCULTAR LOADING DE CARGA
+          this.loadingService.hide();
+
           //SE EJECUTA CUANDO LA API RESPONDE CON LOS DATOS CORRESPONDIENTES
           //O SIMPLEMENTE CUANDO NO OCURRIO ALGUN ERRROR
 
@@ -70,6 +76,9 @@ export class AuthInterceptorService implements HttpInterceptor {
         }
       }),
       catchError((error: HttpErrorResponse) => {
+        // ? OCULTAR LOADING DE CARGA
+        this.loadingService.hide();
+
         //SE EJCUTA CUANDO LA PETICION ES RETORNADA CON UN ESTADO DE ERROR
 
         /**
