@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     });
 
     this.rol = String(localStorage.getItem('rol'))
+    this.correo = String(localStorage.getItem('correo'))
   }
 
   ngOnInit(): void {
