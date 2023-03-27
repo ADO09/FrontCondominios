@@ -56,6 +56,16 @@
                     
                     </div>
                     <div class="contenedor-input">
+                        <input type="text" placeholder=" " formControlName="submarca">
+                        <label for="">submarca</label>
+                        <label for="">Ingrese</label>
+    
+                        <p class="smsError"
+                        *ngIf="vehiculoFormRegistro.get('submarca')?.touched && vehiculoFormRegistro.get('submarca')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    
+                    </div>
+                    <div class="contenedor-input">
                         <input type="text" placeholder=" " formControlName="placas">
                         <label for="">placas</label>
                         <label for="">Ingrese</label>
