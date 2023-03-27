@@ -1,0 +1,90 @@
+<section class="contenedor-componente">
+    <div class="cardview">
+      <div class="cardview-header">
+        <button
+          class="l-btn-d"
+          onclick="document.getElementById('id01').style.display='block'"
+          (click)="nuevoInterfon()"
+        >
+          + REGISTRAR NUEVO Interfon
+        </button>
+      </div>
+      <div class="cardview-body">
+        <div class="header-table">
+          <div>Numero de propiedad</div>
+          <div>Tipo de propiedad</div>
+          <div>Numero Interfon</div>
+          <div>Lote</div>
+        </div>
+      </div>
+  
+      <div class="body-table">
+        <div
+          class="contenedor-element-table"
+          *ngFor="let data of listaPropiedades"
+          onclick="document.getElementById('id01').style.display='block'"
+          (click)="enviarDatosAlModal(data.id)"
+
+        >
+          <div >{{data.id }}</div>
+          <div>{{data.tipoPropiedad.descripcion }}</div>
+          <div>{{data.interfones[0]?.numeroInterfon === null ? 'No cuenta con clave Interfon' :data.interfones[0]?.numeroInterfon }}</div>
+          <div>{{data.lote }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <body>
+    <div id="id01" class="w3-modal ">
+      <div
+        class="w3-modal-content w3-card-4 w3-animate-bottom modal"
+        style="max-width: 400px"
+      >
+        <h2>REGISTRAR INTERFON</h2>
+        <div
+          class="cardview"
+        >
+          <form class="form" [formGroup]="formInterfones">
+            <div class="contenedor-grid-1">
+  
+              <div class="contenedor-input">
+                <input type="text" formControlName="numeroInterfon" placeholder=" " />
+                <label for="">Numero Interfon</label>
+              </div>
+  
+              <div class="contenedor-input">
+                <select formControlName="propiedadId">
+                  <option
+                    *ngFor="let propiedades of listaPropiedades"
+                    value="{{ propiedades.id }}"
+                  >
+                    Propiedad: {{ propiedades.id }} Lote: {{ propiedades.lote }}
+                  </option>
+                </select>
+                <label for="">Propiedad del Interfon</label>
+              </div>
+
+            </div>
+  
+            <div class="contenedor-botones">
+              <button
+                type="button"
+                onclick="document.getElementById('id01').style.display='none'"
+              >
+                CANCELAR
+              </button>
+              <button
+                type="submit"
+                (click)="cambiarInterfon()"
+                onclick="document.getElementById('id01').style.display='none'"
+              >
+                GUARDAR
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  

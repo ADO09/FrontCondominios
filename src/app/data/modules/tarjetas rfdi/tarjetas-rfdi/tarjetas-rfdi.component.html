@@ -14,6 +14,7 @@
         <div>RFDI</div>
         <div>Propiedad registrada</div>
         <div>Tipo de circulación</div>
+        <div>Estado de la tarjeta</div>
       </div>
     </div>
 
@@ -30,12 +31,14 @@
           Automovil
         </div>
         <div *ngIf="rfdi.tipo === 'PEATONAL'" style="color: red">Peatonal</div>
+        <div>{{rfdi.estatus}}</div>
         <div *ngIf="rfdi.tipo === 'AUTOMOVIL'">
           <i class="fa fa-car fa-2x" aria-hidden="true"></i>
         </div>
         <div *ngIf="rfdi.tipo === 'PEATONAL'">
           <i class="fa fa-blind fa-2x" aria-hidden="true"></i>
         </div>
+
       </div>
     </div>
   </div>
@@ -80,6 +83,21 @@
                 </option>
               </select>
               <label for="">Propiedad del RFDI</label>
+            </div>
+
+            <div class="contenedor-input">
+              <select formControlName="estatus">
+                <option value="ACTIVO">
+                  Activo
+                </option>
+                <option value="INACTIVO">
+                  Inactivo
+                </option>
+                <option value="CANCELADA">
+                  Cancelada
+                </option>
+              </select>
+              <label for="">Estado de la tarjeta</label>
             </div>
           </div>
 
