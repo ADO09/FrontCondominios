@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { Observable, delay, map, catchError, of } from 'rxjs';
 import { API_ROUTES, queryparams } from 'src/app/data/constants/routes/api.routes';
 import { Mensaje } from 'src/app/data/interfaces/Mensaje';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngresosService {
-
+  baseUrl = environment.api;
   constructor(
     protected http: HttpClient,
     //private authService:ApiService,
@@ -138,6 +139,16 @@ export class IngresosService {
         }),
         catchError(() => of(response))
       );
+  }
+  
+  // ? CAMBIO EL ESTATUS DEL COMPROBANTE DE PAGO, A ACEPTADO O RECHAZADO
+  changeStatusRecibo(data:any ,id:any){
+    return this.http.post<any>(`${this.baseUrl}pagos/${id}/?_method=PATCH` ,data);
+  }
+
+  // ? OBTENER EL RECIBO POR ID 
+  getReciboId(id:any){
+    return this.http.get<any>(`${this.baseUrl}recibos/${id}`)
   }
 
   
