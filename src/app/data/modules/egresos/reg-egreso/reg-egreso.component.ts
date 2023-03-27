@@ -12,10 +12,10 @@ import { ProductosService } from 'src/app/data/services/api/productos/productos.
 })
 export class RegEgresoComponent {
   public selectedFile: File | undefined;
+  public  pdfUrl: any;
   public FormEgresos!: FormGroup;
   public tiposEgresos!:any;
   public formData = new FormData();
-  public  pdfUrl: any;
   previewFile() {
     window.open(this.pdfUrl, '_blank');
   }
