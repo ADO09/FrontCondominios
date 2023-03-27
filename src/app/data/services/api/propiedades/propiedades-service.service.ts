@@ -58,7 +58,7 @@ export class PropiedadesServiceService {
       .pipe(
         delay(100),
         map(r => {
-          console.log(r);
+          // console.log(r);
           
           response.body = r.body;
           response.title = r.title;

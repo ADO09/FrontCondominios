@@ -18,9 +18,10 @@
         <div class="contenedor-grid-2">
           <!-- descripcion -->
           <div class="contenedor-input">
-            <input type="text" placeholder=" " formControlName="descripcion" />
+            <input style="margin-top: 30px;" type="text" placeholder=" " formControlName="descripcion" />
             <label for="">Descripción</label>
             <label for="">Ingrese</label>
+          
             <p
               class="smsError"
               *ngIf="FormEgresos.get('descripcion')?.touched && FormEgresos.get('descripcion')?.errors?.['required']"
@@ -30,7 +31,7 @@
           </div>
 
           <!-- comprobanteUrl -->
-          <div class="contenedor-input">
+          <!-- <div class="contenedor-input">
             <input
               type="text"
               placeholder=" "
@@ -44,7 +45,31 @@
             >
               El campo no puede estar en blanco
             </p>
+          </div> -->
+
+          <div class="contenedor-input">
+            
+            <a [href]="api + 'private-files/' + egresoData.comprobanteUrl" target="_blank" style="
+            color: var(--ColorWa);
+            font-size: 11px;
+            margin-top: 10px;
+            text-decoration: underline;
+            cursor: pointer;
+            
+          " (click)="previewFile()" >Mirar archivo</a>
+            <button type="button" (click)="clickInputFile()"  style="
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+              " placeholder=" ">
+              Cambiar archivo <i class="fa fa-file-pdf"></i>
+            </button>
+            <input id="inputFile" type="file" accept="application/pdf" (change)="onFileSelected($event)"
+              style="display: none" formControlName="comprobanteUrl" />
+           
           </div>
+
 
           <!-- montoTotal -->
           <div class="contenedor-input">

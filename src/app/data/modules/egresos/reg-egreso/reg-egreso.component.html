@@ -1,64 +1,37 @@
-<div
-
-  class="main"
->
+<div class="main">
   <section class="contenedor-componente" style="height: auto; width: auto;">
     <div class="cardview">
-      <form
-        class="form"
-        (keydown.enter)="$event.preventDefault()"
-        [formGroup]="FormEgresos"
-        (ngSubmit)="enviarModal()"
-      >
+      <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="FormEgresos" (ngSubmit)="enviarModal()">
         <div class="contenedor-grid-1">
           <!-- descripcion -->
           <div class="contenedor-input">
             <input type="text" placeholder=" " formControlName="descripcion" />
             <label for="">Descripción</label>
             <label for="">Ingrese</label>
-            <p
-              class="smsError"
-              *ngIf="FormEgresos.get('descripcion')?.touched && FormEgresos.get('descripcion')?.errors?.['required']"
-            >
+            <p class="smsError"
+              *ngIf="FormEgresos.get('descripcion')?.touched && FormEgresos.get('descripcion')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
 
           <div class="contenedor-input">
-            <button
-              type="button"
-              
-              (click)="clickInputFile()"
-              style="
+            <button type="button" (click)="clickInputFile()" style="
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-              "
-              placeholder=" "
-            >
+              " placeholder=" ">
               Comprobante <i class="fa fa-file-pdf"></i>
             </button>
-            <input
-              id="inputFile"
-              type="file"
-              accept="application/pdf"
-              (change)="onFileSelected($event)"
-              style="display: none"
-              formControlName="comprobanteUrl"
-            />
-            <a
-              *ngIf="selectedFile"
-              style="
+            <input id="inputFile" type="file" accept="application/pdf" (change)="onFileSelected($event)"
+              style="display: none" formControlName="comprobanteUrl" />
+            <a *ngIf="selectedFile" style="
                 color: var(--ColorWa);
                 font-size: 11px;
                 margin-top: 10px;
                 text-decoration: underline;
                 cursor: pointer;
-              "
-              (click)="previewFile()"
-              >Comprobante seleccionado</a
-            >
+              " (click)="previewFile()">Comprobante seleccionado</a>
           </div>
 
           <!-- montoTotal -->
@@ -66,10 +39,8 @@
             <input type="text" placeholder=" " formControlName="montoTotal" />
             <label for="">Monto Total</label>
             <label for="">Ingrese</label>
-            <p
-              class="smsError"
-              *ngIf="FormEgresos.get('montoTotal')?.touched && FormEgresos.get('montoTotal')?.errors?.['required']"
-            >
+            <p class="smsError"
+              *ngIf="FormEgresos.get('montoTotal')?.touched && FormEgresos.get('montoTotal')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
@@ -78,10 +49,8 @@
             <input type="date" placeholder=" " formControlName="fechaPago" />
             <label for="">Fecha de pago</label>
             <label for="">Ingrese</label>
-            <p
-              class="smsError"
-              *ngIf="FormEgresos.get('fechaPago')?.touched && FormEgresos.get('fechaPago')?.errors?.['required']"
-            >
+            <p class="smsError"
+              *ngIf="FormEgresos.get('fechaPago')?.touched && FormEgresos.get('fechaPago')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
@@ -92,34 +61,27 @@
               <option value="1">SI</option>
             </select>
             <label for="">Verificado</label>
-            <p
-              class="smsError"
-              *ngIf="FormEgresos.get('isVerified')?.touched && FormEgresos.get('isVerified')?.errors?.['required']"
-            >
+            <p class="smsError"
+              *ngIf="FormEgresos.get('isVerified')?.touched && FormEgresos.get('isVerified')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
 
-          
+
 
           <div class="contenedor-input">
             <select formControlName="tipoEgreso" style="width: 230px">
-              <option
-                value="{{ tiposEgreso.id }}"
-                *ngFor="let tiposEgreso of tiposEgresos"
-              >
+              <option value="{{ tiposEgreso.id }}" *ngFor="let tiposEgreso of tiposEgresos">
                 {{ tiposEgreso.descripcion }}
               </option>
             </select>
             <label for="">Tipo de egreso</label>
-            <p
-              class="smsError"
-              *ngIf="FormEgresos.get('tipoEgreso')?.touched && FormEgresos.get('tipoEgreso')?.errors?.['required']"
-            >
+            <p class="smsError"
+              *ngIf="FormEgresos.get('tipoEgreso')?.touched && FormEgresos.get('tipoEgreso')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
-<!-- 
+          <!-- 
           <div class="contenedor-input">
             <select formControlName="estatusEgreso">
               <option value="0">APROBADO</option>
@@ -147,10 +109,8 @@
 
             </select>
             <label for="">Tipo de pago</label>
-            <p
-              class="smsError"
-              *ngIf="FormEgresos.get('tipoPago')?.touched && FormEgresos.get('tipoPago')?.errors?.['required']"
-            >
+            <p class="smsError"
+              *ngIf="FormEgresos.get('tipoPago')?.touched && FormEgresos.get('tipoPago')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
@@ -174,7 +134,3 @@
     <app-list-detalles-egresos  [dataDetallesEgreso]="this.egresoData.detalleEgreso"></app-list-detalles-egresos>
     </div> -->
 </div>
-
-
-
-

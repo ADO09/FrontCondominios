@@ -154,19 +154,19 @@
                     
                     </div> -->
         <div class="contenedor-input">
-          <select formControlName="estatusId">
+          <select style="margin-top: 32px;" formControlName="estatusId">
             <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
             <option value="0">Inactiva</option>
             <option value="1">Activa</option>
           </select>
-          <label for="">Estatus</label>
+          <label style="margin-top: 18px;" for="">Estatus</label>
           <p class="smsError"
             *ngIf="formPropiedades.get('estatusId')?.touched && formPropiedades.get('estatusId')?.errors?.['required']">
             El campo no puede estar en blanco
           </p>
         </div>
 
-        <div class="contenedor-input">
+        <!-- <div class="contenedor-input">
           <button type="button" (click)="archivo()">
             Seleccionar archivo predial
           </button>
@@ -177,6 +177,29 @@
             *ngIf="formPropiedades.get('archivoPredial')?.touched && formPropiedades.get('archivoPredial')?.errors?.['required']">
             El campo no puede estar en blanco
           </p>
+        </div> -->
+
+        <div *ngIf="this.propiedadDatos" class="contenedor-input">
+            
+          <a *ngIf="this.propiedadDatos.predialUrl"  [href]="api + 'private-files/' + propiedadDatos.predialUrl" target="_blank" style="
+          color: var(--ColorWa);
+          font-size: 11px;
+          margin-top: 10px;
+          text-decoration: underline;
+          cursor: pointer;
+          
+        " (click)="previewFile()" >Mirar archivo</a>
+          <button type="button" (click)="clickInputFile()"  style="
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+            " placeholder=" ">
+            Cambiar archivo <i class="fa fa-file-pdf"></i>
+          </button>
+          <input id="inputFile" type="file" accept="application/pdf" (change)="onFileSelected($event)"
+            style="display: none" formControlName="archivoPredial" />
+         
         </div>
       </div>
 

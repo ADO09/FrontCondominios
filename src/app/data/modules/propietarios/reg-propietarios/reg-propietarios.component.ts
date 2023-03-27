@@ -126,7 +126,7 @@ export class RegPropietariosComponent {
         this.usuariosService.AddUser(datos).subscribe( (res)=>{
           console.log(res);
           
-          if (res.icon == 'success') {
+          if (res.icon == 'info') {
             setTimeout(() => {
             this.router.navigateByUrl('/dashboard/'+INTERNAL_ROUTES.MODULO_GESTION_PROPIETARIOS)
             }, 200);

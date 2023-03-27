@@ -19,8 +19,8 @@ export class PropietariosService {
   ) {}
 
   propietariosGetInquilinos(idFraccionamiento: any): Observable<Mensaje> {
-    console.log(API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS);
-console.log(idFraccionamiento);
+//     console.log(API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS);
+// console.log(idFraccionamiento);
 
     const response = { icon: '', title: '', body: [] as any[] | null };
     return this.http
@@ -37,7 +37,7 @@ console.log(idFraccionamiento);
       .pipe(
         delay(100),
         map((r) => {
-          console.log(r);
+          // console.log(r);
 
           response.body = r.body;
           response.title = r.title;
@@ -49,8 +49,8 @@ console.log(idFraccionamiento);
   }
 
   propietariosGetPropietarios(idFraccionamiento: any): Observable<Mensaje> {
-    console.log(API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS);
-    console.log(idFraccionamiento);
+    // console.log(API_ROUTES.PROPIETARIOS.GETALLPROPIETARIOS);
+    // console.log(idFraccionamiento);
 
     const response = { icon: '', title: '', body: [] as any[] | null };
     return this.http
@@ -67,7 +67,7 @@ console.log(idFraccionamiento);
       .pipe(
         delay(100),
         map((r) => {
-          console.log(r);
+          // console.log(r);
 
           response.body = r.body;
           response.title = r.title;

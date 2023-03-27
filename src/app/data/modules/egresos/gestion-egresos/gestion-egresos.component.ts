@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Egreso } from 'src/app/data/interfaces/egresos';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
+import { enviroment as ENV } from 'src/environments/enviroments.dev';
 
 @Component({
   selector: 'app-gestion-egresos',
@@ -15,6 +16,9 @@ export class GestionEgresosComponent {
  public id:any;
  public tiposEgresos!:any;
  public formData = new FormData();
+ public selectedFile: File | undefined;
+ public  pdfUrl: any;
+ public api = ENV.urlAPI;
   listaEgresos: any;
 
 
@@ -29,7 +33,7 @@ export class GestionEgresosComponent {
       // id: ['', Validators.required],
       // fraccionamientoId: ['', Validators.required],
       descripcion: ['', Validators.required],
-      comprobanteUrl: ['', Validators.required],
+      comprobanteUrl: [, Validators.required],
       montoTotal: ['', Validators.required],
       isVerified: ['', Validators.required],
       tipoEgreso:['', Validators.required] ,
@@ -57,7 +61,7 @@ export class GestionEgresosComponent {
      
         this.FormEgresos = this.formBuilder.group({
           descripcion: [this.egresoData.descripcion, Validators.required],
-          comprobanteUrl: [this.egresoData.comprobanteUrl],
+          comprobanteUrl: [''],
           montoTotal: [this.egresoData.montoTotal, Validators.required],
           isVerified: [this.egresoData.isVerified, Validators.required],
           tipoEgreso: [this.egresoData.tipoEgreso.id, Validators.required],
@@ -97,8 +101,8 @@ export class GestionEgresosComponent {
     // this.formData.append('estatusEgreso', this.FormEgresos.value.estatusEgreso);
      this.formData.append('estatusEgresoId', this.FormEgresos.value.estatusEgreso);
     this.formData.append('fraccionamientoId', fraccionamientoId);
-      this.formData.append('fechaPago', this.FormEgresos.fechaPago);
-    this.formData.append('tipoPago', this.FormEgresos.tipoPago);
+      this.formData.append('fechaPago', this.FormEgresos.value.fechaPago);
+    this.formData.append('tipoPago', this.FormEgresos.value.tipoPago);
 
 
     this.egresosService.updateEgreso(this.egresoData.id,this.formData).subscribe( (r)=>{
@@ -109,7 +113,24 @@ export class GestionEgresosComponent {
   }
 
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.FormEgresos.value.comprobanteUrl = event.target.files[0];
+   
+    const file = event.target.files[0];
+    this.formData.append('archivoComprobante', file);
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.pdfUrl = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  clickInputFile() {
+    (document.querySelector('#inputFile') as HTMLInputElement).click();
+  }
 
-
+  previewFile() {
+    
+  }
 
 }

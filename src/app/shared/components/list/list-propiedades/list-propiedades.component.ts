@@ -26,20 +26,7 @@ export class ListPropiedadesComponent implements OnInit {
     //console.log('antes de');
     //console.log(datos);
 
-    this.currentPropiedad = {
-      id: datos.id,
-      tipoPropiedad: datos.tipoPropiedad,
-      claveCatastral: datos.claveCatastral,
-      descripcion: datos.descripcion,
-      superficie: datos.superficie,
-      balance: datos.balance,
-      predialUrl: datos.predialUrl,
-      estatus: datos.estatus,
-      propietario: datos.propietario,
-      lote: datos.lote,
-      inquilino: datos.inquilino,
-      fraccionamientoId: datos.fraccionamientoId,
-    };
+    this.currentPropiedad =datos;
 
     console.log(this.currentPropiedad);
     

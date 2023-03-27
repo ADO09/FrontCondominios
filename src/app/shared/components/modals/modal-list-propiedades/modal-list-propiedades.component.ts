@@ -4,6 +4,7 @@ import { propiedad } from 'src/app/data/interfaces/propiedad';
 import { propietarios } from 'src/app/data/interfaces/propietariosI';
 import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
 import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
+import { enviroment as ENV } from 'src/environments/enviroments.dev';
 
 @Component({
   selector: 'app-modal-list-propiedades',
@@ -19,7 +20,9 @@ export class ModalListPropiedadesComponent implements OnInit {
   public propietariosDataP!: propietarios[];
   public formPropiedades!: FormGroup;
   public formData = new FormData();
-
+  public selectedFile: File | undefined;
+  public  pdfUrl: any;
+  public api = ENV.urlAPI;
   public idfraccionamiento: any;
   constructor(
     private fb: FormBuilder,
@@ -27,6 +30,9 @@ export class ModalListPropiedadesComponent implements OnInit {
     private propiedadesService: PropiedadesServiceService
   ) {
     this.idfraccionamiento = localStorage.getItem('id_fraccionamiento');
+   
+    
+    
   }
 
   ngOnInit() {
@@ -98,7 +104,8 @@ export class ModalListPropiedadesComponent implements OnInit {
       //   this.propiedadDatos?.estatus.id +
       //   '.-' +
       //   this.propiedadDatos?.estatus.descripcion;
-
+      console.log('AOIWJEA');
+      console.log(this.propiedadDatos.predialUrl);
       this.propietarioSelect = this.propiedadDatos.propietario;
 
       var inquilino: any;
@@ -159,7 +166,7 @@ export class ModalListPropiedadesComponent implements OnInit {
           this.propiedadDatos?.fraccionamientoId || '',
           Validators.required,
         ],
-        archivoPredial: [this.propiedadDatos?.predialUrl || ''],
+        archivoPredial: ['' || ''],
       });
     }
   }
@@ -309,5 +316,29 @@ export class ModalListPropiedadesComponent implements OnInit {
 
     this.formData.append('propietarioId', '');
     console.log(this.formPropiedades.valid);
+  }
+
+
+
+  
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.formPropiedades.value.archivoPredial = event.target.files[0];
+   
+    const file = event.target.files[0];
+    this.formData.set('archivoPredial', file);
+  
+    // const reader = new FileReader();
+    // reader.onload = (e: any) => {
+    //   this.pdfUrl = e.target.result;
+    // };
+    // reader.readAsDataURL(file);
+  }
+  clickInputFile() {
+    (document.querySelector('#inputFile') as HTMLInputElement).click();
+  }
+
+  previewFile() {
+    
   }
 }
