@@ -34,13 +34,36 @@ export class RegistroComponent {
   async ngOnInit() {
     //OBTENER ESATODOS DE MEXICO
     var data = (await this.apiService.getEstadosMexico().toPromise()) as any;
+    
+
+    data.body = data.body.map((estado: {
+      id: any; nombre: string; 
+    }) => {
+      return {
+        id:estado.id ,
+        nombre: estado.nombre.toUpperCase()
+      };
+    });
+
     this.estados = data.body;
+    
 
     //OBTENER LOS TIPOS DE VEHICULOS
     var data = (this.tiposvehiculo = (await this.apiService
       .getTiposVehiculos()
       .toPromise()) as any);
-    this.tiposvehiculo = data.body;
+      data.body = data.body.map((estado: {
+        id: any; nombre: string; 
+      }) => {
+        return {
+          id:estado.id ,
+          nombre: estado.nombre.toUpperCase()
+        };
+      });
+  
+      this.tiposvehiculo = data.body;
+
+  
 
     var data  = (await this.apiService.getAllPropiedades().toPromise()) as any;
     this.propiedades = data.body
@@ -53,6 +76,7 @@ export class RegistroComponent {
     id_tipo_vehiculo: new FormControl('', [Validators.required]),
     id_estado: new FormControl('', [Validators.required]),
     marca: new FormControl('', [Validators.required]),
+    submarca: new FormControl('', [Validators.required]),
     color: new FormControl('', [Validators.required]),
     placas: new FormControl('', [Validators.required]),
   });
