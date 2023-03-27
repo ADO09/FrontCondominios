@@ -14,7 +14,8 @@ export class InterfonesService {
     return this.http.get<any>(this.baseUrl + 'propiedades/?fraccionamientoId[eq]='+id);
   }
 
-  putInterfon(id:any, payload:any): Observable<any>{
+  putInterfon(id:number, payload:any): Observable<any>{
+    console.log();
     return this.http.put<any>(this.baseUrl + 'propiedades/interfon/'+id, payload);
   }
 

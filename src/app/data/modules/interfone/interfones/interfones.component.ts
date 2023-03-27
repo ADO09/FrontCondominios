@@ -63,7 +63,8 @@ export class InterfonesComponent implements OnInit {
 
   cambiarInterfon(){
 
-    if(this.tipoBoton === 'post'){
+    if(this.tipoBoton === 'post' || this.putInterfon === undefined){
+      console.log("post entro");
       const payload = {
         numeroInterfon: this.formInterfones.get('numeroInterfon')?.value,
         propiedadId: this.formInterfones.get('propiedadId')?.value,
@@ -73,7 +74,8 @@ export class InterfonesComponent implements OnInit {
       this.apiService.postInterfon(payload).subscribe((response)=>{
         console.log(response);
       });
-    }else if (this.tipoBoton === 'put'){
+    }else if (this.tipoBoton === 'put' && this.putInterfon !== undefined){
+      console.log("put entro");
       const payload = {
         numeroInterfon: this.formInterfones.get('numeroInterfon')?.value,
         propiedadId: this.formInterfones.get('propiedadId')?.value,
