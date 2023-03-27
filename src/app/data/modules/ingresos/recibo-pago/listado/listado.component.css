@@ -6,10 +6,10 @@
 
 
 .header-table {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 .body-table .contenedor-element-table {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .body-table .contenedor-element-table div {
@@ -24,7 +24,7 @@
     gap: var(--Padding);
 }
 
-.success , .danger {
+.success , .danger ,.default {
     background-color: var(--ColorSuccess);
     padding: var(--Padding);
     width: 30px;
@@ -37,6 +37,9 @@
 }
 .danger{
     background-color: var(--ColorDanger);
+}
+.default {
+    background-color:gainsboro;
 }
 
 
@@ -111,4 +114,7 @@
       opacity: 1;
       /*width: 100%;*/
     }
+  }
+  .modal-table{
+    grid-template-columns: 1fr 1fr 1fr !important;
   }

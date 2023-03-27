@@ -7,18 +7,27 @@
 
         <div class="cardview-body" >
             <div class="header-table" >
+                <div>#</div>
+                <div>Mes</div>
                 <div>Monto</div>
                 <div>Tipo pago</div>
                 <div></div>
             </div>
             <div class="body-table">
              
-                <div class="contenedor-element-table" *ngFor="let recibo of recibospago"  (click)="masInformacion(recibo.propiedadId)">
+                <div class="contenedor-element-table" *ngFor="let recibo of recibospago"  (click)="masInformacion(recibo.propiedadId ,recibo.reciboId)">
+                    <div>{{recibo.id}}</div>
+                    <div>{{recibo.mes}}</div>
                     <div>{{recibo.monto}}</div>
                     <div>{{recibo.tipoPago}}</div>
-                    <div class="container-opc">
-                        <i title="Aceptar pago" class="fa-solid fa-check success"></i>
-                        <i title="Rechazar pago" class="fa-solid fa-xmark danger"></i>
+                    <div class="container-opc" *ngIf="recibo.estatus == 'PENDIENTE'">
+                        <i (click)="verComprobante(recibo);$event.stopPropagation()" title="Ver comprobante" class="fa-solid fa-file default"></i>
+                        <i (click)="aceptarPago(recibo);$event.stopPropagation()" title="Aceptar pago" class="fa-solid fa-check success"></i>
+                        <i (click)="rechazarComprobante(recibo);$event.stopPropagation()" title="Rechazar pago" class="fa-solid fa-xmark danger"></i>
+                    </div>
+                    <div *ngIf="recibo.estatus !== 'PENDIENTE'">
+                        <p *ngIf="recibo.estatus == 'RECHAZADO'" style="color:var(--ColorDanger)">RECHAZADO</p>
+                        <p *ngIf="recibo.estatus == 'FINALIZADO'" style="color:var(--ColorSuccess)">FINALIZADO</p>
                     </div>
                 </div>
             </div>
@@ -35,13 +44,13 @@
             <h4 style="margin-left:calc(var(--Margin) * 2);">Propiedad</h4>
           </div>
         <div class="body">
-            <div class="header-table" >
+            <div class="header-table modal-table" >
                 <div>Tipo</div>
                 <div>Lote</div>
                 <div>Propietario</div>
             </div>
             <div class="body-table">             
-                <div class="contenedor-element-table">
+                <div class="contenedor-element-table modal-table">
                     <div> <p title="{{propiedad.tipoPropiedad.descripcion}}">{{propiedad.tipoPropiedad.descripcion}}</p></div>
                     <div> <p title="{{propiedad.lote}}">{{propiedad.lote}}</p></div>
                     <div><p title="{{propiedad.propietario.nombre}}">{{propiedad.propietario.nombre}}</p></div>
