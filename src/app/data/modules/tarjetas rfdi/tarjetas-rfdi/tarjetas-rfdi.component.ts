@@ -40,6 +40,7 @@ export class TarjetasRfdiComponent implements OnInit{
       rfdi: ['', Validators.required],
       propiedadId: ['', Validators.required],
       fraccionamientoId: ['', Validators.required],
+      estatus: ['',Validators.required]
     });
   }
 
@@ -55,6 +56,7 @@ export class TarjetasRfdiComponent implements OnInit{
         rfdi: this.RFDI_Individual[0].rfdi,
         propiedadId: this.RFDI_Individual[0].propiedadId.id,
         fraccionamientoId: this.RFDI_Individual[0].fraccionamientoId,
+        estatus: this.RFDI_Individual[0].estatus,
       });
     });
   }
@@ -66,7 +68,8 @@ export class TarjetasRfdiComponent implements OnInit{
         rfdi: this.formRFDI.get('rfdi')?.value,
         tipo: this.formRFDI.get('tipo')?.value,
         propiedadId: this.formRFDI.get('propiedadId')?.value,
-        fraccionamientoId: this.fraccionamientoId
+        fraccionamientoId: this.fraccionamientoId,
+        estatus: this.formRFDI.get('estatus')?.value,
       }
   
       this.apiService.postRFDI(payload).subscribe((response)=>{
@@ -76,6 +79,7 @@ export class TarjetasRfdiComponent implements OnInit{
       const payload = {
         tipo: this.formRFDI.get('tipo')?.value,
         propiedadId: this.formRFDI.get('propiedadId')?.value,
+        estatus: this.formRFDI.get('estatus')?.value,
       }
       console.log(payload);
       this.apiService.putRFDI(this.putRFDI, payload).subscribe((response)=>{

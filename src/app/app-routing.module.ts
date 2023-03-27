@@ -80,6 +80,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/tarjetas rfdi/tarjetas.module').then((m) =>m.TarjetasModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/interfone/interfones.module').then((m) =>m.InterfonesModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>

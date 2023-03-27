@@ -54,6 +54,8 @@ export const ROUTES_PATHS = {
         PRODUCTOS:'productos',
         //TARJETAS RFDI---------------------------------
         TARJETAS_RFDI_DEFAULT:'tarjetas_rfdi',
+        //INTERFONES---------------------------------
+        INTEFONES_DEFAULT:'interfones',        
 
         //VEHICULOS
         VEHICULOSDEFAULT:'vehiculos',
@@ -138,7 +140,8 @@ export const INTERNAL_PATHS = {
      PANELPRODUCTOS:`${ROUTES_PATHS.PANEL.PRODUCTOS}`,
     //TARJETAS RFDI--------------------------------------------
     PANELDEFAULTTARJETAS:`${ROUTES_PATHS.PANEL.TARJETAS_RFDI_DEFAULT}`,
-
+    //INTERFONES--------------------------------------------
+    PANELINTERFONES:`${ROUTES_PATHS.PANEL.INTEFONES_DEFAULT}`,
 
     //INGRESOS---------------------------------------------
     PANELDEFAULTINGRESOS:`${ROUTES_PATHS.PANEL.INGRESOSDEFAULT}`,
@@ -241,7 +244,8 @@ export const INTERNAL_ROUTES = {
 
     //TARJETAS RFDI---------------------------------
     MODULO_TARJETAS_RFDI: `${INTERNAL_PATHS.PANELDEFAULTTARJETAS}`,
-
+    //INTERFONES---------------------------------
+    MODULO_INTERFONES: `${INTERNAL_PATHS.PANELINTERFONES}`,
 
 
     //PROPIEDADES------------------------------------
