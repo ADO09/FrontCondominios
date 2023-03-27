@@ -94,13 +94,8 @@
           <div class="contenedor-input">
             <select formControlName="estatusEgreso">
               <option value="0">APROBADO</option>
-              <option value="1">PENDIENTE APROBACIÓN</option>
-              <option value="2">ACTIVO</option>
-              <option value="3">EDITADO</option>
-              <option value="4">ELIMINADO</option>
-              <option value="5">PAGADO</option>
-              <option value="6">COBRADO</option>
-              <option value="7">RECHAZADO</option>
+              <option value="1">PENDIENTE</option>
+              <option value="2">CANCELADO</option>
             </select>
             <label for="">Verificado</label>
             <p
@@ -110,7 +105,54 @@
               El campo no puede estar en blanco
             </p>
           </div>
+
+          <div class="contenedor-input">
+            <input type="date" placeholder=" " formControlName="fechaPago" />
+            <label for="">Fecha de pago</label>
+            <label for="">Ingrese</label>
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('fechaPago')?.touched && FormEgresos.get('fechaPago')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
+
+          <div class="contenedor-input">
+            <select formControlName="tipoPago">
+              <option value="T/C">T/C</option>
+              <option value="T/D">T/D</option>
+              <option value="CHEQUE">CHEQUE</option>
+              <option value="EFECTIVO">EFECTIVO</option>
+              <option value="TRANSFERENCIA">TRANSFERENCIA</option>
+
+            </select>
+            <label for="">Tipo de pago</label>
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('tipoPago')?.touched && FormEgresos.get('tipoPago')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div>
+          <!-- <div class="contenedor-input">
+            <select formControlName="estatusEgreso">
+              <option value="0">APROBADO</option>
+              <option value="1">PENDIENTE</option>
+              <option value="2">CANCELADO</option>
+            </select>
+            <label for="">Verificado</label>
+            <p
+              class="smsError"
+              *ngIf="FormEgresos.get('estatusEgreso')?.touched && FormEgresos.get('isVerified')?.errors?.['required']"
+            >
+              El campo no puede estar en blanco
+            </p>
+          </div> -->
+          
         </div>
+
+        
 
         <div class="contenedor-botones">
           <button type="button" routerLink="/dashboard/egresos">

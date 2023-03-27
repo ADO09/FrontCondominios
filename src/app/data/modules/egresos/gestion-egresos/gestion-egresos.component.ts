@@ -22,9 +22,9 @@ export class GestionEgresosComponent {
     this.id = +this.route.snapshot.params['id_egreso'];
     console.log(this.id);
   }
+
+
   ngOnInit(){
-
-
         this.FormEgresos = this.formBuilder.group({
       // id: ['', Validators.required],
       // fraccionamientoId: ['', Validators.required],
@@ -34,6 +34,8 @@ export class GestionEgresosComponent {
       isVerified: ['', Validators.required],
       tipoEgreso:['', Validators.required] ,
       estatusEgreso:['', Validators.required] ,
+      tipoPago: ['', Validators.required],
+      fechaPago:['', Validators.required] ,
       // TipoEgresoEstatus:['', Validators.required]
       // detalleEgreso: ['', Validators.required]
     });
@@ -60,6 +62,8 @@ export class GestionEgresosComponent {
           isVerified: [this.egresoData.isVerified, Validators.required],
           tipoEgreso: [this.egresoData.tipoEgreso.id, Validators.required],
           estatusEgreso: [this.egresoData.estatusEgreso.id, Validators.required],
+          tipoPago: [this.egresoData.tipoPago, Validators.required],
+          fechaPago:[this.egresoData.fechaPago, Validators.required] ,
           // TipoEgresoEstatus:[this.egresoData.tipoEgreso.status, Validators.required]
         });
        
@@ -93,7 +97,8 @@ export class GestionEgresosComponent {
     // this.formData.append('estatusEgreso', this.FormEgresos.value.estatusEgreso);
      this.formData.append('estatusEgresoId', this.FormEgresos.value.estatusEgreso);
     this.formData.append('fraccionamientoId', fraccionamientoId);
-  
+      this.formData.append('fechaPago', this.FormEgresos.fechaPago);
+    this.formData.append('tipoPago', this.FormEgresos.tipoPago);
 
 
     this.egresosService.updateEgreso(this.egresoData.id,this.formData).subscribe( (r)=>{

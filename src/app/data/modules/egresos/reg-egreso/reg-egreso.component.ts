@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
 import { ProductosService } from 'src/app/data/services/api/productos/productos.service';
 
@@ -17,7 +19,7 @@ export class RegEgresoComponent {
   previewFile() {
     window.open(this.pdfUrl, '_blank');
   }
-  constructor( private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
+  constructor(private route:Router, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
    }
   
 
@@ -44,7 +46,9 @@ export class RegEgresoComponent {
       montoTotal: ['', Validators.required],
       isVerified: ['', Validators.required],
       tipoEgreso:['', Validators.required] ,
-      estatusEgreso:['', Validators.required] ,
+      tipoPago: ['', Validators.required],
+      fechaPago:['', Validators.required] ,
+      // estatusEgreso:['', Validators.required] ,
       // TipoEgresoEstatus:['', Validators.required]
       // detalleEgreso: ['', Validators.required]
     });
@@ -88,12 +92,18 @@ export class RegEgresoComponent {
     this.formData.append('montoTotal', formValues.montoTotal);
     this.formData.append('isVerified', formValues.isVerified);
     this.formData.append('tipoEgreso', formValues.tipoEgreso);
-    this.formData.append('estatusEgresoId', formValues.estatusEgreso);
+    this.formData.append('fechaPago', formValues.fechaPago);
+    this.formData.append('tipoPago', formValues.tipoPago);
+    // this.formData.append('estatusEgresoId', formValues.estatusEgreso);
     this.formData.append('fraccionamientoId', fraccionamientoId);
 
 
     this.egresosService.postEgreso(this.formData).subscribe( (r)=>{
       console.log(r);
+
+      if (r.icon == 'success') {
+        this.route.navigateByUrl('/dashboard/' + INTERNAL_ROUTES.MODULO_EGRESOS);
+      }
       
     })
   }

@@ -20,6 +20,7 @@ export class RegPropietariosComponent {
   public idFraccionamientoUsuer: any;
   public nombreFraccUser:any;
   public CP:any;
+  public pdfUrl:any;
   constructor(private fb: FormBuilder, private sharedTitleService: SharedTitleComponentService, private propietarioService: PropietariosService,
     private usuariosService:UsuariosService,private router:Router) {
     sharedTitleService.emitChange("Registrar Residente")
@@ -51,15 +52,24 @@ export class RegPropietariosComponent {
   selectedFilePredial(event: any) {
     if (event.target.files) {
 
-      // this.selectedFile = event.target.files[0];
+       this.selectedFile = event.target.files[0];
       // console.log(this.selectedFile);
-
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.pdfUrl = e.target.result;
+      };
       this.formData.set('archivoIdentificacion', event.target.files[0]);
       //this.FormPropietarios.get('identificacionUrl')?.setValue(event.target.files[0]);
       // this.FormPropietarios.patchValue({
       //   identificacionUrl: event.target.files[0]
       // });
     }
+  }
+
+
+  previewFile() {
+    window.open(this.pdfUrl, '_blank');
   }
 
   enviarModal() {
