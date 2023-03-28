@@ -11,7 +11,7 @@
       </div>
       <div class="cardview-body">
         <div class="header-table">
-          <div>Numero de propiedad</div>
+          <div>Código interfon</div>
           <div>Tipo de propiedad</div>
           <div>Numero Interfon</div>
           <div>Lote</div>
@@ -26,9 +26,9 @@
           (click)="enviarDatosAlModal(data.id)"
 
         >
-          <div >{{data.id }}</div>
+          <div >{{data.interfones[0]?.codigoInterfon === null ? 'No cuenta con codigo Interfon' :data.interfones[0]?.codigoInterfon }}</div>
           <div>{{data.tipoPropiedad.descripcion }}</div>
-          <div>{{data.interfones[0]?.numeroInterfon === null ? 'No cuenta con clave Interfon' :data.interfones[0]?.numeroInterfon }}</div>
+          <div>{{data.interfones[0]?.numeroInterfon === null ? 'No cuenta con numero Interfon' :data.interfones[0]?.numeroInterfon }}</div>
           <div>{{data.lote }}</div>
         </div>
       </div>
@@ -51,6 +51,11 @@
               <div class="contenedor-input">
                 <input type="text" formControlName="numeroInterfon" placeholder=" " />
                 <label for="">Numero Interfon</label>
+              </div>
+
+              <div class="contenedor-input">
+                <input type="text" formControlName="codigoInterfon" placeholder=" " />
+                <label for="">Código Interfon</label>
               </div>
   
               <div class="contenedor-input">

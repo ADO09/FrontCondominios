@@ -85,6 +85,11 @@ const routes: Routes = [
         loadChildren:()=>
         import('src/app/data/modules/interfone/interfones.module').then((m) =>m.InterfonesModule)
       },
+      {
+        path:"",
+        loadChildren:()=>
+        import('src/app/data/modules/balance/historial-balances.module').then((m) =>m.HistorialBalancesModule)
+      },
       // {
       //   // path: 'userauth',
       //   // loadChildren: () =>

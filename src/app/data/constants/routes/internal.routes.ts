@@ -37,7 +37,8 @@ export const ROUTES_PATHS = {
         PROPPRINCP:'propPrincl',
         REGPROPIEDAD:'regPropiedad',
 
-        //----------------------------------------------
+        //HISTORIAL BALANCES----------------------------
+        HISTORIAL_BALANCES_DEFAULT: 'historial-balances',
 
 
         //-----------INGRESOS---------------------------
@@ -142,7 +143,8 @@ export const INTERNAL_PATHS = {
     PANELDEFAULTTARJETAS:`${ROUTES_PATHS.PANEL.TARJETAS_RFDI_DEFAULT}`,
     //INTERFONES--------------------------------------------
     PANELINTERFONES:`${ROUTES_PATHS.PANEL.INTEFONES_DEFAULT}`,
-
+    //HISTORIAL BALANCES--------------------------------------------
+    PANEL_HISTORIAL_BALANCES:`${ROUTES_PATHS.PANEL.HISTORIAL_BALANCES_DEFAULT}`,
     //INGRESOS---------------------------------------------
     PANELDEFAULTINGRESOS:`${ROUTES_PATHS.PANEL.INGRESOSDEFAULT}`,
     PANELCUOTAS: `${ROUTES_PATHS.PANEL.CUOTASCONFINGRS}`,
@@ -246,6 +248,8 @@ export const INTERNAL_ROUTES = {
     MODULO_TARJETAS_RFDI: `${INTERNAL_PATHS.PANELDEFAULTTARJETAS}`,
     //INTERFONES---------------------------------
     MODULO_INTERFONES: `${INTERNAL_PATHS.PANELINTERFONES}`,
+    //HISTORIAL BALANCES---------------------------
+    MODULO_HISTORIAL_BALANCES: `${INTERNAL_PATHS.PANEL_HISTORIAL_BALANCES}`,    
 
 
     //PROPIEDADES------------------------------------
