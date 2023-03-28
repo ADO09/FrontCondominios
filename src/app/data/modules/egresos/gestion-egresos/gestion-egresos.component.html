@@ -49,7 +49,7 @@
 
           <div class="contenedor-input">
             
-            <a [href]="api + 'private-files/' + egresoData.comprobanteUrl" target="_blank" style="
+            <a *ngIf="egresoData" [href]="api + 'private-files/' + egresoData.comprobanteUrl" target="_blank" style="
             color: var(--ColorWa);
             font-size: 11px;
             margin-top: 10px;
@@ -98,7 +98,7 @@
             </p>
           </div>
 
-          <div class="contenedor-input">
+          <!-- <div class="contenedor-input">
             <select formControlName="tipoEgreso" class="tipoEgreso">
               <option
                 value="{{ tiposEgreso.id }}"
@@ -112,6 +112,20 @@
               class="smsError"
               *ngIf="FormEgresos.get('tipoEgreso')?.touched && FormEgresos.get('tipoEgreso')?.errors?.['required']"
             >
+              El campo no puede estar en blanco
+            </p>
+          </div> -->
+
+
+          <div class="contenedor-input">
+            <select  (change)="tipoEgresoSeleccionado(tipoEgresoSelect)" #tipoEgresoSelect formControlName="tipoEgreso" style="width: 230px">
+              <option  value="{{ tiposEgreso.id }}" *ngFor="let tiposEgreso of tiposEgresos">
+                {{ tiposEgreso.descripcion }}
+              </option>
+            </select>
+            <label for="">Tipo de egreso</label>
+            <p class="smsError"
+              *ngIf="FormEgresos.get('tipoEgreso')?.touched && FormEgresos.get('tipoEgreso')?.errors?.['required']">
               El campo no puede estar en blanco
             </p>
           </div>
@@ -160,6 +174,24 @@
               El campo no puede estar en blanco
             </p>
           </div>
+
+
+          <div class="contenedor-input">
+            <input type="text" placeholder=" " formControlName="proveedorId"
+            style="cursor: default"
+            (click)="showModal = true"
+            
+            readonly
+            placeholder=" "
+            #claveCatastral
+            (keydown.enter)="searchProveedor(null, null)"
+            >
+            <label for="">Proveedor</label>
+            <label for="">Ingrese</label>
+            <p class="smsError"
+                *ngIf="FormEgresos.get('proveedorId')?.touched && FormEgresos.get('proveedorId')?.errors?.['required']">
+                El campo no puede estar en blanco</p>
+        </div>
           <!-- <div class="contenedor-input">
             <select formControlName="estatusEgreso">
               <option value="0">APROBADO</option>
@@ -195,4 +227,62 @@
     *ngIf="this.egresoData"
     [dataDetallesEgreso]="this.egresoData.detalleEgreso"
   ></app-list-detalles-egresos>
+</div>
+
+
+
+
+
+
+<!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
+<div class="container-modal" *ngIf="showModal" (click)="showModal = false">
+  <div class="modal" (click)="$event.stopPropagation()">
+      <div class="header">
+          <button (click)="showModal = false">
+              <i class="fa-solid fa-xmark"></i>
+          </button>
+          <input type="search" #search placeholder="Buscar" (keyup)="searchProveedor(search.value, $event)" />
+      </div>
+      <div class="body">
+          <div class="header-table">
+              <div>Correo</div>
+              <div>Nombre</div>
+              <div>Nombre de contacto</div>
+              <div>Notas</div>
+              <div>Rfc</div>
+
+              <!-- <div>Cantidad</div> -->
+          </div>
+          <div class="body-table">
+              <div class="contenedor-element-table" *ngFor="let proveedor of proveedores"
+                  (click)="selectProveedor(proveedor)">
+                  <div>
+                      <p title="{{ proveedor.correoContacto }}">{{ proveedor.correoContacto }}</p>
+                  </div>
+                  <div>
+                      <p title="{{ proveedor.nombre }}">
+                          {{ proveedor.nombre }}
+                      </p>
+                  </div>
+                  <div>
+                      <p title="{{ proveedor.nombreContacto }}">
+                          {{ proveedor.nombreContacto }}
+                      </p>
+                  </div>
+                  <div>
+                      <p title="{{ proveedor.notas }}">
+                          {{ proveedor.notas }}
+                      </p>
+                  </div>
+                  <div>
+                      <p title="{{ proveedor.rfc }}">
+                          {{ proveedor.rfc }}
+                      </p>
+                  </div>
+                  <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
+              </div>
+          </div>
+      </div>
+      <div class="footer"></div>
+  </div>
 </div>

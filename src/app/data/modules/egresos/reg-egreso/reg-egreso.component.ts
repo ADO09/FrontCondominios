@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
 import { ProductosService } from 'src/app/data/services/api/productos/productos.service';
+import { ProveedoresService } from 'src/app/data/services/api/proveedores/proveedores.service';
 
 @Component({
   selector: 'app-reg-egreso',
@@ -14,17 +15,53 @@ export class RegEgresoComponent {
   public selectedFile: File | undefined;
   public  pdfUrl: any;
   public FormEgresos!: FormGroup;
+  public FormTipoEgreso!:FormGroup;
   public tiposEgresos!:any;
+  public FormElejido!:any;
   public formData = new FormData();
+  public JSONDATOSTIPOEGRESO:any;
+  public datos:any = {}
+  showModal = false
+  productoTemp:any[]=[]
+  proveedores:any[]=[]
+  idProveedor: string | undefined;
+  correoProveedor: string | undefined;
+  public proveedorSelect: any | null = null;
   previewFile() {
     window.open(this.pdfUrl, '_blank');
   }
-  constructor(private route:Router, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
+  constructor(private proveedoresService:ProveedoresService, private route:Router, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
+
+    
+    this.FormTipoEgreso = this.formBuilder.group({
+      descripcion: ['', Validators.required],
+      proveedor:['',Validators.required]
+    });
+
+    this.FormEgresos = this.formBuilder.group({
+      // id: ['', Validators.required],
+      // fraccionamientoId: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      comprobanteUrl: ['', Validators.required],
+      montoTotal: ['', Validators.required],
+      isVerified: ['', Validators.required],
+      tipoEgreso:['', Validators.required] ,
+      tipoPago: ['', Validators.required],
+      fechaPago:['', Validators.required] ,
+      proveedorId:['', Validators.required] ,
+      // estatusEgreso:['', Validators.required] ,
+      // TipoEgresoEstatus:['', Validators.required]
+      // detalleEgreso: ['', Validators.required]
+    });
    }
   
 
-  ngOnInit(){
+ async ngOnInit(){
 
+    var data  = (await this.proveedoresService.getAll().toPromise()) as any;
+    this.proveedores = data.body
+
+    console.log(this.proveedores);
     // var data  = (await this.productoService.GetProductosQPFraccionamiento(localStorage.getItem('id_fraccionamiento')).toPromise()) as any;
     // this.productos = data.body
 
@@ -38,20 +75,7 @@ export class RegEgresoComponent {
     //     precio_unitario: ['', Validators.required],
     //     producto: ['', Validators.required]
     //   });
-    this.FormEgresos = this.formBuilder.group({
-      // id: ['', Validators.required],
-      // fraccionamientoId: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      comprobanteUrl: ['', Validators.required],
-      montoTotal: ['', Validators.required],
-      isVerified: ['', Validators.required],
-      tipoEgreso:['', Validators.required] ,
-      tipoPago: ['', Validators.required],
-      fechaPago:['', Validators.required] ,
-      // estatusEgreso:['', Validators.required] ,
-      // TipoEgresoEstatus:['', Validators.required]
-      // detalleEgreso: ['', Validators.required]
-    });
+
 
     this.egresosService.getTipoEgresoQPFraccionamiento(localStorage.getItem('id_fraccionamiento')).subscribe((res) =>{
       
@@ -81,6 +105,19 @@ export class RegEgresoComponent {
     (document.querySelector('#inputFile') as HTMLInputElement).click();
   }
 
+  enviarModalTE(){
+     this.JSONDATOSTIPOEGRESO = {
+      ...this.JSONDATOSTIPOEGRESO,
+      descripcion:this.FormTipoEgreso.value.descripcion,
+      status:1,
+      fraccionamientoId:localStorage.getItem('id_fraccionamiento')
+    }
+
+    this.egresosService.postTipoEgreso(this.JSONDATOSTIPOEGRESO).subscribe((r) =>{
+      console.log(r);
+      
+    });
+  }
 
   enviarModal(){
 
@@ -108,122 +145,128 @@ export class RegEgresoComponent {
     })
   }
 
+  searchProveedorEgrs(search:any ,event:any){
 
+    event.stopPropagation();
+    //event.stopPropagation();
+    //console.log(search)
+    const matchingProducto = this.productoTemp.filter(u => 
+      u.descripcion.toLowerCase().includes(search.toLowerCase()) || 
+      u.cantidad.toLowerCase().includes(search.toLowerCase()) || 
+      u.precio_unitario.toLowerCase().includes(search.toLowerCase())
+    );
+    //console.log(matchingUsers);
 
+    this.proveedores = matchingProducto
+  }
 
-  // public FormDetalleEgresos!: FormGroup;
-
- 
-  // showModal = false
-  // productoTemp:any[]=[]
-  // productos:any[]=[]
-  // idProducto: string | undefined;
-  // descripcionProducto: string | undefined;
-  // public productoSelect: any | null = null;
-  // public JSONEGRS:any;
-  // public productoData!: any[];
- 
-  
-
- 
- 
-
- 
-  // searchPropiedad(search:any ,event:any){
-
-  //   event.stopPropagation();
-  //   //event.stopPropagation();
-  //   //console.log(search)
-  //   const matchingProducto = this.productoTemp.filter(u => 
-  //     u.descripcion.toLowerCase().includes(search.toLowerCase()) || 
-  //     u.cantidad.toLowerCase().includes(search.toLowerCase()) || 
-  //     u.precio_unitario.toLowerCase().includes(search.toLowerCase())
-  //   );
-  //   //console.log(matchingUsers);
-
-  //   this.productos = matchingProducto
-  // }
-
-  // selectProducto(producto:any){
-  //   this.idProducto = String(producto.id);
-
-  //   console.log(producto.id);
+  selectProveedorEgrs(proveedor:any){
     
-  //   this.descripcionProducto = String(producto.descripcion);
-
-  //   this.productoSelect = producto;
-  //   console.log(this.productoSelect?.descripcion);
-  //   this.FormDetalleEgresos.patchValue({
-  //     producto: [
-  //       this.productoSelect?.descripcion 
-  //     ],
-  //   });
-
-  //   this.formData.append('productoId', producto.id);
-
-  //   this.JSONEGRS = { ...this.JSONEGRS, productoId:  this.formData.get('productoId') };
-
-  //   this.showModal = false
-  // }
- 
-
- 
-
- 
+  }
 
 
 
-  
-  // enviarModalD(){
+  searchProveedor(search:any ,event:any){
 
-  // console.log(this.FormDetalleEgresos.value);
-  
-  // var frccId:any = localStorage.getItem('id_fraccionamiento');
+    event.stopPropagation();
+    //event.stopPropagation();
+    //console.log(search)
+    const matchingProducto = this.productoTemp.filter(u => 
+      u.descripcion.toLowerCase().includes(search.toLowerCase()) || 
+      u.cantidad.toLowerCase().includes(search.toLowerCase()) || 
+      u.precio_unitario.toLowerCase().includes(search.toLowerCase())
+    );
+    //console.log(matchingUsers);
 
+    this.proveedores = matchingProducto
+  }
 
- 
-  // this.formData.append('cantidad',this.FormDetalleEgresos.value.cantidad);
-  // this.formData.append('descripcion',this.FormDetalleEgresos.value.descripcion);
-  // this.formData.append('precioUnitario',this.FormDetalleEgresos.value.precio_unitario);
-  // this.formData.append('fraccionamientoId',frccId);
-  // // this.formData.append('egresoId',this.id);
- 
+  selectProveedor(proveedor:any){
 
-  // console.log(this.formData.get('egresoId'));
-  // console.log(this.formData.get('productoId'));
-  
-
-  // this.JSONEGRS = {
-  //   ...this.JSONEGRS,
-  //   cantidad: this.formData.get('cantidad'),
-  //   descripcion: this.formData.get('descripcion'),
-  //   precioUnitario:this.formData.get('precioUnitario'),
-  //   fraccionamientoId: this.formData.get('fraccionamientoId'),
-  //   egresoId: this.formData.get('egresoId')
-  // }
-
-  
-  // // this.egresoSrvice.updateDetalleEgreso(this.id,this.detalleEgresoDatos.producto.id,this.JSONEGRS).subscribe( (r)=>{
-  // //   console.log(r);
+    console.log(this.FormElejido);
     
-  // // })
-  // }
+    if (this.FormElejido =='FTE') {
+      console.log('1');
+      
+      this.idProveedor = String(proveedor.id);
 
-  // manejarDatoP(dato: any) {
-  //   this.productoSelect = dato;
-  //   console.log(this.productoSelect?.nombre);
-  //   this.FormDetalleEgresos.patchValue({
-  //     producto: [
-  //       this.productoSelect?.descripcion +
-  //         ' ' +
-  //         this.productoSelect?.identificador_interno,
-  //     ],
-  //   });
+      console.log(proveedor.id);
+      
+      this.correoProveedor = String(proveedor.correoContacto);
+  
+      this.proveedorSelect = proveedor;
+      console.log(this.proveedorSelect?.correoContacto);
+      this.FormTipoEgreso.patchValue({
+        proveedor: [
+          this.proveedorSelect?.correoContacto 
+        ],
+      });
+  
+      // this.formData.append('productoId', producto.id);
+  
+      this.JSONDATOSTIPOEGRESO = { ...this.JSONDATOSTIPOEGRESO, proveedorId:  proveedor.id };
+  
+      this.showModal = false
+    } else if(this.FormElejido =='FE'){
+      console.log('2');
+      
+      this.idProveedor = String(proveedor.id);
 
-  //   this.formData.append('producto', dato.id);
-  // }
-  // envModalP() {
-  //   var divModlP = document.getElementById('id0P') as HTMLDivElement;
-  //   divModlP.style.display = 'none';
-  // }
+    console.log(proveedor.id);
+    
+    this.correoProveedor = String(proveedor.correoContacto);
+
+    this.proveedorSelect = proveedor;
+    console.log(this.proveedorSelect?.correoContacto);
+    this.FormEgresos.patchValue({
+      proveedorId: [
+        this.proveedorSelect?.correoContacto 
+      ],
+    });
+
+    // this.formData.append('productoId', producto.id);
+
+    this.formData.append('proveedorId', proveedor.id);
+    this.showModal = false
+    }
+  
+  }
+
+
+  tipoEgresoSeleccionado(select:any){
+   
+    const selectedIndex = select.selectedIndex;
+  const selectedObject:any = this.tiposEgresos[selectedIndex];
+  console.log(selectedObject.proveedorDefault);
+
+  if (selectedObject.proveedorDefault) {
+    console.log('aisudhashudiu');
+    
+    this.idProveedor = String(selectedObject.proveedorDefault.id);
+
+    console.log(selectedObject.proveedorDefault.id);
+    
+    this.correoProveedor = String(selectedObject.proveedorDefault.correoContacto);
+
+    this.proveedorSelect = selectedObject.proveedorDefault;
+    console.log(this.proveedorSelect?.correoContacto);
+    this.FormEgresos.patchValue({
+      proveedorId: [
+        this.proveedorSelect?.correoContacto 
+      ],
+    });
+
+    // this.formData.append('productoId', producto.id);
+
+    this.formData.append('proveedorId', selectedObject.proveedorDefault.id);
+    // this.showModal = false
+  }else{
+   
+    //console.log(this.proveedorSelect?.correoContacto);
+    this.FormEgresos.patchValue({
+      proveedorId: 
+        null ,
+    });
+  }
+  }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Egreso } from 'src/app/data/interfaces/egresos';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
+import { ProveedoresService } from 'src/app/data/services/api/proveedores/proveedores.service';
 import { enviroment as ENV } from 'src/environments/enviroments.dev';
 
 @Component({
@@ -19,17 +20,19 @@ export class GestionEgresosComponent {
  public selectedFile: File | undefined;
  public  pdfUrl: any;
  public api = ENV.urlAPI;
+ showModal = false
+ productoTemp:any[]=[]
+ proveedores:any[]=[]
+ idProveedor: string | undefined;
+ correoProveedor: string | undefined;
+ public proveedorSelect: any | null = null;
   listaEgresos: any;
 
 
-  constructor( private route: ActivatedRoute,private egresosService:EgresosService,private formBuilder:FormBuilder){
+  constructor(private proveedoresService:ProveedoresService, private route: ActivatedRoute,private egresosService:EgresosService,private formBuilder:FormBuilder){
     this.id = +this.route.snapshot.params['id_egreso'];
     console.log(this.id);
-  }
-
-
-  ngOnInit(){
-        this.FormEgresos = this.formBuilder.group({
+    this.FormEgresos = this.formBuilder.group({
       // id: ['', Validators.required],
       // fraccionamientoId: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -40,9 +43,18 @@ export class GestionEgresosComponent {
       estatusEgreso:['', Validators.required] ,
       tipoPago: ['', Validators.required],
       fechaPago:['', Validators.required] ,
+      proveedorId:['', Validators.required] ,
       // TipoEgresoEstatus:['', Validators.required]
       // detalleEgreso: ['', Validators.required]
     });
+  }
+
+
+  async ngOnInit(){
+
+    var data  = (await this.proveedoresService.getAll().toPromise()) as any;
+    this.proveedores = data.body
+    
 
 
    
@@ -68,6 +80,7 @@ export class GestionEgresosComponent {
           estatusEgreso: [this.egresoData.estatusEgreso.id, Validators.required],
           tipoPago: [this.egresoData.tipoPago, Validators.required],
           fechaPago:[this.egresoData.fechaPago, Validators.required] ,
+          proveedorId:[this.egresoData.proveedor.correoContacto, Validators.required] ,
           // TipoEgresoEstatus:[this.egresoData.tipoEgreso.status, Validators.required]
         });
        
@@ -131,6 +144,104 @@ export class GestionEgresosComponent {
 
   previewFile() {
     
+  }
+
+
+
+  
+  searchProveedor(search:any ,event:any){
+
+    event.stopPropagation();
+    //event.stopPropagation();
+    //console.log(search)
+    const matchingProducto = this.productoTemp.filter(u => 
+      u.descripcion.toLowerCase().includes(search.toLowerCase()) || 
+      u.cantidad.toLowerCase().includes(search.toLowerCase()) || 
+      u.precio_unitario.toLowerCase().includes(search.toLowerCase())
+    );
+    //console.log(matchingUsers);
+
+    this.proveedores = matchingProducto
+  }
+
+  selectProveedor(proveedor:any){
+
+    
+   
+      console.log('2');
+      
+      this.idProveedor = String(proveedor.id);
+
+    console.log(proveedor.id);
+    
+    this.correoProveedor = String(proveedor.correoContacto);
+
+    this.proveedorSelect = proveedor;
+    console.log(this.proveedorSelect?.correoContacto);
+    this.FormEgresos.patchValue({
+      proveedorId: [
+        this.proveedorSelect?.correoContacto 
+      ],
+    });
+
+    // this.formData.append('productoId', producto.id);
+
+    this.formData.append('proveedorId', proveedor.id);
+    this.showModal = false
+    
+  
+  }
+
+
+  tipoEgresoSeleccionado(select:any){
+   
+    const selectedIndex = select.selectedIndex;
+  const selectedObject:any = this.tiposEgresos[selectedIndex];
+  console.log(selectedObject.proveedorDefault);
+
+  if (selectedObject.proveedorDefault) {
+    console.log('aisudhashudiu');
+    
+    this.idProveedor = String(selectedObject.proveedorDefault.id);
+
+    console.log(selectedObject.proveedorDefault.id);
+    
+    this.correoProveedor = String(selectedObject.proveedorDefault.correoContacto);
+
+    this.proveedorSelect = selectedObject.proveedorDefault;
+    console.log(this.proveedorSelect?.correoContacto);
+    this.FormEgresos.patchValue({
+      proveedorId: [
+        this.proveedorSelect?.correoContacto 
+      ],
+    });
+
+    // this.formData.append('productoId', producto.id);
+
+    this.formData.append('proveedorId', selectedObject.proveedorDefault.id);
+    // this.showModal = false
+  }else{
+   
+    //console.log(this.proveedorSelect?.correoContacto);
+    this.idProveedor = String(this.egresoData.proveedor.id);
+
+    console.log(this.egresoData.proveedor.id);
+    
+    this.correoProveedor = String(this.egresoData.proveedor.correoContacto);
+
+    this.proveedorSelect = this.egresoData.proveedor;
+    console.log(this.proveedorSelect?.correoContacto);
+    this.FormEgresos.patchValue({
+      proveedorId: [
+        this.proveedorSelect?.correoContacto 
+      ],
+    });
+
+    // this.formData.append('productoId', producto.id);
+
+    this.formData.append('proveedorId', this.egresoData.proveedor.id);
+    //this.showModal = false
+  }
   }
 
 }

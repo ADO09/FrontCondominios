@@ -81,6 +81,10 @@ export class ModalGestionProductosComponent {
       fraccionamientoId:this.idFraccionamientoUsuer
     };
 
+    if (!this.datos.proveedorId) {
+      this.datos.proveedorId = this.productoDatos.proveedor.id;
+    }
+
     
 
 this.productosService.updateProducto(this.productoDatos.id,this.datos).subscribe( (r)=>{

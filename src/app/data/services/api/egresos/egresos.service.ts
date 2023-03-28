@@ -93,10 +93,32 @@ export class EgresosService {
   }
 
 
+
+  postTipoEgreso(data:any): Observable<Mensaje> {
+    const response = { icon: '', title: ''};
+    return this.http.post<Mensaje>
+      (API_ROUTES.EGRESOS.POSTTIPOEGRESO,data)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          // response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
+
   getTipoEgresoQPFraccionamiento(id:any){
+
+    console.log((API_ROUTES.EGRESOS.GETTIPOEGRESO +'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id));
+    
     const response = { icon: '', title: '', body: [] as any[] | null };
     return this.http.get<Mensaje>
-      (API_ROUTES.EGRESOS.GETTIPOEGRESO +'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+id)
+      (API_ROUTES.EGRESOS.GETTIPOEGRESO +'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id)
       .pipe(
         delay(100),
         map(r => {
