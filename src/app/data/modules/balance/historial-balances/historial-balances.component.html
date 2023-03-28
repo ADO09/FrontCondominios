@@ -1,0 +1,27 @@
+<section class="contenedor-componente">
+    <div class="cardview">
+      <div class="cardview-header">
+      </div>
+      <div class="cardview-body">
+        <div class="header-table">
+          <div>Folio del balance</div>
+          <div>Monto</div>
+          <div>Lote</div>
+          <div>Tipo</div>
+        </div>
+      </div>
+  
+      <div class="body-table">
+        <div
+          class="contenedor-element-table"
+          *ngFor="let data of listaBalances"
+        >
+          <div >{{data.id}}</div>
+          <div>{{data.monto}}</div>
+          <div>{{data.propiedad.lote}}</div>
+          <div>{{data.tipo }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

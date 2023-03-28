@@ -19,7 +19,19 @@
               <label for=""><b>Configuraciones</b></label>
             </div>
 
-            <div class="contenedor-input">
+            <div>
+              <input type="checkbox" name="" id="" (click)="cambiarTipo()">
+              <label for=""> Generar por año</label>
+            </div>
+
+            <div *ngIf="this.year===true"  class="contenedor-input">
+              <select formControlName="year"> 
+                <option *ngFor="let years of yearsList" [value]="years.year">{{years.year}}</option>
+              </select>
+              <label for="select"><b>Año a generar</b></label>
+            </div>
+
+            <div *ngIf="this.year===false"  class="contenedor-input">
               <select formControlName="plazoPorGenerar"> 
                 <option value="1">1 mes</option>
                 <option value="2">2 meses</option>

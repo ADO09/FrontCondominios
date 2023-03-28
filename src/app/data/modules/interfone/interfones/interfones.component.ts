@@ -31,6 +31,7 @@ export class InterfonesComponent implements OnInit {
 
     this.formInterfones = this.fb.group({
       numeroInterfon: ['', Validators.required],
+      codigoInterfon: ['', Validators.required],
       propiedadId: ['', Validators.required],
       fraccionamientoId: ['', Validators.required],
     });
@@ -40,6 +41,7 @@ export class InterfonesComponent implements OnInit {
     this.tipoBoton = 'post';
     this.formInterfones = this.fb.group({
       numeroInterfon: '',
+      codigoInterfon: '',
       propiedadId: '',
       fraccionamientoId: '',
     });
@@ -54,6 +56,7 @@ export class InterfonesComponent implements OnInit {
       console.log(this.InterfonIndividual);
       this.formInterfones = this.fb.group({
         numeroInterfon: this.InterfonIndividual[0].interfones[0]?.numeroInterfon === null ? '' : this.InterfonIndividual[0].interfones[0]?.numeroInterfon,
+        codigoInterfon: this.InterfonIndividual[0].interfones[0]?.codigoInterfon === null ? '' : this.InterfonIndividual[0].interfones[0]?.codigoInterfon,
         propiedadId: this.InterfonIndividual[0].id,
         fraccionamientoId: this.InterfonIndividual[0].fracionamientoId,
       });
@@ -67,6 +70,7 @@ export class InterfonesComponent implements OnInit {
       console.log("post entro");
       const payload = {
         numeroInterfon: this.formInterfones.get('numeroInterfon')?.value,
+        codigoInterfon: this.formInterfones.get('codigoInterfon')?.value,
         propiedadId: this.formInterfones.get('propiedadId')?.value,
         fraccionamientoId: this.fraccionamientoId,
       }
@@ -78,6 +82,7 @@ export class InterfonesComponent implements OnInit {
       console.log("put entro");
       const payload = {
         numeroInterfon: this.formInterfones.get('numeroInterfon')?.value,
+        codigoInterfon: this.formInterfones.get('codigoInterfon')?.value,
         propiedadId: this.formInterfones.get('propiedadId')?.value,
         fraccionamientoId: this.fraccionamientoId,
       }
