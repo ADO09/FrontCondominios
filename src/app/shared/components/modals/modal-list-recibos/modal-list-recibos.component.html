@@ -1,15 +1,16 @@
 
 
     
-<div  class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+<div  class="w3-modal-content w3-card-4 w3-animate-zoom modal" style="max-width:500px">
         <div class="w3-center"><br>
-          <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+          <!-- <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top"> -->
+          <h2>REGISTRAR RECIBOS</h2>
         </div>
         <div class="cardview" style="margin: 0; padding: 0; padding-right: 15px; padding-bottom: 15px;"  >
 
 
         <form  class="form" [formGroup]="formRecibo">
-          <div class="contenedor-grid-2">
+          <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <select formControlName="configuracionId"> 
                 <option *ngFor="let configuraciones of listaConfiguraciones" [value]="configuraciones.id" >
@@ -19,7 +20,7 @@
               <label for=""><b>Configuraciones</b></label>
             </div>
 
-            <div>
+            <div class="contenedor-checkbox">
               <input type="checkbox" name="" id="" (click)="cambiarTipo()">
               <label for=""> Generar por año</label>
             </div>

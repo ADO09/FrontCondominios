@@ -1,40 +1,44 @@
-  .contenedor-componente 
-.cardview {
-    max-width: none;
+.contenedor-componente .cardview {
+  max-width: none;
 }
 
 .header-table {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 .body-table .contenedor-element-table {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 
 .body-table .contenedor-element-table div {
-    max-width: none;
+  max-width: none;
 }
 
 .form .contenedor-botones {
-    padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
 .input-group {
-    position: relative;
-  }
-  
-  .input-group-addon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    color: #ccc;
-    cursor: pointer;
-  }
-  
-  .input-group-addon:hover {
-    color: #333;
-  }
+  position: relative;
+}
+
+.input-group-addon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.input-group-addon:hover {
+  color: #333;
+}
+
+.modal {
+  padding: 0 15px 15px 15px;
+}
