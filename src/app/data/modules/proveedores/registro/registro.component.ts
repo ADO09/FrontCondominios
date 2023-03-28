@@ -17,7 +17,7 @@ export class RegistroComponent {
     correoContacto: new FormControl('', [Validators.required]),
     nombreContacto: new FormControl('', [Validators.required]),
     notas: new FormControl(''),
-    metodoDePagoId: new FormControl('', [Validators.required]),
+   // metodoDePagoId: new FormControl('', [Validators.required]),
 
   });
 
