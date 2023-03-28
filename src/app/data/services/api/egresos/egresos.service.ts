@@ -56,6 +56,24 @@ export class EgresosService {
   }
 
 
+  PutTipoEgreso(id:any,data:any): Observable<Mensaje> {
+    const response = { icon: '', title: ''};
+    return this.http.put<Mensaje>
+      (API_ROUTES.EGRESOS.PUTTIPOEGRESO + id,data)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          // response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
+
 
   DelDetalleEgreso(idEgrs:any,idDetll:any): Observable<Mensaje> {
     const response = { icon: '', title: ''};

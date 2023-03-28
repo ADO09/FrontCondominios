@@ -19,6 +19,7 @@ import { ModalListProductosComponent } from './modals/modal-list-productos/modal
 import { ListProductosComponent } from './list/list-productos/list-productos.component';
 import { ModalGestionProductosComponent } from './modals/modal-gestion-productos/modal-gestion-productos.component';
 import { ModalRegProductoComponent } from './modals/modal-reg-producto/modal-reg-producto.component';
+import { ModalGestionTipoEgresoComponent } from './modals/modal-gestion-tipo-egreso/modal-gestion-tipo-egreso.component';
 
 export const components: any[] = [
 
@@ -40,7 +41,8 @@ export const components: any[] = [
     ModalListProductosComponent,
     ListProductosComponent,
     ModalGestionProductosComponent,
-    ModalRegProductoComponent
+    ModalRegProductoComponent,
+    ModalGestionTipoEgresoComponent
 ]
 
 

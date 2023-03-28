@@ -11,20 +11,32 @@ import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
   styleUrls: ['./egresos.component.css']
 })
 export class EgresosComponent implements OnInit {
+
+  showModal = false
+  productoTemp:any[]=[]
+  tipoEgresos:any[]=[]
+  idTipoEgreso: string | undefined;
+  // correoProveedor: string | undefined;
+  public tipoEgresoSelect: any | null = null;
+
   page!:number;
   listaEgresos: any[] = [];
   fraccionamientoId:any;
   public EgresoSelect!:Egreso;
 public FormEgresos!: FormGroup;
 public ModuloGestionEgreso:any = INTERNAL_ROUTES.MODULO_GESTIONEGRESO;
-  constructor(private apiService:EgresosService,private sharedTitleService:SharedTitleComponentService,private formBuilder: FormBuilder,private route:Router ){
+  constructor(  private apiService:EgresosService,private sharedTitleService:SharedTitleComponentService,private formBuilder: FormBuilder,private route:Router ){
     this.fraccionamientoId = localStorage.getItem('id_fraccionamiento');
     sharedTitleService.emitChange("Lista de egresos")
   }
 
-  ngOnInit(){
+  async ngOnInit(){
 
+    var data  = (await this.apiService.getTipoEgresoQPFraccionamiento(this.fraccionamientoId).toPromise()) as any;
+    this.tipoEgresos = data.body
 
+    console.log(this.tipoEgresos);
+    
     this.FormEgresos = this.formBuilder.group({
       // id: ['', Validators.required],
       // fraccionamientoId: ['', Validators.required],
@@ -82,6 +94,59 @@ public ModuloGestionEgreso:any = INTERNAL_ROUTES.MODULO_GESTIONEGRESO;
    
 
    }
+
+
+   
+  
+   searchTipoEgfreso(search:any ,event:any){
+
+    event.stopPropagation();
+    //event.stopPropagation();
+    //console.log(search)
+    const matchingProducto = this.productoTemp.filter(u => 
+      u.descripcion.toLowerCase().includes(search.toLowerCase()) || 
+      u.cantidad.toLowerCase().includes(search.toLowerCase()) || 
+      u.precio_unitario.toLowerCase().includes(search.toLowerCase())
+    );
+    //console.log(matchingUsers);
+
+    this.tipoEgresos = matchingProducto
+  }
+
+  envModal(){
+    
+    var divModl =  document.getElementById('id01') as HTMLDivElement;
+    divModl.style.display = 'none';
+ 
+   }
+
+  selectTipoEgreso(tipoEgreso:any){
+     
+      this.idTipoEgreso = String(tipoEgreso.id);
+
+    // console.log(proveedor.id);
+    
+    // this.correoProveedor = String(proveedor.correoContacto);
+
+    this.tipoEgresoSelect = tipoEgreso;
+    // console.log(this.proveedorSelect?.correoContacto);
+    // this.FormEgresos.patchValue({
+    //   proveedorId: [
+    //     this.proveedorSelect?.correoContacto 
+    //   ],
+    // });
+    setTimeout(() => {
+      var divModl = document.getElementById('id01') as HTMLDivElement;
+      divModl.style.display = 'block';
+    }, 100);
+    // this.formData.append('productoId', producto.id);
+
+    // this.formData.append('proveedorId', proveedor.id);
+     this.showModal = false
+    
+  
+  }
+
   cambiarEstatus(idEgreso:any){
     const payload: any[] = [
 

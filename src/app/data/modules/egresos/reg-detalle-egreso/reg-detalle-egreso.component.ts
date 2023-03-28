@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
 import { ProductosService } from 'src/app/data/services/api/productos/productos.service';
+import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 
 @Component({
   selector: 'app-reg-detalle-egreso',
@@ -18,7 +19,10 @@ export class RegDetalleEgresoComponent {
   public formData = new FormData();
 
  
-  constructor( private route:Router, private routerA:ActivatedRoute, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
+  constructor( private sharedTitleService: SharedTitleComponentService, private route:Router, private routerA:ActivatedRoute, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
+
+    
+    sharedTitleService.emitChange('Registrar Detalle egreso');
     this.FormDetalleEgresos = this.fb.group({
      cantidad: ['', Validators.required],
      descripcion: ['', Validators.required],

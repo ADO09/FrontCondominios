@@ -8,6 +8,7 @@ import { ListRecibosInquilinoComponent } from './components/list/list-recibos-in
 import { ModalListRecibosComponent } from './components/modals/modal-list-recibos/modal-list-recibos.component';
  import { NgxPaginationModule } from 'ngx-pagination';
 import { LoadingPeticionesComponent } from './components/loading/loading-peticiones/loading-peticiones.component';
+import { ModalGestionTipoEgresoComponent } from './components/modals/modal-gestion-tipo-egreso/modal-gestion-tipo-egreso.component';
 
 
 
