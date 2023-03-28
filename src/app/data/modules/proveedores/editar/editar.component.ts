@@ -17,7 +17,7 @@ export class EditarComponent {
     correoContacto: new FormControl('', [Validators.required]),
     nombreContacto: new FormControl('', [Validators.required]),
     notas: new FormControl(''),
-    metodoDePagoId: new FormControl('', [Validators.required]),
+   // metodoDePagoId: new FormControl('', [Validators.required]),
 
   });
 
@@ -45,11 +45,11 @@ export class EditarComponent {
         .get(this.id)
         .toPromise()) as any;
 
-        console.log(data.body.metodoDePago.id)
+        
 
       //MOSTRAR DATOS DE PROVEEDOR EN EL FORM
       this.proveedorFormRegistro.patchValue(data.body);
-      this.proveedorFormRegistro.controls.metodoDePagoId.setValue(data.body.metodoDePago.id)
+      //this.proveedorFormRegistro.controls.metodoDePagoId.setValue(data.body.metodoDePago.id)
     })
   }
 
