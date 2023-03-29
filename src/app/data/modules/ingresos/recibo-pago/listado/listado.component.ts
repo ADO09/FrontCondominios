@@ -47,11 +47,11 @@ export class ListadoComponent {
       this.showModal = true
     })*/
 
-    
+  /* // ! YA NO SE OCUPA EN LA MISMA CONSULTA PARA OBTENER EL PAGO VIENE TODO LO RELACIONADO CON EL 
     this.apiServicePropedad.retrivePropiedad(idPropiedad).subscribe((data:any)=>{
       this.propiedad = data.body
       this.showModal = true
-    })
+    })*/
 
 
   }
@@ -103,8 +103,10 @@ export class ListadoComponent {
   }
 
   aceptarPago(recibo:any){
+
+   let message = (recibo.recibo.estatus != 'PAGADO') ? '¿Está seguro que desea aceptar el pago?' :'Este pago ya esta reflejado en el sistema , ¿Quiere aplicarlo a la proxima fecha?'
     Swal.fire({
-      title: '¿Está seguro que desea aceptar el pago?',
+      title:message,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí',
