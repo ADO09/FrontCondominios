@@ -11,15 +11,23 @@
                 <div>Mes</div>
                 <div>Monto</div>
                 <div>Tipo pago</div>
+                <div>Tipo Propiedad</div>
+                <div>Lote</div>
+                <div>Propietario</div>
+
                 <div></div>
             </div>
             <div class="body-table">
              
-                <div class="contenedor-element-table" *ngFor="let recibo of recibospago"  (click)="masInformacion(recibo.propiedadId ,recibo.reciboId)">
+                <div class="contenedor-element-table" *ngFor="let recibo of recibospago">
                     <div>{{recibo.id}}</div>
                     <div>{{recibo.mes}}</div>
                     <div>{{recibo.monto}}</div>
                     <div>{{recibo.tipoPago}}</div>
+                    <div>{{recibo.propiedad.tipoPropiedad.descripcion}}</div>
+                    <div>{{recibo.propiedad.lote}}</div>
+                    <div>{{recibo.propiedad.propietario.nombre}}</div>
+
                     <div class="container-opc" *ngIf="recibo.estatus == 'PENDIENTE'">
                         <i (click)="verComprobante(recibo);$event.stopPropagation()" title="Ver comprobante" class="fa-solid fa-file default"></i>
                         <i (click)="aceptarPago(recibo);$event.stopPropagation()" title="Aceptar pago" class="fa-solid fa-check success"></i>
