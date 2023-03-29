@@ -14,11 +14,11 @@
 
     <div class="body-table">
       <div  class="contenedor-element-table" *ngFor="let recibos of listaRecibos  | paginate: {itemsPerPage: 50, currentPage: page}"  
-      onclick="document.getElementById('id01').style.display='block'">
+      onclick="document.getElementById('id01').style.display='block'" (click)="editarRecibo(recibos.id)">
         <div>{{recibos.id}}</div>
         <div>${{recibos.monto}}</div>
         <div>{{recibos.fechaVencimiento}}</div>
-        <div>{{recibos.estatus}}</div>
+        <div>{{recibos.estatus === 'POR_PAGAR' ? 'POR PAGAR' : recibos.estatus}}</div>
     </div>
     </div>
   </div>
@@ -28,55 +28,58 @@
    
 <body>
   <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-bottom" style="max-width:600px">
-      <div class="w3-center"><br>
-        <img src="../../../../../assets/administraccion.svg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-      </div>
-        <form [formGroup]="formRecibo">
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Propietario</b></label>
-              <input class="" formControlName="Id_Propietario" type="text" placeholder="Propietario de la propiedad" required readonly>
-            </div>
-            <div class="form-group">
-              <label><b>Fecha de pago</b></label>
-              <input class="" formControlName="Fecha_Pago" type="date" placeholder="Fecha en que se realizo el pago" required readonly>
+    <div class="w3-modal-content w3-card-4 w3-animate-bottom modal"
+      style="max-width: 400px">
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+      <h2>REGISTRAR RECIBO</h2>
+      <div class="cardview">
+        <form class="form" [formGroup]="formRecibo">
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input formControlName="Id_Propietario" type="text"  required readonly>
+              <label for="">Propietario</label>                
             </div>
           </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Monto a pagar</b></label>
-              <input class="" formControlName="Monto" type="number" placeholder="Cantidad que se pago" required readonly>
-            </div>
-            <div class="form-group">
-              <label><b>Fecha de vencimiento</b></label>
-              <input class="" formControlName="Fecha_Vencimiento" type="date" placeholder="Fecha en la que venció el recibo" required readonly>
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input class="" formControlName="Fecha_Pago" type="date" required readonly>
+              <label for="">Fecha de pago</label>
             </div>
           </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Penalización</b></label>
-              <input class="" formControlName="Monto_Penalizacion" type="number" placeholder="Cantidad a penalizar" required readonly>
-            </div>
-            <div class="form-group">
-              <label><b>Descuento *Opcional*</b></label>
-              <input class="" formControlName="Monto_Descuento" type="number" placeholder="Cantidad a descontar del total" readonly>
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input class="" formControlName="Monto" type="number"  required readonly>
+              <label for="">Monto a pagar</label>               
             </div>
           </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label><b>Estado del recibo</b></label>
-              <input class="" formControlName="Estatus" type="text" placeholder="Estado en el que llego el recibo" required readonly> 
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input class="" formControlName="Fecha_Vencimiento" type="date" required readonly>
+              <label for="">Fecha de vencimiento</label>             
             </div>
           </div>
-     </form>
-
-      </div>
-    </div>   
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input class="" formControlName="Monto_Penalizacion" type="number" required readonly>
+              <label for="">Penalización</label>              
+            </div>
+          </div>
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input class="" formControlName="Monto_Descuento" type="number" readonly>
+              <label for="">Descuento *Opcional*</label>            
+            </div>
+          </div>
+          <div class="contenedor-grid-1">
+            <div class="contenedor-input">
+              <input class="" formControlName="Estatus" type="text" required readonly> 
+              <label for="">Estado del recibo</label>          
+            </div>
+          </div>
+         </form>
+        </div>
+      </div>  
+    </div>
 </body>
 
 <app-modal-list-recibos id="id02" class="w3-modal" [cerrarModal]="envModal"></app-modal-list-recibos>

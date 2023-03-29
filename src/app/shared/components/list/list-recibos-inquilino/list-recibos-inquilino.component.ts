@@ -57,7 +57,7 @@ export class ListRecibosInquilinoComponent implements OnInit {
         Fecha_Vencimiento: this.ReciboIndividual[0].fechaVencimiento === null ? '' : this.listaRecibos[0].fechaVencimiento,
         Monto_Penalizacion: this.ReciboIndividual[0].montoPenalizacion === null ? 0 : this.listaRecibos[0].montoPenalizacion ,
         Monto_Descuento:this.ReciboIndividual[0].montoDescuento === null ? 0 : this.listaRecibos[0].montoDescuento,
-        Estatus: this.ReciboIndividual[0].estatus,
+        Estatus: this.ReciboIndividual[0].estatus === 'POR_PAGAR' ? 'POR PAGAR' : this.ReciboIndividual[0].estatus,
       });
     });
 
