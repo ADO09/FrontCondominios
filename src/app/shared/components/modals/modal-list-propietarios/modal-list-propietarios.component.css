@@ -268,3 +268,168 @@ input[type="text"] {
   max-width: none;
   padding: 7px;
 }
+
+
+.contenedor-componente .cardview {
+  max-width: 773px;
+  padding: 24px;
+  padding-top: 48px;
+}
+
+.form .contenedor-botones {
+  padding: 2px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group-addon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.input-group-addon:hover {
+  color: #333;
+}
+
+.contenedor-componente .cardview {
+  max-width: 773px;
+  padding: 24px;
+  padding-top: 48px;
+}
+
+.form .contenedor-botones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group-addon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.input-group-addon:hover {
+  color: #333;
+}
+
+.contenedor-componente .cardview {
+  max-width: 773px;
+  padding: 24px;
+  padding-top: 48px;
+}
+
+.form .contenedor-botones {
+  padding: 2px;
+}
+
+.modal{
+  padding: 0 25px;
+}
+
+/*
+    TODO: ESTILOS PARA LA CREACION DE UN MODAL
+    TODO: DONDE SE PUEDA SELECCIONAR Y BUSCAR ELEMENTOS
+  */
+
+/* ? DIMENCION DE TABLA DENTRO DEL MODAL */
+.header-table {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.body-table .contenedor-element-table {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.body-table .contenedor-element-table div {
+  max-width: none;
+}
+
+/* ? MODAL PARA MOSTRAR PROPIEDADES */
+.container-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: opacity 0.5s;
+  z-index: 10;
+}
+.container-modal .modal {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  border-radius: var(--BorderRadius);
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 15%);
+  margin: 0 var(--Margin) 0 var(--Margin);
+}
+.container-modal .modal .header {
+  display: flex;
+  flex-direction: column;
+}
+.header button {
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  background-color: transparent;
+  transition: 0.3s all;
+}
+.header button:hover {
+  cursor: pointer;
+  background-color: var(--ColorDanger);
+  color: white;
+}
+.header input {
+  border: var(--Border) solid var(--ColorSuccess);
+  max-width: 300px;
+  min-width: 100px;
+  padding: calc(var(--Padding) / 2);
+  margin-left: var(--Margin);
+  margin-right: var(--Margin);
+}
+.container-modal .modal .body {
+  max-width: 800px;
+  overflow-x: auto;
+}
+
+.body-table .contenedor-element-table div p {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+    /*width: 0%;*/
+  }
+  to {
+    opacity: 1;
+    /*width: 100%;*/
+  }
+}

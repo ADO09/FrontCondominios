@@ -22,58 +22,57 @@
   </div>
 
 
-  <section class="contenedor-componente "  >
-    <div class="cardview"  >
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="header">
   
-  
-      <div class="searchInpt">
-        
-  
-        <div class="col-3 input-effect search">
-          <input class="effect-21" type="text" placeholder="">
-          <label>Search</label>
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </div>
-      <div class="cardview-body"  >
-        <div class="header-table">
-           <div>#</div> 
-          <div>Nombre</div>
-          <div>Correo</div>
-          <!-- <div >Fraccionamiento</div> -->
-          <!-- <div>Superficie</div> -->
-          <!-- <div>Balance</div> -->
-          <div>Celular</div>
-  
-          <!-- <div>Propietario</div>
-           <div>Archivo Prdl.</div>
-          <div>Frcc.</div>
-          <div>Opcion</div> -->
-        </div>
-        <div class="body-table">
-          <div class="contenedor-element-table" *ngFor="let propietarios of propietariosData | paginate: { itemsPerPage: 10, currentPage: p }"  (click)="selectInquilino(propietarios)"  >
-            <!-- <div>{{ propiedad.id }}</div> -->
-            <div>{{ propietarios.id}}</div>
-            <div >{{ propietarios.nombre }}</div>
-            <div > {{ propietarios.correo }}</div>
-            <!-- <div>{{ propiedad.superficie }}</div> -->
-            <!-- <div>{{ propiedad.balance }}</div> -->
-            <!-- <div >{{ propietarios.fraccionamientoId }}</div> -->
-  
-            <div >{{ propietarios.celular }}</div>
-            <!-- <div>{{ propiedad.predialUrl }}</div> -->
-            <!-- <div>{{ propiedad.fraccionamientoId }}</div>
-            <div>delete</div> -->
-          </div>
-        </div>
-        
-      </div>
-      <div style="align-items: center; justify-content: center;" > <pagination-controls  (pageChange)="p = $event"></pagination-controls> </div>
-        
+      <input
+        type="search"
+        #search
+        placeholder="Buscar"
+        (keyup)="searchPropietario(search.value, $event)"
+      />
     </div>
-  </section>
+    <div class="body">
+      <div class="header-table">
+        <div>id</div>
+        <div>Nombre</div>
+        <div>Correo</div>
+        <div>Celular</div>
+       
+  
+      
+      </div>
+      <div class="body-table">
+        <div
+          class="contenedor-element-table"
+          *ngFor="let propietarios of propietariosData"
+          (click)="selectInquilino(propietarios)"
+        >
+          <div>
+            <p title="{{ propietarios.id }}">
+              {{ propietarios.id }}
+            </p>
+          </div>
+          <div>
+            <p title="{{ propietarios.nombre }}">
+              {{ propietarios.nombre }}
+            </p>
+          </div>
+          <div>
+            <p title="{{ propietarios.correo }}">
+              {{ propietarios.correo }}
+            </p>
+          </div>
+          <div>
+            <p title="{{ propietarios.celular }}">
+              {{ propietarios.celular }}
+            </p>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <div class="footer"></div>
   
   
 
@@ -81,3 +80,7 @@
 
 
 </div>
+
+
+<!-- 
+ -->
