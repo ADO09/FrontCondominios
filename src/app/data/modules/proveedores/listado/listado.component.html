@@ -4,6 +4,16 @@
 
         <div class="cardview-header" >
             <button class="l-btn-d" routerLink="/dashboard/proveedores/registro">+ REGISTRAR PROVEEDOR</button>
+            <div class="container-filtros">
+               
+                <div class="filtro">
+                </div>
+                <div class="container-search" >
+                    <a style="cursor: pointer;" (click)="animacionSearch()" ><img src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>  
+                    <input id="inputSearch" type="text" placeholder="Buscar" name="" #search  (keyup)="searchVehiculo(search.value ,$event)">
+                    <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+                </div>
+                  </div>
         </div>
 
         <div class="cardview-body" >

@@ -5,11 +5,13 @@ import { Observable, delay, map, catchError, of } from 'rxjs';
 import { API_ROUTES,queryparams } from 'src/app/data/constants/routes/api.routes';
 import { ApiResponsePropietis } from 'src/app/data/interfaces/interfacesG'; 
 import { Mensaje } from 'src/app/data/interfaces/Mensaje';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropiedadesServiceService {
+  baseUrl = environment.api;
 
   constructor(
     protected http: HttpClient,
@@ -176,6 +178,12 @@ export class PropiedadesServiceService {
       );
   }
 
+    /**
+   * ! METODO ENCARGADO DE OBTEER PROPIEDADES DE MANERA FILTRADA Y DINAMICA
+   */
+    getPropiedesFilters(idTipoPropiedad:any):Observable<Mensaje>{
+      return this.http.get<Mensaje>(`${this.baseUrl}propiedades?tipoPropiedadId[eq]=${idTipoPropiedad}&id_fraccionamiento=${localStorage.getItem('id_fraccionamiento')}`)
+    }
   
 
 }

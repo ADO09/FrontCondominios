@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { propiedad } from 'src/app/data/interfaces/propiedad';
+import { animacionSearch } from '../../../../shared/exports/animacionInputSearch';
+import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
+
 
 
 @Component({
@@ -14,13 +17,28 @@ export class ListPropiedadesComponent implements OnInit {
   form: any;
   currentPropiedad!: any;
   public regPropiedadRoute:any;
-  constructor(private formBuilder: FormBuilder) {
+  propiedadesTemp!:any[]
+  constructor(private formBuilder: FormBuilder,private servicePropiedades:PropiedadesServiceService) {
 
 
     this.regPropiedadRoute =  INTERNAL_ROUTES.MODULO_REGPROPIEDAD;
+    //this.propiedadesTemp = [...this.propiedadesData]
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //this.propiedadesTemp = Object.values(this.propiedadesData);
+    console.log("propiedades "+this.propiedadesData)
+  }
+
+  getPropiedadesFilters(event:Event){
+    const selectedValue = (event.target as HTMLSelectElement).value;
+
+    this.servicePropiedades.getPropiedesFilters(selectedValue).subscribe((data:any)=>{
+      this.propiedadesData = data.body
+    })
+
+  }
 
   abrirModal(datos: any): any {
     //console.log('antes de');
@@ -60,5 +78,21 @@ export class ListPropiedadesComponent implements OnInit {
   envModal() {
     var divModl = document.getElementById('id01') as HTMLDivElement;
     divModl.style.display = 'none';
+  }
+
+  animacionSearch(){
+    animacionSearch.animacionSearch()
+  }
+  searchVehiculo(search:any ,event:any){
+    const matchingPropiedades = this.propiedadesTemp.filter((u:any) => 
+    u.descripcion.toLowerCase().includes(search.toLowerCase()) || 
+    u.propietario.nombre.toLowerCase().includes(search.toLowerCase()));
+  //console.log(matchingUsers);
+
+    this.propiedadesData = matchingPropiedades
+  }
+
+  cerrarAnimacioneSearch(){
+    animacionSearch.cerrarAnimacioneSearch()
   }
 }
