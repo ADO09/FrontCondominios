@@ -94,4 +94,8 @@ export class VehiculosService {
     return this.http.get(`${this.baseUrl}propiedades?fraccionamientoId[eq]=${localStorage.getItem('id_fraccionamiento')}`)
   }
 
+  getAllFilters(idTipoVehiculo:any ,idPropiedad:any):Observable<any>{
+    return this.http.get(`${this.baseUrl}vehiculo/filters?id_tipo_vehiculo[eq]=${idTipoVehiculo}&id_propiedad[eq]=${idPropiedad}&id_fraccionamiento=${localStorage.getItem('id_fraccionamiento')}`)
+  }
+
 }

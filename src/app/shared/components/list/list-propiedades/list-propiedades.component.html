@@ -53,21 +53,47 @@
 
 <section class="contenedor-componente">
   <div class="cardview">
-
-
-    <div class="searchInpt">
       <div class="cardview-header">
         <button class="l-btn-d" [routerLink]="'/dashboard/'+this.regPropiedadRoute">+ REGISTRAR PROPIEDAD</button>
+        <div class="container-filtros">
+          <div class="filtro">
+            <label for="">Inquilino</label>
+            <select (change)="null">
+                <option value="0">Todos</option>
+
+             </select>
+            </div> 
+          <div class="filtro">
+            <label for="">Propietario</label>
+            <select (change)="null">
+                <option value="0">Todos</option>
+
+             </select>
+            </div>  
+          <div class="filtro">
+            <label for="">Tipo de propiedad</label>
+            <select (change)="getPropiedadesFilters($event)">
+                <option value="0">Todos</option>
+
+             </select>
+            </div>  
+          <div class="container-search" >
+              <a style="cursor: pointer;" (click)="animacionSearch()" ><img src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>  
+              <input id="inputSearch" type="text" placeholder="Buscar" name="" #search  (keyup)="searchVehiculo(search.value ,$event)">
+              <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+          </div>
+            </div>
       </div>
 
+      <!--
       <div class="col-3 input-effect search">
         <input class="effect-21" type="text" placeholder="">
         <label>Search</label>
         <span class="focus-border">
           <i></i>
         </span>
-      </div>
-    </div>
+      </div>-->
+
 
     
     <div class="cardview-body">

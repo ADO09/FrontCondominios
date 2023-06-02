@@ -268,3 +268,12 @@ input[type="text"] {
   max-width: none;
   padding: 7px;
 }
+
+.contenedor-componente .cardview .cardview-header{
+
+}
+.contenedor-componente .cardview .cardview-header .container-filtros{
+  width: 70%;
+
+
+}
