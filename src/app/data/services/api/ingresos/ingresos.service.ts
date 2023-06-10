@@ -151,6 +151,28 @@ export class IngresosService {
     return this.http.get<any>(`${this.baseUrl}recibos/${id}`)
   }
 
+
+  getAllFilters(id:any,tp:any): Observable<Mensaje> {
+
+    console.log(  (API_ROUTES.INGRESOS.GETALLPAGOSCONF+'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id+'&tipoPago'+queryparams.OPERATORSMAP.EQ+'='+tp)    );
+    
+    const response = { icon: '', title: '', body: [] as any[] | null };
+    return this.http.get<Mensaje>
+      (API_ROUTES.INGRESOS.GETALLPAGOSCONF+'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id+'&tipoPago'+queryparams.OPERATORSMAP.EQ+'='+tp)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
+
   
 
 }

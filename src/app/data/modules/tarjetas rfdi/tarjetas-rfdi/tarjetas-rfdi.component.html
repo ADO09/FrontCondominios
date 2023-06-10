@@ -8,6 +8,37 @@
       >
         + REGISTRAR NUEVO RFDI
       </button>
+
+      <div class="container-filtros">
+        <div class="filtro" style="width: 50%;">
+          <label for="">PEATONAL O AUTOMOVIL</label>
+          <select (change)="onSelectChangeTipoRfdi($event)">
+            <option value="-1">Todo</option>
+            <option value="PEATONAL">PEATONAL</option>
+            <option value="AUTOMOVIL">AUTOMOVIL</option>
+             <!-- <option value="{{propiedad.id}}" *ngFor="let propiedad of propiedades">{{propiedad.descripcion}} </option> -->
+          </select>
+        </div>
+        
+        <!-- <div class="filtro">
+          <label for="">Tipo</label>
+          <select (change)="onSelectChangeTipoVehiculo($event)">
+            <option value="0">Todos los tipos</option>
+            <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}}
+            </option>
+          </select>
+        </div> -->
+        <div class="container-search">
+          <a style="cursor: pointer;" (click)="animacionSearch()"><img
+              src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>
+          <input id="inputSearch" type="text" placeholder="Buscar" name="" #search
+            (keyup)="searchPropietario(search.value ,$event)">
+          <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img
+              src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+        </div>
+      </div>
+
+
     </div>
     <div class="cardview-body">
       <div class="header-table">

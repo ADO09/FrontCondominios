@@ -1,3 +1,39 @@
-<app-list-gestion-propietario
-  [propietariosData]="propietariosData"
-></app-list-gestion-propietario>
+<section class="contenedor-componente">
+  <div class="cardview">
+
+    <div class="cardview-header">
+
+      <button class="l-btn-d" [routerLink]="'/dashboard/' + this.regPropietarioRoute">+ REGISTRAR PROPIETARIO</button>
+
+
+      <div class="container-filtros">
+        <div class="filtro" style="width: 50%;">
+          <label for="">INQUILINO O PROPIETARIO</label>
+          <select (change)="onSelectChangeisInquilino($event)">
+            <option value="-1">Todo</option>
+            <option value="1">INQUILINO</option>
+            <option value="0">PROPIETARIO</option>
+            <!-- <option value="{{propiedad.id}}" *ngFor="let propiedad of propiedades">{{propiedad.descripcion}} </option> -->
+          </select>
+        </div>
+        <!-- <div class="filtro">
+          <label for="">Tipo</label>
+          <select (change)="onSelectChangeTipoVehiculo($event)">
+            <option value="0">Todos los tipos</option>
+            <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}}
+            </option>
+          </select>
+        </div> -->
+        <div class="container-search">
+          <a style="cursor: pointer;" (click)="animacionSearch()"><img
+              src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>
+          <input id="inputSearch" type="text" placeholder="Buscar" name="" #search
+            (keyup)="searchPropietario(search.value ,$event)">
+          <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img
+              src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+        </div>
+      </div>
+    </div>
+    <app-list-gestion-propietario [propietariosData]="propietariosData"></app-list-gestion-propietario>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 .contenedor-componente 
 .cardview {
-
+    max-width: none;
 }
 
 
@@ -15,9 +15,5 @@
 .body-table .contenedor-element-table div {
     max-width: none;
 }
-.body-table .contenedor-element-table div:nth-last-of-type(1) p {
-    width: 150px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+
+

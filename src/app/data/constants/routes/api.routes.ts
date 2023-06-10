@@ -64,6 +64,9 @@ export const API_ROUTES = {
     PRODUCTO:{
         UPDATEPRODUCTO:`${ENV.urlAPI}productos/`,
         ADDPRODUCTO:`${ENV.urlAPI}productos`,
+    },
+    RFDIS:{
+        GETRFDI:`${ENV.urlAPI}propiedades/rfdi`
     }
 
 }

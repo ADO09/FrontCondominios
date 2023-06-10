@@ -26,7 +26,7 @@ export class ListGestionPropietarioComponent {
    
     //console.log('antes de');
     //console.log(datos);
-this.currentPropietario = data;
+    this.currentPropietario = data;
    
     
     // console.log(this.currentPropiedad.inquilino );

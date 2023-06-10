@@ -151,6 +151,26 @@ export class EgresosService {
       );
   }
 
+  getAllFiltersTipoEgreso(tipEgr:any,id:any){
+
+    console.log(API_ROUTES.EGRESOS.GETTIPOEGRESO +'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id+"&tipoEgresoId"+queryparams.OPERATORSMAP.EQ+'='+tipEgr);
+    
+    const response = { icon: '', title: '', body: [] as any[] | null };
+    return this.http.get<Mensaje>
+      (API_ROUTES.EGRESOS.GETEGRESOS +'?fraccionamientoId'+queryparams.OPERATORSMAP.EQ+'='+id+"&tipoEgresoId"+queryparams.OPERATORSMAP.EQ+'='+tipEgr)
+      .pipe(
+        delay(100),
+        map(r => {
+          console.log(r);
+          
+          response.body = r.body;
+          response.title = r.title;
+          response.icon = r.icon;
+          return response;
+        }),
+        catchError(() => of(response))
+      );
+  }
 
   
   updateDetalleEgreso( idEgrs:any,idDetll:any, data:any): Observable<Mensaje> {

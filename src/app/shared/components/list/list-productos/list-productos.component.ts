@@ -46,13 +46,7 @@ this.currentProducto = datos;
   }
 
 
-  abrirModalR(): any {
-
-    setTimeout(() => {
-      var divModl2 = document.getElementById('id02') as HTMLDivElement;
-      divModl2.style.display = 'block';
-    }, 100);
-  }
+ 
 
   envModal(){
     
@@ -62,10 +56,5 @@ this.currentProducto = datos;
    }
 
 
-   envModalR(){
-    
-    var divModl2 =  document.getElementById('id02') as HTMLDivElement;
-    divModl2.style.display = 'none';
- 
-   }
+  
 }

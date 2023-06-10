@@ -35,23 +35,21 @@
 
 
 
-<section class="contenedor-componente">
-  <div class="cardview">
 
 
-    <div class="searchInpt">
-      <div class="cardview-header">
-        <button class="l-btn-d" [routerLink]="'/dashboard/'+this.regConfPagoRoute">+ REGISTRAR CONFIGURACION DE PAGO</button>
-      </div>
+    
+     
 
-      <div class="col-3 input-effect search">
+      <!-- <div class="col-3 input-effect search">
         <input class="effect-21" type="text" placeholder="">
         <label>Search</label>
         <span class="focus-border">
           <i></i>
         </span>
       </div>
-    </div>
+     -->
+
+    
     <div class="cardview-body">
       <div class="header-table">
         <!-- <div>ID</div>
@@ -65,7 +63,7 @@
         <div>Días Máximos de Descuento</div>
         <div>Días Máximos de Pago</div>
         <div>Fecha Inicial</div>
-        <div>Estatus</div>
+        <!-- <div>Estatus</div> -->
         <!-- <div>Fecha de Creación</div>
         <div>Fecha de Actualización</div> -->
       </div>
@@ -83,14 +81,13 @@
           <div>{{ confPagos.dias_max_descuento }}</div>
           <div>{{ confPagos.dias_max_pago }}</div>
           <div>{{ confPagos.fecha_inicial }}</div>
-          <div>{{ confPagos.estatus }}</div>
+          <!-- <div>{{ confPagos.estatus }}</div> -->
           <!-- <div>{{ confPagos.created_at }}</div>
           <div>{{ confPagos.updated_at }}</div> -->
         </div>
       </div>
     </div>
-  </div>
-</section>
+ 
 
 
 <div *ngIf="this.currentConfPago">

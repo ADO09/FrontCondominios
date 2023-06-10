@@ -17,6 +17,7 @@ export class RegistroConfPagoComponent {
   //  public formData = new FormData();
    public idFraccionamientoUsuer: any;
    public today = new Date();
+   public tipoPago:any = ""; //variable para cambio de select
   // public fechaActual = this.today.toLocaleDateString();
   public currentDate!: any;
   constructor(private fb: FormBuilder,private sharedTitleService:SharedTitleComponentService,private ingresosService:IngresosService,private datePipe: DatePipe,private router:Router) {
@@ -49,6 +50,16 @@ export class RegistroConfPagoComponent {
     
  
   }
+
+  
+  TipoPagoOnchange(event:Event){
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    // this.selectValueIdentInter = selectedValue
+    this.tipoPago = selectedValue
+    console.log('Valor seleccionado:', selectedValue);
+
+    // this.getAllFilters()
+   }
 
   enviarModal(){
 

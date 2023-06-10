@@ -70,4 +70,10 @@ export class ProductosService {
       );
   }
 
+
+
+  getAllFilters(){
+    
+  }
+
 }

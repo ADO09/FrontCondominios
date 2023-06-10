@@ -1,23 +1,50 @@
 <section class="contenedor-componente">
   <div class="cardview">
     <div class="searchInpt">
+
+
       <div class="cardview-header">
         <button class="l-btn-d" [routerLink]="'/dashboard/egresos/regEgreso'">+ REGISTRAR EGRESO</button>
 
-        <button  style="margin-left: 20px;" class="l-btn-d"
-        
-        (click)="showModal = true"
-        (keydown.enter)="searchTipoEgfreso(null, null)"
-        >Tipos de egresos</button>
+        <button style="margin-left: 20px;" class="l-btn-d" (click)="showModal = true"
+          (keydown.enter)="searchTipoEgfreso(null, null)">Tipos de egresos</button>
+
+
+        <div class="container-filtros">
+          <div class="filtro">
+            <label for="">Tipo Egreso</label>
+            <select (change)="onSelectChangeTipoEgreso($event)">
+              <option value="-1">Todo</option>
+              <option value="{{tipEreso.id}}" *ngFor="let tipEreso of tipoEgresoSelected">{{tipEreso.descripcion}}
+              </option>
+            </select>
+          </div>
+          <!-- <div class="filtro">
+              <label for="">Tipo</label>
+              <select (change)="onSelectChangeTipoVehiculo($event)">
+                  <option value="0">Todos los tipos</option>
+                  <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">
+                      {{tipovehiculo.nombre}} </option>
+              </select>
+          </div> -->
+          <div class="container-search">
+            <a style="cursor: pointer;" (click)="animacionSearch()"><img
+                src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>
+            <input id="inputSearch" type="text" placeholder="Buscar" name="" #search
+              (keyup)="searchEgreso(search.value ,$event)">
+            <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img
+                src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+          </div>
+        </div>
       </div>
 
-      <div class="col-3 input-effect search">
+      <!-- <div class="col-3 input-effect search">
         <input class="effect-21" type="text" placeholder="">
         <label>Search</label>
         <span class="focus-border">
           <i></i>
         </span>
-      </div>
+      </div> -->
     </div>
     <div class="cardview-body">
       <div class="header-table">
@@ -29,7 +56,8 @@
     </div>
 
     <div class="body-table">
-      <div  class="contenedor-element-table" [routerLink]="'gestionEgreso/' + egresos.id" (click)="GestionEgreso(egresos)" *ngFor="let egresos of listaEgresos">
+      <div class="contenedor-element-table" [routerLink]="'gestionEgreso/' + egresos.id"
+        (click)="GestionEgreso(egresos)" *ngFor="let egresos of listaEgresos">
         <div>{{egresos.id}}</div>
         <div>${{egresos.montoTotal}}</div>
         <div>{{egresos.isVerified === 0 ? 'NO' : 'SI'}}</div>
@@ -37,7 +65,7 @@
       </div>
     </div>
 
-    
+
   </div>
 
 </section>
@@ -46,52 +74,51 @@
 
 
 
-<!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
 <div class="container-modal" *ngIf="showModal" (click)="showModal = false">
   <div class="modal" (click)="$event.stopPropagation()">
-      <div class="header">
-          <button (click)="showModal = false">
-              <i class="fa-solid fa-xmark"></i>
-          </button>
-          <input type="search" #search placeholder="Buscar" (keyup)="searchTipoEgfreso(search.value, $event)" />
+    <div class="header">
+      <button (click)="showModal = false">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <input type="search" #search placeholder="Buscar" (keyup)="searchTipoEgfreso(search.value, $event)" />
+    </div>
+    <div class="body">
+      <div class="header-table">
+        <div>Descripcion</div>
+        <div>Proveedor</div>
+        <div>Status</div>
+
+
+        <!-- <div>Cantidad</div> -->
       </div>
-      <div class="body">
-          <div class="header-table">
-              <div>Descripcion</div>
-              <div>Proveedor</div>
-              <div>Status</div>
-    
-
-              <!-- <div>Cantidad</div> -->
+      <div class="body-table">
+        <div class="contenedor-element-table" *ngFor="let tipoEgreso of tipoEgresos"
+          (click)="selectTipoEgreso(tipoEgreso)">
+          <div>
+            <p title="{{ tipoEgreso.descripcion }}">{{ tipoEgreso.descripcion }}</p>
           </div>
-          <div class="body-table">
-              <div class="contenedor-element-table" *ngFor="let tipoEgreso of tipoEgresos"
-                  (click)="selectTipoEgreso(tipoEgreso)">
-                  <div>
-                      <p title="{{ tipoEgreso.descripcion }}">{{ tipoEgreso.descripcion }}</p>
-                  </div>
-                  <div *ngIf=" tipoEgreso.proveedorDefault" >
-                      <p title="{{ tipoEgreso.proveedorDefault.correoContacto }}">
-                          {{ tipoEgreso.proveedorDefault.correoContacto }}
-                      </p>
-                  </div>
-
-                  <div *ngIf="!tipoEgreso.proveedorDefault" >
-                    <p title="No se asigno">
-                        No asignado
-                    </p>
-                </div>
-                  <div>
-                      <p title="{{ tipoEgreso.status }}">
-                          {{ tipoEgreso.status }}
-                      </p>
-                  </div>
-
-                  <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
-              </div>
+          <div *ngIf=" tipoEgreso.proveedorDefault">
+            <p title="{{ tipoEgreso.proveedorDefault.correoContacto }}">
+              {{ tipoEgreso.proveedorDefault.correoContacto }}
+            </p>
           </div>
+
+          <div *ngIf="!tipoEgreso.proveedorDefault">
+            <p title="No se asigno">
+              No asignado
+            </p>
+          </div>
+          <div>
+            <p title="{{ tipoEgreso.status }}">
+              {{ tipoEgreso.status }}
+            </p>
+          </div>
+
+          <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
+        </div>
       </div>
-      <div class="footer"></div>
+    </div>
+    <div class="footer"></div>
   </div>
 </div>
 

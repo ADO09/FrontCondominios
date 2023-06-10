@@ -48,22 +48,24 @@
         </div>
 
 
-        <div class="contenedor-input">
-          <select formControlName="periodo">
+        <div class="contenedor-input"  >
+          <select formControlName="periodo"  >
             <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
-            <option value="UNICO">UNICO</option>
-            <option value="SEMANAL">SEMANAL</option>
-            <option value="MENSUAL">MENSUAL</option>
-            <option value="ANUAL">ANUAL</option>
+            <option selected disabled value=""></option>
+            <option *ngIf="tipoPago == 'ORDINARIO'" value="SEMANAL">SEMANAL</option>
+            <option *ngIf="tipoPago == 'ORDINARIO'"value="MENSUAL">MENSUAL</option>
+            <option *ngIf="tipoPago == 'ORDINARIO'"value="ANUAL">ANUAL</option>
+
+            <option  *ngIf="tipoPago != 'ORDINARIO' && tipoPago != ''"value="UNICO"  >UNICO</option>
           </select>
           <label for="">Tipo</label>
-          <p class="smsError"
+          <p  class="smsError"
             *ngIf="FormConfPagos.get('periodo')?.touched && FormConfPagos.get('periodo')?.errors?.['required']">
             El campo no puede estar en blanco</p>
         </div>
 
         <div class="contenedor-input">
-          <select formControlName="tipo_pago">
+          <select formControlName="tipo_pago" (change)="TipoPagoOnchange($event)">
             <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
             <option value="ORDINARIO">ORDINARIO</option>
             <option value="EXTRAORDINARIO">EXTRAORDINARIO</option>

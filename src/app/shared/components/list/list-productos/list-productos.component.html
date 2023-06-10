@@ -35,23 +35,12 @@
 
 
 
-  <section class="contenedor-componente">
-    <div class="cardview">
-  
-  
-      <div class="searchInpt">
-        <div class="cardview-header">
-          <button class="l-btn-d" (click)="abrirModalR()" >+ REGISTRAR PRODUCTO</button>
-        </div>
-  
-        <div class="col-3 input-effect search">
-          <input class="effect-21" type="text" placeholder="">
-          <label>Search</label>
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </div>
+ 
+      
+
+
+
+      
       <div class="cardview-body">
         <div class="header-table">
           <!-- <div>ID</div>
@@ -89,10 +78,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    
-  </section>
+   
   
   
   <div *ngIf="this.currentProducto">
@@ -101,5 +87,3 @@
   </div>
   
 
-
-  <app-modal-reg-producto id="id02" class="w3-modal" [cerrarModal]="envModalR"></app-modal-reg-producto>

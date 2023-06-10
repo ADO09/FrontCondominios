@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TarjetasRfdiService } from 'src/app/data/services/api/tarjetas-rfdi/tarjetas-rfdi.service';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
+import { animacionSearch } from 'src/app/shared/exports/animacionInputSearch';
 
 @Component({
   selector: 'app-tarjetas-rfdi',
@@ -17,7 +18,18 @@ export class TarjetasRfdiComponent implements OnInit{
   tipoBoton: any;
   putRFDI: any;
 
+ // selectValueIsinquilino:string = "0"     //aqui
 
+  //aqui los temporales de busqueda
+    tarjetaTemp:any[]=[]  ;    
+    listaTarjetasTemp:any[]=[];
+
+    // vehiculosTemp:any[]=[]
+    tiposRfdi: any[] = [];
+ 
+
+  selectValueTipoRfdi:string = "0"
+ // selectValuePropiedad:string = "0"
   constructor(private sharedTitleService:SharedTitleComponentService, private apiService:TarjetasRfdiService,
     private fb: FormBuilder){
     this.fraccionamientoId = localStorage.getItem('id_fraccionamiento');
@@ -28,6 +40,7 @@ export class TarjetasRfdiComponent implements OnInit{
   ngOnInit(): void {
     this.apiService.getTarjetas(this.fraccionamientoId).subscribe((response)=>{
       this.listaTarjetas = response.body;
+      this.listaTarjetasTemp =  response.body;
       console.log(this.listaTarjetas);
     });
     this.apiService.getPropiedades(this.fraccionamientoId).subscribe((response)=>{
@@ -60,6 +73,9 @@ export class TarjetasRfdiComponent implements OnInit{
       });
     });
   }
+
+
+
 
   cambiarRFDI(){
 
@@ -106,5 +122,99 @@ export class TarjetasRfdiComponent implements OnInit{
     });
   }
 
+
+  onSelectChangeTipoRfdi(event:Event){
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.selectValueTipoRfdi = selectedValue
+    console.log('Valor seleccionado:', selectedValue);
+
+    this.getAllFilters()
+   }
+
+
+  getAllFilters(){
+    let valuesSelectTipoRfdi = '';
+    //let valuesSelectPropiedad = '';
+    if(this.selectValueTipoRfdi != '-1')valuesSelectTipoRfdi = this.selectValueTipoRfdi
+
+    //if(this.selectValuePropiedad != '0')valuesSelectPropiedad = this.selectValuePropiedad
+
+
+    this.apiService.getAllFiltersTipoRfdi(this.fraccionamientoId,valuesSelectTipoRfdi).subscribe((data:any)=>{
+
+      this.listaTarjetas = data.body;
+      this.listaTarjetasTemp =  data.body;
+    })
+   }
+
+  animacionSearch(){
+
+    animacionSearch.animacionSearch()
+    /*
+    const containerSearch = document.querySelector('.container-search') as HTMLInputElement
+    containerSearch.style.width = '100%'
+    const cerrarInputSearch = document.querySelector('.cerrarInputSearch') as HTMLAnchorElement
+    cerrarInputSearch.style.display = "block"
+
+    const inputSearch = document.querySelector('#inputSearch')  as HTMLInputElement
+    inputSearch.style.width = '100%';
+    inputSearch.style.borderBottomColor = 'var(--ColorSecundario)'
+
+    
+      const containerFiltros = document.querySelectorAll('.filtro')
+
+      containerFiltros.forEach((element) => {
+        if (element instanceof HTMLElement) {
+          element.style.display = 'none';
+        }
+      });*/
+   }
+
+   cerrarAnimacioneSearch(){
+    animacionSearch.cerrarAnimacioneSearch()
+    animacionSearch.executeAfterTimeout()
+    /*
+    const cerrarInputSearch = document.querySelector('.cerrarInputSearch') as HTMLAnchorElement
+    cerrarInputSearch.style.display = "none"
+    const containerSearch = document.querySelector('.container-search') as HTMLInputElement
+    containerSearch.style.width = 'auto'
+
+    const inputSearch = document.querySelector('#inputSearch')  as HTMLInputElement
+    inputSearch.style.width = '0';
+    inputSearch.style.borderBottomColor = 'var(--ColorPrincipal)'
+
+    this.executeAfterTimeout()
+     */
+     
+   }
+
+
+  searchPropietario(search:any ,event:any){
+
+    // if (this.tarjetaTemp.length != 0) {
+      //console.log(this.tarjetaTemp.length);
+      console.log("no hay");
+      
+      const matchingPropiedades = this.listaTarjetasTemp.filter((u:any) => 
+      u.propiedadId.propietario.nombre.toLowerCase().includes(search.toLowerCase()) || 
+      u.propiedadId.propietario.correo.toLowerCase().includes(search.toLowerCase()));
+      this.listaTarjetas = matchingPropiedades
+      // } 
+      // else {
+      //   console.log("si hay");
+        
+      //   const matchingPropiedades = this.listaTarjetasTemp.filter((u:any) => 
+      //   u.propiedadId.propietario.nombre.toLowerCase().includes(search.toLowerCase()) || 
+      //   u.propiedadId.propietario.correo.toLowerCase().includes(search.toLowerCase()));
+      //   this.listaTarjetas = matchingPropiedades
+      // }
+
+   
+    //console.log(matchingUsers);
+
+   
+
+
+  }
 
 }
