@@ -8,6 +8,7 @@ import { CuotasIngresosConfComponent } from './cuotas-ingresos-conf/cuotas-ingre
 import { ListadoComponent } from './recibo-pago/listado/listado.component';
 import { RecibosGeneralesComponent } from './recibos-generales/recibos-generales.component';
 import { RegistroConfPagoComponent } from './registro-conf-pago/registro-conf-pago.component';
+import { AuthGuard } from 'src/app/auth.guard';
 
 
 
@@ -18,22 +19,30 @@ const routes:Routes = [
     {
         path:INTERNAL_ROUTES.MODULO_CUOTAS,
         component:CuotasIngresosConfComponent,
+        canActivate:[AuthGuard],data:{ requiredRoles: ['ADMIN FRACCIONAMIENTO']}
+
       //  canActivate: [NoAuthGuard]
     },
     {
         path:INTERNAL_ROUTES.MODULO_RECIBOS,
         component:RecibosGeneralesComponent,
+        canActivate:[AuthGuard],data:{ requiredRoles: ['ADMIN FRACCIONAMIENTO']}
+
       //  canActivate: [NoAuthGuard]
     },
 
     {
       path:INTERNAL_ROUTES.MODULO_REGCONFPAGO,
       component:RegistroConfPagoComponent,
+      canActivate:[AuthGuard],data:{ requiredRoles: ['ADMIN FRACCIONAMIENTO']}
+
     //  canActivate: [NoAuthGuard]
   },
   {
     path:INTERNAL_ROUTES.MODULO_RECIBOS_PAGO,
-    component:ListadoComponent
+    component:ListadoComponent,
+    canActivate:[AuthGuard],data:{ requiredRoles: ['ADMIN FRACCIONAMIENTO']}
+
   }
     // {
     //     path:INTERNAL_ROUTES.MODULO_ACPTCONTRSREGADMINFRACC,
