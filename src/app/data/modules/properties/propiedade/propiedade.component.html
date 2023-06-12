@@ -17,6 +17,52 @@
         <input type="input" class="form__field" placeholder="busqueda" name="name" id='name' required />
         <label for="name" class="form__label">Search</label>
       </div> -->
+
+      <section class="contenedor-componente">
+        <div class="cardview">
+
+          <div class="cardview-header">
+            <button class="l-btn-d" [routerLink]="'/dashboard/'+this.regPropiedadRoute">+ REGISTRAR PROPIEDAD</button>
+            <div class="container-filtros">
+              <!-- <div class="filtro">
+                <label for="">Inquilino</label>
+                <select (change)="null">
+                    <option value="0">Todos</option>
+    
+                 </select>
+                </div> 
+              <div class="filtro">
+                <label for="">Propietario</label>
+                <select (change)="null">
+                    <option value="0">Todos</option>
+      'CASA', //0
+            'DEPARTAMENTO', //1
+            'LOTE', //2
+            'OTRO' //3
+                 </select>
+                </div>   -->
+              <div class="filtro">
+                <label for="">Tipo de propiedad</label>
+                <select (change)="getPropiedadesFilters($event)">
+                    <option value="-1">Todos</option>
+                    <option value="0">CASA</option>
+                    <option value="1">DEPARTAMENTO</option>
+                    <option value="2">LOTE</option>
+                    <option value="3">OTRO</option>
+                 </select>
+                </div>  
+              <div class="container-search" >
+                  <a style="cursor: pointer;" (click)="animacionSearch()" ><img src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>  
+                  <input id="inputSearch" type="text" placeholder="Buscar" name="" #search  (keyup)="searchVehiculo(search.value ,$event)">
+                  <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+              </div>
+                </div>
+          </div>
+    
 <app-list-propiedades
   [propiedadesData]="propiedadesData"
 ></app-list-propiedades>
+
+
+        </div>
+      </section>
