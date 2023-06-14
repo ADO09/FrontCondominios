@@ -11,6 +11,7 @@ import { propietarios } from 'src/app/data/interfaces/propietariosI';
 export class ListGestionPropietarioComponent {
   @Input() propietariosData!: propietarios[];
   @Input() cerrarModal: any;
+  @Output() miEventoActPropietario2 = new EventEmitter<any[]>();
   public regPropietarioRoute:any;
   //@Output() inquilinoSeleccionado = new EventEmitter<any>();
   p: number = 1;
@@ -53,4 +54,7 @@ export class ListGestionPropietarioComponent {
     
     this.router.navigateByUrl('/dashboard/'+this.regPropietarioRoute)
    }
+
+ 
+  
 }

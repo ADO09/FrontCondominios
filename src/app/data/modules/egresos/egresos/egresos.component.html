@@ -1,21 +1,30 @@
 <section class="contenedor-componente">
   <div class="cardview">
     <div class="searchInpt">
-
-
       <div class="cardview-header">
-        <button class="l-btn-d" [routerLink]="'/dashboard/egresos/regEgreso'">+ REGISTRAR EGRESO</button>
+        <button class="l-btn-d" [routerLink]="'/dashboard/egresos/regEgreso'">
+          + REGISTRAR EGRESO
+        </button>
 
-        <button style="margin-left: 20px;" class="l-btn-d" (click)="showModal = true"
-          (keydown.enter)="searchTipoEgfreso(null, null)">Tipos de egresos</button>
-
+        <button
+          style="margin-left: 20px"
+          class="l-btn-d"
+          (click)="showModal = true"
+          (keydown.enter)="searchTipoEgfreso(null, null)"
+        >
+          Tipos de egresos
+        </button>
 
         <div class="container-filtros">
           <div class="filtro">
             <label for="">Tipo Egreso</label>
             <select (change)="onSelectChangeTipoEgreso($event)">
               <option value="-1">Todo</option>
-              <option value="{{tipEreso.id}}" *ngFor="let tipEreso of tipoEgresoSelected">{{tipEreso.descripcion}}
+              <option
+                value="{{ tipEreso.id }}"
+                *ngFor="let tipEreso of tipoEgresoSelected"
+              >
+                {{ tipEreso.descripcion }}
               </option>
             </select>
           </div>
@@ -28,12 +37,31 @@
               </select>
           </div> -->
           <div class="container-search">
-            <a style="cursor: pointer;" (click)="animacionSearch()"><img
-                src="../../../../../../assets/magnifying-glass-solid.svg" width="20px" height="20px" alt=""></a>
-            <input id="inputSearch" type="text" placeholder="Buscar" name="" #search
-              (keyup)="searchEgreso(search.value ,$event)">
-            <a style="cursor:pointer;" class="cerrarInputSearch" (click)="cerrarAnimacioneSearch()"><img
-                src="../../../../../../assets/xmark-solid (1).svg" width="20px" height="20px" alt=""></a>
+            <a style="cursor: pointer" (click)="animacionSearch()"
+              ><img
+                src="../../../../../../assets/magnifying-glass-solid.svg"
+                width="20px"
+                height="20px"
+                alt=""
+            /></a>
+            <input
+              id="inputSearch"
+              type="text"
+              placeholder="Buscar"
+              name=""
+              #search
+              (keyup)="searchEgreso(search.value, $event)"
+            />
+            <a
+              style="cursor: pointer"
+              class="cerrarInputSearch"
+              (click)="cerrarAnimacioneSearch()"
+              ><img
+                src="../../../../../../assets/xmark-solid (1).svg"
+                width="20px"
+                height="20px"
+                alt=""
+            /></a>
           </div>
         </div>
       </div>
@@ -56,76 +84,215 @@
     </div>
 
     <div class="body-table">
-      <div class="contenedor-element-table" [routerLink]="'gestionEgreso/' + egresos.id"
-        (click)="GestionEgreso(egresos)" *ngFor="let egresos of listaEgresos">
-        <div>{{egresos.id}}</div>
-        <div>${{egresos.montoTotal}}</div>
-        <div>{{egresos.isVerified === 0 ? 'NO' : 'SI'}}</div>
-        <div>{{egresos.estatusEgreso.descripcion}}</div>
+      <div
+        class="contenedor-element-table"
+        [routerLink]="'gestionEgreso/' + egresos.id"
+        (click)="GestionEgreso(egresos)"
+        *ngFor="let egresos of listaEgresos"
+      >
+        <div>{{ egresos.id }}</div>
+        <div>${{ egresos.montoTotal }}</div>
+        <div>{{ egresos.isVerified === 0 ? "NO" : "SI" }}</div>
+        <div>{{ egresos.estatusEgreso.descripcion }}</div>
       </div>
     </div>
-
-
   </div>
-
 </section>
 
-
-
-
-
-<div class="container-modal" *ngIf="showModal" (click)="showModal = false">
-  <div class="modal" (click)="$event.stopPropagation()">
+<div class="container-modal" *ngIf="showModal" (click)="showModal = false"   >   
+  <div class="modal" (click)="$event.stopPropagation()" style=" max-width: 890px;">
     <div class="header">
       <button (click)="showModal = false">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <input type="search" #search placeholder="Buscar" (keyup)="searchTipoEgfreso(search.value, $event)" />
+      <input
+        type="search"
+        #search
+        placeholder="Buscar"
+        (keyup)="searchTipoEgfreso(search.value, $event)"
+      />
+    </div>
+    <div class="body" style="max-width: 890px;">
+      <!-- AQUI -->
+      <div  style="display: flex; flex-direction: row">
+        <div >
+          <div
+            class="header-table"
+            style="grid-template-columns: 1fr 1fr 0.5fr"
+          >
+            <div>Descripcion</div>
+            <div>Proveedor</div>
+            <div>Status</div>
+
+            <!-- <div>Cantidad</div> -->
+          </div>
+          <div class="body-table">
+            <div
+              class="contenedor-element-table "  style="grid-template-columns: 1fr 1fr 0.5fr"
+              *ngFor="let tipoEgreso of tipoEgresos"
+              (click)="selectTipoEgreso(tipoEgreso)"
+            >
+              <div>
+                <p title="{{ tipoEgreso.descripcion }}">
+                  {{ tipoEgreso.descripcion }}
+                </p>
+              </div>
+              <div *ngIf="tipoEgreso.proveedorDefault">
+                <p title="{{ tipoEgreso.proveedorDefault.correoContacto }}">
+                  {{ tipoEgreso.proveedorDefault.correoContacto }}
+                </p>
+              </div>
+
+              <div *ngIf="!tipoEgreso.proveedorDefault">
+                <p title="No se asigno">No asignado</p>
+              </div>
+              <div>
+                <p title="{{ tipoEgreso.status }}">
+                  {{ tipoEgreso.status }}
+                </p>
+              </div>
+
+              <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="contenedor-input"
+          style="border: 1px solid black; margin: 8px; padding: 3px;"
+
+        >
+          <h5 style="padding: 0; margin: 0">Registrar Tipo de egreso</h5>
+          <form
+            class="form"
+            (keydown.enter)="$event.preventDefault()"
+            [formGroup]="FormTipoEgreso"
+            (ngSubmit)="enviarModalTE()"
+          >
+            <div class="contenedor-grid-1">
+            
+              <div class="contenedor-input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  formControlName="descripcion"
+                />
+                <label for="">Descripción</label>
+                <label for="">Ingrese</label>
+                <p
+                  class="smsError"
+                  *ngIf="FormTipoEgreso.get('descripcion')?.touched && FormTipoEgreso.get('descripcion')?.errors?.['required']"
+                >
+                  El campo no puede estar en blanco
+                </p>
+              </div>
+
+              <div class="contenedor-input">
+                <input
+                  type="text"
+                  placeholder=" "
+                  formControlName="proveedor"
+                  style="cursor: default"
+                  (click)="showModalP = true"
+                  readonly
+                  placeholder=" "
+                  #claveCatastral
+                />
+                <label for="">Proveedor</label>
+                <label for="">Ingrese</label>
+                <p
+                  class="smsError"
+                  *ngIf="FormTipoEgreso.get('proveedor')?.touched && FormTipoEgreso.get('proveedor')?.errors?.['required']"
+                >
+                  El campo no puede estar en blanco
+                </p>
+              </div>
+            </div>
+
+            <div class="contenedor-botones">
+              <!-- <button type="button" routerLink="/dashboard/egresos">
+              CANCELAR
+            </button>  -->
+              <button type="submit" [disabled]="FormTipoEgreso.invalid">
+                GUARDAR
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- AQUI -->
+    </div>
+    <div class="footer"></div>
+  </div>
+</div>
+
+<div *ngIf="this.tipoEgresoSelect">
+  <app-modal-gestion-tipo-egreso
+    id="id01"
+    class="w3-modal"
+    [cerrarModal]="envModal"
+    [tipoDeEgresosDatos]="this.tipoEgresoSelect"
+  ></app-modal-gestion-tipo-egreso>
+</div>
+
+<!-- ? MODAL PARA MOSTRAR LAS PROPIEDADES Y PODER SELECCIONAR ALGUNA  -->
+<div class="container-modal" *ngIf="showModalP" (click)="showModalP = false">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="header">
+      <button (click)="showModalP = false">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <input type="search" #search placeholder="Buscar" />
     </div>
     <div class="body">
-      <div class="header-table">
-        <div>Descripcion</div>
-        <div>Proveedor</div>
-        <div>Status</div>
-
+      <div
+        class="header-table"
+        style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr"
+      >
+        <div>Correo</div>
+        <div>Nombre</div>
+        <div>Nombre de contacto</div>
+        <div>Notas</div>
+        <div>Rfc</div>
 
         <!-- <div>Cantidad</div> -->
       </div>
-      <div class="body-table">
-        <div class="contenedor-element-table" *ngFor="let tipoEgreso of tipoEgresos"
-          (click)="selectTipoEgreso(tipoEgreso)">
+      <div
+        class="body-table"
+      >
+        <div
+          class="contenedor-element-table"  style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr"
+          *ngFor="let proveedor of proveedores"
+          (click)="selectProveedor(proveedor)"
+        >
           <div>
-            <p title="{{ tipoEgreso.descripcion }}">{{ tipoEgreso.descripcion }}</p>
-          </div>
-          <div *ngIf=" tipoEgreso.proveedorDefault">
-            <p title="{{ tipoEgreso.proveedorDefault.correoContacto }}">
-              {{ tipoEgreso.proveedorDefault.correoContacto }}
-            </p>
-          </div>
-
-          <div *ngIf="!tipoEgreso.proveedorDefault">
-            <p title="No se asigno">
-              No asignado
+            <p title="{{ proveedor.correoContacto }}">
+              {{ proveedor.correoContacto }}
             </p>
           </div>
           <div>
-            <p title="{{ tipoEgreso.status }}">
-              {{ tipoEgreso.status }}
+            <p title="{{ proveedor.nombre }}">
+              {{ proveedor.nombre }}
             </p>
           </div>
-
+          <div>
+            <p title="{{ proveedor.nombreContacto }}">
+              {{ proveedor.nombreContacto }}
+            </p>
+          </div>
+          <div>
+            <p title="{{ proveedor.notas }}">
+              {{ proveedor.notas }}
+            </p>
+          </div>
+          <div>
+            <p title="{{ proveedor.rfc }}">
+              {{ proveedor.rfc }}
+            </p>
+          </div>
           <!-- <div><p title="{{producto.cantidad}}">{{producto.cantidad}}</p></div> -->
         </div>
       </div>
     </div>
     <div class="footer"></div>
   </div>
-</div>
-
-
-
-
-<div *ngIf="this.tipoEgresoSelect">
-  <app-modal-gestion-tipo-egreso id="id01" class="w3-modal" [cerrarModal]="envModal"
-    [tipoDeEgresosDatos]="this.tipoEgresoSelect"></app-modal-gestion-tipo-egreso>
 </div>

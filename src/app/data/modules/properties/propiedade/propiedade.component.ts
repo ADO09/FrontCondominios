@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
 import { animacionSearch } from '../../../../shared/exports/animacionInputSearch';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
+import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 
 @Component({
   selector: 'app-propiedade',
@@ -11,9 +12,9 @@ import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 export class PropiedadeComponent implements OnInit {
   public idFraccionamientoUsuer:any;
   public regPropiedadRoute:any;
-  constructor(private propiedadesService:PropiedadesServiceService) { 
+  constructor(private propiedadesService:PropiedadesServiceService, private sharedTitleService: SharedTitleComponentService,) { 
     this.regPropiedadRoute =  INTERNAL_ROUTES.MODULO_REGPROPIEDAD;
-
+    sharedTitleService.emitChange("Lista de Propiedades")
   }
 
   public propiedadesData!:any[];
@@ -30,8 +31,6 @@ export class PropiedadeComponent implements OnInit {
       
     });
   }
-
-
 
   
   animacionSearch(){

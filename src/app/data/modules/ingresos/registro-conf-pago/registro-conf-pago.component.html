@@ -32,6 +32,17 @@
                         El campo no puede estar en blanco</p>
                     </div>
                     
+                    <div class="contenedor-input">
+                      <select formControlName="tipo_pago" (change)="TipoPagoOnchange($event)">
+                        <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
+                        <option value="ORDINARIO">ORDINARIO</option>
+                        <option value="EXTRAORDINARIO">EXTRAORDINARIO</option>
+                      </select>
+                      <label for="">Tipo</label>
+                      <p class="smsError"
+                        *ngIf="FormConfPagos.get('tipo_pago')?.touched && FormConfPagos.get('tipo_pago')?.errors?.['required']">
+                        El campo no puede estar en blanco</p>
+                    </div>
   
                     <div class="contenedor-input">
                       <select formControlName="periodo"  >
@@ -50,17 +61,7 @@
                         El campo no puede estar en blanco</p>
                     </div>
   
-                    <div class="contenedor-input">
-                      <select formControlName="tipo_pago" (change)="TipoPagoOnchange($event)">
-                        <!-- <option value="{{tipovehiculo.id}}" *ngFor="let tipovehiculo of tiposvehiculo">{{tipovehiculo.nombre}} </option> -->
-                        <option value="ORDINARIO">ORDINARIO</option>
-                        <option value="EXTRAORDINARIO">EXTRAORDINARIO</option>
-                      </select>
-                      <label for="">Tipo</label>
-                      <p class="smsError"
-                        *ngIf="FormConfPagos.get('tipo_pago')?.touched && FormConfPagos.get('tipo_pago')?.errors?.['required']">
-                        El campo no puede estar en blanco</p>
-                    </div>
+             
             
                     
                     <div class="contenedor-input">

@@ -3,6 +3,7 @@ import { PropietariosService } from 'src/app/data/services/api/propietarios/prop
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 import { animacionSearch } from 'src/app/shared/exports/animacionInputSearch';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
+import { UpdateDataService } from 'src/app/data/services/update-data.service';
 
 @Component({
   selector: 'app-gestion-propietarios',
@@ -10,30 +11,38 @@ import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
   styleUrls: ['./gestion-propietarios.component.css']
 })
 export class GestionPropietariosComponent {
-  public idFraccionamientoUsuer:any;
-  public regPropietarioRoute:any;
-  constructor(private propietariosService:PropietariosService, private sharedTitleService:SharedTitleComponentService) { 
+  public idFraccionamientoUsuer: any;
+  public regPropietarioRoute: any;
+  constructor(private propietariosService: PropietariosService, private sharedTitleService: SharedTitleComponentService, private updateDService: UpdateDataService) {
     sharedTitleService.emitChange("Gestion de Propietario")
-    this.regPropietarioRoute =  INTERNAL_ROUTES.MODULO_REG_PROPIETARIO;
+    this.regPropietarioRoute = INTERNAL_ROUTES.MODULO_REG_PROPIETARIO;
+    updateDService.changeEmitted$.subscribe((data) => {
+      this.propietariosService.GetPropietariosQPFraccionamientoQPIsinquilino(this.idFraccionamientoUsuer).subscribe((r) => {
+
+        this.propietariosData = r.body;
+
+      });
+    });
+
   }
 
-   //aqui
-  selectValueIsinquilino:string = "0"     //aqui
+  //aqui
+  selectValueIsinquilino: string = "0"     //aqui
 
-//aqui los temporales de busqueda
-  isInquilinoTemp:any[]=[]      
+  //aqui los temporales de busqueda
+  isInquilinoTemp: any[] = []
 
-  public propietariosData!:any[];
-  public propietariosDataTemp!:any[];
+  public propietariosData!: any[];
+  public propietariosDataTemp!: any[];
   ngOnInit(): void {
     this.idFraccionamientoUsuer = localStorage.getItem('id_fraccionamiento');
-    this.propietariosService.GetPropietariosQPFraccionamientoQPIsinquilino(this.idFraccionamientoUsuer).subscribe( (r) => {
+    this.propietariosService.GetPropietariosQPFraccionamientoQPIsinquilino(this.idFraccionamientoUsuer).subscribe((r) => {
 
       this.propietariosData = r.body;
       this.propietariosDataTemp = r.body;
       console.log(r);
       console.log(this.propietariosData);
-      
+
     });
   }
 
@@ -45,34 +54,41 @@ export class GestionPropietariosComponent {
 
   //   this.getAllFilters()
 
-    
+
   //  }
 
+  // async manejarEvento() {
+  //    var data = (await this.propietariosService.GetPropietariosQPFraccionamientoQPIsinquilino(this.idFraccionamientoUsuer).toPromise()) as any;
 
-   onSelectChangeisInquilino(event:Event){
+  //   this.propietariosData = data;
+  //   console.log('aqui esta completo LIUSAHDIOUASHDIUOASHDIOUASHIU');
+  //   console.log(this.propietariosData);
+
+  // }
+  onSelectChangeisInquilino(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.selectValueIsinquilino = selectedValue
     console.log('Valor seleccionado:', selectedValue);
 
     this.getAllFilters()
-   }
+  }
 
-   getAllFilters(){
-   
+  getAllFilters() {
+
     let valuesSelectIsinquilino = '';
-   
-
-    if(this.selectValueIsinquilino != '-1')valuesSelectIsinquilino = this.selectValueIsinquilino
 
 
-    this.propietariosService.getAllFilters(this.idFraccionamientoUsuer,valuesSelectIsinquilino).subscribe((data:any)=>{
+    if (this.selectValueIsinquilino != '-1') valuesSelectIsinquilino = this.selectValueIsinquilino
+
+
+    this.propietariosService.getAllFilters(this.idFraccionamientoUsuer, valuesSelectIsinquilino).subscribe((data: any) => {
 
       this.propietariosData = data.body;
       this.isInquilinoTemp = data.body;
     })
-   }
+  }
 
-   animacionSearch(){
+  animacionSearch() {
 
     animacionSearch.animacionSearch()
     /*
@@ -93,9 +109,9 @@ export class GestionPropietariosComponent {
           element.style.display = 'none';
         }
       });*/
-   }
+  }
 
-   cerrarAnimacioneSearch(){
+  cerrarAnimacioneSearch() {
     animacionSearch.cerrarAnimacioneSearch()
     animacionSearch.executeAfterTimeout()
     /*
@@ -110,46 +126,46 @@ export class GestionPropietariosComponent {
 
     this.executeAfterTimeout()
      */
-     
-   }
 
-   /*
-   executeAfterTimeout() {
-    setTimeout(() => {
-      // Tu lógica aquí
-      const containerFiltros = document.querySelectorAll('.filtro')
+  }
 
-      containerFiltros.forEach((element) => {
-        if (element instanceof HTMLElement) {
-          element.style.display = 'flex';
-        }
-      });
-    }, 300); // 2000 ms = 2 segundos
-  }*/
+  /*
+  executeAfterTimeout() {
+   setTimeout(() => {
+     // Tu lógica aquí
+     const containerFiltros = document.querySelectorAll('.filtro')
 
-  searchPropietario(search:any ,event:any){
+     containerFiltros.forEach((element) => {
+       if (element instanceof HTMLElement) {
+         element.style.display = 'flex';
+       }
+     });
+   }, 300); // 2000 ms = 2 segundos
+ }*/
+
+  searchPropietario(search: any, event: any) {
 
     if (this.isInquilinoTemp.length != 0) {
       console.log(this.isInquilinoTemp.length);
       console.log("no hay");
-      
-      const matchingPropiedades = this.isInquilinoTemp.filter((u:any) => 
-      u.correo.toLowerCase().includes(search.toLowerCase()) || 
-      u.nombre.toLowerCase().includes(search.toLowerCase()));
+
+      const matchingPropiedades = this.isInquilinoTemp.filter((u: any) =>
+        u.correo.toLowerCase().includes(search.toLowerCase()) ||
+        u.nombre.toLowerCase().includes(search.toLowerCase()));
       this.propietariosData = matchingPropiedades
     } else {
       console.log("si hay");
-      
-      const matchingPropiedades = this.propietariosDataTemp.filter((u:any) => 
-      u.correo.toLowerCase().includes(search.toLowerCase()) || 
-      u.nombre.toLowerCase().includes(search.toLowerCase()));
+
+      const matchingPropiedades = this.propietariosDataTemp.filter((u: any) =>
+        u.correo.toLowerCase().includes(search.toLowerCase()) ||
+        u.nombre.toLowerCase().includes(search.toLowerCase()));
       this.propietariosData = matchingPropiedades
     }
 
-   
+
     //console.log(matchingUsers);
 
-   
+
 
 
   }
@@ -162,7 +178,7 @@ export class GestionPropietariosComponent {
 
 
 
-  
+
 
 
 }

@@ -3,8 +3,9 @@
   style="max-width: 600px; padding: 25px 35px"
 >
   <div class="w3-center">
-    <br />
+    
     <!--  -->
+    <h3>Modificar Propietario</h3>
     <span
       (click)="cerrarModal()"
       class="w3-button w3-xlarge w3-hover-red w3-display-topright"
@@ -14,7 +15,7 @@
     >
   </div>
 
-  <div class="cardview">
+  <div class="cardview" style=" box-shadow:none">
     <form
       class="form"
       (keydown.enter)="$event.preventDefault()"
@@ -122,7 +123,7 @@
                 <p class="smsError" *ngIf="FormPropietarios.get('identificacionUrl')?.touched && FormPropietarios.get('identificacionUrl')?.errors?.['required']">
                   El campo no puede estar en blanco</p>
               </div> -->
-
+<!-- 
         <div class="contenedor-input">
           <a
             [href]="api + 'private-files/' + propietarioDatos.identificacionUrl"
@@ -151,7 +152,7 @@
           >
             El campo no puede estar en blanco
           </p>
-        </div>
+        </div> -->
         <!-- <div class="contenedor-input">
                 <input type="text" placeholder=" " formControlName="isInquilino">
                 <label for="">Inquilino</label>

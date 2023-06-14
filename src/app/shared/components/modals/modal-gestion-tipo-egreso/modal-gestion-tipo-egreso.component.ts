@@ -16,18 +16,27 @@ export class ModalGestionTipoEgresoComponent {
   @Input() tipoDeEgresosDatos!: any;
 
   public datos:any = {}
+  public FormTipoEgreso!:FormGroup;
   showModal = false
   productoTemp:any[]=[]
   proveedores:any[]=[]
   idProveedor: string | undefined;
   correoProveedor: string | undefined;
   public proveedorSelect: any | null = null;
- 
+  public FormElejido!:any;
+  public JSONDATOSTIPOEGRESO:any;
  
   // public inquilinoSelect: confPagos  |null = null;
  public formTipoEgreso!: FormGroup;
  public idFraccionamientoUsuer: any;
-  constructor(private fb: FormBuilder,private datePipe: DatePipe,private ingresosService:IngresosService,private proveedoresService:ProveedoresService,private productosService:ProductosService,private egrespsService:EgresosService) { }
+  constructor(private fb: FormBuilder,private datePipe: DatePipe,private ingresosService:IngresosService,private proveedoresService:ProveedoresService,private productosService:ProductosService,private egrespsService:EgresosService,private formBuilder:FormBuilder) {
+
+    this.FormTipoEgreso = this.formBuilder.group({
+      descripcion: ['', Validators.required],
+      proveedor:['',Validators.required]
+    });
+
+   }
 
   async ngOnInit() {
     var data  = (await this.proveedoresService.getAll().toPromise()) as any;
@@ -102,6 +111,19 @@ console.log(r);
 
  }
 
+//  enviarModalTE(){
+//   this.JSONDATOSTIPOEGRESO = {
+//    ...this.JSONDATOSTIPOEGRESO,
+//    descripcion:this.FormTipoEgreso.value.descripcion,
+//    status:1,
+//    fraccionamientoId:localStorage.getItem('id_fraccionamiento')
+//  }
+
+//  this.egresosService.postTipoEgreso(this.JSONDATOSTIPOEGRESO).subscribe((r) =>{
+//    console.log(r);
+   
+//  });
+// }
   searchProveedor(search:any ,event:any){
 
     event.stopPropagation();

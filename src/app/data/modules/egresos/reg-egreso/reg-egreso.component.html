@@ -2,7 +2,7 @@
   <section class="contenedor-componente" style="height: auto; width: auto;">
     <div class="cardview">
       <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="FormEgresos" (ngSubmit)="enviarModal()">
-        <div class="contenedor-grid-1">
+        <div class="contenedor-grid-2">
           <!-- descripcion -->
           <div class="contenedor-input">
             <input type="text" placeholder=" " formControlName="descripcion" />
@@ -152,14 +152,14 @@
     <app-list-detalles-egresos  [dataDetallesEgreso]="this.egresoData.detalleEgreso"></app-list-detalles-egresos>
     </div> -->
 
-
+<!-- 
     <section class="contenedor-componente" style="height: auto; width: auto;">
       
       <div class="cardview">
         <h5 style="padding: 0; margin: 0;" >Tipo de egreso</h5>
         <form class="form" (keydown.enter)="$event.preventDefault()" [formGroup]="FormTipoEgreso" (ngSubmit)="enviarModalTE()">
           <div class="contenedor-grid-1">
-            <!-- descripcion -->
+            descripcion 
             <div class="contenedor-input">
               <input type="text" placeholder=" " formControlName="descripcion" />
               <label for="">Descripción</label>
@@ -191,16 +191,16 @@
           </div>
   
           <div class="contenedor-botones">
-            <!-- <button type="button" routerLink="/dashboard/egresos">
+             <button type="button" routerLink="/dashboard/egresos">
               CANCELAR
-            </button> -->
+            </button> 
             <button type="submit" [disabled]="FormTipoEgreso.invalid">
               GUARDAR
             </button>
           </div>
         </form>
       </div>
-    </section>
+    </section> -->
   
 </div>
 

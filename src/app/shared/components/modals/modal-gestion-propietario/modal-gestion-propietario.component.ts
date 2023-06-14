@@ -4,6 +4,9 @@ import { propietarios } from 'src/app/data/interfaces/propietariosI';
 import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 import { enviroment as ENV } from 'src/environments/enviroments.dev';
+import {  EventEmitter, Output } from '@angular/core';
+import { UpdateDataService } from 'src/app/data/services/update-data.service';
+
 @Component({
   selector: 'app-modal-gestion-propietario',
   templateUrl: './modal-gestion-propietario.component.html',
@@ -16,10 +19,14 @@ export class ModalGestionPropietarioComponent {
   public FormPropietarios!: FormGroup;
   public formData = new FormData();
   public api = ENV.urlAPI;
+  
+  @Output() miEventoActPropietario = new EventEmitter<any[]>();
+
   constructor(
     private fb: FormBuilder,
     private sharedTitleService: SharedTitleComponentService,
-    private propietarioService: PropietariosService
+    private propietarioService: PropietariosService,
+    private updateDService:UpdateDataService
   ) {
     sharedTitleService.emitChange('Registrar Propietario');
   }
@@ -70,7 +77,23 @@ export class ModalGestionPropietarioComponent {
       .PropietariosPATCHUptdate(this.propietarioDatos.id, this.formData)
       .subscribe((r) => {
         console.log(r);
+
+        if (r.icon=='success') {
+         this.actPropietario();
+        }
+         
+        
+        
       });
+  }
+ 
+  
+  actPropietario(){
+  
+  // var data = (await this.propietarioService.GetPropietariosQPFraccionamientoQPIsinquilino(this.idFraccionamientoUsuer).toPromise()) as any;
+
+    // this.miEventoActPropietario.emit();
+    this.updateDService.emitChange('hola');
   }
 
   archivo() {

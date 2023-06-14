@@ -5,6 +5,7 @@ import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
 import { ProductosService } from 'src/app/data/services/api/productos/productos.service';
 import { ProveedoresService } from 'src/app/data/services/api/proveedores/proveedores.service';
+import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 
 @Component({
   selector: 'app-reg-egreso',
@@ -30,9 +31,9 @@ export class RegEgresoComponent {
   previewFile() {
     window.open(this.pdfUrl, '_blank');
   }
-  constructor(private proveedoresService:ProveedoresService, private route:Router, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService){
+  constructor(private proveedoresService:ProveedoresService, private route:Router, private egresosService:EgresosService,private formBuilder:FormBuilder,private fb: FormBuilder,private productoService:ProductosService,private egresoSrvice:EgresosService,private sharedTitleService:SharedTitleComponentService){
 
-    
+    sharedTitleService.emitChange("Registrar Egreso")
     this.FormTipoEgreso = this.formBuilder.group({
       descripcion: ['', Validators.required],
       proveedor:['',Validators.required]
