@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { InterfonesService } from 'src/app/data/services/api/interfones/interfones.service';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
+import { animacionSearch } from 'src/app/shared/exports/animacionInputSearch';
 
 @Component({
   selector: 'app-interfones',
@@ -10,7 +11,8 @@ import { SharedTitleComponentService } from 'src/app/data/services/shared-title-
 })
 export class InterfonesComponent implements OnInit {
   fraccionamientoId: any;
-  listaPropiedades: any[] = [];
+  listaPropiedades!: any[];
+  listaPropiedadesTemp!: any[];
   tipoBoton: any;
   formInterfones: any;
   putInterfon: any;
@@ -26,6 +28,7 @@ export class InterfonesComponent implements OnInit {
 
     this.apiService.getPropiedades(this.fraccionamientoId).subscribe((response)=>{
       this.listaPropiedades = response.body;
+      this.listaPropiedadesTemp = response.body;
       console.log(this.listaPropiedades);
     });
 
@@ -90,17 +93,60 @@ export class InterfonesComponent implements OnInit {
       console.log('interfon: ' + this.putInterfon);
       this.apiService.putInterfon(this.putInterfon, payload).subscribe((response)=>{
         console.log(response);
+
+        if (response.icon=="success") {
+          
+          this.apiService.getPropiedades(this.fraccionamientoId).subscribe((response)=>{
+            this.listaPropiedades = response.body;
+            this.listaPropiedadesTemp = response.body;
+            console.log(this.listaPropiedades);
+          });
+        }
       });
     }
 
     setTimeout(() => {
       this.apiService.getPropiedades(this.fraccionamientoId).subscribe((response)=>{
         this.listaPropiedades = response.body;
+        this.listaPropiedadesTemp = response.body;
+
         console.log(this.listaPropiedades);
       });
     }, 2000);
 
   }
 
+  animacionSearch(){
+
+    animacionSearch.animacionSearch()
+
+   }
+
+   cerrarAnimacioneSearch(){
+    animacionSearch.cerrarAnimacioneSearch()
+    animacionSearch.executeAfterTimeout()
+  
+     
+   }
+
+  searchInterfon(search:any,event:any ){
+
+   
+  console.log(this.listaPropiedades);
+  
+      
+      const matchingPropiedades = this.listaPropiedadesTemp.filter((u:any) => 
+      u.interfones.codigoInterfon.includes(search.toLowerCase()) || 
+      u.interfones.numeroInterfon.includes(search.toLowerCase()));
+      this.listaPropiedades = matchingPropiedades
+   
+
+   
+    //console.log(matchingUsers);
+
+   
+
+
+  }
 
 }

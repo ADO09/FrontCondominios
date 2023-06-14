@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Egreso } from 'src/app/data/interfaces/egresos';
 import { EgresosService } from 'src/app/data/services/api/egresos/egresos.service';
 import { ProveedoresService } from 'src/app/data/services/api/proveedores/proveedores.service';
@@ -29,7 +29,7 @@ export class GestionEgresosComponent {
   listaEgresos: any;
 
 
-  constructor(private proveedoresService:ProveedoresService, private route: ActivatedRoute,private egresosService:EgresosService,private formBuilder:FormBuilder){
+  constructor(private proveedoresService:ProveedoresService, private route: ActivatedRoute,private egresosService:EgresosService,private formBuilder:FormBuilder,private router:Router){
     this.id = +this.route.snapshot.params['id_egreso'];
     console.log(this.id);
     this.FormEgresos = this.formBuilder.group({
@@ -121,6 +121,9 @@ export class GestionEgresosComponent {
     this.egresosService.updateEgreso(this.egresoData.id,this.formData).subscribe( (r)=>{
       console.log(r);
       
+      if (r.icon=='success') {
+        this.router.navigateByUrl('/dashboard/egresos')
+      }
     })
     
   }

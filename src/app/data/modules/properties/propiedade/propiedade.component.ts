@@ -3,6 +3,7 @@ import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades
 import { animacionSearch } from '../../../../shared/exports/animacionInputSearch';
 import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
+import { UpdateDataService } from 'src/app/data/services/update-data.service';
 
 @Component({
   selector: 'app-propiedade',
@@ -12,9 +13,18 @@ import { SharedTitleComponentService } from 'src/app/data/services/shared-title-
 export class PropiedadeComponent implements OnInit {
   public idFraccionamientoUsuer:any;
   public regPropiedadRoute:any;
-  constructor(private propiedadesService:PropiedadesServiceService, private sharedTitleService: SharedTitleComponentService,) { 
+  constructor(private propiedadesService:PropiedadesServiceService, private sharedTitleService: SharedTitleComponentService,private updateDService: UpdateDataService) { 
     this.regPropiedadRoute =  INTERNAL_ROUTES.MODULO_REGPROPIEDAD;
     sharedTitleService.emitChange("Lista de Propiedades")
+
+    updateDService.changeEmitted$.subscribe((data) => {
+      this.propiedadesService.propiedadesGetFiltroFraccionamiento(this.idFraccionamientoUsuer).subscribe( (r) => {
+
+        this.propiedadesData = r.body;
+        this.propiedadesTemp = r.body;
+
+      });
+    });
   }
 
   public propiedadesData!:any[];

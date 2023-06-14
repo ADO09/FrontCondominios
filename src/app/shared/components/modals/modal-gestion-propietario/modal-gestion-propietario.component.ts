@@ -94,6 +94,7 @@ export class ModalGestionPropietarioComponent {
 
     // this.miEventoActPropietario.emit();
     this.updateDService.emitChange('hola');
+    this.cerrarModal()
   }
 
   archivo() {

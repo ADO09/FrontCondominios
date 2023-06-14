@@ -4,6 +4,7 @@ import { propiedad } from 'src/app/data/interfaces/propiedad';
 import { propietarios } from 'src/app/data/interfaces/propietariosI';
 import { PropiedadesServiceService } from 'src/app/data/services/api/propiedades/propiedades-service.service';
 import { PropietariosService } from 'src/app/data/services/api/propietarios/propietarios.service';
+import { UpdateDataService } from 'src/app/data/services/update-data.service';
 import { enviroment as ENV } from 'src/environments/enviroments.dev';
 
 @Component({
@@ -21,18 +22,19 @@ export class ModalListPropiedadesComponent implements OnInit {
   public formPropiedades!: FormGroup;
   public formData = new FormData();
   public selectedFile: File | undefined;
-  public  pdfUrl: any;
+  public pdfUrl: any;
   public api = ENV.urlAPI;
   public idfraccionamiento: any;
   constructor(
     private fb: FormBuilder,
     private propietariosService: PropietariosService,
-    private propiedadesService: PropiedadesServiceService
+    private propiedadesService: PropiedadesServiceService,
+    private updateDService:UpdateDataService
   ) {
     this.idfraccionamiento = localStorage.getItem('id_fraccionamiento');
-   
-    
-    
+
+
+
   }
 
   ngOnInit() {
@@ -134,7 +136,7 @@ export class ModalListPropiedadesComponent implements OnInit {
       //   fraccionamientoId: this.propiedadDatos?.fraccionamientoId || '',
       //   archivoPredial: this.propiedadDatos?.predialUrl || '',
       // });
-      console.log('lote ' + this.propiedadDatos?.lote );
+      console.log('lote ' + this.propiedadDatos?.lote);
       this.formPropiedades = this.fb.group({
         tipoPropiedadId: [
           String(this.propiedadDatos?.tipoPropiedad.id) || '',
@@ -157,8 +159,8 @@ export class ModalListPropiedadesComponent implements OnInit {
         lote: [this.propiedadDatos?.lote || ''],
         propietarioId: [
           this.propiedadDatos?.propietario.nombre +
-            ' ' +
-            this.propiedadDatos.propietario.apellidos || '',
+          ' ' +
+          this.propiedadDatos.propietario.apellidos || '',
           Validators.required,
         ],
         inquilinoId: inquilino || null,
@@ -231,6 +233,13 @@ export class ModalListPropiedadesComponent implements OnInit {
       .propiedadesUpdate(this.propiedadDatos.id, this.formData)
       .subscribe((r) => {
         console.log(r);
+
+        if (r.icon == 'success') {
+
+
+          this.updateDService.emitChange('hola');
+          this.cerrarModal();
+        }
       });
   }
 
@@ -262,8 +271,8 @@ export class ModalListPropiedadesComponent implements OnInit {
     this.formPropiedades.patchValue({
       propietarioId: [
         this.propietarioSelect?.nombre +
-          ' ' +
-          this.propietarioSelect?.apellidos,
+        ' ' +
+        this.propietarioSelect?.apellidos,
       ],
     });
 
@@ -320,14 +329,14 @@ export class ModalListPropiedadesComponent implements OnInit {
 
 
 
-  
+
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.formPropiedades.value.archivoPredial = event.target.files[0];
-   
+
     const file = event.target.files[0];
     this.formData.set('archivoPredial', file);
-  
+
     // const reader = new FileReader();
     // reader.onload = (e: any) => {
     //   this.pdfUrl = e.target.result;
@@ -339,6 +348,6 @@ export class ModalListPropiedadesComponent implements OnInit {
   }
 
   previewFile() {
-    
+
   }
 }

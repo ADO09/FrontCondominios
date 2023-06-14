@@ -8,6 +8,7 @@ import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { animacionSearch } from '../../../../shared/exports/animacionInputSearch';
 import { ProveedoresService } from 'src/app/data/services/api/proveedores/proveedores.service';
 import { EventEmitter, Output } from '@angular/core';
+import { UpdateDataService } from 'src/app/data/services/update-data.service';
 
 @Component({
   selector: 'app-egresos',
@@ -44,14 +45,28 @@ export class EgresosComponent implements OnInit {
   public EgresoSelect!: Egreso;
   public FormEgresos!: FormGroup;
   public ModuloGestionEgreso: any = INTERNAL_ROUTES.MODULO_GESTIONEGRESO;
-  constructor(private proveedoresService: ProveedoresService, private apiService: EgresosService, private sharedTitleService: SharedTitleComponentService, private formBuilder: FormBuilder, private route: Router) {
+  constructor(private proveedoresService: ProveedoresService, private apiService: EgresosService, private sharedTitleService: SharedTitleComponentService, private formBuilder: FormBuilder, private route: Router,private updateDService:UpdateDataService) {
     this.fraccionamientoId = localStorage.getItem('id_fraccionamiento');
+
+
+    updateDService.changeEmitted$.subscribe((data) => {
+   this.tipoEgresoListUpdate();
+    });
     sharedTitleService.emitChange("Lista de egresos")
 
     this.FormTipoEgreso = this.formBuilder.group({
       descripcion: ['', Validators.required],
       proveedor: ['', Validators.required]
     });
+
+    
+  }
+
+
+  async tipoEgresoListUpdate(){
+    var data = (await this.apiService.getTipoEgresoQPFraccionamiento(this.fraccionamientoId).toPromise()) as any;
+    this.tipoEgresos = data.body
+    this.tipoEgresoSelected = data.body;
   }
 
   async ngOnInit() {
