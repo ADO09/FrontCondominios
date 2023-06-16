@@ -89,5 +89,22 @@ export class UsuariosService {
       );
   }
 
+  verificarTokenForgotPassword(data:{token:string}):Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}usuario/forgotPassword/checkToken`, data)
+  }
+
+  recuperarPassword(data:{correo:string}):Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}usuario/forgotPassword`, data);
+  }
+  updatePasswordUser(data: {
+    idUser: string;
+    password: string;
+  }): Observable<any> {
+    return this.http.put<any>(
+      `${this.baseUrl}usuario/forgotPassword/newPassword`,
+      data
+    );
+  }
+
 
 }
