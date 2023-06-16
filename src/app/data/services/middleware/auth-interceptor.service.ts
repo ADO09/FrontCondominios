@@ -111,6 +111,7 @@ export class AuthInterceptorService implements HttpInterceptor {
          */
 
         if (error.status == 422) {
+          if (error.error.icon == 'error' && error.error.title == 'error') {
           let errorMessage = '';
           for (const [key, value] of Object.entries(error.error.body)) {
             errorMessage += `
@@ -123,6 +124,13 @@ export class AuthInterceptorService implements HttpInterceptor {
             title: error.error.icon,
             html: errorMessage,
           });
+        }else{
+          Swal.fire({
+            icon: error.error.icon,
+            title: error.error.icon,
+            text: error.error.title,
+          });
+        }
         }
 
         /**
