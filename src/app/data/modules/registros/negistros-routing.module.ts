@@ -6,6 +6,7 @@ import { INTERNAL_ROUTES } from 'src/app/data/constants/routes/internal.routes';
 import { LoginComponent } from '../auth/login/login.component';
 import { AcptContrRegUsrAdmnFraccComponent } from './acpt-contr-reg-usr-admn-fracc/acpt-contr-reg-usr-admn-fracc.component';
 import { RegAdminFraccionamientoComponent } from './reg-admin-fraccionamiento/reg-admin-fraccionamiento.component';
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 
 const routes:Routes = [
     {
@@ -17,6 +18,10 @@ const routes:Routes = [
         path:INTERNAL_ROUTES.MODULO_ACPTCONTRSREGADMINFRACC,
         component:AcptContrRegUsrAdmnFraccComponent,
       //  canActivate: [NoAuthGuard]
+    },
+    {
+      path:INTERNAL_ROUTES.MODULO_RECUPERARPASSWORD,
+      component:RecuperarPasswordComponent
     }
 ]
 
