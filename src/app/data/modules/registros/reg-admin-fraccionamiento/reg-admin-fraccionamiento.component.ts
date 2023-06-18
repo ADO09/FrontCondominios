@@ -12,6 +12,11 @@ import Swal from 'sweetalert2';
 })
 export class RegAdminFraccionamientoComponent implements OnInit {
 
+  showModal = false
+
+  codigosPostales: any[] = [];
+  codigosPostalesTemp: any[] = [];
+
   usuarioForm = new FormGroup({
     nombre: new FormControl('') ,
     apellidos: new FormControl('' ) ,
@@ -24,6 +29,10 @@ export class RegAdminFraccionamientoComponent implements OnInit {
   constructor(private apiService:UsuariosService,private router:Router) { }
 
   ngOnInit(): void {
+    this.apiService.getCodigosPostales().subscribe(codigosPostales => {
+      this.codigosPostales = codigosPostales.body
+      this.codigosPostalesTemp = codigosPostales.body
+    })
   }
 
   addUsuario(){     
@@ -42,6 +51,26 @@ export class RegAdminFraccionamientoComponent implements OnInit {
       }
       
     })
+  }
+
+  searchPropiedad(search:any ,event:any){
+
+    event.stopPropagation();
+    //event.stopPropagation();
+    //console.log(search)
+    
+    const matchingPropiedades = this.codigosPostalesTemp.filter(u => 
+      u.d_codigo.toLowerCase().includes(search.toLowerCase())
+    );
+    //console.log(matchingUsers);
+
+    this.codigosPostales = matchingPropiedades
+  }
+
+  // ? SELECCIONAR PRIPIEDAD DE MODAL 
+  selectPropiedad(codigoPostal:any){
+    this.usuarioForm.get("codigo_postal")?.setValue(codigoPostal.d_codigo)
+    this.showModal = false
   }
 
 
