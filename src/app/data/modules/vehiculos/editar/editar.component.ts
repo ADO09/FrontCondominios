@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { VehiculosService } from 'src/app/data/services/api/vehiculos/vehiculos.service';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
 
@@ -30,6 +31,23 @@ export class EditarComponent {
   idVehiculo!: string;
   selectedFile!: File;
   pdfUrl: any;
+
+  marcasVehiculos:any[]=[]
+  submarcasVehiculos:any[]=[]
+
+  colores:any[]=[
+    { "name": "Rojo", "value": "#FF0000" },
+    { "name": "Verde", "value": "#00FF00" },
+    { "name": "Azul", "value": "#0000FF" },
+    { "name": "Amarillo", "value": "#FFFF00" },
+    { "name": "Naranja", "value": "#FFA500" },
+    { "name": "Morado", "value": "#800080" },
+    { "name": "Rosa", "value": "#FFC0CB" },
+    { "name": "Cyan", "value": "#00FFFF" },
+    { "name": "Gris", "value": "#808080" },
+    { "name": "Negro", "value": "#000000" },
+    { "name": "Blanco", "value": "#FFFFFF" },
+  ]
 
   constructor(
     private apiService: VehiculosService,
@@ -80,6 +98,20 @@ export class EditarComponent {
         .getVehiculo(this.idVehiculo)
         .toPromise()) as any;
       this.vehiculo = data.body;
+
+      var data = (await lastValueFrom(this.apiService.getMarcas()))
+      this.marcasVehiculos = data.body
+
+      let textConEspacios = this.vehiculo.marca
+      let textoSinEspacios = textConEspacios.replace(/[\s-]/g, "").toLowerCase() + "Models";
+
+  if(textoSinEspacios == "minicooperModels") textoSinEspacios = "miniModels"
+
+  if(textoSinEspacios == "mercedesbenzModels") textoSinEspacios = "mercedezModels"
+
+
+      var data = (await lastValueFrom(this.apiService.getSubmarcas(textoSinEspacios)))
+      this.submarcasVehiculos = data.body
 
       //MOSTRAR DATOS DE VEHICULO EN EL FORM
       this.vehiculoFormRegistro.patchValue(this.vehiculo);
@@ -165,5 +197,22 @@ eliminarVehiculo(){
     this.router.navigate(['/dashboard/vehiculos/listado']); //REDIRECIONO A LISTAR VEHICULOS
   });
 }
+
+marcaSelect(event:any){
+  const selectValue = ((event.target) as HTMLSelectElement).value
+
+  let textoSinEspacios = selectValue.replace(/[\s-]/g, "").toLowerCase() + "Models";
+
+  if(textoSinEspacios == "minicooperModels") textoSinEspacios = "miniModels"
+
+  if(textoSinEspacios == "mercedesbenzModels") textoSinEspacios = "mercedezModels"
+
+
+  this.apiService.getSubmarcas(textoSinEspacios).subscribe(submarcas =>{
+    this.submarcasVehiculos = submarcas.body
+  })
+
+}
+
 
 }

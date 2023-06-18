@@ -98,4 +98,13 @@ export class VehiculosService {
     return this.http.get(`${this.baseUrl}vehiculo/filters?id_tipo_vehiculo[eq]=${idTipoVehiculo}&id_propiedad[eq]=${idPropiedad}&id_fraccionamiento=${localStorage.getItem('id_fraccionamiento')}`)
   }
 
+  getMarcas():Observable<any>{
+    return this.http.get(`${this.baseUrl}vehiculo/marcas`)
+  }
+
+  getSubmarcas(table:string):Observable<any>{
+    return this.http.get(`${this.baseUrl}vehiculo/submarca/${table}`)
+
+  }
+
 }
