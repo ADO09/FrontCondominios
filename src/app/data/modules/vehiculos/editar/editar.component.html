@@ -14,9 +14,11 @@
                         El campo no puede estar en blanco</p>
                     </div>
                     <div class="contenedor-input">
-                        <input type="text" placeholder=" " formControlName="color">
-                        <label for="">color</label>
-                        <label for="">Ingrese</label>
+                        <select formControlName="color">
+                            <option value="{{color.name}}" *ngFor="let color of colores">{{color.name}}</option>
+                        </select>
+                        <label for="">Color</label>
+
     
                         <p class="smsError"
                         *ngIf="vehiculoFormRegistro.get('color')?.touched && vehiculoFormRegistro.get('color')?.errors?.['required']">
@@ -46,9 +48,10 @@
                        
                     </div> 
                     <div class="contenedor-input">
-                        <input type="text" placeholder=" " formControlName="marca">
-                        <label for="">marca</label>
-                        <label for="">Ingrese</label>
+                        <select formControlName="marca" (change)="marcaSelect($event)">
+                            <option value="{{marca.brandId}}" *ngFor="let marca of marcasVehiculos" >{{marca.brandId}}</option>
+                        </select>
+                        <label for="">Marca</label>
     
                         <p class="smsError"
                         *ngIf="vehiculoFormRegistro.get('marca')?.touched && vehiculoFormRegistro.get('marca')?.errors?.['required']">
@@ -56,9 +59,10 @@
                     
                     </div>
                     <div class="contenedor-input">
-                        <input type="text" placeholder=" " formControlName="submarca">
-                        <label for="">submarca</label>
-                        <label for="">Ingrese</label>
+                        <select formControlName="submarca">
+                            <option value="{{submarca.modeloNombre}}" *ngFor="let submarca of submarcasVehiculos" >{{submarca.modeloNombre}}</option>
+                        </select>
+                        <label for="">Submarca</label>
     
                         <p class="smsError"
                         *ngIf="vehiculoFormRegistro.get('submarca')?.touched && vehiculoFormRegistro.get('submarca')?.errors?.['required']">

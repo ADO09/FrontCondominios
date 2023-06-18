@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { Vehiculo } from 'src/app/data/interfaces/Vehiculo';
 import { VehiculosService } from 'src/app/data/services/api/vehiculos/vehiculos.service';
 import { SharedTitleComponentService } from 'src/app/data/services/shared-title-component.service';
@@ -23,6 +24,22 @@ export class RegistroComponent {
   propiedades:any[]=[]
   propiedadesTemp:any[]=[]
   showModal = false
+  marcasVehiculos:any[]=[]
+  submarcasVehiculos:any[]=[]
+
+  colores:any[]=[
+    { "name": "Rojo", "value": "#FF0000" },
+    { "name": "Verde", "value": "#00FF00" },
+    { "name": "Azul", "value": "#0000FF" },
+    { "name": "Amarillo", "value": "#FFFF00" },
+    { "name": "Naranja", "value": "#FFA500" },
+    { "name": "Morado", "value": "#800080" },
+    { "name": "Rosa", "value": "#FFC0CB" },
+    { "name": "Cyan", "value": "#00FFFF" },
+    { "name": "Gris", "value": "#808080" },
+    { "name": "Negro", "value": "#000000" },
+    { "name": "Blanco", "value": "#FFFFFF" },
+  ]
 
   constructor(
     private apiService: VehiculosService,
@@ -68,6 +85,11 @@ export class RegistroComponent {
     var data  = (await this.apiService.getAllPropiedades().toPromise()) as any;
     this.propiedades = data.body
     this.propiedadesTemp =data.body
+
+    var data = (await lastValueFrom(this.apiService.getMarcas()))
+    this.marcasVehiculos = data.body
+
+    this.vehiculoFormRegistro.get("id_estado")?.setValue("25")
   }
 
  
@@ -200,5 +222,22 @@ export class RegistroComponent {
         icon: 'info',
       });
     }
+  }
+
+  marcaSelect(event:any){
+    const selectValue = ((event.target) as HTMLSelectElement).value
+
+    let textoSinEspacios = selectValue.replace(/[\s-]/g, "").toLowerCase() + "Models";
+
+    if(textoSinEspacios == "minicooperModels") textoSinEspacios = "miniModels"
+
+    if(textoSinEspacios == "mercedesbenzModels") textoSinEspacios = "mercedezModels"
+
+
+    this.apiService.getSubmarcas(textoSinEspacios).subscribe(submarcas =>{
+      this.submarcasVehiculos = submarcas.body
+    })
+
+    
   }
 }
