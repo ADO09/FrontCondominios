@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('codigo_postal_fraccionamiento',mensaje.body.codigo_postal_fraccionamiento);
         localStorage.setItem('correo',mensaje.body.correo)
         //REDIRECCIONAR AL DACHBOARD
-        this.route.navigate(['/dashboard']);
+        this.route.navigate(['/dashboard/pagPrincipal']);
       });
   }
 }

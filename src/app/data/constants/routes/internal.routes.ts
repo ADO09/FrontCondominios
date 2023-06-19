@@ -80,26 +80,31 @@ export const ROUTES_PATHS = {
         PROVEEDORESEDITAR:'editar/:id',
 
         //-----------------------------------------------
-        PRINCIPALF:'pagPrincipalf',
-        USERCLIENTESLIST:'',
-        BALANCE:'',
-        PERFILF:'perfilUserf',
-        PERFILP:'perfilUserC',
-        REGISTROP:'regClient',
-        REGISTROF:'regFisio',
-        TIPOREGS:'tipoReg',
-        HISTORIALCITS:'historialCitas',
-        CONFPAGINA:'confPagina',
-        REGCITA:'regSolcCita',
-        FAVS:'favoritos',
-        PLANES:'planes',
-        EXPMEDC:'expMedicoCliente',
-        CONFPACIENTE:'ConfigCliente',
-        CONFFISIO:'Configfisio',
-        GESTFISIO:'gestionFisios',
-        GESTCLIENT:'gestionPacientes',
-        BALANCEG:'BalanceGList',
-        CHAT:'chat'
+
+        //-----------------PaginaPrincipal----------------
+
+        PAGPRINCIPALGRAF:'pagPrincipal',
+
+        // PRINCIPALF:'pagPrincipalf',
+        // USERCLIENTESLIST:'',
+        // BALANCE:'',
+        // PERFILF:'perfilUserf',
+        // PERFILP:'perfilUserC',
+        // REGISTROP:'regClient',
+        // REGISTROF:'regFisio',
+        // TIPOREGS:'tipoReg',
+        // HISTORIALCITS:'historialCitas',
+        // CONFPAGINA:'confPagina',
+        // REGCITA:'regSolcCita',
+        // FAVS:'favoritos',
+        // PLANES:'planes',
+        // EXPMEDC:'expMedicoCliente',
+        // CONFPACIENTE:'ConfigCliente',
+        // CONFFISIO:'Configfisio',
+        // GESTFISIO:'gestionFisios',
+        // GESTCLIENT:'gestionPacientes',
+        // BALANCEG:'BalanceGList',
+        // CHAT:'chat'
     }
 }
 
@@ -174,7 +179,8 @@ export const INTERNAL_PATHS = {
     PANELREGISTROPROVEEDORES:`${ROUTES_PATHS.PANEL.PROVEEDORESREGISTRO}`,
     PANELEDITARPROVEEDORES:`${ROUTES_PATHS.PANEL.PROVEEDORESEDITAR}`,
 
-
+    //PAGINAPRINCIPAL-----------------------------------------------------------
+    PANELDEFAULTPAGPRINCIPAL:`${ROUTES_PATHS.PANEL.PAGPRINCIPALGRAF}`, 
     
     // PANELPAGPRINCF: `${ROUTES_PATHS.PANEL.PRINCIPALF}`,
     // PANELPERFILF: `${ROUTES_PATHS.PANEL.PERFILF}`,
@@ -292,6 +298,9 @@ export const INTERNAL_ROUTES = {
     MODULO_REGISTRO_PROVEEDORES:`${INTERNAL_PATHS.PANELDEFAULTPROVEEDORES}/${INTERNAL_PATHS.PANELREGISTROPROVEEDORES}`,
     MODULO_EDITAR_PROVEEDORES:`${INTERNAL_PATHS.PANELDEFAULTPROVEEDORES}/${INTERNAL_PATHS.PANELEDITARPROVEEDORES}`,
 
+
+      //PAGPRINCIPAL------------------------------------
+      MODULO_PAGPRINCIPALGRAF: `${INTERNAL_PATHS.PANELDEFAULTPAGPRINCIPAL}`,
 
     // //FAVORITOS FISIOS
     // MODULO_FAVORITOSFISIOS:`/${INTERNAL_PATHS.PANELDEFAULT}/${INTERNAL_PATHS.PANELUSERAUTH}/${INTERNAL_PATHS.PANELFISIOSFAVS}`,

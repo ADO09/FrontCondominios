@@ -38,6 +38,12 @@ const routes: Routes = [
       {
         path:"",
         loadChildren:()=>
+        import('src/app/data/modules/princPagGraf/mod-pag-princ.module').then((m) =>m.ModPagPrincModule)
+      },
+
+      {
+        path:"",
+        loadChildren:()=>
         import('src/app/data/modules/usuarios/usuarios.module').then((m) =>m.UsuariosModule)
       },
       {
