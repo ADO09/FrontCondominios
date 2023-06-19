@@ -1,0 +1,74 @@
+.contenedor-componente 
+.cardview {
+    max-width: none;
+}
+
+
+
+.header-table {
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.body-table .contenedor-element-table {
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.body-table .contenedor-element-table div {
+    max-width: none;
+}
+
+.contenedor-grid-2 {
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .contenedor-input {
+    flex: 1;
+  }
+  
+  .contenedor-input-50 {
+    width: 50%;
+  }
+
+
+  .contenedor-input label {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    
+    margin-top: 20px;
+  }
+  
+  .cardview-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .datos-generales {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .dato-titulo {
+    font-weight: bold;
+  }
+  
+  .dato-valor {
+    color: #333;
+  }
+  
+  

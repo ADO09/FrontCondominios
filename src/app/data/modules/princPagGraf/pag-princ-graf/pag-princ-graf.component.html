@@ -1,5 +1,89 @@
-<p>pag-princ-graf works!</p>
+<section class="contenedor-componente">
+  <div class="cardview">
+    <div class="searchInpt">
+      <div class="cardview-header">
+        <h1>BIENVENIDO</h1>
+        <!-- <button class="l-btn-d" [routerLink]="'/dashboard/egresos/regEgreso'">
+          + REGISTRAR EGRESO
+        </button>
 
+        
+        <button style="margin-left: 20px" class="l-btn-d">
+          Tipos de egresos
+        </button> -->
+      </div>
 
+      <!-- <div class="col-3 input-effect search">
+          <input class="effect-21" type="text" placeholder="">
+          <label>Search</label>
+          <span class="focus-border">
+            <i></i>
+          </span>
+        </div> -->
+    </div>
+    <div class="cardview-body">
+      <div class="cardview">
+        
+          <div class="contenedor-grid-2" >
+            <div class="contenedor-input contenedor-input-50"  >
+                <label for="">TIPO DE PAGO EGRESOS</label>
+              <ngx-charts-advanced-pie-chart style="overflow: hidden;"
+                [view]="view"
+                scheme="cool"
+                [results]="graf1" 
+                [gradient]="gradient"
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+                
+              >
+              </ngx-charts-advanced-pie-chart>
+              
+            </div>
 
-<h1>oiHOIASHDohdoahdoashdoiashdiHOIDHOUASHDOUASHDOIASHDOIS</h1>
+            <div class="contenedor-input contenedor-input-50">
+                <label for="">ESTATUS DE MONTO INGRESOS</label>
+              <ngx-charts-advanced-pie-chart
+                [view]="view"
+                scheme="cool"
+                [results]="graf2"
+                [gradient]="gradient"
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+              >
+              </ngx-charts-advanced-pie-chart>
+            </div>
+          </div>
+        
+      </div>
+
+      <div class="datos-generales" *ngIf="datosGenerales">
+        <ul>
+          <li>
+            <span class="dato-titulo">Total por Pagar:</span>
+            <span class="dato-valor">{{ this.datosGenerales.totaPorPagar }}</span>
+          </li>
+          <li>
+            <span class="dato-titulo">Total Egresos:</span>
+            <span class="dato-valor">{{ datosGenerales.totalEgresos }}</span>
+          </li>
+          <li>
+            <span class="dato-titulo">Total Ingresos:</span>
+            <span class="dato-valor">{{ datosGenerales.totalIngresos }}</span>
+          </li>
+          <li>
+            <span class="dato-titulo">Total Pagados:</span>
+            <span class="dato-valor">{{ datosGenerales.totalPagados }}</span>
+          </li>
+          <li>
+            <span class="dato-titulo">Total Vencidos:</span>
+            <span class="dato-valor">{{ datosGenerales.totalVencidos }}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+

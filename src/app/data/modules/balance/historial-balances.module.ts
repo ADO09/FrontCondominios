@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { SharedModule } from "src/app/shared/shared.module";
 import { HistorialBalancesRoutingModule } from "./historial-balances-routing.module";
 import { HistorialBalancesComponent } from "./historial-balances/historial-balances.component";
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     declarations: [

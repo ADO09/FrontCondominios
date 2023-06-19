@@ -67,6 +67,9 @@ export const API_ROUTES = {
     },
     RFDIS:{
         GETRFDI:`${ENV.urlAPI}propiedades/rfdi`
+    },
+    GRAFICAS:{
+        GETGRAFICAS:`${ENV.urlAPI}fraccionamiento/`
     }
 
 }

@@ -12,6 +12,9 @@ import { UsuariosService } from './data/services/api/usuarios/usuarios.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './data/services/middleware/auth-interceptor.service';
 import { LoadingPeticionesComponent } from './shared/components/loading/loading-peticiones/loading-peticiones.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,10 @@ import { LoadingPeticionesComponent } from './shared/components/loading/loading-
 
 
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    //Graficas
+    NgxChartsModule
   ],
   providers: [
     {
