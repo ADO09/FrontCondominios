@@ -66,7 +66,7 @@ export class AuthInterceptorService implements HttpInterceptor {
             //NO MUESTRO LA ALERT AL USUARIO
             if (event.body.title != '' && !(event.body instanceof Blob)) {
               Swal.fire({
-                title: event.body.icon,
+                //title: event.body.icon,
                 icon: event.body.icon,
                 text: event.body.title,
               });
@@ -95,7 +95,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           } else {
             // ! OTRO ERROR RELACIONADO CON AUTENTICACION DE USUARIO
             Swal.fire({
-              title: error.error.icon,
+              //title: error.error.icon,
               icon: error.error.icon,
               text: error.error.title,
             });
@@ -121,13 +121,13 @@ export class AuthInterceptorService implements HttpInterceptor {
 
           Swal.fire({
             icon: error.error.icon,
-            title: error.error.icon,
+            //title: error.error.icon,
             html: errorMessage,
           });
         }else{
           Swal.fire({
             icon: error.error.icon,
-            title: error.error.icon,
+            //title: error.error.icon,
             text: error.error.title,
           });
         }
@@ -144,7 +144,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           if (error.error.message) {
             Swal.fire({
               icon: 'info',
-              title: 'info',
+              //title: 'info',
               text: error.error.message,
             });
           }
