@@ -106,5 +106,9 @@ export class UsuariosService {
     );
   }
 
+  getCodigosPostales():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}codigosPostalesMexico`)
+  }
+
 
 }
