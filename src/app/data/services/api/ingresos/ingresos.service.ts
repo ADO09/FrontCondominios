@@ -86,7 +86,7 @@ export class IngresosService {
     return this.http.put<Mensaje>
       (API_ROUTES.INGRESOS.UPDATEPAGOCONF + id ,data) //aqui 
       .pipe(
-        delay(100),
+       
         map(r => {
           console.log(r);
           

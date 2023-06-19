@@ -101,6 +101,8 @@ export class ModalGestionProductosComponent {
           this.cerrarModal();
         }
       });
+
+   
   }
 
   searchProveedor(search: any, event: any) {

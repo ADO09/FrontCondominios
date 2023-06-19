@@ -26,6 +26,7 @@ export class ModalListRecibosComponent implements OnInit{
       this.fraccionamientoId = localStorage.getItem('id_fraccionamiento');
       this.selectedOption = '';
       this.plazoOption = '';
+      
      }
   ngOnInit(){
 
@@ -41,6 +42,7 @@ export class ModalListRecibosComponent implements OnInit{
       configuracionId: ['', Validators.required],
       plazoPorGenerar: ['', Validators.required],
       year: ['',  Validators.required],
+      fechaInicial: ['',  Validators.required],
     });
   }
 
@@ -76,18 +78,20 @@ export class ModalListRecibosComponent implements OnInit{
   enviarInfo(){
     let payload;
     console.log(this.formRecibo.get('year')?.value);
+    console.log(this.formRecibo.get('fechaInicial')?.value);
     if(this.year){
        payload = {
         Id_Fraccionamiento: this.idFraccionamiento,
         configuracionId: this.formRecibo.get('configuracionId')?.value,
         year: this.formRecibo.get('year')?.value,
-  
+        iniciarDesde:  this.formRecibo.get('fechaInicial')?.value,
       }
     } else {
        payload = {
         Id_Fraccionamiento: this.idFraccionamiento,
         configuracionId: this.formRecibo.get('configuracionId')?.value,
         plazoPorGenerar:  this.formRecibo.get('plazoPorGenerar')?.value,
+        iniciarDesde:  this.formRecibo.get('fechaInicial')?.value,
       }
     }
 

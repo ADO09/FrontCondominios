@@ -13,7 +13,7 @@
     </div>
 
     <div class="body-table">
-      <div  class="contenedor-element-table" *ngFor="let recibos of listaRecibos  | paginate: {itemsPerPage: 50, currentPage: page}"  
+      <div  class="contenedor-element-table" *ngFor="let recibos of listaRecibos  "  
       onclick="document.getElementById('id01').style.display='block'" (click)="editarRecibo(recibos.id)">
         <div>{{recibos.id}}</div>
         <div>${{recibos.monto}}</div>
@@ -31,49 +31,56 @@
     <div class="w3-modal-content w3-card-4 w3-animate-bottom modal"
       style="max-width: 400px">
       <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-      <h2>REGISTRAR RECIBO</h2>
+      <h2>VISUALIZAR RECIBO</h2>
       <div class="cardview">
         <form class="form" [formGroup]="formRecibo">
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input formControlName="Id_Propietario" type="text"  required readonly>
-              <label for="">Propietario</label>                
+              <label for="">Propietario</label>    
+              <label for="">Propietario</label>               
             </div>
           </div>
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input class="" formControlName="Fecha_Pago" type="date" required readonly>
               <label for="">Fecha de pago</label>
+              <label for="">Fecha de pago</label>
             </div>
           </div>
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input class="" formControlName="Monto" type="number"  required readonly>
-              <label for="">Monto a pagar</label>               
+              <label for="">Monto a pagar</label>     
+              <label for="">Monto a pagar</label>            
             </div>
           </div>
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input class="" formControlName="Fecha_Vencimiento" type="date" required readonly>
-              <label for="">Fecha de vencimiento</label>             
+              <label for="">Fecha de vencimiento</label>      
+              <label for="">Fecha de vencimiento</label>        
             </div>
           </div>
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input class="" formControlName="Monto_Penalizacion" type="number" required readonly>
-              <label for="">Penalización</label>              
+              <label for="">Penalización</label>      
+              <label for="">Penalización</label>        
             </div>
           </div>
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input class="" formControlName="Monto_Descuento" type="number" readonly>
-              <label for="">Descuento *Opcional*</label>            
+              <label for="">Descuento *Opcional*</label>    
+              <label for="">Descuento *Opcional*</label>          
             </div>
           </div>
           <div class="contenedor-grid-1">
             <div class="contenedor-input">
               <input class="" formControlName="Estatus" type="text" required readonly> 
-              <label for="">Estado del recibo</label>          
+              <label for="">Estado del recibo</label>        
+              <label for="">Estado del recibo</label>    
             </div>
           </div>
          </form>
