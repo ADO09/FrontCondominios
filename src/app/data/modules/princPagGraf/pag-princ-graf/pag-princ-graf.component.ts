@@ -12,26 +12,28 @@ export class PagPrincGrafComponent {
 
   public graf1:any[] = [];
   public graf2:any[] = [];
+  public graf3:any[] = [];
+  public graf4:any[] = [];
   public idFraccionamientoUsuer: any;
 
   public datosGenerales:any;
 
 
-   single = [
-    {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7800000
-    },
+  //  single = [
+  //   {
+  //     "name": "Germany",
+  //     "value": 8940000
+  //   },
+  //   {
+  //     "name": "USA",
+  //     "value": 5000000
+  //   },
+  //   {
+  //     "name": "France",
+  //     "value": 7800000
+  //   },
  
-  ];
+  // ];
   // options
   gradient: boolean = true;
   showLegend: boolean = true;
@@ -60,6 +62,18 @@ export class PagPrincGrafComponent {
      var data = (await this.grafServices.getGraficasEgresosIngresosFraccionamiento(this.idFraccionamientoUsuer).toPromise()) as any;
      this.datosGenerales = data.body;
      console.log(this.datosGenerales.totaPorPagar);
+
+     this.graf3.push({ name: 'TOTAL EGRESO'  ,value: this.datosGenerales.totalEgresos });
+     this.graf3.push({ name: 'TOTAL INGRESOS'  ,value: this.datosGenerales.totalIngresos });
+
+
+
+     this.graf4.push({ name: 'TOTAL POR PAGAR'  ,value: this.datosGenerales.totaPorPagar });
+     this.graf4.push({ name: 'TOTAL PAGADOS'  ,value: this.datosGenerales.totalPagados });
+     this.graf4.push({ name: 'TOTAL VENCIDOS'  ,value: this.datosGenerales.totalVencidos });
+
+
+     
     this.grafServices.getGraficasEgresosIngresosFraccionamiento(this.idFraccionamientoUsuer).subscribe((data:any)=>{
       console.log(data);
     

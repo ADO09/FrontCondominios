@@ -55,15 +55,47 @@
               </ngx-charts-advanced-pie-chart>
             </div>
           </div>
+
+          <div class="contenedor-grid-2" *ngIf="datosGenerales"  >
+            <div class="contenedor-input contenedor-input-50"  >
+                <label for="">TIPO DE PAGO EGRESOS</label>
+              <ngx-charts-advanced-pie-chart style="overflow: hidden;"
+                [view]="view"
+                scheme="cool"
+                [results]="graf3" 
+                [gradient]="gradient"
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+                
+              >
+              </ngx-charts-advanced-pie-chart>
+              
+            </div>
+
+            <div class="contenedor-input contenedor-input-50"  >
+              <label for="">TOTAL (PAG,VENC,POR PAG.)</label>
+            <ngx-charts-advanced-pie-chart style="overflow: hidden;"
+              [view]="view"
+              scheme="cool"
+              [results]="graf4" 
+              [gradient]="gradient"
+              (select)="onSelect($event)"
+              (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)"
+              
+            >
+            </ngx-charts-advanced-pie-chart>
+            
+          </div>
+
+          </div>
         
       </div>
 
       <div class="datos-generales" *ngIf="datosGenerales">
         <ul>
-          <li>
-            <span class="dato-titulo">Total por Pagar:</span>
-            <span class="dato-valor">{{ this.datosGenerales.totaPorPagar }}</span>
-          </li>
+      
           <li>
             <span class="dato-titulo">Total Egresos:</span>
             <span class="dato-valor">{{ datosGenerales.totalEgresos }}</span>
@@ -79,6 +111,10 @@
           <li>
             <span class="dato-titulo">Total Vencidos:</span>
             <span class="dato-valor">{{ datosGenerales.totalVencidos }}</span>
+          </li>
+          <li>
+            <span class="dato-titulo">Total por Pagar:</span>
+            <span class="dato-valor">{{ this.datosGenerales.totaPorPagar }}</span>
           </li>
         </ul>
       </div>
