@@ -94,6 +94,8 @@ export class RegPropietariosComponent {
     }
 
     console.log(this.formData.get('archivoIdentificacion'));
+    // ! VALIDAR QUE CORREO NO ESTE YA REGISTRADO EN TABLA USUARIOS
+
     this.propietarioService.AddPropietario(this.formData).subscribe((r) => {
 
       
